@@ -34,6 +34,12 @@ export interface ComposeArgs {
   tiktokAvatarRelPath?: string;
   /** Extra seconds added to outro scene visual duration after voice ends (TikTok card hold). Default 3. */
   outroHoldSec?: number;
+  /**
+   * Optional per-scene b-roll video paths (relative to output dir, e.g.
+   * "broll/scene-hook.mp4"). When present for a scene, replaces the
+   * static-image/gradient bg with an autoplay-muted-loop <video> element.
+   */
+  sceneBroll?: Record<string, string | null>;
 }
 
 export function composeHtml(args: ComposeArgs): string {
@@ -41,6 +47,7 @@ export function composeHtml(args: ComposeArgs): string {
   const tiktok = args.tiktok ?? DEFAULT_TIKTOK;
   const tiktokAvatar = args.tiktokAvatarRelPath ?? "tiktok-avatar.jpg";
   const outroHoldSec = args.outroHoldSec ?? 3;
+  const sceneBroll = args.sceneBroll ?? {};
 
   // Compute timing per scene. Outro scene gets extra HOLD seconds so the
   // TikTok follow card stays visible after the voice ends.
@@ -58,7 +65,8 @@ export function composeHtml(args: ComposeArgs): string {
 
   // Render scenes
   const sceneHtml = timing.map(({ scene, start, duration }) => {
-    return renderScene(scene, start, duration, bgImageRelPath, tiktok, tiktokAvatar);
+    const broll = sceneBroll[scene.id] ?? null;
+    return renderScene(scene, start, duration, bgImageRelPath, tiktok, tiktokAvatar, broll);
   }).join("\n");
 
   // Persistent shell — uses tiktok handle in footer
@@ -80,7 +88,18 @@ export function composeHtml(args: ComposeArgs): string {
 function renderShell(metadata: Script["metadata"], tiktok: TiktokConfig): string {
   const channel = escapeHtml(metadata.channel);
   const domain = escapeHtml(metadata.source.domain);
-  const handle = escapeHtml(tiktok.handle);
+  const rawHandle = (tiktok.handle ?? "").trim();
+  // Empty handle ("" or unset) suppresses the brand-shell-handle pill so
+  // VietViral builds (which don't carry the ACV tester's @haiquep handle)
+  // ship a clean frame. To show your own handle, set `TIKTOK_HANDLE` in
+  // .env.local or pass it through from the host app.
+  const handleHtml = rawHandle
+    ? `
+<div class="brand-shell-handle">
+  <span class="handle-music">&#9835;</span>
+  <span class="handle-text">${escapeHtml(rawHandle)}</span>
+</div>`
+    : "";
   return `
 <!-- Shell: persistent brand elements (no data-start → always visible) -->
 <div class="shell-bg"></div>
@@ -92,11 +111,7 @@ function renderShell(metadata: Script["metadata"], tiktok: TiktokConfig): string
     <div class="brand-tag">TIN CÔNG NGHỆ</div>
   </div>
 </div>
-
-<div class="brand-shell-handle">
-  <span class="handle-music">&#9835;</span>
-  <span class="handle-text">${handle}</span>
-</div>
+${handleHtml}
 
 <div class="brand-shell-keyword">
   <span>${escapeHtml(domain)}</span>
@@ -113,6 +128,7 @@ function renderScene(
   bgImageRelPath: string | null,
   tiktok: TiktokConfig,
   tiktokAvatarRelPath: string,
+  brollRelPath: string | null,
 ): string {
   const td = scene.templateData;
 
@@ -121,7 +137,11 @@ function renderScene(
 
   switch (td.template) {
     case "hook":
-      inner = renderHookInner(td, bgImageRelPath);
+      // When b-roll is present for hook, skip the image/gradient bg —
+      // the <video> + .bg-overlay prepended below replaces it. The
+      // shimmer-sweep and headline still read because .bg-overlay
+      // applies the same dark gradient as the legacy `.overlay` element.
+      inner = renderHookInner(td, bgImageRelPath, brollRelPath !== null);
       layoutName = "hook";
       break;
     case "comparison":
@@ -150,21 +170,59 @@ function renderScene(
     }
   }
 
+  // Prepend the b-roll <video> bg + overlay when available. The hook
+  // renderer skipped its own image/gradient when brollRelPath was set,
+  // so this is the sole bg for all scene types when b-roll exists.
+  //
+  // CRITICAL: HyperFrames runtime discovers <video> elements that carry
+  // `data-start` and drives their `.currentTime` from the timeline
+  // playhead — without data-start the video stays frozen at frame 0
+  // during deterministic frame capture. `loop` attribute lets HyperFrames
+  // wrap the playhead when the b-roll is shorter than the scene.
+  if (brollRelPath) {
+    const brollHtml = brollVideoTag(brollRelPath, start, duration);
+    inner = `${brollHtml}\n${inner}`;
+  }
+
   return buildScene(scene, start, duration, layoutName, inner);
 }
 
+/** Emit a <video> element that HyperFrames will time-sync to the timeline.
+ *
+ * `preload="auto"` is correct here: HyperFrames PAUSES the timeline and seeks
+ * per frame, then captures. With preload="metadata" each seek triggers
+ * progressive download → more I/O total, NOT less. Auto loads the whole
+ * file up front (small clips: ~2-8MB SD portrait) so seeks resolve from
+ * decoded memory immediately. Measured: metadata → 7m23s for 28s render
+ * vs auto → 5m9s. */
+function brollVideoTag(relPath: string, startSec: number, durationSec: number): string {
+  const start = startSec.toFixed(2);
+  const dur = durationSec.toFixed(2);
+  return `<video class="bg bg-broll" data-start="${start}" data-duration="${dur}" data-volume="0" loop muted playsinline preload="auto" src="${escapeAttr(relPath)}"></video><div class="bg-overlay"></div>`;
+}
+
 // ── HOOK SCENE ─────────────────────────────────────────────────────────────
-function renderHookInner(td: Extract<TemplateDataType, { template: "hook" }>, bgImageRelPath: string | null): string {
-  // Background
+function renderHookInner(
+  td: Extract<TemplateDataType, { template: "hook" }>,
+  bgImageRelPath: string | null,
+  hasBroll: boolean,
+): string {
+  // When b-roll is present, renderScene prepends the <video> bg + overlay,
+  // so we skip the image/gradient layer entirely here (otherwise the
+  // legacy `.bg` div would stack above the b-roll).
   let bgHtml: string;
-  if (td.bgSrc && bgImageRelPath) {
-    // Ken Burns image
+  let overlayHtml: string;
+  if (hasBroll) {
+    bgHtml = "";
+    overlayHtml = "";
+  } else if (td.bgSrc && bgImageRelPath) {
     const kbClass = td.kenBurns ?? "zoom-in";
     bgHtml = `<div class="bg kb-${kbClass}" style="background-image: url('${bgImageRelPath}')"></div>`;
+    overlayHtml = `<div class="overlay" style="opacity: 0.55"></div>`;
   } else {
     bgHtml = `<div class="bg gradient-news-dark"></div>`;
+    overlayHtml = `<div class="overlay" style="opacity: 0.55"></div>`;
   }
-  const overlayHtml = `<div class="overlay" style="opacity: 0.55"></div>`;
 
   const headline = escapeHtml(td.headline);
   const subhead = td.subhead ? escapeHtml(td.subhead) : "";
@@ -303,4 +361,9 @@ function escapeHtml(s: string): string {
   return s
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+/** HTML attribute value escaper (double-quoted attrs). Strict subset of escapeHtml. */
+function escapeAttr(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 }

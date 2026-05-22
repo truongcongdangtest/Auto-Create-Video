@@ -1,0 +1,470 @@
+<!doctype html>
+<!--
+  Mockup 03 — Pro Editor (DaVinci Resolve / Premiere Pro)
+  Philosophy: Maximum information density. Dark grey zinc panels, hairline borders,
+  12-13px text, multi-panel layout (navigator | viewer | inspector), zero wasted pixels.
+  Built for the user who runs 20 videos a day and wants every metric on screen.
+  References: DaVinci Resolve 19, Premiere Pro, Final Cut Pro, After Effects.
+-->
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<title>Auto-Create-Video — Pro</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['IBM Plex Sans','system-ui','sans-serif'], mono: ['IBM Plex Mono','monospace'] },
+      colors: {
+        zinc: { 950:'#0a0a0b', 925:'#121214', 900:'#18181a', 850:'#1f1f22', 800:'#27272a', 700:'#3f3f46', 600:'#52525b', 500:'#71717a', 400:'#a1a1aa' },
+        accent: { 500:'#f59e0b', 600:'#d97706' },
+        teal: { 400:'#2dd4bf' },
+      }
+    }
+  }
+}
+</script>
+<style>
+  html, body { background: #0a0a0b; color: #e4e4e7; font-size: 12.5px; }
+  .panel { background: #121214; border: 1px solid #27272a; }
+  .panel-title { background: linear-gradient(180deg,#1f1f22,#18181a); border-bottom: 1px solid #27272a; padding: 4px 8px; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #a1a1aa; display: flex; align-items: center; justify-content: space-between; height: 24px; }
+  .row:hover { background: #1f1f22; }
+  .row.active { background: #1f1f22; box-shadow: inset 2px 0 0 #f59e0b; }
+  .dot { width: 6px; height: 6px; border-radius: 99px; display: inline-block; }
+  .hline { border-bottom: 1px solid #27272a; }
+  .badge { font-size: 10px; padding: 1px 5px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; }
+  .thumb { background:
+    radial-gradient(120% 80% at 10% 10%, rgba(245,158,11,.25), transparent 60%),
+    linear-gradient(135deg,#1f1f22,#27272a 60%,#0a0a0b); }
+  .thumb-2 { background:
+    radial-gradient(120% 80% at 90% 10%, rgba(34,211,238,.25), transparent 60%),
+    linear-gradient(135deg,#0c4a6e,#082f49 60%,#0a0a0b); }
+  .thumb-3 { background:
+    radial-gradient(120% 80% at 50% 80%, rgba(34,197,94,.22), transparent 60%),
+    linear-gradient(160deg,#14532d,#052e16 60%,#0a0a0b); }
+  .thumb-4 { background:
+    radial-gradient(120% 80% at 20% 80%, rgba(236,72,153,.25), transparent 60%),
+    linear-gradient(140deg,#581c87,#3b0764 60%,#0a0a0b); }
+  .thumb-5 { background:
+    radial-gradient(120% 80% at 80% 20%, rgba(56,189,248,.3), transparent 60%),
+    linear-gradient(135deg,#0c4a6e,#082f49 60%,#020617); }
+  ::-webkit-scrollbar { width: 8px; height: 8px;}
+  ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 0;}
+  ::-webkit-scrollbar-track { background: #0a0a0b;}
+  .grid-cell { border-right: 1px solid #27272a; padding: 4px 8px; }
+  .timeline { background-image: repeating-linear-gradient(90deg, #18181a 0, #18181a 49px, #27272a 49px, #27272a 50px); }
+  .meter { display: flex; align-items: end; gap: 1px; height: 14px; }
+  .meter span { width: 2px; background: #2dd4bf; }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- Title bar -->
+<header class="h-9 flex items-center justify-between border-b border-zinc-800 bg-zinc-925 px-2.5 text-[11.5px]">
+  <div class="flex items-center gap-3">
+    <div class="flex items-center gap-1.5">
+      <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+    </div>
+    <span class="text-zinc-400">Auto-Create-Video <span class="text-zinc-600">·</span> <span class="text-zinc-200">tin-tech-vn.workspace</span></span>
+    <nav class="flex items-center gap-3 text-zinc-400 ml-4">
+      <span class="hover:text-white cursor-pointer">File</span>
+      <span class="hover:text-white cursor-pointer">Edit</span>
+      <span class="hover:text-white cursor-pointer">Job</span>
+      <span class="hover:text-white cursor-pointer">View</span>
+      <span class="hover:text-white cursor-pointer">Pipeline</span>
+      <span class="hover:text-white cursor-pointer">Render</span>
+      <span class="hover:text-white cursor-pointer">Help</span>
+    </nav>
+  </div>
+  <div class="flex items-center gap-2 text-zinc-400">
+    <span class="font-mono badge bg-zinc-800 border border-zinc-700 text-zinc-300">v0.6.2-pro</span>
+    <span class="font-mono">CPU <span class="text-teal-400">38%</span></span>
+    <span class="font-mono">GPU <span class="text-teal-400">42%</span></span>
+    <span class="font-mono">RAM <span class="text-teal-400">6.1G</span></span>
+    <span class="font-mono">Net <span class="text-teal-400">12 Mb/s</span></span>
+    <span class="text-zinc-600">|</span>
+    <span class="text-zinc-200">Quân Vũ</span>
+    <span class="w-5 h-5 rounded-sm bg-gradient-to-br from-amber-500 to-rose-500 grid place-items-center text-[9px] font-bold text-white">QV</span>
+  </div>
+</header>
+
+<!-- Toolbar -->
+<div class="h-9 border-b border-zinc-800 bg-zinc-925 flex items-center px-2 gap-1 text-zinc-400">
+  <button class="h-7 px-2 rounded-sm hover:bg-zinc-800 text-[11.5px] flex items-center gap-1.5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>New job</button>
+  <button class="h-7 px-2 rounded-sm hover:bg-zinc-800 text-[11.5px] flex items-center gap-1.5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5-5 5 5"/></svg>Import .txt</button>
+  <button class="h-7 px-2 rounded-sm hover:bg-zinc-800 text-[11.5px] flex items-center gap-1.5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 17 4 12 9 7"/><polyline points="15 7 20 12 15 17"/></svg>Re-render</button>
+  <span class="w-px h-5 bg-zinc-800 mx-1"></span>
+  <button class="h-7 px-2 rounded-sm hover:bg-zinc-800 text-[11.5px]">Voice Lab</button>
+  <button class="h-7 px-2 rounded-sm hover:bg-zinc-800 text-[11.5px]">Outro</button>
+  <button class="h-7 px-2 rounded-sm hover:bg-zinc-800 text-[11.5px]">Schedule</button>
+  <button class="h-7 px-2 rounded-sm hover:bg-zinc-800 text-[11.5px]">Batch</button>
+  <span class="w-px h-5 bg-zinc-800 mx-1"></span>
+  <div class="flex items-center gap-1.5 h-7 px-2 rounded-sm bg-zinc-900 border border-zinc-800 text-[11.5px]">
+    <span class="dot bg-emerald-400"></span>Worker pool · <span class="text-white font-mono">2/4 active</span>
+  </div>
+  <div class="ml-auto flex items-center gap-1.5 text-[11.5px]">
+    <span class="font-mono">Frame 1428 / 3000</span>
+    <span class="text-zinc-600">·</span>
+    <span class="font-mono text-teal-400">28.4 fps</span>
+    <span class="text-zinc-600">·</span>
+    <span class="font-mono">ETA 01:38</span>
+  </div>
+</div>
+
+<!-- Multi-panel layout -->
+<div class="grid grid-cols-[260px_1fr_360px] grid-rows-[1fr_220px] h-[calc(100vh-72px-24px)]">
+
+  <!-- Left navigator (spans both rows) -->
+  <aside class="row-span-2 panel border-r border-zinc-800 border-t-0 border-b-0 border-l-0 flex flex-col">
+    <!-- Bins -->
+    <div class="panel-title">Bins · Jobs <span class="text-zinc-600">12 items</span></div>
+    <div class="flex-1 overflow-y-auto">
+      <!-- Search -->
+      <div class="px-2 py-1.5 border-b border-zinc-800">
+        <div class="h-6 bg-zinc-925 border border-zinc-800 rounded-sm flex items-center px-2 gap-1.5 text-[11px] text-zinc-500">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          Filter jobs… <span class="ml-auto font-mono text-[10px]">⌘F</span>
+        </div>
+      </div>
+      <!-- Tabs -->
+      <div class="grid grid-cols-4 text-[10.5px] text-center border-b border-zinc-800">
+        <button class="py-1.5 border-r border-zinc-800 bg-zinc-850 text-white">All <span class="text-zinc-500">12</span></button>
+        <button class="py-1.5 border-r border-zinc-800 text-zinc-400 hover:bg-zinc-850">Run <span class="text-amber-400">3</span></button>
+        <button class="py-1.5 border-r border-zinc-800 text-zinc-400 hover:bg-zinc-850">OK <span class="text-emerald-400">8</span></button>
+        <button class="py-1.5 text-zinc-400 hover:bg-zinc-850">Err <span class="text-rose-400">1</span></button>
+      </div>
+
+      <!-- Job rows -->
+      <div class="font-mono text-[11px]">
+        <div class="row active grid grid-cols-[20px_1fr_40px] items-center px-2 py-1.5 cursor-pointer">
+          <span class="dot bg-amber-400 animate-pulse"></span>
+          <div class="leading-tight">
+            <div class="text-white">bitcoin-100k</div>
+            <div class="text-zinc-500 text-[10px]">step 5/8 · 58%</div>
+          </div>
+          <span class="badge bg-amber-400/15 text-amber-400">RUN</span>
+        </div>
+        <div class="row grid grid-cols-[20px_1fr_40px] items-center px-2 py-1.5 cursor-pointer">
+          <span class="dot bg-amber-400"></span>
+          <div class="leading-tight">
+            <div class="text-white">iphone-17-200mp</div>
+            <div class="text-zinc-500 text-[10px]">step 3/8 · TTS</div>
+          </div>
+          <span class="badge bg-amber-400/15 text-amber-400">TTS</span>
+        </div>
+        <div class="row grid grid-cols-[20px_1fr_40px] items-center px-2 py-1.5 cursor-pointer">
+          <span class="dot bg-zinc-500"></span>
+          <div class="leading-tight">
+            <div class="text-white">vinfast-vf9-50k</div>
+            <div class="text-zinc-500 text-[10px]">queued · pos 1</div>
+          </div>
+          <span class="badge bg-zinc-700 text-zinc-300">Q</span>
+        </div>
+        <div class="row grid grid-cols-[20px_1fr_40px] items-center px-2 py-1.5 cursor-pointer">
+          <span class="dot bg-emerald-400"></span>
+          <div class="leading-tight">
+            <div class="text-white">gia-vang-sjc-92m</div>
+            <div class="text-zinc-500 text-[10px]">1:02 · 14.2 MB</div>
+          </div>
+          <span class="badge bg-emerald-400/15 text-emerald-400">OK</span>
+        </div>
+        <div class="row grid grid-cols-[20px_1fr_40px] items-center px-2 py-1.5 cursor-pointer">
+          <span class="dot bg-emerald-400"></span>
+          <div class="leading-tight">
+            <div class="text-white">sapa-tuyet-dau-mua</div>
+            <div class="text-zinc-500 text-[10px]">0:58 · 12.8 MB</div>
+          </div>
+          <span class="badge bg-emerald-400/15 text-emerald-400">OK</span>
+        </div>
+        <div class="row grid grid-cols-[20px_1fr_40px] items-center px-2 py-1.5 cursor-pointer">
+          <span class="dot bg-emerald-400"></span>
+          <div class="leading-tight">
+            <div class="text-white">vn-index-1300</div>
+            <div class="text-zinc-500 text-[10px]">1:01 · 13.5 MB</div>
+          </div>
+          <span class="badge bg-emerald-400/15 text-emerald-400">OK</span>
+        </div>
+        <div class="row grid grid-cols-[20px_1fr_40px] items-center px-2 py-1.5 cursor-pointer">
+          <span class="dot bg-emerald-400"></span>
+          <div class="leading-tight">
+            <div class="text-white">samsung-s26-ultra</div>
+            <div class="text-zinc-500 text-[10px]">0:59 · 13.1 MB</div>
+          </div>
+          <span class="badge bg-emerald-400/15 text-emerald-400">OK</span>
+        </div>
+        <div class="row grid grid-cols-[20px_1fr_40px] items-center px-2 py-1.5 cursor-pointer">
+          <span class="dot bg-emerald-400"></span>
+          <div class="leading-tight">
+            <div class="text-white">tien-dien-tu-ngan-hang</div>
+            <div class="text-zinc-500 text-[10px]">1:04 · 15.0 MB</div>
+          </div>
+          <span class="badge bg-emerald-400/15 text-emerald-400">OK</span>
+        </div>
+        <div class="row grid grid-cols-[20px_1fr_40px] items-center px-2 py-1.5 cursor-pointer">
+          <span class="dot bg-rose-500"></span>
+          <div class="leading-tight">
+            <div class="text-white">grok-5-xai-launch</div>
+            <div class="text-zinc-500 text-[10px]">TTS 429 · LucyLab</div>
+          </div>
+          <span class="badge bg-rose-500/15 text-rose-400">ERR</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Channels -->
+    <div class="panel-title">Channels</div>
+    <div class="font-mono text-[11px]">
+      <div class="row grid grid-cols-[14px_1fr_30px] items-center px-2 py-1.5"><span class="dot bg-amber-400"></span><span class="text-white">tin-tech-vn</span><span class="text-zinc-500">24</span></div>
+      <div class="row grid grid-cols-[14px_1fr_30px] items-center px-2 py-1.5"><span class="dot bg-teal-400"></span><span class="text-white">tai-chinh-247</span><span class="text-zinc-500">11</span></div>
+      <div class="row grid grid-cols-[14px_1fr_30px] items-center px-2 py-1.5"><span class="dot bg-emerald-400"></span><span class="text-white">doi-song-plus</span><span class="text-zinc-500">7</span></div>
+    </div>
+
+    <div class="panel-title">Resources</div>
+    <div class="px-2 py-2 space-y-1 text-[11px] font-mono">
+      <div class="flex items-center justify-between"><span class="text-zinc-400">CPU</span><span class="text-teal-400">38%</span></div>
+      <div class="h-1 bg-zinc-900"><div class="h-full w-[38%] bg-teal-400"></div></div>
+      <div class="flex items-center justify-between mt-1"><span class="text-zinc-400">GPU (NVENC)</span><span class="text-teal-400">42%</span></div>
+      <div class="h-1 bg-zinc-900"><div class="h-full w-[42%] bg-teal-400"></div></div>
+      <div class="flex items-center justify-between mt-1"><span class="text-zinc-400">RAM</span><span class="text-teal-400">6.1 / 32 GB</span></div>
+      <div class="h-1 bg-zinc-900"><div class="h-full w-[19%] bg-teal-400"></div></div>
+      <div class="flex items-center justify-between mt-1"><span class="text-zinc-400">Disk I/O</span><span class="text-teal-400">412 MB/s</span></div>
+      <div class="h-1 bg-zinc-900"><div class="h-full w-[58%] bg-teal-400"></div></div>
+    </div>
+  </aside>
+
+  <!-- Center viewer (top) -->
+  <section class="panel border-y-0 border-l-0 flex flex-col">
+    <div class="panel-title">
+      <span>Viewer · <span class="text-white">job_a47f</span> <span class="text-zinc-600">·</span> bitcoin-100k</span>
+      <div class="flex items-center gap-2 text-zinc-400">
+        <span class="font-mono">9:16 · 1080×1920 · 30fps · H.264</span>
+        <span class="text-zinc-600">·</span>
+        <span class="font-mono">Frame <span class="text-white">01428</span>/03000</span>
+        <button class="hover:text-white">Solo</button>
+        <button class="hover:text-white">Loop</button>
+        <button class="hover:text-white">Fit</button>
+      </div>
+    </div>
+
+    <div class="flex-1 flex">
+      <!-- Viewer canvas -->
+      <div class="flex-1 grid place-items-center bg-zinc-950 relative overflow-hidden">
+        <div class="thumb-4 aspect-[9/16] h-[88%] rounded-sm relative overflow-hidden shadow-2xl">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-white">
+            <span class="px-1.5 py-0.5 bg-black/50 rounded-sm">tai-chinh-247</span>
+            <span class="px-1.5 py-0.5 bg-black/50 rounded-sm">00:34 / 00:58</span>
+          </div>
+          <div class="absolute inset-0 grid place-items-center text-center text-white p-6">
+            <div>
+              <div class="text-[10px] uppercase tracking-widest opacity-70">Tin nóng tài chính</div>
+              <h2 class="text-[28px] font-extrabold leading-[1.05] mt-2">Bitcoin vượt mốc<br><span class="text-amber-400 text-[40px]">$100,000</span><br>lần đầu trong lịch sử</h2>
+              <div class="text-[11px] text-white/70 mt-3 font-mono">— theo Reuters, 19/05/2026</div>
+            </div>
+          </div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <div class="h-1 bg-white/15 rounded-sm"><div class="h-full w-[58%] bg-amber-400 rounded-sm"></div></div>
+          </div>
+        </div>
+
+        <!-- Safe zone overlay corners -->
+        <div class="absolute top-4 left-4 w-3 h-3 border-l border-t border-zinc-700"></div>
+        <div class="absolute top-4 right-4 w-3 h-3 border-r border-t border-zinc-700"></div>
+        <div class="absolute bottom-4 left-4 w-3 h-3 border-l border-b border-zinc-700"></div>
+        <div class="absolute bottom-4 right-4 w-3 h-3 border-r border-b border-zinc-700"></div>
+
+        <!-- Transport controls -->
+        <div class="absolute bottom-3 inset-x-0 flex items-center justify-center gap-1 text-zinc-400">
+          <button class="w-7 h-7 grid place-items-center hover:bg-zinc-800 rounded-sm"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 20 9 12l10-8v16zM5 19V5h2v14H5z"/></svg></button>
+          <button class="w-7 h-7 grid place-items-center hover:bg-zinc-800 rounded-sm"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h12v12H6z"/></svg></button>
+          <button class="w-8 h-8 grid place-items-center bg-amber-500 text-zinc-950 hover:bg-amber-400 rounded-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+          <button class="w-7 h-7 grid place-items-center hover:bg-zinc-800 rounded-sm"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M5 4l10 8-10 8V4zm14 1v14h-2V5h2z"/></svg></button>
+          <span class="ml-3 font-mono text-[11px] text-zinc-300">00:00:34:12 / 00:00:58:00</span>
+        </div>
+      </div>
+
+      <!-- Vertical scopes -->
+      <div class="w-44 border-l border-zinc-800 bg-zinc-925 flex flex-col text-[10.5px]">
+        <div class="panel-title">Scopes</div>
+        <div class="p-2 space-y-2">
+          <div>
+            <div class="flex justify-between text-zinc-400 mb-1"><span>Audio L/R</span><span class="font-mono text-teal-400">-6.2 dB</span></div>
+            <div class="meter">
+              <span style="height:30%"></span><span style="height:55%"></span><span style="height:70%"></span>
+              <span style="height:85%"></span><span style="height:95%"></span><span style="height:78%"></span>
+              <span style="height:60%"></span><span style="height:45%"></span><span style="height:90%"></span>
+              <span style="height:70%"></span><span style="height:55%"></span><span style="height:40%"></span>
+              <span style="height:65%"></span><span style="height:80%"></span><span style="height:50%"></span>
+              <span style="height:35%"></span><span style="height:70%" class="!bg-amber-400"></span><span style="height:60%"></span>
+              <span style="height:45%"></span><span style="height:30%"></span>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-zinc-400 mb-1"><span>VRAM</span><span class="font-mono text-teal-400">2.1 / 8.0 GB</span></div>
+            <div class="h-2 bg-zinc-900 border border-zinc-800"><div class="h-full w-[26%] bg-teal-400"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-zinc-400 mb-1"><span>Frame queue</span><span class="font-mono text-teal-400">14 / 24</span></div>
+            <div class="h-2 bg-zinc-900 border border-zinc-800"><div class="h-full w-[58%] bg-teal-400"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-zinc-400 mb-1"><span>Encode bitrate</span><span class="font-mono text-teal-400">8.2 Mbps</span></div>
+            <div class="h-2 bg-zinc-900 border border-zinc-800"><div class="h-full w-[68%] bg-teal-400"></div></div>
+          </div>
+          <div class="border-t border-zinc-800 pt-2 text-[10.5px] font-mono text-zinc-400 space-y-0.5">
+            <div>workers <span class="text-white">2/4</span></div>
+            <div>fps avg <span class="text-teal-400">28.4</span></div>
+            <div>net out <span class="text-white">12 Mb/s</span></div>
+            <div>cache hit <span class="text-white">87%</span></div>
+            <div>thermal <span class="text-emerald-400">OK · 62°C</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Right inspector -->
+  <aside class="panel border-y-0 border-r-0 border-l border-zinc-800 flex flex-col overflow-y-auto">
+    <div class="panel-title">Inspector · job_a47f</div>
+    <div class="p-2 hline space-y-1.5 text-[11.5px]">
+      <div class="grid grid-cols-[80px_1fr] gap-1"><span class="text-zinc-500">Source URL</span><span class="font-mono text-white truncate">vnexpress.net/bitcoin-100k...</span></div>
+      <div class="grid grid-cols-[80px_1fr] gap-1"><span class="text-zinc-500">Channel</span><span class="text-white">tai-chinh-247</span></div>
+      <div class="grid grid-cols-[80px_1fr] gap-1"><span class="text-zinc-500">Voice</span><span class="text-white">Bảo Anh · nữ Bắc · 1.0x</span></div>
+      <div class="grid grid-cols-[80px_1fr] gap-1"><span class="text-zinc-500">Format</span><span class="font-mono text-white">MP4 · 1080×1920 · 30fps</span></div>
+      <div class="grid grid-cols-[80px_1fr] gap-1"><span class="text-zinc-500">Codec</span><span class="font-mono text-white">H.264 high · AAC 192k</span></div>
+      <div class="grid grid-cols-[80px_1fr] gap-1"><span class="text-zinc-500">Outro</span><span class="text-white">finance.brand.v2</span></div>
+      <div class="grid grid-cols-[80px_1fr] gap-1"><span class="text-zinc-500">Subtitle</span><span class="text-white">SRT · vi · burn-in OFF</span></div>
+      <div class="grid grid-cols-[80px_1fr] gap-1"><span class="text-zinc-500">Cost so far</span><span class="font-mono text-amber-400">$0.16</span></div>
+    </div>
+
+    <!-- Input box compact -->
+    <div class="panel-title">New job</div>
+    <div class="p-2 hline space-y-1.5">
+      <div class="text-[10.5px] text-zinc-500">Source URL / .txt path</div>
+      <input class="w-full h-7 bg-zinc-925 border border-zinc-800 px-2 text-[11.5px] font-mono text-white focus:outline-none focus:border-amber-500" value="https://vnexpress.net/iphone-17-pro-200mp.html" />
+      <div class="grid grid-cols-2 gap-1.5 mt-1">
+        <button class="h-7 bg-zinc-925 border border-zinc-800 text-[11px] hover:bg-zinc-850 flex items-center justify-between px-2">
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-gradient-to-br from-pink-500 to-rose-500"></span>Bảo Anh</span>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <button class="h-7 bg-zinc-925 border border-zinc-800 text-[11px] hover:bg-zinc-850 flex items-center justify-between px-2">
+          <span class="flex items-center gap-1.5"><span class="dot bg-amber-400"></span>tin-tech-vn</span>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </div>
+      <button class="w-full h-8 bg-amber-500 text-zinc-950 font-semibold text-[12px] hover:bg-amber-400 mt-1 flex items-center justify-center gap-2">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Render <span class="font-mono text-[10px] opacity-70">⌘↵</span>
+      </button>
+    </div>
+
+    <div class="panel-title">Script · 8 chunks</div>
+    <div class="p-2 hline text-[11px] font-mono space-y-0.5 max-h-48 overflow-y-auto">
+      <div class="flex gap-2"><span class="text-zinc-600 w-10">00:00</span><span class="text-zinc-300">Bitcoin vừa lập đỉnh lịch sử với mốc 100 nghìn USD…</span></div>
+      <div class="flex gap-2"><span class="text-zinc-600 w-10">00:08</span><span class="text-zinc-300">Trong vòng 24 giờ qua, BTC tăng 4,2% và phá vỡ kháng cự…</span></div>
+      <div class="flex gap-2"><span class="text-zinc-600 w-10">00:17</span><span class="text-zinc-300">Nguyên nhân chính đến từ dòng tiền ETF spot tại Mỹ…</span></div>
+      <div class="flex gap-2"><span class="text-zinc-600 w-10">00:26</span><span class="text-zinc-300">Cùng với việc Fed phát tín hiệu giảm lãi suất…</span></div>
+      <div class="flex gap-2"><span class="text-zinc-600 w-10">00:34</span><span class="text-amber-400">▶ Vậy nhà đầu tư Việt Nam nên làm gì lúc này?</span></div>
+      <div class="flex gap-2"><span class="text-zinc-600 w-10">00:42</span><span class="text-zinc-500">Chuyên gia cho rằng nên giữ tỉ trọng 5–10% danh mục…</span></div>
+      <div class="flex gap-2"><span class="text-zinc-600 w-10">00:50</span><span class="text-zinc-500">Tránh FOMO mua đỉnh và quản lý vốn chặt chẽ…</span></div>
+    </div>
+
+    <div class="panel-title">Output</div>
+    <div class="p-2 grid grid-cols-2 gap-1.5 text-[11px]">
+      <button class="h-7 bg-zinc-925 border border-zinc-800 hover:bg-zinc-850 flex items-center justify-center gap-1.5">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-9l-2-2H5a2 2 0 0 0-2 2z"/></svg>Reveal
+      </button>
+      <button class="h-7 bg-zinc-925 border border-zinc-800 hover:bg-zinc-850 flex items-center justify-center gap-1.5">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8 12 3 7 8"/></svg>Upload
+      </button>
+      <button class="h-7 bg-zinc-925 border border-zinc-800 hover:bg-zinc-850 flex items-center justify-center gap-1.5">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/></svg>Re-render
+      </button>
+      <button class="h-7 bg-zinc-925 border border-zinc-800 hover:bg-zinc-850 flex items-center justify-center gap-1.5">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a2 2 0 0 0 .4 2.2l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a2 2 0 0 0-3.4 1.4V22a2 2 0 0 1-4 0v-.1a2 2 0 0 0-3.4-1.4l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a2 2 0 0 0-1.4-3.4H2a2 2 0 0 1 0-4h.1a2 2 0 0 0 1.4-3.4l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a2 2 0 0 0 3.4-1.4V2a2 2 0 0 1 4 0v.1a2 2 0 0 0 3.4 1.4l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a2 2 0 0 0-1.4 3.4H22a2 2 0 0 1 0 4h-.1a2 2 0 0 0-1.4 3.4z"/></svg>Tune
+      </button>
+    </div>
+  </aside>
+
+  <!-- Bottom: pipeline timeline -->
+  <section class="col-span-2 panel border-t border-zinc-800 border-b-0 border-r-0 border-l-0 flex flex-col">
+    <div class="panel-title">
+      <span>Pipeline timeline · <span class="text-white">8 steps</span> <span class="text-zinc-600">·</span> active: <span class="text-amber-400">05 compose</span></span>
+      <div class="flex items-center gap-2 text-zinc-400">
+        <button class="hover:text-white">Zoom -</button>
+        <button class="hover:text-white">Zoom +</button>
+        <button class="hover:text-white">Fit</button>
+        <span class="text-zinc-600">|</span>
+        <span class="font-mono">02:14 elapsed · 01:38 ETA</span>
+      </div>
+    </div>
+
+    <div class="flex-1 flex">
+      <!-- Step labels -->
+      <div class="w-48 border-r border-zinc-800 bg-zinc-925 text-[11px] font-mono">
+        <div class="hline px-2 py-1 flex items-center gap-1.5"><span class="dot bg-emerald-400"></span><span class="text-zinc-300">01 validate</span><span class="ml-auto text-zinc-500 text-[10px]">0.4s</span></div>
+        <div class="hline px-2 py-1 flex items-center gap-1.5"><span class="dot bg-emerald-400"></span><span class="text-zinc-300">02 script.txt</span><span class="ml-auto text-zinc-500 text-[10px]">18s</span></div>
+        <div class="hline px-2 py-1 flex items-center gap-1.5"><span class="dot bg-emerald-400"></span><span class="text-zinc-300">03 og:image + TTS</span><span class="ml-auto text-zinc-500 text-[10px]">42s</span></div>
+        <div class="hline px-2 py-1 flex items-center gap-1.5"><span class="dot bg-emerald-400"></span><span class="text-zinc-300">04 voice + SFX</span><span class="ml-auto text-zinc-500 text-[10px]">8s</span></div>
+        <div class="hline px-2 py-1 flex items-center gap-1.5"><span class="dot bg-amber-400 animate-pulse"></span><span class="text-amber-400 font-semibold">05 compose</span><span class="ml-auto text-amber-400 text-[10px]">38%</span></div>
+        <div class="hline px-2 py-1 flex items-center gap-1.5"><span class="dot bg-zinc-600"></span><span class="text-zinc-500">06 render</span><span class="ml-auto text-zinc-600 text-[10px]">—</span></div>
+        <div class="hline px-2 py-1 flex items-center gap-1.5"><span class="dot bg-zinc-600"></span><span class="text-zinc-500">07 encode</span><span class="ml-auto text-zinc-600 text-[10px]">—</span></div>
+        <div class="px-2 py-1 flex items-center gap-1.5"><span class="dot bg-zinc-600"></span><span class="text-zinc-500">08 done</span><span class="ml-auto text-zinc-600 text-[10px]">—</span></div>
+      </div>
+
+      <!-- Timeline lanes -->
+      <div class="flex-1 timeline relative">
+        <!-- Ruler -->
+        <div class="h-5 border-b border-zinc-800 flex text-[9.5px] font-mono text-zinc-500">
+          <span class="grid-cell w-[50px]">00s</span><span class="grid-cell w-[50px]">10</span><span class="grid-cell w-[50px]">20</span><span class="grid-cell w-[50px]">30</span><span class="grid-cell w-[50px]">40</span><span class="grid-cell w-[50px]">50</span><span class="grid-cell w-[50px]">60</span><span class="grid-cell w-[50px]">70</span><span class="grid-cell w-[50px]">80</span><span class="grid-cell w-[50px]">90</span><span class="grid-cell w-[50px]">100</span><span class="grid-cell w-[50px]">110</span><span class="grid-cell w-[50px]">120</span><span class="grid-cell w-[50px]">130</span>
+        </div>
+
+        <!-- Clips -->
+        <div class="relative px-1 py-1 space-y-0.5">
+          <div class="h-5 bg-emerald-500/20 border-l-2 border-emerald-400 px-1 text-[10px] text-emerald-200 font-mono" style="margin-left:0; width:8px">.</div>
+          <div class="h-5 bg-emerald-500/20 border-l-2 border-emerald-400 px-1 text-[10px] text-emerald-200 font-mono" style="margin-left:6px; width:90px">script · claude</div>
+          <div class="h-5 bg-emerald-500/20 border-l-2 border-emerald-400 px-1 text-[10px] text-emerald-200 font-mono" style="margin-left:96px; width:210px">og:image + TTS · LucyLab</div>
+          <div class="h-5 bg-emerald-500/20 border-l-2 border-emerald-400 px-1 text-[10px] text-emerald-200 font-mono" style="margin-left:306px; width:40px">voice mix</div>
+          <div class="h-5 bg-amber-500/30 border-l-2 border-amber-400 px-1 text-[10px] text-amber-100 font-mono relative" style="margin-left:346px; width:120px">
+            compose · GSAP · 38%
+            <span class="absolute top-0 right-0 bottom-0 w-[62%] bg-amber-500/30"></span>
+          </div>
+          <div class="h-5 bg-zinc-800/60 border-l-2 border-zinc-600 px-1 text-[10px] text-zinc-500 font-mono" style="margin-left:466px; width:160px">render · HyperFrames (est)</div>
+          <div class="h-5 bg-zinc-800/60 border-l-2 border-zinc-600 px-1 text-[10px] text-zinc-500 font-mono" style="margin-left:626px; width:80px">encode · FFmpeg (est)</div>
+          <div class="h-5 bg-zinc-800/60 border-l-2 border-zinc-600 px-1 text-[10px] text-zinc-500 font-mono" style="margin-left:706px; width:20px">done</div>
+        </div>
+
+        <!-- Playhead -->
+        <div class="absolute top-5 bottom-0 w-px bg-amber-400" style="left:420px">
+          <div class="absolute -top-1 -left-1 w-2.5 h-2.5 bg-amber-400 rotate-45"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Footer -->
+<footer class="h-6 border-t border-zinc-800 bg-zinc-925 flex items-center justify-between px-2.5 text-[10.5px] font-mono text-zinc-500">
+  <div class="flex items-center gap-3">
+    <span class="flex items-center gap-1"><span class="dot bg-emerald-400"></span>LucyLab OK</span>
+    <span class="flex items-center gap-1"><span class="dot bg-emerald-400"></span>Claude API OK</span>
+    <span class="flex items-center gap-1"><span class="dot bg-emerald-400"></span>Gemini API OK</span>
+    <span class="flex items-center gap-1"><span class="dot bg-emerald-400"></span>FFmpeg 7.0</span>
+    <span class="flex items-center gap-1"><span class="dot bg-emerald-400"></span>HyperFrames v3.1</span>
+  </div>
+  <div class="flex items-center gap-3">
+    <span>workspace · E:\AutoCreateVideo\projects</span>
+    <span class="text-zinc-700">|</span>
+    <span>cost MTD <span class="text-amber-400">$11.42</span> / $30 · <span class="text-emerald-400">62% remaining</span></span>
+    <span class="text-zinc-700">|</span>
+    <span>queue 2 · workers 2/4 · uptime 4h 18m</span>
+  </div>
+</footer>
+
+</body>
+</html>

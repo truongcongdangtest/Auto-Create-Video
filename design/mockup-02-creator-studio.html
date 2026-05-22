@@ -1,0 +1,436 @@
+<!doctype html>
+<!--
+  Mockup 02 — Creator Studio (CapCut/Descript vibes)
+  Philosophy: Warm dark theme (slate-900 + violet undertone), generous touch targets,
+  rounded 14-16px corners, colorful gradient CTAs, drag-and-drop zones front and center.
+  Feels friendly and "let's make a video" — not enterprise.
+  References: CapCut Desktop, Descript, Riverside, Submagic.
+-->
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<title>Auto-Create-Video — Studio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'] },
+      colors: {
+        bg:   { 950:'#0d0b1a', 900:'#13112a', 800:'#1b1838', 700:'#262248', 600:'#312c5b' },
+        line: '#2a2549',
+        violet: { 500:'#8b5cf6', 600:'#7c3aed' },
+        pink:   { 500:'#ec4899' },
+        cyan:   { 400:'#22d3ee' },
+        lime:   { 400:'#a3e635' },
+      },
+    }
+  }
+}
+</script>
+<style>
+  html, body { background: #0d0b1a; color: #e9e7f5; }
+  .glow { box-shadow: 0 10px 40px -10px rgba(139,92,246,.45), 0 0 0 1px rgba(255,255,255,.04) inset; }
+  .grad-primary { background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%); }
+  .grad-cyan { background: linear-gradient(135deg, #22d3ee 0%, #6366f1 100%); }
+  .grad-lime { background: linear-gradient(135deg, #a3e635 0%, #22d3ee 100%); }
+  .card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015)); border: 1px solid #2a2549; border-radius: 18px; }
+  .chip { border-radius: 999px; padding: 4px 10px; font-size: 11.5px; font-weight: 500; }
+  .thumb { background: radial-gradient(120% 80% at 20% 10%, rgba(236,72,153,.35), transparent 60%), radial-gradient(80% 60% at 90% 90%, rgba(34,211,238,.3), transparent 55%), linear-gradient(135deg,#1e1b4b,#312e81); }
+  .thumb-2 { background: radial-gradient(120% 80% at 90% 10%, rgba(245,158,11,.45), transparent 60%), linear-gradient(135deg,#3f1d0e,#7c2d12 60%,#1c1917); }
+  .thumb-3 { background: radial-gradient(120% 80% at 50% 80%, rgba(163,230,53,.45), transparent 60%), linear-gradient(160deg,#052e16,#14532d 60%,#0f172a); }
+  .thumb-4 { background: radial-gradient(120% 80% at 20% 80%, rgba(236,72,153,.4), transparent 60%), linear-gradient(140deg,#581c87,#7c2d12 60%,#1e1b4b); }
+  .thumb-5 { background: radial-gradient(120% 80% at 80% 20%, rgba(56,189,248,.45), transparent 60%), linear-gradient(135deg,#0c4a6e,#082f49 60%,#020617); }
+  .drop { background-image: radial-gradient(circle, #4c3f7a 1.2px, transparent 1.4px); background-size: 12px 12px; }
+  @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 rgba(139,92,246,.5);} 70% { box-shadow: 0 0 0 14px rgba(139,92,246,0);} 100% { box-shadow:0 0 0 0 rgba(139,92,246,0);} }
+  .pulse-ring { animation: pulseRing 1.8s infinite; }
+  ::-webkit-scrollbar { width: 8px; height: 8px;}
+  ::-webkit-scrollbar-thumb { background: #2a2549; border-radius: 99px;}
+</style>
+</head>
+<body class="font-sans antialiased min-h-screen">
+
+<!-- Title bar -->
+<header class="h-12 flex items-center justify-between px-4 border-b border-line bg-bg-900/80 backdrop-blur sticky top-0 z-20">
+  <div class="flex items-center gap-3">
+    <div class="w-8 h-8 rounded-xl grad-primary grid place-items-center text-white font-bold">A</div>
+    <div>
+      <div class="text-[13px] font-semibold">Auto-Create-Video <span class="text-white/40 font-normal">Studio</span></div>
+      <div class="text-[10.5px] text-white/40">Kênh đang hoạt động · tin-tech-vn</div>
+    </div>
+  </div>
+  <div class="flex items-center gap-2 text-[12px] text-white/60">
+    <div class="px-3 py-1.5 rounded-full bg-white/5 border border-line flex items-center gap-2 hover:bg-white/10 cursor-pointer">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      Tìm dự án, bài báo…
+    </div>
+    <button class="px-3 py-1.5 rounded-full bg-white/5 border border-line hover:bg-white/10">Trợ giúp</button>
+    <button class="px-3 py-1.5 rounded-full bg-white/5 border border-line hover:bg-white/10">Cài đặt</button>
+    <div class="w-8 h-8 rounded-full grad-cyan grid place-items-center text-bg-950 text-[12px] font-bold ml-1">QV</div>
+  </div>
+</header>
+
+<div class="grid grid-cols-[260px_1fr_400px] h-[calc(100vh-48px)]">
+
+  <!-- Sidebar -->
+  <aside class="border-r border-line p-4 flex flex-col gap-4">
+    <button class="h-12 rounded-2xl grad-primary text-white font-semibold flex items-center justify-center gap-2 glow hover:brightness-110">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+      Video mới
+    </button>
+
+    <div class="space-y-1 text-[13.5px]">
+      <div class="text-[10.5px] uppercase tracking-widest text-white/30 px-2 mb-1.5">Workspace</div>
+      <a class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-white/5 border border-line">
+        <span class="flex items-center gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h14l-1 18H6L5 3z"/><path d="M9 9h6"/></svg>Dự án</span>
+        <span class="text-[11px] text-white/50">12</span>
+      </a>
+      <a class="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/5 text-white/70">
+        <span class="flex items-center gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5 9-9"/></svg>Đã xuất</span>
+        <span class="text-[11px] text-white/40">48</span>
+      </a>
+      <a class="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/5 text-white/70">
+        <span class="flex items-center gap-2.5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/></svg>Hàng đợi</span>
+        <span class="chip bg-violet-500/20 text-violet-500">3</span>
+      </a>
+      <a class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-white/5 text-white/70"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.27.61.86 1 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Brand & Outro</a>
+      <a class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-white/5 text-white/70"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4"/><circle cx="12" cy="12" r="4"/></svg>Voice Lab</a>
+    </div>
+
+    <div class="space-y-1 text-[13px] mt-2">
+      <div class="text-[10.5px] uppercase tracking-widest text-white/30 px-2 mb-1.5">Kênh của bạn</div>
+      <div class="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/5">
+        <span class="w-6 h-6 rounded-lg grad-primary"></span>tin-tech-vn <span class="ml-auto text-[11px] text-white/40">24</span>
+      </div>
+      <div class="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/5">
+        <span class="w-6 h-6 rounded-lg grad-cyan"></span>tai-chinh-247 <span class="ml-auto text-[11px] text-white/40">11</span>
+      </div>
+      <div class="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/5">
+        <span class="w-6 h-6 rounded-lg grad-lime"></span>doi-song-plus <span class="ml-auto text-[11px] text-white/40">7</span>
+      </div>
+    </div>
+
+    <div class="mt-auto card p-4">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-[11px] text-white/50">Chi phí tháng 5</span>
+        <span class="text-[14px] font-semibold">$11.42</span>
+      </div>
+      <div class="h-1.5 rounded-full bg-white/10 overflow-hidden">
+        <div class="h-full w-[38%] grad-primary"></div>
+      </div>
+      <div class="flex items-center justify-between text-[10.5px] text-white/40 mt-1.5">
+        <span>Hạn $30</span><span>62% còn lại</span>
+      </div>
+      <button class="mt-3 w-full h-8 rounded-lg bg-white/5 border border-line text-[12px] hover:bg-white/10">Quản lý API</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="overflow-y-auto p-6 space-y-5">
+    <!-- Hero create -->
+    <section class="card p-5 relative overflow-hidden">
+      <div class="absolute -right-10 -top-10 w-64 h-64 rounded-full grad-primary blur-3xl opacity-20"></div>
+      <div class="flex items-baseline justify-between mb-4">
+        <div>
+          <h1 class="text-[20px] font-bold tracking-tight">Hôm nay làm video gì? <span class="text-white/40 font-medium">Quân ơi</span></h1>
+          <p class="text-[12.5px] text-white/50 mt-0.5">Dán link bài báo, hoặc thả file .txt — phần còn lại để Studio lo.</p>
+        </div>
+        <div class="flex items-center gap-1 text-[11px] text-white/50">
+          <span class="chip bg-white/5 border border-line">Veo TTS</span>
+          <span class="chip bg-white/5 border border-line">9:16 · 1080p</span>
+          <span class="chip bg-white/5 border border-line">~60s</span>
+        </div>
+      </div>
+
+      <!-- Drop zone -->
+      <div class="drop rounded-2xl border border-dashed border-violet-500/40 p-4 flex items-center gap-4 bg-bg-800/40">
+        <div class="w-12 h-12 rounded-xl grad-primary grid place-items-center text-white pulse-ring">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5-5 5 5"/><path d="M12 5v12"/></svg>
+        </div>
+        <div class="flex-1">
+          <input type="text" value="https://vnexpress.net/iphone-17-pro-camera-200mp-rumor-2026.html"
+            class="w-full h-11 px-4 rounded-xl bg-bg-950 border border-line text-[13.5px] text-white placeholder:text-white/30 focus:outline-none focus:border-violet-500/60" />
+          <div class="text-[11px] text-white/40 mt-1.5">hoặc kéo & thả file <span class="text-white/70">.txt</span> vào đây — hỗ trợ tối đa 5 file cùng lúc</div>
+        </div>
+        <button class="h-11 px-5 rounded-xl grad-primary text-white font-semibold text-[13.5px] hover:brightness-110 glow flex items-center gap-2">
+          Tạo video
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+
+      <!-- Voice + channel quick controls -->
+      <div class="mt-4 grid grid-cols-3 gap-3">
+        <div class="rounded-2xl border border-line bg-bg-950/60 p-3 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-violet-500 grid place-items-center text-white font-bold text-[13px]">BA</div>
+          <div class="flex-1">
+            <div class="text-[12.5px] font-semibold">Bảo Anh</div>
+            <div class="text-[10.5px] text-white/50">Nữ · miền Bắc · trầm ấm</div>
+          </div>
+          <button class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 grid place-items-center"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="rounded-2xl border border-line bg-bg-950/60 p-3 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl grad-cyan grid place-items-center text-bg-950 font-bold text-[12px]">CH</div>
+          <div class="flex-1">
+            <div class="text-[12.5px] font-semibold">tin-tech-vn</div>
+            <div class="text-[10.5px] text-white/50">Kênh đang chọn</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div class="rounded-2xl border border-line bg-bg-950/60 p-3 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 grid place-items-center text-white">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="5" y="9" width="14" height="11" rx="2"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="text-[12.5px] font-semibold">Outro mặc định</div>
+            <div class="text-[10.5px] text-white/50">Theo dõi · Like · Share</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Active job pipeline -->
+    <section class="card p-5">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <div class="text-[10.5px] uppercase tracking-widest text-violet-500 font-semibold">Đang tạo</div>
+          <h2 class="text-[15px] font-semibold mt-0.5">Bitcoin vượt mốc 100 nghìn USD lần đầu trong lịch sử</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-[12px] text-white/60">~1 ph 40s còn lại</span>
+          <button class="h-9 px-3 rounded-xl bg-white/5 border border-line text-[12px] hover:bg-white/10 flex items-center gap-1.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>Tạm dừng
+          </button>
+        </div>
+      </div>
+
+      <!-- Pipeline (horizontal cards) -->
+      <div class="grid grid-cols-8 gap-2">
+        <!-- step template -->
+        <div class="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-2.5">
+          <div class="flex items-center justify-between"><span class="text-[10.5px] text-emerald-300 font-semibold">01</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg></div>
+          <div class="text-[11.5px] font-semibold mt-1.5">Validate</div>
+          <div class="text-[10px] text-white/40">0.4s</div>
+        </div>
+        <div class="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-2.5">
+          <div class="flex items-center justify-between"><span class="text-[10.5px] text-emerald-300 font-semibold">02</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg></div>
+          <div class="text-[11.5px] font-semibold mt-1.5">Script</div>
+          <div class="text-[10px] text-white/40">Claude · 18s</div>
+        </div>
+        <div class="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-2.5">
+          <div class="flex items-center justify-between"><span class="text-[10.5px] text-emerald-300 font-semibold">03</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg></div>
+          <div class="text-[11.5px] font-semibold mt-1.5">og:image + TTS</div>
+          <div class="text-[10px] text-white/40">42s</div>
+        </div>
+        <div class="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-2.5">
+          <div class="flex items-center justify-between"><span class="text-[10.5px] text-emerald-300 font-semibold">04</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg></div>
+          <div class="text-[11.5px] font-semibold mt-1.5">Voice + SFX</div>
+          <div class="text-[10px] text-white/40">8s</div>
+        </div>
+        <div class="rounded-xl border border-violet-500/60 bg-violet-500/20 p-2.5 pulse-ring">
+          <div class="flex items-center justify-between"><span class="text-[10.5px] text-violet-300 font-semibold">05</span><span class="w-2.5 h-2.5 rounded-full bg-violet-500 animate-pulse"></span></div>
+          <div class="text-[11.5px] font-semibold mt-1.5">Compose</div>
+          <div class="text-[10px] text-violet-200">GSAP · 38%</div>
+        </div>
+        <div class="rounded-xl border border-line bg-white/5 p-2.5 opacity-70">
+          <div class="flex items-center justify-between"><span class="text-[10.5px] text-white/40 font-semibold">06</span><span class="w-2 h-2 rounded-full bg-white/20"></span></div>
+          <div class="text-[11.5px] font-semibold mt-1.5">Render</div>
+          <div class="text-[10px] text-white/30">HyperFrames</div>
+        </div>
+        <div class="rounded-xl border border-line bg-white/5 p-2.5 opacity-70">
+          <div class="flex items-center justify-between"><span class="text-[10.5px] text-white/40 font-semibold">07</span><span class="w-2 h-2 rounded-full bg-white/20"></span></div>
+          <div class="text-[11.5px] font-semibold mt-1.5">Encode</div>
+          <div class="text-[10px] text-white/30">FFmpeg H.264</div>
+        </div>
+        <div class="rounded-xl border border-line bg-white/5 p-2.5 opacity-70">
+          <div class="flex items-center justify-between"><span class="text-[10.5px] text-white/40 font-semibold">08</span><span class="w-2 h-2 rounded-full bg-white/20"></span></div>
+          <div class="text-[11.5px] font-semibold mt-1.5">Done</div>
+          <div class="text-[10px] text-white/30">MP4 9:16</div>
+        </div>
+      </div>
+
+      <div class="mt-4 h-2 rounded-full bg-white/5 overflow-hidden">
+        <div class="h-full w-[58%] grad-primary"></div>
+      </div>
+    </section>
+
+    <!-- Project grid -->
+    <section>
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-[15px] font-semibold">Dự án gần đây</h2>
+        <div class="flex items-center gap-2 text-[12px]">
+          <button class="chip grad-primary text-white">Tất cả · 12</button>
+          <button class="chip bg-white/5 border border-line text-white/60">Đang chạy · 3</button>
+          <button class="chip bg-white/5 border border-line text-white/60">Hoàn tất · 8</button>
+          <button class="chip bg-white/5 border border-line text-white/60">Lỗi · 1</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-3">
+        <!-- Card 1 -->
+        <div class="card p-3">
+          <div class="thumb-2 aspect-[9/16] rounded-xl relative overflow-hidden mb-3">
+            <div class="absolute inset-0 grid place-items-center p-4 text-center">
+              <span class="text-white font-extrabold text-[15px] leading-tight">iPhone 17 Pro<br><span class="text-amber-300">200MP</span></span>
+            </div>
+            <div class="absolute top-2 left-2 chip bg-amber-500/30 backdrop-blur text-amber-100">TTS</div>
+            <div class="absolute bottom-2 right-2 text-[10px] font-mono text-white/80 bg-black/40 px-1.5 py-0.5 rounded">0:62</div>
+          </div>
+          <div class="text-[13px] font-semibold leading-tight">iPhone 17 ra mắt với camera 200MP</div>
+          <div class="text-[11px] text-white/50 mt-1 flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm grad-primary"></span>tin-tech-vn · 2 ph trước</div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card p-3 ring-2 ring-violet-500/60 relative">
+          <div class="thumb aspect-[9/16] rounded-xl relative overflow-hidden mb-3">
+            <div class="absolute inset-0 grid place-items-center p-4 text-center">
+              <span class="text-white font-extrabold text-[16px] leading-tight">BITCOIN<br><span class="text-cyan-300">$100,000</span></span>
+            </div>
+            <div class="absolute top-2 left-2 chip bg-violet-500/40 backdrop-blur text-white animate-pulse">Composing 58%</div>
+            <div class="absolute bottom-2 right-2 text-[10px] font-mono text-white/80 bg-black/40 px-1.5 py-0.5 rounded">~0:58</div>
+          </div>
+          <div class="text-[13px] font-semibold leading-tight">Bitcoin vượt mốc 100 nghìn USD lần đầu</div>
+          <div class="text-[11px] text-white/50 mt-1 flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm grad-cyan"></span>tai-chinh-247 · vừa xong</div>
+        </div>
+        <!-- Card 3 -->
+        <div class="card p-3">
+          <div class="thumb-3 aspect-[9/16] rounded-xl relative overflow-hidden mb-3">
+            <div class="absolute inset-0 grid place-items-center p-4 text-center">
+              <span class="text-white font-extrabold text-[15px] leading-tight">VinFast VF9<br><span class="text-lime-300">50.000 xe</span></span>
+            </div>
+            <div class="absolute top-2 left-2 chip bg-white/15 backdrop-blur text-white">Hàng đợi</div>
+            <div class="absolute bottom-2 right-2 text-[10px] font-mono text-white/80 bg-black/40 px-1.5 py-0.5 rounded">~0:60</div>
+          </div>
+          <div class="text-[13px] font-semibold leading-tight">VinFast bàn giao 50.000 xe VF9 toàn cầu Q4</div>
+          <div class="text-[11px] text-white/50 mt-1 flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm grad-primary"></span>tin-tech-vn · 5 ph trước</div>
+        </div>
+        <!-- Card 4 -->
+        <div class="card p-3">
+          <div class="thumb-4 aspect-[9/16] rounded-xl relative overflow-hidden mb-3">
+            <div class="absolute inset-0 grid place-items-center p-4 text-center">
+              <span class="text-white font-extrabold text-[15px] leading-tight">GIÁ VÀNG<br><span class="text-amber-300">92 triệu</span></span>
+            </div>
+            <div class="absolute top-2 left-2 chip bg-emerald-500/40 backdrop-blur text-emerald-50">Hoàn tất</div>
+            <div class="absolute bottom-2 right-2 text-[10px] font-mono text-white/80 bg-black/40 px-1.5 py-0.5 rounded">1:02</div>
+          </div>
+          <div class="text-[13px] font-semibold leading-tight">Giá vàng SJC tăng mạnh, chạm 92 triệu/lượng</div>
+          <div class="text-[11px] text-white/50 mt-1 flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm grad-cyan"></span>tai-chinh-247 · 1 giờ trước</div>
+        </div>
+        <!-- Card 5 -->
+        <div class="card p-3">
+          <div class="thumb-5 aspect-[9/16] rounded-xl relative overflow-hidden mb-3">
+            <div class="absolute inset-0 grid place-items-center p-4 text-center">
+              <span class="text-white font-extrabold text-[15px] leading-tight">SA PA<br><span class="text-sky-300">tuyết đầu mùa</span></span>
+            </div>
+            <div class="absolute top-2 left-2 chip bg-emerald-500/40 backdrop-blur text-emerald-50">Hoàn tất</div>
+            <div class="absolute bottom-2 right-2 text-[10px] font-mono text-white/80 bg-black/40 px-1.5 py-0.5 rounded">0:58</div>
+          </div>
+          <div class="text-[13px] font-semibold leading-tight">Sa Pa đón đợt tuyết đầu mùa</div>
+          <div class="text-[11px] text-white/50 mt-1 flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm grad-lime"></span>doi-song-plus · 3 giờ trước</div>
+        </div>
+        <!-- Card 6 -->
+        <div class="card p-3">
+          <div class="aspect-[9/16] rounded-xl relative overflow-hidden mb-3 bg-rose-900/40 border border-rose-500/30">
+            <div class="absolute inset-0 grid place-items-center p-4 text-center">
+              <div>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2" class="mx-auto"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+                <div class="text-[13px] text-rose-200 mt-2 font-semibold">Lỗi TTS</div>
+                <div class="text-[10.5px] text-rose-300/70 mt-1">429 · LucyLab rate limit</div>
+              </div>
+            </div>
+            <div class="absolute top-2 left-2 chip bg-rose-500/40 text-rose-50">Lỗi</div>
+          </div>
+          <div class="text-[13px] font-semibold leading-tight">Elon Musk công bố xAI Grok 5 đa phương thức</div>
+          <div class="text-[11px] text-white/50 mt-1 flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm grad-primary"></span>tin-tech-vn · hôm qua · <button class="text-rose-300 hover:underline">Thử lại</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Right: preview -->
+  <aside class="border-l border-line p-5 overflow-y-auto space-y-4">
+    <div>
+      <div class="flex items-center justify-between mb-2">
+        <div class="text-[10.5px] uppercase tracking-widest text-white/40 font-semibold">Preview · vừa xong</div>
+        <span class="chip bg-emerald-500/20 text-emerald-300">MP4 sẵn sàng</span>
+      </div>
+      <div class="thumb-4 aspect-[9/16] rounded-2xl relative overflow-hidden glow">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+        <button class="absolute inset-0 grid place-items-center group">
+          <span class="w-16 h-16 rounded-full grad-primary grid place-items-center text-white shadow-lg group-hover:scale-110 transition">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </button>
+        <div class="absolute top-3 left-3 right-3 flex items-center justify-between text-[10.5px]">
+          <span class="px-2 py-1 rounded-full bg-black/40 backdrop-blur text-white font-mono">9:16 · 1080p</span>
+          <span class="px-2 py-1 rounded-full bg-black/40 backdrop-blur text-white font-mono">1:02</span>
+        </div>
+        <div class="absolute bottom-4 left-4 right-4 text-white">
+          <div class="text-[10px] uppercase tracking-widest opacity-80">tai-chinh-247</div>
+          <div class="text-[16px] font-extrabold leading-tight mt-1">Giá vàng SJC chạm 92 triệu/lượng</div>
+          <div class="mt-3 h-1 rounded-full bg-white/20"><div class="h-full w-1/3 bg-white rounded-full"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="grid grid-cols-2 gap-2">
+      <button class="h-11 rounded-xl grad-primary text-white font-semibold text-[13px] flex items-center justify-center gap-2 glow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8 12 3 7 8"/><path d="M12 3v12"/></svg>
+        Upload TikTok
+      </button>
+      <button class="h-11 rounded-xl bg-white/5 border border-line text-[13px] font-medium hover:bg-white/10 flex items-center justify-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-9l-2-2H5a2 2 0 0 0-2 2z"/></svg>
+        Mở thư mục
+      </button>
+      <button class="h-10 rounded-xl bg-white/5 border border-line text-[12.5px] hover:bg-white/10 flex items-center justify-center gap-2">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>Re-render
+      </button>
+      <button class="h-10 rounded-xl bg-white/5 border border-line text-[12.5px] hover:bg-white/10 flex items-center justify-center gap-2">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Chia sẻ
+      </button>
+    </div>
+
+    <!-- Metadata -->
+    <div class="card p-4">
+      <div class="text-[10.5px] uppercase tracking-widest text-white/40 font-semibold mb-3">Thông số</div>
+      <div class="grid grid-cols-2 gap-3 text-[12.5px]">
+        <div><div class="text-white/40 text-[10.5px]">Dung lượng</div><div class="font-semibold mt-0.5">14.2 MB</div></div>
+        <div><div class="text-white/40 text-[10.5px]">FPS</div><div class="font-semibold mt-0.5">30</div></div>
+        <div><div class="text-white/40 text-[10.5px]">Codec</div><div class="font-semibold mt-0.5">H.264 · AAC</div></div>
+        <div><div class="text-white/40 text-[10.5px]">Phụ đề</div><div class="font-semibold mt-0.5">SRT · vi</div></div>
+        <div><div class="text-white/40 text-[10.5px]">Chi phí</div><div class="font-semibold mt-0.5">$0.18</div></div>
+        <div><div class="text-white/40 text-[10.5px]">Nguồn</div><div class="font-semibold mt-0.5 truncate">vnexpress.net</div></div>
+      </div>
+    </div>
+
+    <!-- Caption preview -->
+    <div class="card p-4">
+      <div class="flex items-center justify-between mb-2">
+        <div class="text-[10.5px] uppercase tracking-widest text-white/40 font-semibold">Caption cho TikTok</div>
+        <button class="text-[11px] text-violet-400 hover:underline">Copy</button>
+      </div>
+      <p class="text-[12.5px] text-white/80 leading-relaxed">Giá vàng SJC vừa lập đỉnh 92 triệu/lượng. Nhà đầu tư nên làm gì lúc này? <span class="text-cyan-300">#giavang #taichinhvn #vangSJC #fyp</span></p>
+    </div>
+  </aside>
+</div>
+
+<!-- Footer status -->
+<footer class="fixed bottom-0 inset-x-0 h-9 border-t border-line bg-bg-900/90 backdrop-blur flex items-center justify-between px-4 text-[11px] text-white/50">
+  <div class="flex items-center gap-3">
+    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>LucyLab · Claude · FFmpeg online</span>
+    <span class="text-white/30">·</span>
+    <span class="font-mono">Studio v0.6.2</span>
+  </div>
+  <div class="flex items-center gap-3">
+    <span>GPU 42% · RAM 6.1 GB</span>
+    <span class="text-white/30">·</span>
+    <span><span class="text-white">$11.42</span> / $30 tháng này</span>
+    <span class="text-white/30">·</span>
+    <span>2 job đang đợi</span>
+  </div>
+</footer>
+
+</body>
+</html>

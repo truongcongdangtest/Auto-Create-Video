@@ -1,0 +1,465 @@
+<!doctype html>
+<!--
+  Mockup 04 — Cyber AI Lab
+  Philosophy: AI-native futurism. Glassmorphic surfaces over a moving aurora background,
+  cyan + magenta neon accents, mono-spaced headers, holographic 1px borders. Feels like
+  Runway/Pika opened a Vietnamese branch. Used sparingly — every glow is intentional.
+  References: RunwayML, Pika, Suno, Krea, Linear's themed launches.
+-->
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<title>Auto-Create-Video — Lab</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Geist','system-ui','sans-serif'], mono: ['Geist Mono','monospace'] },
+    }
+  }
+}
+</script>
+<style>
+  html, body {
+    background: #050510;
+    color: #e6edf3;
+    overflow: hidden;
+  }
+  /* Animated aurora background */
+  .aurora { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;}
+  .aurora::before, .aurora::after {
+    content: ''; position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%;
+    filter: blur(80px); opacity: .35; animation: drift 22s ease-in-out infinite;
+  }
+  .aurora::before { background: radial-gradient(circle, #06b6d4, transparent 60%); top: -20vmax; left: -10vmax; }
+  .aurora::after  { background: radial-gradient(circle, #d946ef, transparent 60%); bottom: -20vmax; right: -10vmax; animation-delay: -11s; }
+  @keyframes drift {
+    0%,100% { transform: translate(0,0) scale(1);}
+    50% { transform: translate(8vmax,-6vmax) scale(1.12);}
+  }
+  /* Grain */
+  .grain { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .08;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.6'/></svg>");
+  }
+  /* Particles */
+  .particle { position: fixed; width: 2px; height: 2px; border-radius: 50%; background: #67e8f9; box-shadow: 0 0 8px #67e8f9; z-index: 1; pointer-events: none; animation: float 14s linear infinite; }
+  @keyframes float { 0% { transform: translateY(110vh) translateX(0); opacity:0;} 10%{opacity:1;} 90%{opacity:1;} 100% { transform: translateY(-10vh) translateX(40px); opacity:0;} }
+  .glass {
+    background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 0 0 1px rgba(255,255,255,.02) inset, 0 30px 80px -30px rgba(0,0,0,.6);
+  }
+  .neon-cy { color: #67e8f9; text-shadow: 0 0 12px rgba(103,232,249,.5);}
+  .neon-mg { color: #f0abfc; text-shadow: 0 0 12px rgba(240,171,252,.5);}
+  .holo-border { border: 1px solid; border-image: linear-gradient(135deg,#67e8f9,#d946ef,#67e8f9) 1; }
+  .grad-cy-mg { background: linear-gradient(135deg, #06b6d4 0%, #d946ef 100%);}
+  .grad-cy { background: linear-gradient(135deg, #0891b2 0%, #67e8f9 100%);}
+  .grid-bg { background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 28px 28px; }
+  .thumb { background: radial-gradient(120% 80% at 20% 10%, rgba(217,70,239,.5), transparent 60%), radial-gradient(80% 60% at 90% 90%, rgba(6,182,212,.45), transparent 55%), linear-gradient(135deg,#1e1b4b,#0f172a); }
+  .thumb-2 { background: radial-gradient(120% 80% at 90% 10%, rgba(245,158,11,.5), transparent 60%), linear-gradient(135deg,#3f1d0e,#1c1917 60%,#0a0a0b); }
+  .thumb-3 { background: radial-gradient(120% 80% at 50% 80%, rgba(34,197,94,.5), transparent 60%), linear-gradient(160deg,#052e16,#0a0a0b); }
+  .thumb-4 { background: radial-gradient(120% 80% at 20% 80%, rgba(236,72,153,.5), transparent 60%), linear-gradient(140deg,#581c87,#1e1b4b 60%,#0a0a0b); }
+  ::-webkit-scrollbar { width: 6px; height: 6px;}
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 99px;}
+  .scan { position: absolute; left:0; right:0; height:1px; background: linear-gradient(90deg, transparent, #67e8f9, transparent); animation: scan 3.6s linear infinite;}
+  @keyframes scan { 0%{top:0; opacity:0;} 10%{opacity:1} 90%{opacity:1} 100%{top:100%; opacity:0;}}
+  .chip { font-size: 10.5px; padding: 3px 9px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); font-family: 'Geist Mono', monospace; letter-spacing: .04em; text-transform: uppercase;}
+</style>
+</head>
+<body class="font-sans antialiased min-h-screen relative">
+
+<div class="aurora"></div>
+<div class="grain"></div>
+<!-- particles -->
+<span class="particle" style="left:8%; animation-delay:-1s;"></span>
+<span class="particle" style="left:22%; animation-delay:-5s;"></span>
+<span class="particle" style="left:38%; animation-delay:-8s;"></span>
+<span class="particle" style="left:55%; animation-delay:-3s;"></span>
+<span class="particle" style="left:72%; animation-delay:-12s;"></span>
+<span class="particle" style="left:88%; animation-delay:-9s;"></span>
+<span class="particle" style="left:48%; animation-delay:-13s; background:#f0abfc; box-shadow:0 0 8px #f0abfc;"></span>
+<span class="particle" style="left:15%; animation-delay:-6s; background:#f0abfc; box-shadow:0 0 8px #f0abfc;"></span>
+
+<div class="relative z-10 h-screen flex flex-col">
+
+  <!-- Title bar -->
+  <header class="h-12 px-5 flex items-center justify-between border-b border-white/5 glass">
+    <div class="flex items-center gap-3">
+      <div class="relative w-8 h-8 grid place-items-center grad-cy-mg rounded-md">
+        <span class="font-mono text-white font-bold text-[14px]">◇</span>
+      </div>
+      <div>
+        <div class="font-mono text-[12px] text-white/90 tracking-wider uppercase">AUTO·CREATE·VIDEO <span class="text-white/30">/ lab</span></div>
+        <div class="font-mono text-[10px] text-white/40 mt-0.5">build 0.6.2 · workspace tin-tech-vn · q.vu@</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="chip flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>SYS · ONLINE</span>
+      <span class="chip">CLAUDE · GEMINI · LUCY</span>
+      <span class="chip neon-cy">QUOTA 62%</span>
+      <div class="w-8 h-8 rounded-md grad-cy-mg grid place-items-center text-white font-bold text-[12px] font-mono ml-1">QV</div>
+    </div>
+  </header>
+
+  <div class="flex-1 grid grid-cols-[280px_1fr_380px] overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="border-r border-white/5 p-4 overflow-y-auto space-y-4">
+      <div class="glass rounded-xl p-4 relative overflow-hidden">
+        <div class="scan"></div>
+        <div class="font-mono text-[10px] text-white/40 uppercase tracking-widest">PROMPT TO REALITY</div>
+        <div class="text-[15px] font-semibold mt-1 leading-tight">News → 60s video<br><span class="neon-cy">in ≤ 3 minutes</span></div>
+        <button class="mt-3 w-full h-10 holo-border rounded-lg font-mono text-[12px] uppercase tracking-wider hover:bg-white/5 flex items-center justify-center gap-2">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          Initialize job
+        </button>
+      </div>
+
+      <div class="space-y-1 text-[12.5px]">
+        <div class="font-mono text-[10px] text-white/40 uppercase tracking-widest px-2 mb-1">Console</div>
+        <a class="flex items-center justify-between px-3 py-2 rounded-lg bg-white/5 border border-white/10"><span class="flex items-center gap-2"><span class="w-1 h-4 grad-cy-mg rounded-full"></span>Workspace</span><span class="font-mono text-[10.5px] text-white/40">12</span></a>
+        <a class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 text-white/70"><span class="flex items-center gap-2"><span class="w-1 h-4 bg-white/10 rounded-full"></span>Render queue</span><span class="font-mono text-[10.5px] text-cyan-300">▶ 3</span></a>
+        <a class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 text-white/70"><span class="flex items-center gap-2"><span class="w-1 h-4 bg-white/10 rounded-full"></span>Vault · exports</span><span class="font-mono text-[10.5px] text-white/40">48</span></a>
+        <a class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 text-white/70"><span class="flex items-center gap-2"><span class="w-1 h-4 bg-white/10 rounded-full"></span>Voice models</span><span class="font-mono text-[10.5px] text-white/40">6</span></a>
+        <a class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 text-white/70"><span class="flex items-center gap-2"><span class="w-1 h-4 bg-white/10 rounded-full"></span>Brand kits</span><span class="font-mono text-[10.5px] text-white/40">3</span></a>
+        <a class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 text-white/70"><span class="flex items-center gap-2"><span class="w-1 h-4 bg-white/10 rounded-full"></span>API · keys</span><span class="font-mono text-[10.5px] text-emerald-400">OK</span></a>
+      </div>
+
+      <div class="glass rounded-xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest">SIGNALS</span>
+          <span class="chip neon-cy">LIVE</span>
+        </div>
+        <div class="space-y-2 text-[11.5px]">
+          <div class="flex items-center justify-between"><span class="text-white/60">LucyLab TTS</span><span class="font-mono text-emerald-400">42ms</span></div>
+          <div class="flex items-center justify-between"><span class="text-white/60">Claude · script</span><span class="font-mono text-emerald-400">220ms</span></div>
+          <div class="flex items-center justify-between"><span class="text-white/60">Gemini · vision</span><span class="font-mono text-emerald-400">380ms</span></div>
+          <div class="flex items-center justify-between"><span class="text-white/60">FFmpeg encoder</span><span class="font-mono text-cyan-300">NVENC</span></div>
+          <div class="flex items-center justify-between"><span class="text-white/60">HyperFrames</span><span class="font-mono text-cyan-300">28.4 fps</span></div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl p-4">
+        <div class="font-mono text-[10px] text-white/40 uppercase tracking-widest mb-2">SPEND · MAY</div>
+        <div class="flex items-baseline gap-2 mb-1">
+          <span class="text-[22px] font-bold neon-mg font-mono">$11.42</span>
+          <span class="text-[10.5px] text-white/40 font-mono">/ $30 cap</span>
+        </div>
+        <div class="h-1 rounded-full bg-white/10 overflow-hidden">
+          <div class="h-full w-[38%] grad-cy-mg"></div>
+        </div>
+        <div class="grid grid-cols-3 gap-2 mt-3 font-mono text-[10px] text-white/60">
+          <div><div class="text-white/40">tts</div><div class="text-cyan-300">$6.80</div></div>
+          <div><div class="text-white/40">llm</div><div class="text-cyan-300">$3.42</div></div>
+          <div><div class="text-white/40">img</div><div class="text-cyan-300">$1.20</div></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="overflow-y-auto p-6 space-y-5">
+
+      <!-- Hero input -->
+      <section class="glass holo-border rounded-2xl p-6 relative overflow-hidden">
+        <div class="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
+        <div class="relative">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="font-mono text-[10px] text-cyan-300 uppercase tracking-widest mb-1">↳ MODULE 01 · INGEST</div>
+              <h1 class="text-[22px] font-semibold tracking-tight">Paste a Vietnamese URL. <span class="text-white/40">We do the rest.</span></h1>
+            </div>
+            <div class="chip neon-mg">DAILY · 30 jobs</div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <div class="flex-1 holo-border rounded-xl bg-black/40 px-4 h-12 flex items-center gap-3 font-mono text-[13px]">
+              <span class="text-cyan-300">{URL}</span>
+              <span class="text-white/30">›</span>
+              <span class="text-white/90 truncate">https://vnexpress.net/iphone-17-pro-camera-200mp-rumor-2026.html</span>
+              <span class="ml-auto text-white/30 text-[11px]">⌘V</span>
+            </div>
+            <button class="h-12 px-5 grad-cy-mg rounded-xl text-white font-semibold tracking-wide flex items-center gap-2 hover:brightness-110 shadow-[0_0_30px_-5px_rgba(217,70,239,.6)]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              EXECUTE
+            </button>
+          </div>
+
+          <div class="grid grid-cols-4 gap-2 mt-4">
+            <div class="rounded-xl bg-white/5 border border-white/10 p-3 hover:border-cyan-400/40 cursor-pointer">
+              <div class="font-mono text-[9.5px] text-white/40 uppercase tracking-widest">VOICE</div>
+              <div class="flex items-center gap-2 mt-1.5">
+                <div class="w-7 h-7 rounded-full grad-cy-mg grid place-items-center text-white font-bold text-[10px]">BA</div>
+                <div>
+                  <div class="text-[12.5px] font-medium">Bảo Anh</div>
+                  <div class="text-[10px] text-white/40">nữ · Bắc · 1.0×</div>
+                </div>
+              </div>
+            </div>
+            <div class="rounded-xl bg-white/5 border border-white/10 p-3 hover:border-cyan-400/40 cursor-pointer">
+              <div class="font-mono text-[9.5px] text-white/40 uppercase tracking-widest">CHANNEL</div>
+              <div class="flex items-center gap-2 mt-1.5">
+                <span class="w-3 h-3 rounded-sm grad-cy"></span>
+                <div class="text-[12.5px] font-medium">tin-tech-vn</div>
+                <span class="ml-auto chip text-[9.5px]">24</span>
+              </div>
+            </div>
+            <div class="rounded-xl bg-white/5 border border-white/10 p-3 hover:border-cyan-400/40 cursor-pointer">
+              <div class="font-mono text-[9.5px] text-white/40 uppercase tracking-widest">FORMAT</div>
+              <div class="text-[12.5px] font-medium mt-1.5 font-mono">9:16 · 1080p · 30fps</div>
+              <div class="text-[10px] text-white/40">target ~60s</div>
+            </div>
+            <div class="rounded-xl bg-white/5 border border-white/10 p-3 hover:border-cyan-400/40 cursor-pointer">
+              <div class="font-mono text-[9.5px] text-white/40 uppercase tracking-widest">AUTO·POST</div>
+              <div class="flex items-center justify-between mt-1.5">
+                <div class="text-[12.5px] font-medium">TikTok hậu render</div>
+                <span class="w-8 h-4 rounded-full grad-cy-mg relative"><span class="absolute right-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Active pipeline visualisation -->
+      <section class="glass rounded-2xl p-6">
+        <div class="flex items-center justify-between mb-5">
+          <div class="flex items-center gap-3">
+            <span class="relative flex h-2.5 w-2.5"><span class="absolute inline-flex h-full w-full rounded-full bg-fuchsia-400 opacity-75 animate-ping"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-fuchsia-500"></span></span>
+            <div>
+              <div class="font-mono text-[10px] text-fuchsia-300 uppercase tracking-widest">↳ MODULE 02 · PIPELINE</div>
+              <h2 class="text-[16px] font-semibold mt-0.5">job_a47f · "Bitcoin vượt mốc 100 nghìn USD lần đầu"</h2>
+            </div>
+          </div>
+          <div class="font-mono text-[11px] text-white/60">step <span class="neon-cy">05</span>/08 · <span class="neon-cy">58%</span> · ETA <span class="neon-cy">01:38</span></div>
+        </div>
+
+        <!-- Pipeline nodes -->
+        <div class="relative">
+          <div class="absolute top-5 left-4 right-4 h-px bg-gradient-to-r from-emerald-400 via-fuchsia-400 to-white/10"></div>
+          <div class="grid grid-cols-8 relative">
+            <!-- node -->
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-emerald-400/20 border border-emerald-400 grid place-items-center text-emerald-300 backdrop-blur"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 7"/></svg></div>
+              <div class="mt-2 font-mono text-[10.5px] text-white/80">VALIDATE</div>
+              <div class="font-mono text-[9.5px] text-white/40">0.4s</div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-emerald-400/20 border border-emerald-400 grid place-items-center text-emerald-300 backdrop-blur"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 7"/></svg></div>
+              <div class="mt-2 font-mono text-[10.5px] text-white/80">SCRIPT</div>
+              <div class="font-mono text-[9.5px] text-white/40">claude · 18s</div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-emerald-400/20 border border-emerald-400 grid place-items-center text-emerald-300 backdrop-blur"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 7"/></svg></div>
+              <div class="mt-2 font-mono text-[10.5px] text-white/80">OG + TTS</div>
+              <div class="font-mono text-[9.5px] text-white/40">lucy · 42s</div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-emerald-400/20 border border-emerald-400 grid place-items-center text-emerald-300 backdrop-blur"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 7"/></svg></div>
+              <div class="mt-2 font-mono text-[10.5px] text-white/80">SFX MIX</div>
+              <div class="font-mono text-[9.5px] text-white/40">8s</div>
+            </div>
+            <div class="flex flex-col items-center relative">
+              <div class="absolute -inset-2 rounded-full bg-fuchsia-500/20 blur-md animate-pulse"></div>
+              <div class="relative w-10 h-10 rounded-full grad-cy-mg grid place-items-center text-white shadow-[0_0_20px_rgba(217,70,239,.6)]">
+                <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+              </div>
+              <div class="mt-2 font-mono text-[10.5px] neon-mg">COMPOSE</div>
+              <div class="font-mono text-[9.5px] text-fuchsia-200">gsap · 38%</div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 grid place-items-center text-white/40 font-mono text-[11px]">06</div>
+              <div class="mt-2 font-mono text-[10.5px] text-white/40">RENDER</div>
+              <div class="font-mono text-[9.5px] text-white/30">hyperframes</div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 grid place-items-center text-white/40 font-mono text-[11px]">07</div>
+              <div class="mt-2 font-mono text-[10.5px] text-white/40">ENCODE</div>
+              <div class="font-mono text-[9.5px] text-white/30">ffmpeg · h264</div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 grid place-items-center text-white/40 font-mono text-[11px]">08</div>
+              <div class="mt-2 font-mono text-[10.5px] text-white/40">DELIVER</div>
+              <div class="font-mono text-[9.5px] text-white/30">mp4 · srt</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 grid grid-cols-3 gap-3 font-mono text-[11px]">
+          <div class="rounded-lg bg-black/30 border border-white/10 p-3">
+            <div class="text-white/40 text-[9.5px] uppercase tracking-widest">CURRENT TASK</div>
+            <div class="text-cyan-300 mt-1">composing scene_04 of 06 · "vì sao BTC tăng?"</div>
+          </div>
+          <div class="rounded-lg bg-black/30 border border-white/10 p-3">
+            <div class="text-white/40 text-[9.5px] uppercase tracking-widest">FRAME BUFFER</div>
+            <div class="text-cyan-300 mt-1">1428 / 3000 · q=14 · cache 87%</div>
+          </div>
+          <div class="rounded-lg bg-black/30 border border-white/10 p-3">
+            <div class="text-white/40 text-[9.5px] uppercase tracking-widest">COST · LIVE</div>
+            <div class="text-fuchsia-300 mt-1">$0.16 spent · est $0.18 total</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Queue grid -->
+      <section>
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-[15px] font-semibold flex items-center gap-2">
+            <span class="font-mono text-[10px] text-cyan-300 uppercase tracking-widest">↳ MODULE 03 ·</span>
+            Recent jobs
+          </h2>
+          <div class="flex items-center gap-1.5">
+            <button class="chip neon-cy">ALL 12</button>
+            <button class="chip">RUN 3</button>
+            <button class="chip">OK 8</button>
+            <button class="chip">ERR 1</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-3">
+          <div class="glass rounded-xl p-2.5 hover:border-cyan-400/40 transition">
+            <div class="thumb-2 aspect-[9/16] rounded-lg overflow-hidden relative">
+              <div class="absolute inset-0 grid place-items-center p-3 text-center">
+                <div class="text-white"><div class="font-mono text-[9px] uppercase tracking-widest opacity-70">tin-tech-vn</div><div class="font-bold text-[14px] mt-1 leading-tight">iPhone 17 Pro<br><span class="text-amber-300">200MP</span></div></div>
+              </div>
+              <div class="absolute top-1.5 left-1.5 chip !text-[9px]" style="background:rgba(245,158,11,.25); border-color:rgba(245,158,11,.4); color:#fbbf24">TTS · 03/08</div>
+            </div>
+            <div class="px-1 pt-2">
+              <div class="text-[11.5px] font-medium leading-tight">iPhone 17 ra mắt với camera 200MP, giá khởi điểm 29 triệu</div>
+              <div class="font-mono text-[10px] text-white/40 mt-1">2 ph · ~0:62</div>
+            </div>
+          </div>
+          <div class="glass rounded-xl p-2.5 ring-1 ring-fuchsia-400/40 shadow-[0_0_30px_-15px_rgba(217,70,239,.6)]">
+            <div class="thumb aspect-[9/16] rounded-lg overflow-hidden relative">
+              <div class="absolute inset-0 grid place-items-center p-3 text-center">
+                <div class="text-white"><div class="font-mono text-[9px] uppercase tracking-widest opacity-70">tai-chinh-247</div><div class="font-bold text-[14px] mt-1 leading-tight">BITCOIN<br><span class="text-cyan-300">$100,000</span></div></div>
+              </div>
+              <div class="absolute top-1.5 left-1.5 chip !text-[9px]" style="background:rgba(217,70,239,.25); border-color:rgba(217,70,239,.4); color:#f0abfc">COMPOSE 58%</div>
+              <div class="scan"></div>
+            </div>
+            <div class="px-1 pt-2">
+              <div class="text-[11.5px] font-medium leading-tight">Bitcoin vượt mốc 100 nghìn USD lần đầu</div>
+              <div class="font-mono text-[10px] text-fuchsia-300 mt-1">live · 58% · 01:38</div>
+            </div>
+          </div>
+          <div class="glass rounded-xl p-2.5">
+            <div class="thumb-3 aspect-[9/16] rounded-lg overflow-hidden relative">
+              <div class="absolute inset-0 grid place-items-center p-3 text-center">
+                <div class="text-white"><div class="font-mono text-[9px] uppercase tracking-widest opacity-70">tin-tech-vn</div><div class="font-bold text-[14px] mt-1 leading-tight">VinFast<br><span class="text-lime-300">50.000 xe</span></div></div>
+              </div>
+              <div class="absolute top-1.5 left-1.5 chip !text-[9px]" style="color:#a3e635">QUEUED</div>
+            </div>
+            <div class="px-1 pt-2">
+              <div class="text-[11.5px] font-medium leading-tight">VinFast bàn giao 50.000 xe VF9 toàn cầu Q4</div>
+              <div class="font-mono text-[10px] text-white/40 mt-1">5 ph · queued</div>
+            </div>
+          </div>
+          <div class="glass rounded-xl p-2.5">
+            <div class="thumb-4 aspect-[9/16] rounded-lg overflow-hidden relative">
+              <div class="absolute inset-0 grid place-items-center p-3 text-center">
+                <div class="text-white"><div class="font-mono text-[9px] uppercase tracking-widest opacity-70">tai-chinh-247</div><div class="font-bold text-[14px] mt-1 leading-tight">GIÁ VÀNG<br><span class="text-amber-300">92 triệu</span></div></div>
+              </div>
+              <div class="absolute top-1.5 left-1.5 chip !text-[9px]" style="background:rgba(34,197,94,.2); border-color:rgba(34,197,94,.4); color:#86efac">DELIVERED</div>
+            </div>
+            <div class="px-1 pt-2">
+              <div class="text-[11.5px] font-medium leading-tight">Giá vàng SJC tăng mạnh chạm 92 triệu/lượng</div>
+              <div class="font-mono text-[10px] text-white/40 mt-1">1h · 1:02</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Right preview -->
+    <aside class="border-l border-white/5 p-5 overflow-y-auto space-y-4">
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-mono text-[10px] text-cyan-300 uppercase tracking-widest">↳ PREVIEW · DELIVERED</span>
+          <span class="chip neon-cy">MP4 · 14.2 MB</span>
+        </div>
+        <div class="thumb-4 aspect-[9/16] rounded-2xl overflow-hidden relative holo-border">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 grid place-items-center text-center text-white p-5">
+            <div>
+              <div class="font-mono text-[9px] uppercase tracking-widest opacity-70">tai-chinh-247</div>
+              <div class="font-bold text-[20px] mt-2 leading-tight">GIÁ VÀNG SJC<br><span class="neon-mg">92.000.000₫/lượng</span></div>
+              <div class="font-mono text-[10px] mt-3 opacity-70">— phiên cuối tuần</div>
+            </div>
+          </div>
+          <button class="absolute inset-0 grid place-items-center group">
+            <span class="w-14 h-14 rounded-full grad-cy-mg grid place-items-center text-white shadow-[0_0_30px_rgba(217,70,239,.6)] group-hover:scale-110 transition">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </button>
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between text-[10px] font-mono">
+            <span class="chip !text-[9px]">9:16 · 1080p</span>
+            <span class="chip !text-[9px]">01:02</span>
+          </div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <div class="h-0.5 bg-white/15"><div class="h-full w-1/3 grad-cy-mg"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2">
+        <button class="h-11 grad-cy-mg rounded-xl text-white font-semibold text-[12.5px] flex items-center justify-center gap-2 shadow-[0_0_20px_-5px_rgba(217,70,239,.5)]">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8 12 3 7 8"/></svg>
+          Beam to TikTok
+        </button>
+        <button class="h-11 glass rounded-xl text-[12.5px] hover:bg-white/5 flex items-center justify-center gap-2 font-medium">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-9l-2-2H5a2 2 0 0 0-2 2z"/></svg>
+          Open vault
+        </button>
+        <button class="h-10 glass rounded-xl text-[12px] hover:bg-white/5 flex items-center justify-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/></svg>Re-render</button>
+        <button class="h-10 glass rounded-xl text-[12px] hover:bg-white/5 flex items-center justify-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Share</button>
+      </div>
+
+      <div class="glass rounded-xl p-4">
+        <div class="font-mono text-[10px] text-white/40 uppercase tracking-widest mb-3">METADATA</div>
+        <div class="grid grid-cols-2 gap-y-2 gap-x-3 font-mono text-[11px]">
+          <div><div class="text-white/40 text-[9.5px] uppercase">codec</div><div class="text-white">h264 · aac</div></div>
+          <div><div class="text-white/40 text-[9.5px] uppercase">duration</div><div class="text-white">01:02</div></div>
+          <div><div class="text-white/40 text-[9.5px] uppercase">fps</div><div class="text-white">30</div></div>
+          <div><div class="text-white/40 text-[9.5px] uppercase">res</div><div class="text-white">1080×1920</div></div>
+          <div><div class="text-white/40 text-[9.5px] uppercase">size</div><div class="text-white">14.2 MB</div></div>
+          <div><div class="text-white/40 text-[9.5px] uppercase">subtitle</div><div class="text-white">srt · vi</div></div>
+          <div><div class="text-white/40 text-[9.5px] uppercase">voice</div><div class="text-white">Bảo Anh</div></div>
+          <div><div class="text-white/40 text-[9.5px] uppercase">cost</div><div class="neon-mg">$0.18</div></div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <div class="font-mono text-[10px] text-white/40 uppercase tracking-widest">TIKTOK CAPTION</div>
+          <button class="text-[10.5px] text-cyan-300 font-mono uppercase hover:underline">copy</button>
+        </div>
+        <p class="text-[12px] text-white/85 leading-relaxed">Giá vàng SJC vừa lập đỉnh <span class="neon-mg">92 triệu/lượng</span>. Nhà đầu tư nên làm gì lúc này? <span class="font-mono text-cyan-300">#giavang #taichinhvn #vangSJC #fyp #xuhuong</span></p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="h-9 border-t border-white/5 glass flex items-center justify-between px-4 text-[10.5px] font-mono text-white/50">
+    <div class="flex items-center gap-3">
+      <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>SYS ONLINE · 4h 18m uptime</span>
+      <span class="text-white/30">·</span>
+      <span>workers <span class="text-cyan-300">2/4</span></span>
+      <span class="text-white/30">·</span>
+      <span>fps <span class="text-cyan-300">28.4</span></span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span>GPU <span class="text-cyan-300">42%</span> · RAM <span class="text-cyan-300">6.1G</span></span>
+      <span class="text-white/30">·</span>
+      <span>SPEND <span class="neon-mg">$11.42</span> / $30</span>
+      <span class="text-white/30">·</span>
+      <span>queue 2 · ETA 03:24</span>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!doctype html>
+<!--
+  Mockup 05 — VietViet Warm
+  Philosophy: A tool made by a Vietnamese creator for Vietnamese creators. Cream paper base,
+  lacquer red (son mài) and antique gold accents, serif display for headings paired with Be Vietnam Pro
+  for UI. Subtle Đông Sơn/lattice motifs as background texture. Warm, editorial, culturally rooted.
+  References: Notion Asian creator templates, fpt.shop, Maika Mộc, Vietcetera editorial, Linktree creator pages.
+-->
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<title>Auto-Create-Video — Xưởng kể chuyện</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Be Vietnam Pro','system-ui','sans-serif'],
+        serif: ['Lora','Georgia','serif'],
+        mono: ['JetBrains Mono','monospace'],
+      },
+      colors: {
+        cream:   { 50:'#fbf6ec', 100:'#f6ecd6', 200:'#ecdfbf', 300:'#dec9a0' },
+        paper:   '#fdf9f0',
+        ink:     { 700:'#3b2e23', 800:'#2b2118', 900:'#1c150e' },
+        lacquer: { 50:'#fdebe9', 100:'#fbd5d1', 500:'#c0392b', 600:'#a93226', 700:'#8e2820', 800:'#6f1f19' },
+        gold:    { 400:'#d4a85a', 500:'#b8893d', 600:'#9a6b29', 700:'#7c5320' },
+        sage:    { 500:'#6b8062', 600:'#566951' },
+      },
+    }
+  }
+}
+</script>
+<style>
+  html, body { background: #fdf9f0; color: #2b2118; font-feature-settings: "ss01" on; }
+  /* Subtle textile pattern */
+  .paper {
+    background-color: #fdf9f0;
+    background-image:
+      radial-gradient(rgba(184,137,61,.06) 1px, transparent 1px),
+      radial-gradient(rgba(184,137,61,.04) 1px, transparent 1px);
+    background-size: 24px 24px, 48px 48px;
+    background-position: 0 0, 12px 12px;
+  }
+  .card { background: #ffffff; border: 1px solid #ecdfbf; border-radius: 14px; box-shadow: 0 1px 0 #f6ecd6, 0 12px 32px -20px rgba(143,87,21,.18);}
+  .seal {
+    width: 30px; height: 30px;
+    background: linear-gradient(135deg,#c0392b,#8e2820);
+    color: #fdf9f0;
+    border-radius: 6px;
+    display: grid; place-items: center;
+    font-family: 'Lora', serif; font-weight: 700; font-style: italic;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15), 0 2px 6px rgba(143,33,25,.4);
+  }
+  .gold-rule { background: linear-gradient(90deg, transparent, #b8893d, transparent); height: 1px; }
+  .chip { font-size: 11px; padding: 3px 9px; border-radius: 999px; border: 1px solid #ecdfbf; background: #fbf6ec; color: #6f4a1f; font-weight: 500; }
+  .chip-red { background:#fdebe9; border-color:#fbd5d1; color:#8e2820;}
+  .chip-gold { background:#fbf6ec; border-color:#dec9a0; color:#7c5320;}
+  .chip-sage { background:#eef2ec; border-color:#cad6c4; color:#3f5538;}
+  .lantern {
+    background:
+      radial-gradient(120% 80% at 50% 0%, rgba(212,168,90,.4), transparent 60%),
+      linear-gradient(180deg,#c0392b,#8e2820);
+  }
+  .thumb { background:
+    radial-gradient(120% 80% at 80% 10%, rgba(212,168,90,.35), transparent 60%),
+    linear-gradient(135deg,#6f1f19,#3b2e23 60%,#1c150e);
+  }
+  .thumb-2 { background:
+    radial-gradient(120% 80% at 20% 80%, rgba(212,168,90,.4), transparent 60%),
+    linear-gradient(135deg,#3b2e23,#7c5320 60%,#1c150e);
+  }
+  .thumb-3 { background:
+    radial-gradient(120% 80% at 50% 80%, rgba(107,128,98,.55), transparent 60%),
+    linear-gradient(160deg,#2b2118,#3f5538 60%,#1c150e);
+  }
+  .thumb-4 { background:
+    radial-gradient(120% 80% at 20% 10%, rgba(192,57,43,.45), transparent 60%),
+    linear-gradient(140deg,#1c150e,#6f1f19 60%,#3b2e23);
+  }
+  .thumb-5 { background:
+    radial-gradient(120% 80% at 80% 80%, rgba(212,168,90,.5), transparent 60%),
+    linear-gradient(135deg,#3b2e23,#2b2118 60%,#1c150e);
+  }
+  .lotus {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><g fill='none' stroke='%23b8893d' stroke-opacity='.18' stroke-width='1'><circle cx='20' cy='20' r='6'/><path d='M20 14 v-6 M20 26 v6 M14 20 h-6 M26 20 h6 M15.7 15.7 l-4.2 -4.2 M24.3 24.3 l4.2 4.2 M24.3 15.7 l4.2 -4.2 M15.7 24.3 l-4.2 4.2'/></g></svg>");
+    background-size: 40px 40px;
+  }
+  .pipe-line { background: repeating-linear-gradient(90deg, #dec9a0 0, #dec9a0 6px, transparent 6px, transparent 12px); }
+  ::-webkit-scrollbar { width: 8px; height: 8px;}
+  ::-webkit-scrollbar-thumb { background: #ecdfbf; border-radius: 99px;}
+</style>
+</head>
+<body class="font-sans antialiased paper">
+
+<!-- Title bar -->
+<header class="h-12 flex items-center justify-between px-5 border-b border-cream-200 bg-paper/90 backdrop-blur sticky top-0 z-20">
+  <div class="flex items-center gap-3">
+    <div class="seal">A</div>
+    <div>
+      <div class="font-serif italic text-[15px] text-ink-900 leading-none">Xưởng kể chuyện</div>
+      <div class="text-[10.5px] text-ink-700/60 mt-1 font-mono">auto-create-video · phòng làm việc của Quân</div>
+    </div>
+  </div>
+  <div class="flex items-center gap-2 text-[12.5px]">
+    <div class="h-9 px-3 rounded-full border border-cream-200 bg-cream-50 flex items-center gap-2 text-ink-700/70 hover:bg-cream-100 cursor-pointer">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      Tìm bài, dự án… <span class="font-mono text-[10px] text-ink-700/40 ml-2">⌘K</span>
+    </div>
+    <button class="h-9 px-3 rounded-full border border-cream-200 hover:bg-cream-50 text-ink-700">Cài đặt</button>
+    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-lacquer-500 to-lacquer-700 grid place-items-center text-cream-50 font-serif italic text-[14px] font-semibold ml-1">Q</div>
+  </div>
+</header>
+
+<div class="grid grid-cols-[240px_1fr_380px] h-[calc(100vh-48px)]">
+
+  <!-- Sidebar -->
+  <aside class="border-r border-cream-200 bg-cream-50/60 p-4 flex flex-col gap-4 overflow-y-auto">
+    <button class="h-11 rounded-full bg-lacquer-600 hover:bg-lacquer-700 text-cream-50 font-medium text-[13.5px] flex items-center justify-center gap-2 shadow-[0_4px_12px_-4px_rgba(143,33,25,.5)]">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+      Mở video mới
+    </button>
+
+    <nav class="space-y-0.5 text-[13.5px]">
+      <div class="font-serif italic text-[11px] text-gold-700 px-2 mb-1 tracking-wider">Bàn làm việc</div>
+      <a class="flex items-center justify-between px-3 py-2 rounded-lg bg-cream-100 border border-cream-200">
+        <span class="flex items-center gap-2.5">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8e2820" stroke-width="2"><path d="M3 5h18l-2 14H5L3 5z"/><path d="M8 9h8"/></svg>
+          <span class="text-ink-900 font-medium">Dự án đang làm</span>
+        </span>
+        <span class="text-[11px] text-ink-700/60 font-mono">12</span>
+      </a>
+      <a class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-cream-100/60 text-ink-700">
+        <span class="flex items-center gap-2.5">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>
+          Đã xuất bản
+        </span>
+        <span class="text-[11px] text-ink-700/50 font-mono">48</span>
+      </a>
+      <a class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-cream-100/60 text-ink-700">
+        <span class="flex items-center gap-2.5">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/></svg>
+          Hàng đợi
+        </span>
+        <span class="chip chip-red !text-[10px] !py-0">3</span>
+      </a>
+      <a class="flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-cream-100/60 text-ink-700">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+        Phòng giọng đọc
+      </a>
+      <a class="flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-cream-100/60 text-ink-700">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>
+        Bộ nhận diện kênh
+      </a>
+    </nav>
+
+    <div class="space-y-0.5 text-[13px]">
+      <div class="font-serif italic text-[11px] text-gold-700 px-2 mb-1 tracking-wider">Kênh của bạn</div>
+      <div class="flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-cream-100/60">
+        <span class="w-6 h-6 rounded-md bg-lacquer-600 grid place-items-center text-cream-50 text-[11px] font-serif italic font-bold">T</span>
+        <div class="flex-1">
+          <div class="text-ink-900 leading-tight">tin-tech-vn</div>
+          <div class="text-[10.5px] text-ink-700/50">24 video</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-cream-100/60">
+        <span class="w-6 h-6 rounded-md bg-gold-500 grid place-items-center text-cream-50 text-[11px] font-serif italic font-bold">$</span>
+        <div class="flex-1">
+          <div class="text-ink-900 leading-tight">tai-chinh-247</div>
+          <div class="text-[10.5px] text-ink-700/50">11 video</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-cream-100/60">
+        <span class="w-6 h-6 rounded-md bg-sage-500 grid place-items-center text-cream-50 text-[11px] font-serif italic font-bold">L</span>
+        <div class="flex-1">
+          <div class="text-ink-900 leading-tight">doi-song-plus</div>
+          <div class="text-[10.5px] text-ink-700/50">7 video</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-auto card p-4 lotus">
+      <div class="flex items-center justify-between">
+        <div class="font-serif italic text-[12px] text-gold-700">Chi phí tháng 5</div>
+        <span class="seal !w-6 !h-6 !text-[12px]">₫</span>
+      </div>
+      <div class="mt-2 flex items-baseline gap-2">
+        <div class="text-[22px] font-serif font-semibold text-ink-900">11,42<span class="text-[14px] text-ink-700/60">$</span></div>
+        <div class="text-[11px] text-ink-700/60">/ 30$ hạn mức</div>
+      </div>
+      <div class="mt-2 h-1.5 rounded-full bg-cream-200 overflow-hidden">
+        <div class="h-full w-[38%] bg-gradient-to-r from-lacquer-600 to-gold-500"></div>
+      </div>
+      <div class="mt-2 flex items-center justify-between text-[10.5px] text-ink-700/60 font-mono">
+        <span>còn 62%</span>
+        <button class="text-lacquer-700 hover:underline">quản lý</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="overflow-y-auto p-7 space-y-6">
+
+    <!-- Header line -->
+    <div class="flex items-baseline justify-between">
+      <div>
+        <div class="font-mono text-[11px] text-gold-700 uppercase tracking-widest">19 · 05 · 2026</div>
+        <h1 class="font-serif italic text-[28px] text-ink-900 leading-tight mt-1">Chào Quân, hôm nay kể câu chuyện gì?</h1>
+        <div class="gold-rule w-24 mt-2"></div>
+      </div>
+      <div class="text-right text-[12px] text-ink-700/60">
+        <div class="font-mono">3 video đang nấu</div>
+        <div>2 đang chờ xuất bản</div>
+      </div>
+    </div>
+
+    <!-- Input card -->
+    <section class="card p-6 relative overflow-hidden">
+      <div class="absolute -right-6 -top-6 w-32 h-32 lotus opacity-40"></div>
+
+      <div class="flex items-center gap-3 mb-4 relative">
+        <span class="seal">1</span>
+        <div>
+          <div class="font-serif italic text-[16px] text-ink-900">Gửi mình một bài báo</div>
+          <div class="text-[11.5px] text-ink-700/60">Dán URL, hoặc thả file .txt vào đây — phần còn lại để mình lo.</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-[1fr_220px_140px] gap-2 relative">
+        <div class="h-12 rounded-xl border border-cream-300 bg-cream-50 flex items-center px-4 gap-3">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7c5320" stroke-width="2"><path d="M9 17h6M10 14h4M12 11v3M12 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/></svg>
+          <input class="flex-1 bg-transparent text-[13.5px] text-ink-900 focus:outline-none" value="https://vnexpress.net/iphone-17-pro-camera-200mp-rumor-2026.html" />
+          <span class="font-mono text-[10.5px] text-ink-700/40">⌘V</span>
+        </div>
+        <button class="h-12 rounded-xl border border-cream-300 bg-cream-50 flex items-center px-3 gap-3 hover:bg-cream-100 text-left">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-br from-lacquer-500 to-lacquer-700 grid place-items-center text-cream-50 font-serif italic font-bold text-[14px]">B</div>
+          <div class="flex-1">
+            <div class="text-[12.5px] font-medium text-ink-900">Bảo Anh</div>
+            <div class="text-[10.5px] text-ink-700/60">nữ · miền Bắc · trầm ấm</div>
+          </div>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <button class="h-12 rounded-xl bg-lacquer-600 hover:bg-lacquer-700 text-cream-50 font-medium text-[14px] flex items-center justify-center gap-2 shadow-[0_6px_16px_-6px_rgba(143,33,25,.5)]">
+          Kể đi
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-2 mt-4 text-[11.5px]">
+        <span class="chip chip-gold">9:16 · 1080p</span>
+        <span class="chip chip-gold">khoảng 60 giây</span>
+        <span class="chip">phụ đề tiếng Việt</span>
+        <span class="chip chip-sage">Đăng TikTok khi xong</span>
+        <span class="ml-auto text-ink-700/50 text-[11px] flex items-center gap-1.5">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          Ước tính ~3 phút
+        </span>
+      </div>
+    </section>
+
+    <!-- Active pipeline -->
+    <section class="card p-6">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <span class="seal !bg-gold-500 !shadow-[0_2px_6px_rgba(184,137,61,.4)]">2</span>
+          <div>
+            <div class="font-serif italic text-[16px] text-ink-900">Đang nấu món này</div>
+            <div class="text-[12.5px] text-ink-700/70 mt-0.5">"Bitcoin vượt mốc 100 nghìn USD lần đầu trong lịch sử"</div>
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="font-mono text-[12px] text-ink-900">~01:38 còn lại</div>
+          <div class="font-mono text-[10.5px] text-ink-700/60">bước 05 / 08 · 58%</div>
+        </div>
+      </div>
+
+      <div class="gold-rule mb-5"></div>
+
+      <!-- Pipeline -->
+      <div class="grid grid-cols-8 relative gap-2">
+        <div class="absolute top-4 left-6 right-6 h-px pipe-line"></div>
+        <!-- step -->
+        <div class="flex flex-col items-center text-center relative">
+          <div class="w-8 h-8 rounded-full bg-sage-500 grid place-items-center text-cream-50 relative z-10">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+          </div>
+          <div class="font-serif italic text-[11.5px] text-ink-900 mt-2 leading-tight">Đọc bài</div>
+          <div class="text-[10px] text-ink-700/50 font-mono">0.4s</div>
+        </div>
+        <div class="flex flex-col items-center text-center relative">
+          <div class="w-8 h-8 rounded-full bg-sage-500 grid place-items-center text-cream-50 relative z-10">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+          </div>
+          <div class="font-serif italic text-[11.5px] text-ink-900 mt-2 leading-tight">Viết kịch bản</div>
+          <div class="text-[10px] text-ink-700/50 font-mono">claude · 18s</div>
+        </div>
+        <div class="flex flex-col items-center text-center relative">
+          <div class="w-8 h-8 rounded-full bg-sage-500 grid place-items-center text-cream-50 relative z-10">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+          </div>
+          <div class="font-serif italic text-[11.5px] text-ink-900 mt-2 leading-tight">Lấy ảnh + thu tiếng</div>
+          <div class="text-[10px] text-ink-700/50 font-mono">LucyLab · 42s</div>
+        </div>
+        <div class="flex flex-col items-center text-center relative">
+          <div class="w-8 h-8 rounded-full bg-sage-500 grid place-items-center text-cream-50 relative z-10">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+          </div>
+          <div class="font-serif italic text-[11.5px] text-ink-900 mt-2 leading-tight">Trộn tiếng động</div>
+          <div class="text-[10px] text-ink-700/50 font-mono">8s</div>
+        </div>
+        <div class="flex flex-col items-center text-center relative">
+          <div class="absolute -inset-1 rounded-full bg-lacquer-100 blur-md"></div>
+          <div class="relative w-9 h-9 rounded-full bg-lacquer-600 grid place-items-center text-cream-50 shadow-[0_0_0_4px_#fdebe9] z-10">
+            <span class="w-2 h-2 rounded-full bg-cream-50 animate-pulse"></span>
+          </div>
+          <div class="relative font-serif italic font-semibold text-[12px] text-lacquer-700 mt-2 leading-tight">Dựng cảnh</div>
+          <div class="relative text-[10px] text-lacquer-600 font-mono">GSAP · 38%</div>
+        </div>
+        <div class="flex flex-col items-center text-center relative">
+          <div class="w-8 h-8 rounded-full bg-cream-100 border border-cream-300 grid place-items-center text-ink-700/40 font-serif italic text-[12px] relative z-10">vi</div>
+          <div class="font-serif italic text-[11.5px] text-ink-700/50 mt-2 leading-tight">Render khung</div>
+          <div class="text-[10px] text-ink-700/40 font-mono">HyperFrames</div>
+        </div>
+        <div class="flex flex-col items-center text-center relative">
+          <div class="w-8 h-8 rounded-full bg-cream-100 border border-cream-300 grid place-items-center text-ink-700/40 font-serif italic text-[12px] relative z-10">vii</div>
+          <div class="font-serif italic text-[11.5px] text-ink-700/50 mt-2 leading-tight">Xuất MP4</div>
+          <div class="text-[10px] text-ink-700/40 font-mono">FFmpeg</div>
+        </div>
+        <div class="flex flex-col items-center text-center relative">
+          <div class="w-8 h-8 rounded-full bg-cream-100 border border-cream-300 grid place-items-center text-ink-700/40 font-serif italic text-[12px] relative z-10">viii</div>
+          <div class="font-serif italic text-[11.5px] text-ink-700/50 mt-2 leading-tight">Hoàn tất</div>
+          <div class="text-[10px] text-ink-700/40 font-mono">—</div>
+        </div>
+      </div>
+
+      <div class="mt-5 flex items-center gap-3">
+        <div class="flex-1 h-1.5 rounded-full bg-cream-200 overflow-hidden">
+          <div class="h-full w-[58%] bg-gradient-to-r from-lacquer-500 to-gold-500"></div>
+        </div>
+        <span class="font-mono text-[11.5px] text-ink-700">58%</span>
+        <button class="h-8 px-3 rounded-full border border-cream-300 hover:bg-cream-50 text-[11.5px] text-ink-700 flex items-center gap-1.5">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+          Tạm dừng
+        </button>
+      </div>
+    </section>
+
+    <!-- Past projects -->
+    <section>
+      <div class="flex items-baseline justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <span class="seal !bg-sage-500">3</span>
+          <h2 class="font-serif italic text-[18px] text-ink-900">Câu chuyện đã kể tuần này</h2>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button class="chip chip-red font-medium">Tất cả · 12</button>
+          <button class="chip">Đang chạy · 3</button>
+          <button class="chip">Hoàn tất · 8</button>
+          <button class="chip">Cần xem lại · 1</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4">
+        <article class="card overflow-hidden hover:-translate-y-0.5 transition">
+          <div class="thumb-2 aspect-[16/10] relative">
+            <div class="absolute inset-0 grid place-items-center text-center text-cream-50 p-5">
+              <div>
+                <div class="font-serif italic text-[12px] opacity-80">tin · công nghệ</div>
+                <div class="font-serif font-semibold text-[20px] leading-tight mt-1">iPhone 17 Pro<br><span class="text-gold-400">200MP</span></div>
+              </div>
+            </div>
+            <span class="absolute top-3 left-3 chip chip-gold">đang TTS</span>
+          </div>
+          <div class="p-4">
+            <div class="text-[13px] font-medium text-ink-900 leading-tight">iPhone 17 ra mắt với camera 200MP, giá khởi điểm 29 triệu</div>
+            <div class="flex items-center justify-between mt-3 text-[11px] text-ink-700/60">
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-lacquer-600"></span>tin-tech-vn</span>
+              <span class="font-mono">2 ph · ~0:62</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card overflow-hidden border-lacquer-500 ring-2 ring-lacquer-500/20">
+          <div class="thumb-4 aspect-[16/10] relative">
+            <div class="absolute inset-0 grid place-items-center text-center text-cream-50 p-5">
+              <div>
+                <div class="font-serif italic text-[12px] opacity-80">tin · tài chính</div>
+                <div class="font-serif font-semibold text-[20px] leading-tight mt-1">Bitcoin<br><span class="text-gold-400">100.000$</span></div>
+              </div>
+            </div>
+            <span class="absolute top-3 left-3 chip chip-red">đang dựng · 58%</span>
+          </div>
+          <div class="p-4">
+            <div class="text-[13px] font-medium text-ink-900 leading-tight">Bitcoin vượt mốc 100 nghìn USD lần đầu trong lịch sử</div>
+            <div class="flex items-center justify-between mt-3 text-[11px] text-ink-700/60">
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-gold-500"></span>tai-chinh-247</span>
+              <span class="font-mono">vừa xong · ~0:58</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card overflow-hidden hover:-translate-y-0.5 transition">
+          <div class="thumb-3 aspect-[16/10] relative">
+            <div class="absolute inset-0 grid place-items-center text-center text-cream-50 p-5">
+              <div>
+                <div class="font-serif italic text-[12px] opacity-80">tin · xe</div>
+                <div class="font-serif font-semibold text-[20px] leading-tight mt-1">VinFast VF9<br><span class="text-gold-400">50.000 xe</span></div>
+              </div>
+            </div>
+            <span class="absolute top-3 left-3 chip">trong hàng đợi</span>
+          </div>
+          <div class="p-4">
+            <div class="text-[13px] font-medium text-ink-900 leading-tight">VinFast bàn giao 50.000 xe VF9 toàn cầu trong quý IV</div>
+            <div class="flex items-center justify-between mt-3 text-[11px] text-ink-700/60">
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-lacquer-600"></span>tin-tech-vn</span>
+              <span class="font-mono">5 ph · ~0:60</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card overflow-hidden hover:-translate-y-0.5 transition">
+          <div class="thumb aspect-[16/10] relative">
+            <div class="absolute inset-0 grid place-items-center text-center text-cream-50 p-5">
+              <div>
+                <div class="font-serif italic text-[12px] opacity-80">tin · tài chính</div>
+                <div class="font-serif font-semibold text-[20px] leading-tight mt-1">Giá vàng SJC<br><span class="text-gold-400">92 triệu</span></div>
+              </div>
+            </div>
+            <span class="absolute top-3 left-3 chip chip-sage">xuất bản</span>
+          </div>
+          <div class="p-4">
+            <div class="text-[13px] font-medium text-ink-900 leading-tight">Giá vàng SJC tăng mạnh, chạm 92 triệu/lượng phiên cuối tuần</div>
+            <div class="flex items-center justify-between mt-3 text-[11px] text-ink-700/60">
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-gold-500"></span>tai-chinh-247</span>
+              <span class="font-mono">1 giờ · 1:02</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card overflow-hidden hover:-translate-y-0.5 transition">
+          <div class="thumb-5 aspect-[16/10] relative">
+            <div class="absolute inset-0 grid place-items-center text-center text-cream-50 p-5">
+              <div>
+                <div class="font-serif italic text-[12px] opacity-80">đời sống · du lịch</div>
+                <div class="font-serif font-semibold text-[20px] leading-tight mt-1">Sa Pa<br><span class="text-gold-400">tuyết đầu mùa</span></div>
+              </div>
+            </div>
+            <span class="absolute top-3 left-3 chip chip-sage">xuất bản</span>
+          </div>
+          <div class="p-4">
+            <div class="text-[13px] font-medium text-ink-900 leading-tight">Sa Pa đón đợt tuyết đầu mùa, khách du lịch đổ về kỷ lục</div>
+            <div class="flex items-center justify-between mt-3 text-[11px] text-ink-700/60">
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-sage-500"></span>doi-song-plus</span>
+              <span class="font-mono">3 giờ · 0:58</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card overflow-hidden hover:-translate-y-0.5 transition border-lacquer-200 bg-lacquer-50/40">
+          <div class="aspect-[16/10] relative bg-gradient-to-br from-lacquer-100 to-cream-50 grid place-items-center">
+            <div class="text-center">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#a93226" stroke-width="1.8" class="mx-auto"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16h.01"/></svg>
+              <div class="font-serif italic text-[13px] text-lacquer-700 mt-2">Cần xem lại</div>
+              <div class="text-[10.5px] text-lacquer-700/70 font-mono mt-0.5">LucyLab · 429 rate limit</div>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="text-[13px] font-medium text-ink-900 leading-tight">Elon Musk công bố xAI Grok 5 với khả năng đa phương thức</div>
+            <div class="flex items-center justify-between mt-3 text-[11px] text-ink-700/60">
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-lacquer-600"></span>tin-tech-vn · hôm qua</span>
+              <button class="text-lacquer-700 hover:underline font-medium">thử lại</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Right preview -->
+  <aside class="border-l border-cream-200 bg-cream-50/40 p-6 overflow-y-auto space-y-5">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="seal !w-6 !h-6 !text-[12px]">★</span>
+        <div class="font-serif italic text-[14px] text-ink-900">Vừa xong, mời xem thử</div>
+      </div>
+      <div class="thumb aspect-[9/16] rounded-2xl overflow-hidden relative shadow-[0_30px_60px_-30px_rgba(143,33,25,.5)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink-900/80 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 grid place-items-center text-center text-cream-50 p-6">
+          <div>
+            <div class="font-serif italic text-[11px] opacity-80">tai-chinh-247 · tin nóng</div>
+            <div class="font-serif font-semibold text-[24px] mt-2 leading-tight">Giá vàng SJC<br><span class="text-gold-400">92.000.000<sup class="text-[12px]">đ</sup></span><br>một lượng</div>
+            <div class="mt-3 font-mono text-[10.5px] opacity-70">— Reuters, 19 · 05 · 2026</div>
+          </div>
+        </div>
+        <button class="absolute inset-0 grid place-items-center group">
+          <span class="w-14 h-14 rounded-full bg-cream-50/95 grid place-items-center text-lacquer-700 shadow-lg group-hover:scale-110 transition">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </button>
+        <div class="absolute top-3 left-3 right-3 flex items-center justify-between font-mono text-[10px]">
+          <span class="bg-ink-900/50 backdrop-blur text-cream-50 px-2 py-0.5 rounded">9:16 · 1080p</span>
+          <span class="bg-ink-900/50 backdrop-blur text-cream-50 px-2 py-0.5 rounded">01:02</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2">
+      <button class="h-11 rounded-full bg-lacquer-600 hover:bg-lacquer-700 text-cream-50 font-medium text-[13px] flex items-center justify-center gap-2 shadow-[0_6px_16px_-6px_rgba(143,33,25,.5)]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8 12 3 7 8"/><path d="M12 3v12"/></svg>
+        Đăng TikTok
+      </button>
+      <button class="h-11 rounded-full border border-cream-300 bg-paper hover:bg-cream-50 text-ink-900 text-[13px] font-medium flex items-center justify-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-9l-2-2H5a2 2 0 0 0-2 2z"/></svg>
+        Mở thư mục
+      </button>
+      <button class="h-10 rounded-full border border-cream-300 bg-paper hover:bg-cream-50 text-[12px] text-ink-900 flex items-center justify-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/></svg>Dựng lại</button>
+      <button class="h-10 rounded-full border border-cream-300 bg-paper hover:bg-cream-50 text-[12px] text-ink-900 flex items-center justify-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Chia sẻ</button>
+    </div>
+
+    <div class="card p-4 lotus">
+      <div class="font-serif italic text-[13px] text-gold-700 mb-3 flex items-center gap-2">Chi tiết món vừa làm <span class="gold-rule flex-1"></span></div>
+      <div class="grid grid-cols-2 gap-y-2.5 gap-x-3 text-[12px]">
+        <div><div class="text-ink-700/50 text-[10.5px] uppercase tracking-wider font-mono">dung lượng</div><div class="text-ink-900 font-medium mt-0.5">14,2 MB</div></div>
+        <div><div class="text-ink-700/50 text-[10.5px] uppercase tracking-wider font-mono">độ dài</div><div class="text-ink-900 font-medium mt-0.5">01:02</div></div>
+        <div><div class="text-ink-700/50 text-[10.5px] uppercase tracking-wider font-mono">độ phân giải</div><div class="text-ink-900 font-medium mt-0.5">1080 × 1920</div></div>
+        <div><div class="text-ink-700/50 text-[10.5px] uppercase tracking-wider font-mono">phụ đề</div><div class="text-ink-900 font-medium mt-0.5">SRT · tiếng Việt</div></div>
+        <div><div class="text-ink-700/50 text-[10.5px] uppercase tracking-wider font-mono">giọng đọc</div><div class="text-ink-900 font-medium mt-0.5">Bảo Anh</div></div>
+        <div><div class="text-ink-700/50 text-[10.5px] uppercase tracking-wider font-mono">chi phí</div><div class="font-mono text-lacquer-700 font-semibold mt-0.5">0,18$</div></div>
+      </div>
+    </div>
+
+    <div class="card p-4">
+      <div class="flex items-center justify-between mb-2">
+        <div class="font-serif italic text-[13px] text-gold-700">Lời nói đầu</div>
+        <button class="text-[11px] text-lacquer-700 hover:underline">sửa nhẹ</button>
+      </div>
+      <p class="text-[12.5px] text-ink-700 leading-relaxed font-serif italic">
+        "Giá vàng SJC vừa lập đỉnh mới, chạm <span class="text-lacquer-700 font-medium not-italic font-sans">92 triệu đồng một lượng</span> trong phiên giao dịch cuối tuần. Các chuyên gia nhận định đây có thể là tín hiệu của một chu kỳ tăng dài hạn…"
+      </p>
+    </div>
+  </aside>
+</div>
+
+<!-- Footer -->
+<footer class="fixed bottom-0 inset-x-0 h-8 border-t border-cream-200 bg-paper/95 backdrop-blur flex items-center justify-between px-5 text-[10.5px] text-ink-700/60 font-mono">
+  <div class="flex items-center gap-3">
+    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sage-500"></span>LucyLab · Claude · FFmpeg đang sẵn sàng</span>
+    <span class="text-cream-300">|</span>
+    <span>Xưởng v0.6.2</span>
+  </div>
+  <div class="flex items-center gap-3">
+    <span>GPU 42% · RAM 6,1 GB</span>
+    <span class="text-cream-300">|</span>
+    <span>tháng 5 đã dùng <span class="text-lacquer-700 font-semibold">11,42$</span> / 30$</span>
+    <span class="text-cream-300">|</span>
+    <span>2 món đang chờ nấu</span>
+  </div>
+</footer>
+
+</body>
+</html>

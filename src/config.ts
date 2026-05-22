@@ -30,6 +30,12 @@ export interface Config {
   tiktok: TiktokConfig;
 
   ttsConcurrency: number;
+
+  // B-roll (Pexels) — both optional; if either missing, b-roll step is
+  // skipped and the pipeline falls back to existing static-image/gradient bg.
+  pexelsApiKey?: string;
+  geminiApiKey?: string;
+  brollEnabled: boolean;
 }
 
 function intDefault(name: string, def: number): number {
@@ -93,5 +99,11 @@ export function loadConfig(): Config {
       avatarUrl: process.env.TIKTOK_AVATAR_URL || undefined,
     },
     ttsConcurrency: intDefault("TTS_CONCURRENCY", 1),
+    pexelsApiKey: process.env.PEXELS_API_KEY?.trim() || undefined,
+    geminiApiKey: process.env.GEMINI_API_KEY?.trim() || undefined,
+    // BROLL_ENABLED defaults true when PEXELS_API_KEY is set; explicit "0"/"false" disables.
+    brollEnabled:
+      (process.env.PEXELS_API_KEY?.trim() || "") !== "" &&
+      !["0", "false", "no"].includes((process.env.BROLL_ENABLED ?? "").toLowerCase().trim()),
   };
 }

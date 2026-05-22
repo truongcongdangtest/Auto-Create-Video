@@ -8,14 +8,20 @@ import { createTtsClient } from "./tts/tts-client.js";
 import { fetchImage } from "./assets/image-fetcher.js";
 import { getDurationSec, concatWithSilence, mixSfxOntoVoice, type SfxMixSpec } from "./assets/audio-tools.js";
 import { indexSfxLibrary, pickSfxForScene, defaultPlayback } from "./assets/sfx-selector.js";
+import { extractBrollKeywords } from "./assets/broll-keywords.js";
+import { fetchBroll } from "./assets/broll-fetcher.js";
 import { existsSync } from "node:fs";
 import { composeHtml } from "./render/html-composer.js";
 import { renderWithHyperframes } from "./render/hyperframes-runner.js";
 import { log } from "./utils/logger.js";
 
 const TOTAL_STEPS = 8;
-const DURATION_MIN_SEC = 48;
-const DURATION_MAX_SEC = 72;
+const DURATION_MIN_SEC = 28;
+// Hard ceiling for the soft-warning band. VietViral exposes a long-form
+// 5-10 minute mode; longer than that the render time becomes painful
+// (>50min on a CPU machine) and TikTok engagement nosedives — we still
+// allow it but loudly warn the user.
+const DURATION_MAX_SEC = 660;
 const SCENE_GAP_SEC = 0.3;
 /**
  * Extra seconds added to the outro scene visual duration AFTER the voice ends.
@@ -94,9 +100,17 @@ export async function runPipeline(scriptPath: string): Promise<void> {
     }),
   );
 
-  const [imgResult, sceneAudio] = await Promise.all([
+  // B-roll keyword extraction (Gemini VN→EN batch) runs in parallel with
+  // TTS + image fetch. Cheap (~$0.0005 per render). Falls back to template
+  // keywords if no GEMINI_API_KEY (silent — the pipeline still works).
+  const keywordsPromise = cfg.brollEnabled
+    ? extractBrollKeywords(script, cfg.geminiApiKey)
+    : Promise.resolve(new Map<string, string>());
+
+  const [imgResult, sceneAudio, brollKeywordMap] = await Promise.all([
     imgPromise,
     Promise.all(sceneAudioPromises),
+    keywordsPromise,
   ]);
 
   let bgImageRelPath: string | null = null;
@@ -104,6 +118,55 @@ export async function runPipeline(scriptPath: string): Promise<void> {
     bgImageRelPath = "images/bg.jpg";
   } else {
     log.warn(`Background image fetch failed: ${imgResult.reason} → using gradient fallback`);
+  }
+
+  // STEP 4.5 — Fetch per-scene b-roll videos from Pexels. Cached in
+  // `~/.cache/vietviral/broll/` so subsequent renders with overlapping
+  // topics reuse downloads. Concurrent up to 4 fetches (Pexels rate
+  // limit is 200/hr — plenty for a 40-scene long-form render).
+  const sceneBrollMap: Record<string, string | null> = {};
+  if (cfg.brollEnabled && cfg.pexelsApiKey) {
+    log.info(`  b-roll: PEXELS_API_KEY present, fetching per-scene clips`);
+    const brollDir = join(outputDir, "broll");
+    await mkdir(brollDir, { recursive: true });
+    const brollLimit = pLimit(4);
+    const fetches = script.scenes.map((scene) =>
+      brollLimit(async () => {
+        // Skip outro: the TikTok follow card covers most of the frame, so
+        // the b-roll motion adds visual noise + a 5-10MB Chromium decode
+        // burden with near-zero engagement upside.
+        if (scene.type === "outro") {
+          sceneBrollMap[scene.id] = null;
+          return;
+        }
+        // Per-scene query priority: explicit brollKeywords in script
+        // (Gemini already picked them) > Gemini batch translation result
+        // > fallback template-based keyword.
+        const explicit = Array.isArray(scene.brollKeywords) && scene.brollKeywords.length > 0
+          ? scene.brollKeywords.join(" ")
+          : null;
+        const query = explicit ?? brollKeywordMap.get(scene.id) ?? null;
+        if (!query) {
+          sceneBrollMap[scene.id] = null;
+          return;
+        }
+        const sceneDur = sceneAudio.find((a) => a.id === scene.id)?.durationSec ?? 30;
+        const outAbs = join(brollDir, `scene-${scene.id}.mp4`);
+        const got = await fetchBroll(cfg.pexelsApiKey!, query, outAbs, {
+          targetDurationSec: sceneDur,
+          // Hard 15s cap: shorter clips loop fine + slash file size 2-3x.
+          maxClipDurationSec: 15,
+          // SD is the new default; HD fallback only if SD missing.
+          preferHd: false,
+        });
+        sceneBrollMap[scene.id] = got?.relPath ?? null;
+      }),
+    );
+    await Promise.all(fetches);
+    const got = Object.values(sceneBrollMap).filter((v) => v !== null).length;
+    log.info(`  b-roll: ${got}/${script.scenes.length} scenes covered`);
+  } else if (cfg.brollEnabled) {
+    log.warn(`  b-roll skipped: PEXELS_API_KEY not set (or brollEnabled=false)`);
   }
 
   // STEP 5
@@ -212,6 +275,7 @@ export async function runPipeline(scriptPath: string): Promise<void> {
     tiktok: cfg.tiktok,
     tiktokAvatarRelPath: ttAvatarFile,
     outroHoldSec: OUTRO_HOLD_SEC,
+    sceneBroll: sceneBrollMap,
   });
 
   // hyperframes expects: index.html (NOT composition.html), hyperframes.json, meta.json in DIR

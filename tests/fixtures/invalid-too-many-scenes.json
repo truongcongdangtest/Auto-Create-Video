@@ -19,61 +19,422 @@
       "id": "hook",
       "type": "hook",
       "voiceText": "Apple vừa ra mắt iPhone 17.",
-      "templateData": { "template": "hook", "headline": "iPhone 17", "subhead": "Camera 200MP!" }
+      "templateData": {
+        "template": "hook",
+        "headline": "iPhone 17",
+        "subhead": "Camera 200MP!"
+      }
     },
     {
-      "id": "body-1",
+      "id": "body0",
       "type": "body",
-      "voiceText": "Cảm biến mới zoom 10x.",
-      "templateData": { "template": "stat-hero", "value": "200MP", "label": "Cảm biến mới" }
+      "voiceText": "Body scene 0",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
     },
     {
-      "id": "body-2",
+      "id": "body1",
       "type": "body",
-      "voiceText": "Pin 5000mAh.",
-      "templateData": { "template": "feature-list", "title": "Pin", "bullets": ["5000mAh"] }
+      "voiceText": "Body scene 1",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
     },
     {
-      "id": "body-3",
+      "id": "body2",
       "type": "body",
-      "voiceText": "Giá từ 21 triệu.",
-      "templateData": { "template": "callout", "statement": "Giá từ 21 triệu đồng." }
+      "voiceText": "Body scene 2",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
     },
     {
-      "id": "body-4",
+      "id": "body3",
       "type": "body",
-      "voiceText": "Màn hình OLED.",
-      "templateData": { "template": "comparison", "left": { "label": "iPhone 17", "value": "OLED", "color": "cyan" }, "right": { "label": "Android", "value": "LCD", "color": "purple", "winner": false } }
+      "voiceText": "Body scene 3",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
     },
     {
-      "id": "body-5",
+      "id": "body4",
       "type": "body",
-      "voiceText": "Camera trước 12MP.",
-      "templateData": { "template": "stat-hero", "value": "12MP", "label": "Camera trước" }
+      "voiceText": "Body scene 4",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
     },
     {
-      "id": "body-6",
+      "id": "body5",
       "type": "body",
-      "voiceText": "Chip A19.",
-      "templateData": { "template": "callout", "statement": "Chip A19 mạnh nhất từ trước đến nay." }
+      "voiceText": "Body scene 5",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
     },
     {
-      "id": "body-7",
+      "id": "body6",
       "type": "body",
-      "voiceText": "Màu mới.",
-      "templateData": { "template": "feature-list", "title": "Màu sắc", "bullets": ["Titanium", "Đen", "Trắng"] }
+      "voiceText": "Body scene 6",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
     },
     {
-      "id": "body-8",
+      "id": "body7",
       "type": "body",
-      "voiceText": "Dung lượng 256GB.",
-      "templateData": { "template": "stat-hero", "value": "256GB", "label": "Dung lượng" }
+      "voiceText": "Body scene 7",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body8",
+      "type": "body",
+      "voiceText": "Body scene 8",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body9",
+      "type": "body",
+      "voiceText": "Body scene 9",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body10",
+      "type": "body",
+      "voiceText": "Body scene 10",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body11",
+      "type": "body",
+      "voiceText": "Body scene 11",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body12",
+      "type": "body",
+      "voiceText": "Body scene 12",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body13",
+      "type": "body",
+      "voiceText": "Body scene 13",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body14",
+      "type": "body",
+      "voiceText": "Body scene 14",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body15",
+      "type": "body",
+      "voiceText": "Body scene 15",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body16",
+      "type": "body",
+      "voiceText": "Body scene 16",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body17",
+      "type": "body",
+      "voiceText": "Body scene 17",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body18",
+      "type": "body",
+      "voiceText": "Body scene 18",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body19",
+      "type": "body",
+      "voiceText": "Body scene 19",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body20",
+      "type": "body",
+      "voiceText": "Body scene 20",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body21",
+      "type": "body",
+      "voiceText": "Body scene 21",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body22",
+      "type": "body",
+      "voiceText": "Body scene 22",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body23",
+      "type": "body",
+      "voiceText": "Body scene 23",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body24",
+      "type": "body",
+      "voiceText": "Body scene 24",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body25",
+      "type": "body",
+      "voiceText": "Body scene 25",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body26",
+      "type": "body",
+      "voiceText": "Body scene 26",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body27",
+      "type": "body",
+      "voiceText": "Body scene 27",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body28",
+      "type": "body",
+      "voiceText": "Body scene 28",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body29",
+      "type": "body",
+      "voiceText": "Body scene 29",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body30",
+      "type": "body",
+      "voiceText": "Body scene 30",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body31",
+      "type": "body",
+      "voiceText": "Body scene 31",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body32",
+      "type": "body",
+      "voiceText": "Body scene 32",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body33",
+      "type": "body",
+      "voiceText": "Body scene 33",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body34",
+      "type": "body",
+      "voiceText": "Body scene 34",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body35",
+      "type": "body",
+      "voiceText": "Body scene 35",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body36",
+      "type": "body",
+      "voiceText": "Body scene 36",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body37",
+      "type": "body",
+      "voiceText": "Body scene 37",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body38",
+      "type": "body",
+      "voiceText": "Body scene 38",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
+    },
+    {
+      "id": "body39",
+      "type": "body",
+      "voiceText": "Body scene 39",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200MP",
+        "label": "Cảm biến mới"
+      }
     },
     {
       "id": "outro",
       "type": "outro",
       "voiceText": "Theo dõi Công nghệ 24h.",
-      "templateData": { "template": "outro", "ctaTop": "Theo dõi ngay", "channelName": "Công nghệ 24h", "source": "vnexpress.net" }
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Theo dõi ngay",
+        "channelName": "Công nghệ 24h",
+        "source": "vnexpress.net"
+      }
     }
   ]
 }

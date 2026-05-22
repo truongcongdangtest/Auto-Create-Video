@@ -90,6 +90,12 @@ const Scene = z.object({
   templateData: TemplateData,
   /** Optional sound effect override (else pipeline picks per template) */
   sfx: SfxSpec.optional(),
+  /**
+   * Optional ENGLISH visual keywords for Pexels b-roll search. When present,
+   * skips the Gemini VN→EN translation step. Max 5 short words.
+   * Example: ["city skyline", "sunset"]
+   */
+  brollKeywords: z.array(z.string().min(1).max(40)).max(5).optional(),
 });
 
 // ── Root schema ────────────────────────────────────────────────────────────
@@ -112,8 +118,12 @@ export const ScriptSchema = z.object({
   }),
   scenes: z
     .array(Scene)
+    // Original cap was 8 (designed for 60-90s TikTok shorts). VietViral
+    // ships a long-form mode (5-10 minute deep-dives) so we widen the
+    // ceiling. Anything over ~30 starts hurting render time linearly —
+    // hyperframes captures every frame in Chromium.
     .min(5)
-    .max(8, "scenes must have at most 8 items")
+    .max(40, "scenes must have at most 40 items")
     .refine(
       (s) => s[0]?.type === "hook",
       { message: "scenes[0] must be type=hook" }
