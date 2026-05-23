@@ -115,11 +115,18 @@ export function composeHtml(args: ComposeArgs): string {
   });
   const totalDuration = cursor;
 
-  // Render scenes
-  const sceneHtml = timing.map(({ scene, start, duration }) => {
+  // Render scenes — each scene now returns { brollHtml, sceneHtml }. B-roll
+  // <video> elements MUST be direct children of #stage (not nested inside the
+  // scene's `<div class="scene clip" data-start>` wrapper) — otherwise
+  // HyperFrames lints `video_nested_in_timed_element` and the worker times
+  // out at frame-capture stage because the framework refuses to play the
+  // video and HTMLVideoElement never fires `loadedmetadata`.
+  const renderedScenes = timing.map(({ scene, start, duration }) => {
     const broll = sceneBroll[scene.id] ?? null;
     return renderScene(scene, start, duration, bgImageRelPath, tiktok, tiktokAvatar, broll);
-  }).join("\n");
+  });
+  const brollHtml = renderedScenes.map((r) => r.brollHtml).filter(Boolean).join("\n");
+  const sceneHtml = renderedScenes.map((r) => r.sceneHtml).join("\n");
 
   // Persistent shell — uses tiktok handle in footer
   const shellHtml = renderShell(script.metadata, tiktok);
@@ -134,6 +141,7 @@ export function composeHtml(args: ComposeArgs): string {
     .replace("{{TITLE}}", escapeHtml(script.metadata.title))
     .replace(/\{\{TOTAL_DURATION\}\}/g, totalDuration.toFixed(2))
     .replace("{{SHELL}}", shellHtml)
+    .replace("{{BROLLS}}", brollHtml)
     .replace("{{SCENES}}", sceneHtml)
     .replace("{{HOST_OVERLAY}}", hostOverlayHtml)
     .replace(/\{\{THEME_KEY\}\}/g, themeKey)
@@ -225,7 +233,7 @@ function renderScene(
   tiktok: TiktokConfig,
   tiktokAvatarRelPath: string,
   brollRelPath: string | null,
-): string {
+): { brollHtml: string | null; sceneHtml: string } {
   const td = scene.templateData;
 
   let inner: string;
@@ -234,9 +242,10 @@ function renderScene(
   switch (td.template) {
     case "hook":
       // When b-roll is present for hook, skip the image/gradient bg —
-      // the <video> + .bg-overlay prepended below replaces it. The
-      // shimmer-sweep and headline still read because .bg-overlay
-      // applies the same dark gradient as the legacy `.overlay` element.
+      // the stage-level <video> + .bg-overlay (emitted separately, see
+      // brollHtml return) replaces it. The shimmer-sweep and headline
+      // still read because .bg-overlay applies the same dark gradient
+      // as the legacy `.overlay` element.
       inner = renderHookInner(td, bgImageRelPath, brollRelPath !== null);
       layoutName = "hook";
       break;
@@ -266,35 +275,54 @@ function renderScene(
     }
   }
 
-  // Prepend the b-roll <video> bg + overlay when available. The hook
-  // renderer skipped its own image/gradient when brollRelPath was set,
-  // so this is the sole bg for all scene types when b-roll exists.
+  // CRITICAL: HyperFrames refuses to play any <video data-start> nested
+  // inside an element that also has data-start (the scene `<div class="scene
+  // clip" data-start>`). Symptom: at the FrameCapture stage all workers fail
+  // with "video metadata not ready after 45000ms".
   //
-  // CRITICAL: HyperFrames runtime discovers <video> elements that carry
-  // `data-start` and drives their `.currentTime` from the timeline
-  // playhead — without data-start the video stays frozen at frame 0
-  // during deterministic frame capture. `loop` attribute lets HyperFrames
-  // wrap the playhead when the b-roll is shorter than the scene.
-  if (brollRelPath) {
-    const brollHtml = brollVideoTag(brollRelPath, start, duration);
-    inner = `${brollHtml}\n${inner}`;
-  }
-
-  return buildScene(scene, start, duration, layoutName, inner);
+  // Emit the b-roll <video> and its dark overlay at STAGE LEVEL (returned as
+  // `brollHtml`) so the framework can manage the clip's playhead directly.
+  // The scene wrapper retains data-start for the GSAP layout-card animations
+  // but no longer contains the video. CSS `.bg-broll { position:absolute;
+  // inset:0; }` keeps the video pinned to the stage just like before.
+  const brollHtml = brollRelPath
+    ? brollClipForStage(scene.id, brollRelPath, start, duration)
+    : null;
+  return {
+    brollHtml,
+    sceneHtml: buildScene(scene, start, duration, layoutName, inner),
+  };
 }
 
-/** Emit a <video> element that HyperFrames will time-sync to the timeline.
+/**
+ * Emit a stage-level b-roll <video> + matching bg-overlay <div>, both timed
+ * by `data-start`/`data-duration` so HyperFrames manages visibility.
  *
- * `preload="auto"` is correct here: HyperFrames PAUSES the timeline and seeks
- * per frame, then captures. With preload="metadata" each seek triggers
- * progressive download → more I/O total, NOT less. Auto loads the whole
- * file up front (small clips: ~2-8MB SD portrait) so seeks resolve from
- * decoded memory immediately. Measured: metadata → 7m23s for 28s render
- * vs auto → 5m9s. */
-function brollVideoTag(relPath: string, startSec: number, durationSec: number): string {
+ * - `id="broll-<sceneId>"` satisfies HyperFrames' "media_missing_id" lint
+ *   (the framework requires an id to discover and drive the element).
+ * - `class="clip"` opts the element in to HyperFrames' time-managed display
+ *   (visible only during the data-start..data-start+data-duration window).
+ * - `preload="auto"` is correct: HyperFrames PAUSES the timeline and seeks
+ *   per frame, then captures. With preload="metadata" each seek triggers
+ *   progressive download → more I/O total, NOT less. Auto loads the whole
+ *   file up front (~2-8MB SD portrait) so seeks resolve from decoded memory
+ *   immediately. Measured: metadata → 7m23s for 28s render vs auto → 5m9s.
+ */
+function brollClipForStage(
+  sceneId: string,
+  relPath: string,
+  startSec: number,
+  durationSec: number,
+): string {
   const start = startSec.toFixed(2);
   const dur = durationSec.toFixed(2);
-  return `<video class="bg bg-broll" data-start="${start}" data-duration="${dur}" data-volume="0" loop muted playsinline preload="auto" src="${escapeAttr(relPath)}"></video><div class="bg-overlay"></div>`;
+  // Sanitize sceneId for use in HTML id (already validated upstream but
+  // cheap defence-in-depth).
+  const safeId = sceneId.replace(/[^A-Za-z0-9_-]/g, "");
+  return [
+    `<video class="bg bg-broll clip" id="broll-${safeId}" data-start="${start}" data-duration="${dur}" data-volume="0" loop muted playsinline preload="auto" src="${escapeAttr(relPath)}"></video>`,
+    `<div class="bg-overlay clip" data-start="${start}" data-duration="${dur}"></div>`,
+  ].join("");
 }
 
 // ── HOOK SCENE ─────────────────────────────────────────────────────────────

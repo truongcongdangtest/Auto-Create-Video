@@ -213,6 +213,38 @@ describe("composeHtml", () => {
     expect(html).toContain('avatars/user-uploaded.png');
   });
 
+  it("b-roll <video> emits at stage level, not nested inside scene div", () => {
+    // Regression: HyperFrames refuses to play <video data-start> nested
+    // inside <div class="scene clip" data-start>. The framework throws
+    // "video_nested_in_timed_element" lint and the worker times out at
+    // FrameCapture with "video metadata not ready after 45000ms". Verify
+    // the broll tag lives OUTSIDE the scene wrapper.
+    const script = JSON.parse(readFileSync("tests/fixtures/sample-script-with-image.json", "utf8")) as Script;
+    const sceneAudio = script.scenes.map((s) => ({ id: s.id, durationSec: 5 }));
+    const html = composeHtml({
+      script,
+      sceneAudio,
+      gapSec: 0.3,
+      bgImageRelPath: null,
+      audioRelPath: "voice.mp3",
+      sceneBroll: { hook: "broll/scene-hook.mp4" },
+    });
+    // Find both substrings + their positions.
+    const videoIdx = html.indexOf('id="broll-hook"');
+    const sceneOpenIdx = html.indexOf('id="scene-hook"');
+    expect(videoIdx).toBeGreaterThan(0);
+    expect(sceneOpenIdx).toBeGreaterThan(0);
+    // Video tag must appear BEFORE the scene wrapper in the rendered HTML.
+    expect(videoIdx).toBeLessThan(sceneOpenIdx);
+    // The scene div MUST NOT contain the broll video. Slice from scene open
+    // to scene close and confirm no `<video` is inside.
+    const sceneCloseIdx = html.indexOf("</div>", sceneOpenIdx);
+    const sceneSlice = html.slice(sceneOpenIdx, sceneCloseIdx + 6);
+    expect(sceneSlice).not.toContain("<video");
+    // Video must carry the `clip` class so HyperFrames time-gates it.
+    expect(html).toContain('class="bg bg-broll clip"');
+  });
+
   it("custom character rejects path-traversal", () => {
     const script = JSON.parse(readFileSync("tests/fixtures/sample-script-with-image.json", "utf8")) as Script;
     const sceneAudio = script.scenes.map((s) => ({ id: s.id, durationSec: 5 }));
