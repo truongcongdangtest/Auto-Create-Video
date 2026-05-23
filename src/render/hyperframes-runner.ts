@@ -53,8 +53,29 @@ export async function renderWithHyperframes(args: RenderArgs): Promise<void> {
   const useGpu =
     process.env.VIETVIRAL_USE_GPU === "1" && process.env.VIETVIRAL_NO_GPU !== "1";
 
+  // HDR mode: hyperframes auto-detects HDR from source media (Pexels broll often
+  // carries HLG/BT.2020 metadata). When auto-detected, it switches to libx265
+  // CPU encode (10-bit BT.2020), silently bypassing `--gpu` because NVENC HEVC
+  // 10-bit has tighter codec param requirements that hyperframes doesn't wire.
+  // The visible symptom: CPU at 95%, GPU at idle, even with `--gpu` passed.
+  //
+  // We default to `--sdr` which forces standard h264 8-bit BT.709 output,
+  // which IS GPU-accelerated by NVENC. TikTok/Reels/Shorts deliver SDR anyway
+  // — HDR is overkill for 60-second short-form content and costs ~5x render
+  // time vs SDR+NVENC on this same machine.
+  //
+  // Power users who genuinely need HDR can opt in via VIETVIRAL_HDR_MODE:
+  //   force-sdr (default)  → --sdr, NVENC active
+  //   auto                 → no flag, hyperframes detects from sources (legacy behaviour, slow)
+  //   force-hdr            → --hdr, libx265 CPU, 10-bit HLG
+  const hdrModeOverride = (process.env.VIETVIRAL_HDR_MODE ?? "").toLowerCase();
+  const hdrFlag =
+    hdrModeOverride === "force-hdr" ? ["--hdr"]
+      : hdrModeOverride === "auto" ? []
+        : ["--sdr"];
+
   log.info(
-    `hyperframes args: quality=${quality} fps=${fps}${workers ? ` workers=${workers}` : ""} gpu=${useGpu ? "yes" : "no"}`,
+    `hyperframes args: quality=${quality} fps=${fps}${workers ? ` workers=${workers}` : ""} gpu=${useGpu ? "yes" : "no"} hdr=${hdrFlag[0] ?? "auto"}`,
   );
 
   const cmdLine = [
@@ -69,6 +90,7 @@ export async function renderWithHyperframes(args: RenderArgs): Promise<void> {
     "--quality",
     quality,
     ...(workers ? ["--workers", String(workers)] : []),
+    ...hdrFlag,
     ...(useGpu ? ["--gpu"] : []),
   ].join(" ");
 
