@@ -18,13 +18,54 @@
  * 10-scene render hits ~10 searches (cold) → well under the limit.
  */
 
-import { spawn } from "node:child_process";
-import { existsSync, mkdirSync } from "node:fs";
+import { spawn, spawnSync } from "node:child_process";
+import { existsSync, mkdirSync, unlinkSync } from "node:fs";
 import { writeFile, copyFile, stat } from "node:fs/promises";
 import { homedir } from "node:os";
 import { basename, dirname, join } from "node:path";
 import { createHash } from "node:crypto";
 import { log } from "../utils/logger.js";
+
+/**
+ * Quick ffprobe sanity check — verifies the file contains a decodable video
+ * stream with a non-zero duration. Catches Pexels downloads that were
+ * truncated mid-stream (moov atom missing, NAL unit corruption, etc.) and
+ * the resulting cached file would otherwise be re-used forever, failing
+ * every subsequent render with the same opaque "ffprobe exit 1" inside
+ * hyperframes. ~50-100ms cost per call, fine for the once-per-clip
+ * download/re-encode pipeline.
+ */
+function isValidVideoFile(path: string): boolean {
+  if (!existsSync(path)) return false;
+  const r = spawnSync(
+    "ffprobe",
+    [
+      "-v", "error",
+      "-select_streams", "v:0",
+      "-show_entries", "stream=codec_name",
+      "-show_entries", "format=duration",
+      "-of", "default=nokey=1:noprint_wrappers=1",
+      path,
+    ],
+    { timeout: 5000, encoding: "utf8", windowsHide: true },
+  );
+  if (r.status !== 0) return false;
+  const lines = (r.stdout ?? "").trim().split(/\s+/);
+  if (lines.length < 2) return false;
+  const codec = lines[0];
+  const dur = parseFloat(lines[1]);
+  // Empty / placeholder / silent-stream files fail one of these guards.
+  return codec.length > 0 && codec !== "N/A" && Number.isFinite(dur) && dur > 0.1;
+}
+
+/** Best-effort delete; never throws. */
+function safeUnlink(path: string): void {
+  try {
+    if (existsSync(path)) unlinkSync(path);
+  } catch {
+    /* ignore */
+  }
+}
 
 const PEXELS_ENDPOINT = "https://api.pexels.com/videos/search";
 const PEXELS_TIMEOUT_MS = 15_000;
@@ -178,7 +219,15 @@ async function searchOne(
   }
 }
 
-/** Download a single video file to `outPath`. Returns true on success. */
+/** Download a single video file to `outPath`. Returns true on success.
+ *
+ * Validates the resulting file with ffprobe before signalling success — a
+ * truncated Pexels download (network hiccup, server timeout, content-length
+ * mismatch) writes a partial MP4 with no `moov` atom that LOOKS fine to
+ * `existsSync` and `stat.size > 1024` but causes hyperframes' Chromium
+ * ffprobe to fail later inside the render pipeline with an opaque exit 1.
+ * Failing fast here lets the caller retry instead of poisoning the cache
+ * forever. */
 async function downloadVideo(url: string, outPath: string): Promise<boolean> {
   const controller = new AbortController();
   const t = setTimeout(() => controller.abort(), DOWNLOAD_TIMEOUT_MS);
@@ -200,6 +249,12 @@ async function downloadVideo(url: string, outPath: string): Promise<boolean> {
     }
     mkdirSync(dirname(outPath), { recursive: true });
     await writeFile(outPath, buf);
+    // Validate the just-written file before reporting success — see fn docstring.
+    if (!isValidVideoFile(outPath)) {
+      log.warn(`[broll-fetcher] downloaded file failed ffprobe validation: ${outPath}`);
+      safeUnlink(outPath);
+      return false;
+    }
     return true;
   } catch (e: any) {
     log.warn(`[broll-fetcher] download error: ${e?.message ?? e}`);
@@ -273,17 +328,27 @@ async function reencodeForFastSeek(input: string, output: string): Promise<boole
       resolve(false);
     });
     proc.on("close", (code) => {
-      if (code === 0) {
-        log.info(
-          `  broll re-encoded ${basename(input)} → keyframes/30f (${useGpu ? "NVENC GPU" : "CPU x264"})`,
-        );
-        resolve(true);
-      } else {
+      if (code !== 0) {
         log.warn(
           `[broll-fetcher] ffmpeg exit ${code} re-encoding ${basename(input)}: ${stderr.slice(0, 200).trim()}`,
         );
+        safeUnlink(output);
         resolve(false);
+        return;
       }
+      // Re-encode reported success but the output file may still be
+      // unplayable (rare ffmpeg buffer-flush issues). Validate before
+      // signalling success so we never cache a broken kf30 clip.
+      if (!isValidVideoFile(output)) {
+        log.warn(`[broll-fetcher] re-encoded file failed ffprobe validation: ${output}`);
+        safeUnlink(output);
+        resolve(false);
+        return;
+      }
+      log.info(
+        `  broll re-encoded ${basename(input)} → keyframes/30f (${useGpu ? "NVENC GPU" : "CPU x264"})`,
+      );
+      resolve(true);
     });
   });
 }
@@ -319,24 +384,42 @@ export async function fetchBroll(
   if (existsSync(keyedPath)) {
     try {
       const s = await stat(keyedPath);
-      if (s.size > 1024) {
+      if (s.size > 1024 && isValidVideoFile(keyedPath)) {
         mkdirSync(dirname(projectAbsOutPath), { recursive: true });
         await copyFile(keyedPath, projectAbsOutPath);
         log.info(`  broll cache HIT "${query}" → ${keyedPath} (${(s.size / 1e6).toFixed(1)}MB, kf30)`);
         return { relPath: relFromOutDir(projectAbsOutPath), absPath: projectAbsOutPath };
       }
+      // Cached file is corrupt — purge and fall through to re-fetch so we
+      // never reuse the broken artefact forever.
+      log.warn(`[broll-fetcher] cached kf30 clip is corrupt, purging: ${keyedPath}`);
+      safeUnlink(keyedPath);
     } catch {
       // fall through to (re-)fetch
     }
   }
 
-  // ── Promote a legacy raw cache file → re-encode in place, then continue
+  // ── Promote a legacy raw cache file → re-encode in place, then continue.
+  //   Validate the legacy file first: pre-fix downloads stored straight from
+  //   the network without ffprobe verification, so some hits are corrupt.
   if (existsSync(legacyPath) && !existsSync(rawPath)) {
-    try {
-      await copyFile(legacyPath, rawPath);
-    } catch {
-      // best-effort; if copy fails we just re-download
+    if (isValidVideoFile(legacyPath)) {
+      try {
+        await copyFile(legacyPath, rawPath);
+      } catch {
+        // best-effort; if copy fails we just re-download
+      }
+    } else {
+      log.warn(`[broll-fetcher] legacy cached clip is corrupt, purging: ${legacyPath}`);
+      safeUnlink(legacyPath);
     }
+  }
+
+  // ── Validate any raw clip already on disk — purge if corrupt so the
+  //   re-encode pass below doesn't inherit a broken input.
+  if (existsSync(rawPath) && !isValidVideoFile(rawPath)) {
+    log.warn(`[broll-fetcher] cached raw clip is corrupt, purging: ${rawPath}`);
+    safeUnlink(rawPath);
   }
 
   // ── Download raw clip if we don't already have one
