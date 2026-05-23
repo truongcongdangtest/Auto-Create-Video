@@ -98,6 +98,33 @@ const Scene = z.object({
   brollKeywords: z.array(z.string().min(1).max(40)).max(5).optional(),
 });
 
+// ── Style block (optional) — controls visual theme, output dimensions,
+//    and host character overlay. Sent by the caller (VietViral wizard);
+//    everything is best-effort + whitelisted in the composer so unknown
+//    values fall back to safe defaults rather than crashing the render.
+const ThemeKey = z.enum([
+  "tech-blue",
+  "growth-green",
+  "finance-gold",
+  "creator-purple",
+  "news-mono",
+  "playful-orange",
+]);
+
+const Aspect = z.enum(["9:16", "16:9", "1:1"]);
+
+const CharacterId = z.enum(["none", "alice", "minh", "linh", "huy", "mai", "neutral", "custom"]);
+
+const StyleBlock = z.object({
+  themeKey: ThemeKey.optional(),
+  aspect: Aspect.optional(),
+  character: CharacterId.optional(),
+  /** Relative path (inside output dir) to a custom 256×256 PNG/JPG when character==="custom". */
+  customCharacterAsset: z.string().optional(),
+});
+
+export type StyleBlockType = z.infer<typeof StyleBlock>;
+
 // ── Root schema ────────────────────────────────────────────────────────────
 
 export const ScriptSchema = z.object({
@@ -116,6 +143,10 @@ export const ScriptSchema = z.object({
     voiceId: z.string().min(1),
     speed: z.number().min(0.5).max(2.0),
   }),
+  /** Optional style block — theme, output dims, host character. */
+  style: StyleBlock.optional(),
+  /** Gemini-recommended theme key (informational only; engine reads style.themeKey). */
+  recommended_theme: ThemeKey.optional(),
   scenes: z
     .array(Scene)
     // Original cap was 8 (designed for 60-90s TikTok shorts). VietViral

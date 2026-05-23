@@ -6,6 +6,7 @@ import type { TiktokConfig } from "../config.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TPL_DIR = join(__dirname, "templates");
+const BLOCKS_DIR = join(__dirname, "blocks");
 
 // Grain overlay HTML inline (from installed component)
 const GRAIN_OVERLAY_HTML = `<div id="grain-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100;"><div class="grain-texture"></div></div>`;
@@ -16,6 +17,39 @@ const DEFAULT_TIKTOK: TiktokConfig = {
   handle: "@congnghe24h",
   followers: "1.2M followers",
 };
+
+// ── Style whitelists + ratio resolution ────────────────────────────────────
+export const VALID_THEMES = [
+  "tech-blue", "growth-green", "finance-gold",
+  "creator-purple", "news-mono", "playful-orange",
+] as const;
+export type ThemeKey = (typeof VALID_THEMES)[number];
+
+export const VALID_ASPECTS = ["9:16", "16:9", "1:1"] as const;
+export type Aspect = (typeof VALID_ASPECTS)[number];
+
+export const VALID_CHARACTERS = [
+  "none", "alice", "minh", "linh", "huy", "mai", "neutral", "custom",
+] as const;
+export type CharacterId = (typeof VALID_CHARACTERS)[number];
+
+export interface AspectDims { w: number; h: number; scale: number }
+
+export const ASPECT_DIMS: Record<Aspect, AspectDims> = {
+  "9:16": { w: 1080, h: 1920, scale: 1.0 },
+  "16:9": { w: 1920, h: 1080, scale: 0.75 },
+  "1:1":  { w: 1080, h: 1080, scale: 0.88 },
+};
+
+function pickTheme(v: string | undefined): ThemeKey {
+  return (VALID_THEMES as readonly string[]).includes(v ?? "") ? (v as ThemeKey) : "news-mono";
+}
+function pickAspect(v: string | undefined): Aspect {
+  return (VALID_ASPECTS as readonly string[]).includes(v ?? "") ? (v as Aspect) : "9:16";
+}
+function pickCharacter(v: string | undefined): CharacterId {
+  return (VALID_CHARACTERS as readonly string[]).includes(v ?? "") ? (v as CharacterId) : "none";
+}
 
 export interface SceneAudio {
   id: string;
@@ -40,6 +74,18 @@ export interface ComposeArgs {
    * static-image/gradient bg with an autoplay-muted-loop <video> element.
    */
   sceneBroll?: Record<string, string | null>;
+  /** Visual theme key. Falls back to "news-mono". */
+  themeKey?: string;
+  /** Output aspect ratio. Falls back to "9:16" (1080×1920). */
+  aspect?: string;
+  /** Host character preset id. "none" or undefined hides the overlay. */
+  character?: string;
+  /**
+   * Relative path (inside output dir) to a custom face PNG/SVG for
+   * character==="custom". Composer assumes the file is already copied
+   * into the workdir by the pipeline. Falls back to neutral preset.
+   */
+  customCharacterAsset?: string;
 }
 
 export function composeHtml(args: ComposeArgs): string {
@@ -48,6 +94,12 @@ export function composeHtml(args: ComposeArgs): string {
   const tiktokAvatar = args.tiktokAvatarRelPath ?? "tiktok-avatar.jpg";
   const outroHoldSec = args.outroHoldSec ?? 3;
   const sceneBroll = args.sceneBroll ?? {};
+
+  // ── Resolve style ──────────────────────────────────────────────────────
+  const themeKey = pickTheme(args.themeKey ?? script.style?.themeKey);
+  const aspect = pickAspect(args.aspect ?? script.style?.aspect);
+  const character = pickCharacter(args.character ?? script.style?.character);
+  const { w: stageW, h: stageH, scale } = ASPECT_DIMS[aspect];
 
   // Compute timing per scene. Outro scene gets extra HOLD seconds so the
   // TikTok follow card stays visible after the voice ends.
@@ -74,14 +126,58 @@ export function composeHtml(args: ComposeArgs): string {
 
   const animJs = readFileSync(join(TPL_DIR, "animations.js"), "utf8");
 
+  // ── Host overlay ─────────────────────────────────────────────────────
+  const hostOverlayHtml = renderHostOverlay(character, args.customCharacterAsset);
+
   const tpl = readFileSync(join(TPL_DIR, "base.html.tmpl"), "utf8");
   return tpl
     .replace("{{TITLE}}", escapeHtml(script.metadata.title))
     .replace(/\{\{TOTAL_DURATION\}\}/g, totalDuration.toFixed(2))
     .replace("{{SHELL}}", shellHtml)
     .replace("{{SCENES}}", sceneHtml)
+    .replace("{{HOST_OVERLAY}}", hostOverlayHtml)
+    .replace(/\{\{THEME_KEY\}\}/g, themeKey)
+    .replace(/\{\{ASPECT\}\}/g, aspect)
+    .replace(/\{\{CHARACTER_ID\}\}/g, character)
+    .replace(/\{\{STAGE_W\}\}/g, String(stageW))
+    .replace(/\{\{STAGE_H\}\}/g, String(stageH))
+    .replace(/\{\{SCALE\}\}/g, String(scale))
     .replace(/src="voice\.mp3"/g, `src="${audioRelPath}"`)
     .replace('<script src="animations.js"></script>', `<script>\n${animJs}\n</script>`);
+}
+
+// ── HOST OVERLAY ───────────────────────────────────────────────────────────
+function renderHostOverlay(character: CharacterId, customAsset?: string): string {
+  if (character === "none") return "";
+
+  // For 'custom': caller copied user file into output dir; we still reference
+  // the bundled mouth overlay (neutral) because we don't know where the user's
+  // mouth pixels are. For preset characters we reference avatars/<id>.svg
+  // shipped alongside the rendered output (pipeline copies these in).
+  let faceSrc: string;
+  let mouthSrc: string;
+  if (character === "custom") {
+    // Strict relative-path whitelist: segments of `[A-Za-z0-9._-]+` separated
+    // by exactly one `/`. The leading `(?!.*\.\.)` lookahead rejects any
+    // `..` substring outright, blocking path traversal at the pattern
+    // level. No leading `/`, no backslash, no UNC, no absolute paths.
+    const SAFE_REL_PATH = /^(?!.*\.\.)[A-Za-z0-9._-]+(?:\/[A-Za-z0-9._-]+)*$/;
+    const safe =
+      typeof customAsset === "string" &&
+      customAsset.length > 0 &&
+      customAsset.length <= 200 &&
+      SAFE_REL_PATH.test(customAsset);
+    faceSrc = safe ? customAsset! : "avatars/neutral.svg";
+    mouthSrc = "avatars/neutral-mouth.svg";
+  } else {
+    faceSrc = `avatars/${character}.svg`;
+    mouthSrc = `avatars/${character}-mouth.svg`;
+  }
+
+  const blockTpl = readFileSync(join(BLOCKS_DIR, "host-overlay.html"), "utf8");
+  return blockTpl
+    .replace("{{HOST_FACE_SRC}}", escapeAttr(faceSrc))
+    .replace("{{HOST_MOUTH_SRC}}", escapeAttr(mouthSrc));
 }
 
 // ── PERSISTENT SHELL ───────────────────────────────────────────────────────

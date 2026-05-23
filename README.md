@@ -118,7 +118,7 @@ Either way, after ~3–5 minutes you'll have `output/<slug>/video.mp4` — a 108
 <tr>
 <td width="33%" align="center">
 <h3>🎬 HeyGen-Quality Look</h3>
-<sub>Studio shell + grain texture + GSAP animations + 6 theme palettes (tech-blue, growth-green, finance-gold, warning-red, creator-purple, news-mono)</sub>
+<sub>Studio shell + grain texture + GSAP animations + 6 theme palettes (tech-blue, growth-green, finance-gold, creator-purple, news-mono, playful-orange) + theme auto-match via Gemini</sub>
 </td>
 <td width="33%" align="center">
 <h3>🔊 Auto SFX Mixing</h3>
@@ -131,8 +131,8 @@ Either way, after ~3–5 minutes you'll have `output/<slug>/video.mp4` — a 108
 </tr>
 <tr>
 <td width="33%" align="center">
-<h3>📱 9:16 Native</h3>
-<sub>1080×1920 @ 30fps, ready for TikTok / Shorts / Reels</sub>
+<h3>📱 Multi-Format Render</h3>
+<sub>9:16 (1080×1920) · 16:9 (1920×1080) · 1:1 (1080×1080) — set via <code>style.aspect</code> or <code>ACV_ASPECT</code></sub>
 </td>
 <td width="33%" align="center">
 <h3>♻️ Idempotent TTS</h3>
@@ -385,16 +385,51 @@ output/<slug>-<timestamp>/
 
 ## 🎨 Visual System
 
-Every video has a **persistent shell** throughout (header brand icon + channel + tag, footer TikTok handle, grain texture, gradient background) plus 4–18 scenes auto-picked by Claude. The base palette is **cream editorial (light)** for consistent brand identity; the `theme` field on `script.metadata` switches the accent colour:
+Every video has a **persistent shell** throughout (header brand icon + channel + tag, footer TikTok handle, grain texture, gradient background) plus 4–18 scenes auto-picked by Claude. The base palette is **cream editorial (light)** for consistent brand identity; `metadata.style.themeKey` switches the accent colour.
 
-| Theme | When to use |
+### Theme auto-match (Phase 11)
+
+Gemini analyzes the article and returns `recommended_theme`; the pipeline uses it as the default unless overridden by an env var or explicit script field. Set `ACV_THEME_KEY` in `.env.local` to force a theme in dev.
+
+| `style.themeKey` | When to use |
 |---|---|
 | `tech-blue` *(default)* | AI, code, dev tools, software |
 | `growth-green` | Marketing, SaaS, customer growth |
 | `finance-gold` | Money, pricing, ROI, fundraising |
-| `warning-red` | Risk, controversy, failure stories |
 | `creator-purple` | Founder stories, design, art, indie |
-| `news-mono` | Serious news, journalism, reports |
+| `news-mono` | Serious journalism, reports |
+| `playful-orange` | Entertainment, lifestyle, viral trends |
+
+`warning-red` is kept as backward-compat alias → maps to `news-mono` at render.
+
+### Multi-format render (Phase 11)
+
+Set `style.aspect` in `script.metadata.style` (or env `ACV_ASPECT`) to switch output dimensions:
+
+| `style.aspect` | Resolution | Typography `--scale` |
+|---|---|---|
+| `9:16` *(default)* | 1080 × 1920 — TikTok / Shorts / Reels | 1.0 |
+| `16:9` | 1920 × 1080 — YouTube standard | 0.75 |
+| `1:1` | 1080 × 1080 — Instagram square | 0.88 |
+
+CSS variables `--stage-w`, `--stage-h`, `--scale` are injected per render; per-aspect tweaks use `body[data-aspect="..."]` selectors. Do not hardcode pixel dimensions in scene data.
+
+### Host character v1 (Phase 11)
+
+Set `style.character` (or env `ACV_CHARACTER`) to overlay a talking-head avatar:
+
+| `style.character` | Description |
+|---|---|
+| `none` *(default)* | No avatar |
+| `alice` | Female, professional |
+| `minh` | Male, casual/tech |
+| `linh` | Female, friendly |
+| `huy` | Male, energetic |
+| `mai` | Female, warm |
+| `neutral` | Gender-neutral |
+| `custom` | Provide `style.customCharacterAsset` (relative path, sanitized) |
+
+Bundled SVGs: `assets/avatars/<id>.svg` + `assets/avatars/<id>-mouth.svg` (mouth layer for lip-sync).
 
 ### 12 templates (auto-picked by content)
 

@@ -1,0 +1,11 @@
+<!-- HOST CHARACTER OVERLAY (Phase 03)
+     Bottom-left corner avatar. Mouth opacity is driven by audio RMS from
+     <audio id="voice">. Hyperframes captures frame-by-frame and only the
+     DOM/CSS state at each timestamp matters, so AudioContext is wired
+     only when present (graceful fallback to a fixed 4Hz timer when the
+     headless Chromium denies AudioContext creation).
+-->
+<div class="host-overlay" id="host-overlay" aria-hidden="true">
+  <img class="face" src="{{HOST_FACE_SRC}}" alt="">
+  <img class="mouth-open" id="host-mouth" src="{{HOST_MOUTH_SRC}}" alt="">
+</div>

@@ -46,6 +46,79 @@ Single argument: a news article URL (starts with `http://` or `https://`) OR a p
 - outputDir = `output/<slug>-<timestamp>/`
 - Use Bash: `mkdir -p <outputDir>`
 
+### Step 3b: Resolve style inputs (Phase 11 — theme/aspect/character)
+
+Before writing `script.json`, resolve the three style axes from the following priority order (highest wins):
+
+**1. Env overrides (dev only):**
+- `ACV_THEME_KEY` → `style.themeKey`
+- `ACV_ASPECT` → `style.aspect`
+- `ACV_CHARACTER` → `style.character`
+
+**2. Explicit fields in the script JSON the user passed (if any).**
+
+**3. `recommended_theme` from Gemini** — a single theme key Gemini may include in the article analysis response. Claude should pass this through to `script.metadata.recommended_theme` so the pipeline can log it, but the final render uses `style.themeKey`.
+
+**4. Defaults:** `themeKey = tech-blue`, `aspect = 9:16`, `character = none`.
+
+#### `style.themeKey` — accent palette
+
+| Key | Use when |
+|---|---|
+| `tech-blue` | AI, code, dev tools, software (default) |
+| `growth-green` | Marketing, SaaS, customer growth |
+| `finance-gold` | Money, pricing, ROI, fundraising |
+| `creator-purple` | Founder stories, design, art, indie |
+| `news-mono` | Serious journalism, reports, disasters |
+| `playful-orange` | Entertainment, lifestyle, viral trends |
+
+`warning-red` is an alias kept for backward compat; maps to `news-mono` at render time.
+
+#### `style.aspect` — output dimensions
+
+| Value | Resolution | `--scale` multiplier |
+|---|---|---|
+| `9:16` | 1080 × 1920 (default, TikTok/Shorts) | 1.0 |
+| `16:9` | 1920 × 1080 (YouTube standard) | 0.75 |
+| `1:1` | 1080 × 1080 (Instagram square) | 0.88 |
+
+The renderer injects `--stage-w`, `--stage-h`, `--scale` CSS vars and applies per-aspect tweaks via `body[data-aspect="9:16"]` / `body[data-aspect="16:9"]` / `body[data-aspect="1:1"]` selectors in the template stylesheet. **Do not hardcode pixel dimensions in scene data** — use `--stage-w` / `--stage-h` in any custom CSS.
+
+#### `style.character` — host avatar
+
+| Value | Description |
+|---|---|
+| `none` | No avatar (default) |
+| `alice` | Female, professional |
+| `minh` | Male, casual/tech |
+| `linh` | Female, friendly |
+| `huy` | Male, energetic |
+| `mai` | Female, warm |
+| `neutral` | Gender-neutral |
+| `custom` | Use `style.customCharacterAsset` path |
+
+Bundled SVG avatars are at `assets/avatars/<id>.svg` + `assets/avatars/<id>-mouth.svg` (mouth layer for lip-sync). When `character = custom`, set `style.customCharacterAsset` to a relative path (e.g. `assets/avatars/my-brand.svg`); the pipeline sanitizes the path (no `..` traversal).
+
+**In `script.json`**, emit the resolved values under `metadata.style`:
+
+```json
+{
+  "metadata": {
+    "title": "...",
+    "source": { ... },
+    "channel": "Công nghệ 24h",
+    "recommended_theme": "finance-gold",   ← from Gemini (log only)
+    "style": {
+      "themeKey": "finance-gold",
+      "aspect": "9:16",
+      "character": "none"
+    }
+  }
+}
+```
+
+---
+
 ### Step 4: Generate script.json
 
 Following the schema in `docs/superpowers/specs/2026-04-29-auto-news-video-design.md` Section 4. Key rules:

@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1080, height=1920">
+  <meta name="viewport" content="width={{STAGE_W}}, height={{STAGE_H}}">
   <title>{{TITLE}}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,11 +10,12 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-theme="{{THEME_KEY}}" data-aspect="{{ASPECT}}" data-character="{{CHARACTER_ID}}"
+      style="--stage-w:{{STAGE_W}}px; --stage-h:{{STAGE_H}}px; --scale:{{SCALE}};">
   <div id="stage"
        data-composition-id="news-video"
-       data-width="1080"
-       data-height="1920"
+       data-width="{{STAGE_W}}"
+       data-height="{{STAGE_H}}"
        data-start="0"
        data-duration="{{TOTAL_DURATION}}">
 
@@ -28,6 +29,8 @@
            src="voice.mp3"></audio>
 
     {{SCENES}}
+
+    {{HOST_OVERLAY}}
   </div>
   <script src="animations.js"></script>
 </body>

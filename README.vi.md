@@ -444,16 +444,51 @@ output/<slug>-<timestamp>/
 
 ## 🎨 Visual System
 
-Mỗi video gồm **persistent shell** xuyên suốt (header brand icon + tên channel + tag, footer handle TikTok, grain texture, gradient background) cộng với 4–18 scene Claude tự pick theo nội dung. Base palette luôn là **cream editorial (light)** để giữ brand identity nhất quán; field `theme` trên `script.metadata` đổi accent color:
+Mỗi video gồm **persistent shell** xuyên suốt (header brand icon + tên channel + tag, footer handle TikTok, grain texture, gradient background) cộng với 4–18 scene Claude tự pick theo nội dung. Base palette luôn là **cream editorial (light)** để giữ brand identity nhất quán; `metadata.style.themeKey` đổi accent color.
 
-| Theme | Khi nào dùng |
+### Theme auto-match (Phase 11)
+
+Gemini phân tích bài báo và trả về `recommended_theme`; pipeline dùng làm default trừ khi bị ghi đè bởi env var hoặc field script. Set `ACV_THEME_KEY` trong `.env.local` để cố định theme lúc dev.
+
+| `style.themeKey` | Khi nào dùng |
 |---|---|
 | `tech-blue` *(default)* | AI, code, dev tools, software |
 | `growth-green` | Marketing, SaaS, customer growth |
 | `finance-gold` | Money, pricing, ROI, fundraising |
-| `warning-red` | Risk, controversy, failure stories |
 | `creator-purple` | Founder stories, design, art, indie |
-| `news-mono` | Serious news, journalism, reports |
+| `news-mono` | Báo chí nghiêm túc, reports |
+| `playful-orange` | Giải trí, lifestyle, viral trends |
+
+`warning-red` giữ lại để tương thích ngược → map sang `news-mono` khi render.
+
+### Multi-format render (Phase 11)
+
+Set `style.aspect` trong `script.metadata.style` (hoặc env `ACV_ASPECT`) để đổi kích thước output:
+
+| `style.aspect` | Độ phân giải | Typography `--scale` |
+|---|---|---|
+| `9:16` *(default)* | 1080 × 1920 — TikTok / Shorts / Reels | 1.0 |
+| `16:9` | 1920 × 1080 — YouTube standard | 0.75 |
+| `1:1` | 1080 × 1080 — Instagram square | 0.88 |
+
+CSS vars `--stage-w`, `--stage-h`, `--scale` được inject mỗi lần render; per-aspect tweaks dùng selector `body[data-aspect="..."]`. Không hardcode pixel trong scene data.
+
+### Host character v1 (Phase 11)
+
+Set `style.character` (hoặc env `ACV_CHARACTER`) để overlay avatar nói chuyện:
+
+| `style.character` | Mô tả |
+|---|---|
+| `none` *(default)* | Không có avatar |
+| `alice` | Nữ, chuyên nghiệp |
+| `minh` | Nam, casual/tech |
+| `linh` | Nữ, thân thiện |
+| `huy` | Nam, năng động |
+| `mai` | Nữ, ấm áp |
+| `neutral` | Trung tính |
+| `custom` | Cung cấp `style.customCharacterAsset` (đường dẫn tương đối, đã sanitize) |
+
+SVG bundled: `assets/avatars/<id>.svg` + `assets/avatars/<id>-mouth.svg` (layer miệng cho lip-sync).
 
 ### 12 templates (Claude tự pick theo nội dung)
 

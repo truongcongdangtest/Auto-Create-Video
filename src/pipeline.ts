@@ -266,6 +266,45 @@ export async function runPipeline(scriptPath: string): Promise<void> {
     await copyFile(bundledAvatar, ttAvatarOut);
   }
 
+  // Resolve style block (script.style wins; env vars are dev override; defaults last)
+  const style = (script as any).style ?? {};
+  const themeKey =
+    process.env.ACV_THEME_KEY || style.themeKey || (script as any).recommended_theme || "news-mono";
+  const aspect = process.env.ACV_ASPECT || style.aspect || "9:16";
+  const character = process.env.ACV_CHARACTER || style.character || "none";
+  const customCharacterAsset = style.customCharacterAsset as string | undefined;
+
+  // Copy avatar SVGs into workdir so the rendered HTML can `<img src="avatars/<id>.svg">`
+  // when character !== 'none'. Bundled set lives at <repo>/assets/avatars/.
+  if (character !== "none") {
+    const avatarSrcDir = join(__dirname, "..", "assets", "avatars");
+    const avatarOutDir = join(outputDir, "avatars");
+    await mkdir(avatarOutDir, { recursive: true });
+    if (character !== "custom") {
+      // Whitelist before constructing paths — defence-in-depth.
+      const safeId = /^[a-z]+$/.test(character) ? character : "neutral";
+      for (const suffix of ["", "-mouth"]) {
+        const fname = `${safeId}${suffix}.svg`;
+        const from = join(avatarSrcDir, fname);
+        if (existsSync(from)) {
+          await copyFile(from, join(avatarOutDir, fname));
+        } else {
+          log.warn(`Avatar asset missing: ${fname} — host overlay may be broken`);
+        }
+      }
+    } else if (customCharacterAsset) {
+      // Custom face: pipeline expects the file to already be placed inside outputDir
+      // by the caller (engine.mjs validates + copies); we just reuse the neutral mouth.
+      const mouth = join(avatarSrcDir, "neutral-mouth.svg");
+      if (existsSync(mouth)) {
+        await copyFile(mouth, join(avatarOutDir, "neutral-mouth.svg"));
+      }
+    }
+    log.info(`  host overlay: character=${character}, aspect=${aspect}, theme=${themeKey}`);
+  } else {
+    log.info(`  host overlay: disabled (character=none)`);
+  }
+
   const html = composeHtml({
     script,
     sceneAudio: sceneAudio.map((a) => ({ id: a.id, durationSec: a.durationSec })),
@@ -276,6 +315,10 @@ export async function runPipeline(scriptPath: string): Promise<void> {
     tiktokAvatarRelPath: ttAvatarFile,
     outroHoldSec: OUTRO_HOLD_SEC,
     sceneBroll: sceneBrollMap,
+    themeKey,
+    aspect,
+    character,
+    customCharacterAsset,
   });
 
   // hyperframes expects: index.html (NOT composition.html), hyperframes.json, meta.json in DIR
