@@ -18,10 +18,11 @@
  * 10-scene render hits ~10 searches (cold) → well under the limit.
  */
 
+import { spawn } from "node:child_process";
 import { existsSync, mkdirSync } from "node:fs";
 import { writeFile, copyFile, stat } from "node:fs/promises";
 import { homedir } from "node:os";
-import { dirname, join } from "node:path";
+import { basename, dirname, join } from "node:path";
 import { createHash } from "node:crypto";
 import { log } from "../utils/logger.js";
 
@@ -209,11 +210,96 @@ async function downloadVideo(url: string, outPath: string): Promise<boolean> {
 }
 
 /**
+ * Re-encode a Pexels clip with dense keyframes (every 30 frames = 1s @ 30fps)
+ * so HyperFrames' Chromium can seek frame-by-frame cheaply. Without this the
+ * raw Pexels file has keyframes every ~3-5s; during Phase 7a rasterize each
+ * frame seek forces Chromium to re-decode from the previous keyframe (~90
+ * frames back on average), pinning CPU at 100% and pushing total render
+ * times to 20+ minutes for a 60s clip. With dense keyframes seek cost drops
+ * ~10x.
+ *
+ * Uses NVIDIA NVENC (`h264_nvenc`) when available — VietViral's sidecar
+ * engine probes the encoder at startup and exports `VIETVIRAL_USE_GPU=1`
+ * on success. Falls back to CPU `libx264 -preset veryfast` otherwise.
+ * Strips audio (Pexels b-roll plays muted anyway) to shave 5-15% bytes.
+ *
+ * Returns true on success, false otherwise (caller falls back to raw clip).
+ */
+async function reencodeForFastSeek(input: string, output: string): Promise<boolean> {
+  const useGpu =
+    process.env.VIETVIRAL_USE_GPU === "1" && process.env.VIETVIRAL_NO_GPU !== "1";
+
+  const args: string[] = [
+    "-y",
+    "-hide_banner",
+    "-loglevel", "error",
+    "-i", input,
+    "-an",                  // drop audio (b-roll renders muted)
+    "-pix_fmt", "yuv420p",  // Chromium-safe pixel format
+    "-g", "30",
+    "-keyint_min", "30",
+    "-movflags", "+faststart",
+  ];
+  if (useGpu) {
+    // NVENC: p5 = "slower"/quality preset; -rc vbr + bitrate target keeps
+    // file size reasonable. Bitrate budget tuned for 1080p SD-source clips;
+    // NVENC reaches ~12-18x realtime on a single Turing GPU (RTX 2080 class).
+    args.push(
+      "-c:v", "h264_nvenc",
+      "-preset", "p5",
+      "-tune", "hq",
+      "-rc", "vbr",
+      "-b:v", "3.5M",
+      "-maxrate", "5M",
+      "-bufsize", "7M",
+    );
+  } else {
+    // CPU fallback. `veryfast` + crf 24 stays well within disk budget while
+    // still running ~3-5x realtime on a modern desktop CPU.
+    args.push(
+      "-c:v", "libx264",
+      "-preset", "veryfast",
+      "-crf", "24",
+    );
+  }
+  args.push(output);
+
+  return new Promise<boolean>((resolve) => {
+    const proc = spawn("ffmpeg", args, { windowsHide: true });
+    let stderr = "";
+    proc.stderr?.on("data", (d) => (stderr += d.toString()));
+    proc.on("error", (err) => {
+      log.warn(`[broll-fetcher] ffmpeg spawn error: ${err.message}`);
+      resolve(false);
+    });
+    proc.on("close", (code) => {
+      if (code === 0) {
+        log.info(
+          `  broll re-encoded ${basename(input)} → keyframes/30f (${useGpu ? "NVENC GPU" : "CPU x264"})`,
+        );
+        resolve(true);
+      } else {
+        log.warn(
+          `[broll-fetcher] ffmpeg exit ${code} re-encoding ${basename(input)}: ${stderr.slice(0, 200).trim()}`,
+        );
+        resolve(false);
+      }
+    });
+  });
+}
+
+/**
  * Fetch (or read from cache) ONE b-roll clip for a given query.
  * Copies the cached/fetched clip into `projectRelOutPath` (absolute) and
  * returns the basename for embedding in HTML (e.g. "broll/scene-hook.mp4").
  *
  * Returns null on any failure — caller treats as "no b-roll, use fallback bg".
+ *
+ * Cache layout:
+ *   `<key>.kf30.mp4` — post-fix, dense-keyframe clip (preferred)
+ *   `<key>.raw.mp4`  — raw Pexels download (intermediate before re-encode)
+ *   `<key>.mp4`      — legacy pre-fix cache file; auto-promoted into the
+ *                       re-encode pipeline on next hit.
  */
 export async function fetchBroll(
   apiKey: string,
@@ -225,43 +311,65 @@ export async function fetchBroll(
 
   const key = cacheKey(query, opts);
   const cacheDir = brollCacheDir();
-  const cachePath = join(cacheDir, `${key}.mp4`);
+  const keyedPath = join(cacheDir, `${key}.kf30.mp4`);
+  const rawPath = join(cacheDir, `${key}.raw.mp4`);
+  const legacyPath = join(cacheDir, `${key}.mp4`);
 
-  // Cache hit
-  if (existsSync(cachePath)) {
+  // ── Fast path: re-encoded clip already cached
+  if (existsSync(keyedPath)) {
     try {
-      const s = await stat(cachePath);
+      const s = await stat(keyedPath);
       if (s.size > 1024) {
         mkdirSync(dirname(projectAbsOutPath), { recursive: true });
-        await copyFile(cachePath, projectAbsOutPath);
-        log.info(`  broll cache HIT "${query}" → ${cachePath} (${(s.size / 1e6).toFixed(1)}MB)`);
+        await copyFile(keyedPath, projectAbsOutPath);
+        log.info(`  broll cache HIT "${query}" → ${keyedPath} (${(s.size / 1e6).toFixed(1)}MB, kf30)`);
         return { relPath: relFromOutDir(projectAbsOutPath), absPath: projectAbsOutPath };
       }
     } catch {
-      // fall through to refetch
+      // fall through to (re-)fetch
     }
   }
 
-  const found = await searchOne(apiKey, query, opts);
-  if (!found) {
-    log.info(`  broll MISS "${query}" — no portrait video found on Pexels`);
-    return null;
+  // ── Promote a legacy raw cache file → re-encode in place, then continue
+  if (existsSync(legacyPath) && !existsSync(rawPath)) {
+    try {
+      await copyFile(legacyPath, rawPath);
+    } catch {
+      // best-effort; if copy fails we just re-download
+    }
   }
 
-  // Download to cache, then copy into project
-  const ok = await downloadVideo(found.file.link, cachePath);
-  if (!ok) return null;
+  // ── Download raw clip if we don't already have one
+  if (!existsSync(rawPath)) {
+    const found = await searchOne(apiKey, query, opts);
+    if (!found) {
+      log.info(`  broll MISS "${query}" — no portrait video found on Pexels`);
+      return null;
+    }
+    const ok = await downloadVideo(found.file.link, rawPath);
+    if (!ok) return null;
+    log.info(
+      `  broll FETCH "${query}" → id=${found.video.id} ${found.file.width}x${found.file.height} (${found.file.quality}, ${found.video.duration}s)`,
+    );
+  }
+
+  // ── Re-encode to dense-keyframe variant (the slow step, but cached forever)
+  const reencoded = await reencodeForFastSeek(rawPath, keyedPath);
+  const sourcePath = reencoded ? keyedPath : rawPath;
+
+  if (!reencoded) {
+    log.warn(
+      `[broll-fetcher] re-encode failed for "${query}" — using raw Pexels clip; Phase 7a rasterize will be slow.`,
+    );
+  }
 
   try {
     mkdirSync(dirname(projectAbsOutPath), { recursive: true });
-    await copyFile(cachePath, projectAbsOutPath);
+    await copyFile(sourcePath, projectAbsOutPath);
   } catch (e: any) {
     log.warn(`[broll-fetcher] copy to project failed: ${e?.message ?? e}`);
     return null;
   }
-  log.info(
-    `  broll FETCH "${query}" → id=${found.video.id} ${found.file.width}x${found.file.height} (${found.file.quality}, ${found.video.duration}s)`,
-  );
   return { relPath: relFromOutDir(projectAbsOutPath), absPath: projectAbsOutPath };
 }
 
