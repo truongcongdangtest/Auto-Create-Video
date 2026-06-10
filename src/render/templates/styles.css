@@ -222,32 +222,6 @@ html, body {
 .fic-5 { top: 32%; left: 31%; width: calc(110px * var(--scale)); height: calc(110px * var(--scale)); opacity: 0.04; animation: fic-drift 13s ease-in-out infinite alternate; animation-delay: -4s; }
 .fic-6 { top: 83%; left: 37%; animation: fic-drift 10.5s ease-in-out infinite alternate; animation-delay: -1s; }
 
-/* ── BOTTOM TICKER (scrolling marquee) ─────────────────────────────
-   Sequence is duplicated in markup; a linear translateX(-50%) loops it
-   seamlessly. Linear (not steps) → smooth per-frame sampling, no flicker. */
-.ticker {
-  position: absolute; left: 0; right: 0; bottom: 0;
-  height: calc(66px * var(--scale));
-  display: flex; align-items: center; overflow: hidden;
-  background: linear-gradient(180deg, rgba(10,10,12,0) 0%, rgba(10,10,12,0.92) 45%);
-  border-top: 1px solid rgba(var(--accent-rgb), 0.25);
-  z-index: 50;
-}
-.ticker-track {
-  display: inline-flex; align-items: center; white-space: nowrap;
-  will-change: transform;
-  animation: ticker-scroll 30s linear infinite;
-}
-@keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.ticker-item {
-  font-family: 'Inter', sans-serif; font-weight: 700;
-  font-size: calc(26px * var(--scale));
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--text-primary);
-  padding: 0 calc(22px * var(--scale));
-}
-.ticker-sep { color: var(--accent); font-size: calc(18px * var(--scale)); padding: 0 calc(4px * var(--scale)); }
-
 /* ── ANIMATED CAPTIONS (karaoke subtitle) ──────────────────────────
    One phrase visible at a time; animations.js pops each in/out across the
    scene's voice duration. cap-line owns its transform (GSAP), the visible

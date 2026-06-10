@@ -52,22 +52,6 @@ const FLOAT_ICONS_HTML =
   FLOAT_ICON_SVGS.map((svg, i) => `<span class="fic fic-${i}">${svg}</span>`).join("") +
   `</div>`;
 
-// Persistent bottom marquee — scrolling brand keywords. Sequence is duplicated
-// so a linear -50% translate loops seamlessly.
-function renderTicker(domain: string): string {
-  const items = [
-    "ANTIDETECT BROWSER",
-    "ĐA TÀI KHOẢN AN TOÀN",
-    "MỖI HỒ SƠ MỘT VÂN TAY",
-    "PROXY RIÊNG TỪNG NICK",
-    "CHỐNG TRÙNG FINGERPRINT",
-    domain.toUpperCase(),
-  ];
-  const seq = items
-    .map((t) => `<span class="ticker-item">${escapeHtml(t)}</span><span class="ticker-sep">◆</span>`)
-    .join("");
-  return `<div class="ticker"><div class="ticker-track">${seq}${seq}</div></div>`;
-}
 
 // Default TikTok config — EMPTY by design. An empty handle suppresses both the
 // footer "♪ @handle" pill AND the outro follow card, so brand videos ship
@@ -252,7 +236,6 @@ function renderHostOverlay(character: CharacterId, customAsset?: string): string
 // ── PERSISTENT SHELL ───────────────────────────────────────────────────────
 function renderShell(metadata: Script["metadata"], tiktok: TiktokConfig): string {
   const channel = escapeHtml(metadata.channel);
-  const domain = escapeHtml(metadata.source.domain);
   const tagline = escapeHtml((metadata.tagline ?? DEFAULT_TAGLINE).trim() || DEFAULT_TAGLINE);
   const logoSrc = brandLogoDataUri();
   const rawHandle = (tiktok.handle ?? "").trim();
@@ -279,8 +262,6 @@ function renderShell(metadata: Script["metadata"], tiktok: TiktokConfig): string
   </div>
 </div>
 ${handleHtml}
-
-${renderTicker(domain)}
 
 ${GRAIN_OVERLAY_HTML}`.trim();
 }

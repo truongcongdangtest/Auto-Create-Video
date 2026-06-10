@@ -51,11 +51,9 @@ describe("composeHtml", () => {
     expect(html).toContain("TRÌNH DUYỆT ANTIDETECT");
     expect(html).toContain("Công nghệ 24h");
 
-    // ── Motion elements (ambient icons + ticker + captions) ────
+    // ── Motion elements (ambient icons + captions; ticker removed) ────
     expect(html).toContain('class="float-icons"');
-    expect(html).toContain('class="ticker"');
-    expect(html).toContain('class="ticker-track"');
-    expect(html).toContain("ANTIDETECT BROWSER");
+    expect(html).not.toContain('class="ticker"');
     expect(html).toContain('class="caption"');
     expect(html).toContain('class="cap-line"');
 
