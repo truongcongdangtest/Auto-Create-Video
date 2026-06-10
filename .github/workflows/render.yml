@@ -28,7 +28,10 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
       - name: Install dependencies
-        run: npm ci
+        # npm install (not ci): the committed lock file was generated on Windows
+        # and misses some Linux-only optional WASM variants (@emnapi/*), which
+        # npm ci rejects. npm install resolves them per-platform.
+        run: npm install --no-audit --no-fund
 
       - name: Install Chromium (for hyperframes)
         run: npx playwright install --with-deps chromium
