@@ -29,6 +29,16 @@ export interface Config {
   // TikTok follow card (outro)
   tiktok: TiktokConfig;
 
+  // Background music bed mixed under the voice. Enabled by default with a
+  // bundled wuxia/guzheng track; tune via BGM_* env vars.
+  bgm: {
+    enabled: boolean;
+    /** Absolute/relative path override; undefined → pipeline uses bundled default. */
+    path?: string;
+    /** 0–1 ducked volume under the voice. */
+    volume: number;
+  };
+
   ttsConcurrency: number;
 
   // B-roll (Pexels) — both optional; if either missing, b-roll step is
@@ -43,6 +53,14 @@ function intDefault(name: string, def: number): number {
   if (!v) return def;
   const n = parseInt(v, 10);
   if (isNaN(n)) throw new Error(`Env var ${name} must be integer, got "${v}"`);
+  return n;
+}
+
+function floatDefault(name: string, def: number): number {
+  const v = process.env[name];
+  if (!v) return def;
+  const n = parseFloat(v);
+  if (isNaN(n)) throw new Error(`Env var ${name} must be a number, got "${v}"`);
   return n;
 }
 
@@ -99,6 +117,12 @@ export function loadConfig(): Config {
       handle: process.env.TIKTOK_HANDLE ?? "",
       followers: process.env.TIKTOK_FOLLOWERS ?? "",
       avatarUrl: process.env.TIKTOK_AVATAR_URL || undefined,
+    },
+    bgm: {
+      // On by default; set BGM_ENABLED=0/false/no/off to disable.
+      enabled: !["0", "false", "no", "off"].includes((process.env.BGM_ENABLED ?? "").toLowerCase().trim()),
+      path: process.env.BGM_PATH?.trim() || undefined,
+      volume: floatDefault("BGM_VOLUME", 0.13),
     },
     ttsConcurrency: intDefault("TTS_CONCURRENCY", 1),
     pexelsApiKey: process.env.PEXELS_API_KEY?.trim() || undefined,

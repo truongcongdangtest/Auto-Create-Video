@@ -6,7 +6,7 @@ import { ScriptSchema, type Script } from "./render/script-schema.js";
 import { loadConfig } from "./config.js";
 import { createTtsClient } from "./tts/tts-client.js";
 import { fetchImage } from "./assets/image-fetcher.js";
-import { getDurationSec, concatWithSilence, mixSfxOntoVoice, type SfxMixSpec } from "./assets/audio-tools.js";
+import { getDurationSec, concatWithSilence, mixSfxOntoVoice, mixBgmOntoTrack, type SfxMixSpec } from "./assets/audio-tools.js";
 import { indexSfxLibrary, pickSfxForScene, defaultPlayback } from "./assets/sfx-selector.js";
 import { extractBrollKeywords } from "./assets/broll-keywords.js";
 import { fetchBroll } from "./assets/broll-fetcher.js";
@@ -35,6 +35,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const TPL_DIR = join(__dirname, "render", "templates");
 /** Path to the SFX library (relative to project root) */
 const SFX_DIR = join(__dirname, "..", "assets", "sfx");
+/** Bundled background-music track (wuxia/guzheng) used when BGM is enabled and no BGM_PATH override is set. */
+const DEFAULT_BGM = join(__dirname, "..", "assets", "music", "wuxia-guzheng.mp3");
 
 const HYPERFRAMES_CONFIG = {
   $schema: "https://hyperframes.heygen.com/schema/hyperframes.json",
@@ -170,10 +172,17 @@ export async function runPipeline(scriptPath: string): Promise<void> {
   }
 
   // STEP 5
-  log.step(5, TOTAL_STEPS, "Concat voice scenes + mix SFX layer");
+  log.step(5, TOTAL_STEPS, "Concat voice scenes + mix SFX + background music");
   const voiceRawMp3 = join(outputDir, "voice-raw.mp3");
   const voiceMp3 = join(outputDir, "voice.mp3");
   await concatWithSilence(sceneAudio.map((a) => a.path), SCENE_GAP_SEC, voiceRawMp3);
+
+  // Resolve background-music track: BGM_PATH override > bundled wuxia track.
+  const bgmPath = cfg.bgm.enabled ? (cfg.bgm.path ?? DEFAULT_BGM) : null;
+  const bgmWanted = !!bgmPath && existsSync(bgmPath);
+  if (cfg.bgm.enabled && !bgmWanted) {
+    log.warn(`  BGM enabled but track not found: ${bgmPath} → skipping music`);
+  }
 
   // Compute scene start times (cumulative voice durations + gaps)
   let cursor = 0;
@@ -230,8 +239,16 @@ export async function runPipeline(scriptPath: string): Promise<void> {
       : picked.source;
     log.info(`  scene ${scene.id}: SFX -> ${picked.relPath} (${why})`);
   }
-  log.info(`  mixing ${sfxList.length} SFX into voice.mp3`);
-  await mixSfxOntoVoice(voiceRawMp3, sfxList, voiceMp3);
+  // SFX mix → final voice.mp3 (or an intermediate when BGM follows).
+  const voiceSfxMp3 = bgmWanted ? join(outputDir, "voice-sfx.mp3") : voiceMp3;
+  log.info(`  mixing ${sfxList.length} SFX into ${basename(voiceSfxMp3)}`);
+  await mixSfxOntoVoice(voiceRawMp3, sfxList, voiceSfxMp3);
+
+  // Background music bed (ducked, looped, faded) → final voice.mp3.
+  if (bgmWanted) {
+    log.info(`  mixing BGM ${basename(bgmPath!)} @ volume ${cfg.bgm.volume}`);
+    await mixBgmOntoTrack(voiceSfxMp3, bgmPath!, voiceMp3, { volume: cfg.bgm.volume });
+  }
 
   const totalAudioSec = await getDurationSec(voiceMp3);
   log.info(`  voice.mp3 total: ${totalAudioSec.toFixed(2)}s`);

@@ -201,3 +201,42 @@ export async function mixSfxOntoVoice(
 
   await run("ffmpeg", ffArgs);
 }
+
+/**
+ * Mix a looping background-music bed UNDER an existing voice(+SFX) track.
+ *
+ * - Voice stays at full volume; the music is ducked to `volume` (≈0.13) so it
+ *   sits clearly under the narration ("một chút nhạc nền").
+ * - The music is stream-looped to cover the whole track, then truncated to the
+ *   voice length by amix `duration=first` (so it never overruns the video).
+ * - Music gets a fade-in at the start and a fade-out at the end.
+ * - Output is mono mp3 192k, matching the rest of the audio chain.
+ */
+export async function mixBgmOntoTrack(
+  voicePath: string,
+  bgmPath: string,
+  outPath: string,
+  opts: { volume?: number; fadeSec?: number } = {},
+): Promise<void> {
+  const volume = opts.volume ?? 0.13;
+  const fade = opts.fadeSec ?? 1.5;
+  const dur = await getDurationSec(voicePath);
+  const fadeOutStart = Math.max(0, dur - fade);
+
+  const filter =
+    `[1:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono,` +
+    `volume=${volume},` +
+    `afade=t=in:st=0:d=${fade},afade=t=out:st=${fadeOutStart.toFixed(3)}:d=${fade}[bgm];` +
+    `[0:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono[voi];` +
+    `[voi][bgm]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[out]`;
+
+  await run("ffmpeg", [
+    "-y",
+    "-i", voicePath,
+    "-stream_loop", "-1", "-i", bgmPath,
+    "-filter_complex", filter,
+    "-map", "[out]",
+    "-c:a", "libmp3lame", "-b:a", "192k", "-ar", "44100",
+    outPath,
+  ]);
+}
