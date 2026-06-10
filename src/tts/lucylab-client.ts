@@ -36,12 +36,29 @@ export class LucylabClient implements TtsClient {
   constructor(private cfg: LucylabOpts) {}
 
   async generate(text: string, audioOutPath: string, srtOutPath?: string): Promise<void> {
-    const projectExportId = await this.submitWithRetry(text);
-    const { url, srtUrl } = await this.pollUntilDone(projectExportId);
-    await this.download(url, audioOutPath);
-    if (srtOutPath && srtUrl) {
-      await this.download(srtUrl, srtOutPath);
+    // LucyLab occasionally returns state=completed without a url (a flaky race
+    // on their side). Resubmit the whole export a few times — a fresh export
+    // almost always succeeds — before giving up.
+    const attempts = 3;
+    let lastErr: unknown;
+    for (let attempt = 0; attempt < attempts; attempt++) {
+      try {
+        const projectExportId = await this.submitWithRetry(text);
+        const { url, srtUrl } = await this.pollUntilDone(projectExportId);
+        await this.download(url, audioOutPath);
+        if (srtOutPath && srtUrl) {
+          await this.download(srtUrl, srtOutPath);
+        }
+        return;
+      } catch (e) {
+        lastErr = e;
+        // Only resubmit for the flaky "completed without url" race; timeouts
+        // and hard failures are not worth re-running the whole export.
+        if (!(e as { retryable?: boolean })?.retryable || attempt === attempts - 1) throw e;
+        await sleep(1500 * (attempt + 1));
+      }
     }
+    throw lastErr;
   }
 
   private async rpc<T>(method: string, input: unknown, idHint: string): Promise<T> {
@@ -87,15 +104,26 @@ export class LucylabClient implements TtsClient {
 
   private async pollUntilDone(projectExportId: string): Promise<{ url: string; srtUrl?: string }> {
     const start = Date.now();
+    let noUrlPolls = 0;
     while (Date.now() - start < this.cfg.pollTimeoutMs) {
       const status = await this.rpc<ExportStatus>(
         "getExportStatus",
         { projectExportId },
         `poll-${Date.now()}`,
       );
-      if (status.state === "completed") {
-        if (!status.url) throw new Error(`LucyLab returned state=completed without url for ${projectExportId}`);
+      if (status.state === "completed" && status.url) {
         return { url: status.url, srtUrl: status.srtUrl };
+      }
+      if (status.state === "completed" && !status.url) {
+        // LucyLab sometimes flips to completed a beat before the url is
+        // attached. Tolerate a few extra polls before giving up so a fresh
+        // export isn't triggered for a url that's about to appear.
+        noUrlPolls++;
+        if (noUrlPolls >= 5) {
+          const err = new Error(`LucyLab returned state=completed without url for ${projectExportId} (after ${noUrlPolls} polls)`);
+          (err as { retryable?: boolean }).retryable = true;
+          throw err;
+        }
       }
       if (status.state === "failed") {
         throw new Error(`LucyLab export ${projectExportId} failed: ${status.error ?? "unknown"}`);
