@@ -26,6 +26,7 @@ export function createTtsClient(cfg: Config): TtsClient {
         endpoint: cfg.lucylabEndpoint,
         pollIntervalMs: cfg.lucylabPollIntervalMs,
         pollTimeoutMs: cfg.lucylabPollTimeoutMs,
+        speed: cfg.voiceSpeed,
       });
     case "elevenlabs":
       return new ElevenLabsClient({

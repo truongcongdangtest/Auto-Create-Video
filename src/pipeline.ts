@@ -35,8 +35,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const TPL_DIR = join(__dirname, "render", "templates");
 /** Path to the SFX library (relative to project root) */
 const SFX_DIR = join(__dirname, "..", "assets", "sfx");
-/** Bundled background-music track (wuxia/guzheng) used when BGM is enabled and no BGM_PATH override is set. */
-const DEFAULT_BGM = join(__dirname, "..", "assets", "music", "wuxia-guzheng.mp3");
+/** Bundled background-music track (playful-mystery / detective vibe) used when BGM is enabled and no BGM_PATH override is set. */
+const DEFAULT_BGM = join(__dirname, "..", "assets", "music", "playful-mystery.mp3");
 
 const HYPERFRAMES_CONFIG = {
   $schema: "https://hyperframes.heygen.com/schema/hyperframes.json",

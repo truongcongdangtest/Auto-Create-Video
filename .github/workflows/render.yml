@@ -43,6 +43,10 @@ jobs:
           VIETNAMESE_VOICEID: ${{ secrets.VIETNAMESE_VOICEID }}
           VIETVIRAL_RENDER_QUALITY: standard
           VIETVIRAL_RENDER_FPS: "30"
+          # Slightly slower speech for a calmer, more natural storytelling pace.
+          VOICE_SPEED: "0.95"
+          # Background-music volume under the voice (playful-mystery bed).
+          BGM_VOLUME: "0.12"
         run: npm run pipeline -- "${{ github.event.inputs.job_dir }}/script.json"
 
       - name: Upload video artifact

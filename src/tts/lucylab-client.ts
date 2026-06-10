@@ -8,6 +8,8 @@ export interface LucylabOpts {
   endpoint: string;
   pollIntervalMs: number;
   pollTimeoutMs: number;
+  /** Speech speed multiplier (1.0 = normal). Defaults to 1 when unset. */
+  speed?: number;
 }
 
 interface JsonRpcOk<T> { jsonrpc: "2.0"; id: string; result: T; }
@@ -68,7 +70,7 @@ export class LucylabClient implements TtsClient {
       try {
         const result = await this.rpc<TtsLongTextResult>(
           "ttsLongText",
-          { text, userVoiceId: this.cfg.voiceId, speed: 1 },
+          { text, userVoiceId: this.cfg.voiceId, speed: this.cfg.speed ?? 1 },
           `submit-${Date.now()}`,
         );
         return result.projectExportId;

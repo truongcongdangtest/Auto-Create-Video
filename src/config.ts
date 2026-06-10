@@ -39,6 +39,9 @@ export interface Config {
     volume: number;
   };
 
+  /** TTS speech speed multiplier (1.0 = normal). <1 = slower/calmer storytelling pace. */
+  voiceSpeed: number;
+
   ttsConcurrency: number;
 
   // B-roll (Pexels) — both optional; if either missing, b-roll step is
@@ -124,6 +127,7 @@ export function loadConfig(): Config {
       path: process.env.BGM_PATH?.trim() || undefined,
       volume: floatDefault("BGM_VOLUME", 0.13),
     },
+    voiceSpeed: floatDefault("VOICE_SPEED", 1.0),
     ttsConcurrency: intDefault("TTS_CONCURRENCY", 1),
     pexelsApiKey: process.env.PEXELS_API_KEY?.trim() || undefined,
     geminiApiKey: process.env.GEMINI_API_KEY?.trim() || undefined,
