@@ -44,13 +44,20 @@ describe("composeHtml", () => {
     // "♪ @handle" pill is suppressed, and the brand logo + default tagline show.
     expect(html).toContain('class="brand-shell-header"');
     expect(html).not.toContain('class="brand-shell-handle"');
-    expect(html).toContain('class="brand-shell-keyword"');
     expect(html).toContain('id="grain-overlay"');
     expect(html).toContain('class="brand-name"');
     expect(html).toContain('class="brand-logo"');
     expect(html).toContain("data:image/png;base64,");
     expect(html).toContain("TRÌNH DUYỆT ANTIDETECT");
     expect(html).toContain("Công nghệ 24h");
+
+    // ── Motion elements (ambient icons + ticker + captions) ────
+    expect(html).toContain('class="float-icons"');
+    expect(html).toContain('class="ticker"');
+    expect(html).toContain('class="ticker-track"');
+    expect(html).toContain("ANTIDETECT BROWSER");
+    expect(html).toContain('class="caption"');
+    expect(html).toContain('class="cap-line"');
 
     // ── Hook scene ─────────────────────────────────────────────
     expect(html).toContain('data-layout="hook"');

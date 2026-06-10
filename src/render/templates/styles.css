@@ -116,8 +116,11 @@ html, body {
 #grain-overlay .grain-texture {
   position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
   background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  opacity: 0.08;
-  animation: hf-grain-noise 0.5s steps(1) infinite;
+  /* STATIC grain — no animation. HyperFrames captures frame-by-frame, so an
+     animated steps(1) grain re-randomises its position every captured frame
+     and reads as ugly flicker/sparkle. A fixed, very-low-opacity grain gives a
+     smooth premium film texture without any twinkling. */
+  opacity: 0.035;
 }
 
 /* ── BRAND SHELL HEADER (top-left persistent) ───────────────── */
@@ -194,6 +197,83 @@ html, body {
   font-family: 'Inter', sans-serif;
   font-size: calc(26px * var(--scale)); font-weight: 500;
   color: var(--accent); letter-spacing: 2px;
+}
+
+/* ── FLOATING BACKGROUND ICONS (ambient drift) ─────────────────────
+   Live inside .shell-bg so they sit behind every scene. Motion is a slow,
+   continuous translate/rotate — sampled smoothly per captured frame. */
+.float-icons { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.fic {
+  position: absolute;
+  color: var(--accent);
+  opacity: 0.075;
+  width: calc(160px * var(--scale)); height: calc(160px * var(--scale));
+}
+.fic svg { width: 100%; height: 100%; display: block; }
+@keyframes fic-drift {
+  from { transform: translateY(0) rotate(-4deg); }
+  to   { transform: translateY(-46px) rotate(6deg); }
+}
+.fic-0 { top: 11%; left: 7%;  animation: fic-drift 9s  ease-in-out infinite alternate; }
+.fic-1 { top: 19%; left: 75%; width: calc(120px * var(--scale)); height: calc(120px * var(--scale)); animation: fic-drift 11s ease-in-out infinite alternate; animation-delay: -3s; }
+.fic-2 { top: 43%; left: 85%; animation: fic-drift 10s ease-in-out infinite alternate; animation-delay: -5s; }
+.fic-3 { top: 57%; left: 5%;  width: calc(130px * var(--scale)); height: calc(130px * var(--scale)); animation: fic-drift 12s ease-in-out infinite alternate; animation-delay: -2s; }
+.fic-4 { top: 73%; left: 71%; animation: fic-drift 9.5s ease-in-out infinite alternate; animation-delay: -6s; }
+.fic-5 { top: 32%; left: 31%; width: calc(110px * var(--scale)); height: calc(110px * var(--scale)); opacity: 0.04; animation: fic-drift 13s ease-in-out infinite alternate; animation-delay: -4s; }
+.fic-6 { top: 83%; left: 37%; animation: fic-drift 10.5s ease-in-out infinite alternate; animation-delay: -1s; }
+
+/* ── BOTTOM TICKER (scrolling marquee) ─────────────────────────────
+   Sequence is duplicated in markup; a linear translateX(-50%) loops it
+   seamlessly. Linear (not steps) → smooth per-frame sampling, no flicker. */
+.ticker {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: calc(66px * var(--scale));
+  display: flex; align-items: center; overflow: hidden;
+  background: linear-gradient(180deg, rgba(10,10,12,0) 0%, rgba(10,10,12,0.92) 45%);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.25);
+  z-index: 50;
+}
+.ticker-track {
+  display: inline-flex; align-items: center; white-space: nowrap;
+  will-change: transform;
+  animation: ticker-scroll 30s linear infinite;
+}
+@keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-item {
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: calc(26px * var(--scale));
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-primary);
+  padding: 0 calc(22px * var(--scale));
+}
+.ticker-sep { color: var(--accent); font-size: calc(18px * var(--scale)); padding: 0 calc(4px * var(--scale)); }
+
+/* ── ANIMATED CAPTIONS (karaoke subtitle) ──────────────────────────
+   One phrase visible at a time; animations.js pops each in/out across the
+   scene's voice duration. cap-line owns its transform (GSAP), the visible
+   pill sits inside so the bg hugs the text. */
+.caption {
+  position: absolute; left: 50%; bottom: calc(122px * var(--scale));
+  transform: translateX(-50%);
+  width: calc(940px * var(--scale)); max-width: 92%;
+  height: calc(150px * var(--scale));
+  z-index: 45; pointer-events: none;
+}
+.cap-line {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  text-align: center; opacity: 0;
+}
+.cap-pill {
+  display: inline-block;
+  font-family: 'Inter', sans-serif; font-weight: 800;
+  font-size: calc(44px * var(--scale)); line-height: 1.25;
+  color: #fff;
+  background: rgba(10, 10, 12, 0.62);
+  border: 1px solid rgba(var(--accent-rgb), 0.30);
+  border-radius: calc(16px * var(--scale));
+  padding: calc(12px * var(--scale)) calc(30px * var(--scale));
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 
 /* ── BACKGROUND PRIMITIVES ─────────────────────────────────── */

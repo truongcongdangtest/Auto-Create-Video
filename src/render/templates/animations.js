@@ -45,7 +45,38 @@ window.__timelines["news-video"] = tl;
     } else if (layout === "outro") {
       animateOutro(scene, tl, start, dur);
     }
+
+    // Animated subtitle (karaoke-style) — runs on every scene, synced to its
+    // voice duration so phrases pop in/out roughly in time with the narration.
+    const voiceDur = parseFloat(scene.dataset.voiceDur || "0");
+    animateCaption(scene, tl, start, voiceDur > 0 ? voiceDur : dur);
   });
+
+  // ── CAPTION (karaoke subtitle) ──────────────────────────────────────────
+  function animateCaption(scene, tl, start, voiceDur) {
+    const cap = scene.querySelector(".caption");
+    if (!cap) return;
+    const lines = Array.from(cap.querySelectorAll(".cap-line"));
+    if (!lines.length) return;
+    const n = lines.length;
+    // Even time slice per phrase across the voice; clamp so very short scenes
+    // still flash each line briefly and very long ones don't crawl.
+    const slot = Math.min(2.6, Math.max(0.7, voiceDur / n));
+    lines.forEach((ln, i) => {
+      const t = start + i * slot;
+      tl.fromTo(
+        ln,
+        { opacity: 0, y: 26, scale: 0.96 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.22 },
+        t,
+      );
+      // Pop the line back out just before the next one (last line lingers
+      // until the scene itself fades).
+      if (i < n - 1) {
+        tl.to(ln, { opacity: 0, y: -18, duration: 0.16 }, t + slot - 0.02);
+      }
+    });
+  }
 
   // ── HOOK ──────────────────────────────────────────────────────────────
   function animateHook(scene, tl, start) {

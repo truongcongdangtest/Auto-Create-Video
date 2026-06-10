@@ -26,6 +26,49 @@ function brandLogoDataUri(): string {
 // Default brand tagline under the channel name (overridable via metadata.tagline).
 const DEFAULT_TAGLINE = "TRÌNH DUYỆT ANTIDETECT";
 
+// Ambient floating background icons (antidetect-themed, faint, slow drift).
+// Rendered inside .shell-bg so they sit behind every scene. Motion is pure
+// CSS (linear/ease loops) — see styles.css .fic-* — so it samples smoothly
+// frame-by-frame instead of flickering like the old steps() grain.
+const FLOAT_ICON_SVGS = [
+  // fingerprint
+  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 11a2 2 0 0 0-2 2c0 1 .1 2 .4 3"/><path d="M12 7a6 6 0 0 0-6 6c0 1.2.2 2.4.5 3.5"/><path d="M2 13A10 10 0 0 1 18.5 5.3"/><path d="M22 13c0 1.5-.2 3-.6 4.4"/><path d="M16 13a4 4 0 0 0-7-2.6"/></svg>`,
+  // shield-check
+  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
+  // globe (proxy)
+  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>`,
+  // lock
+  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="4.5" y="10" width="15" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>`,
+  // browser window
+  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r=".6" fill="currentColor"/><circle cx="9" cy="6.5" r=".6" fill="currentColor"/></svg>`,
+  // user profile
+  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>`,
+  // layers (profiles)
+  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>`,
+];
+
+const FLOAT_ICONS_HTML =
+  `<div class="float-icons" aria-hidden="true">` +
+  FLOAT_ICON_SVGS.map((svg, i) => `<span class="fic fic-${i}">${svg}</span>`).join("") +
+  `</div>`;
+
+// Persistent bottom marquee — scrolling brand keywords. Sequence is duplicated
+// so a linear -50% translate loops seamlessly.
+function renderTicker(domain: string): string {
+  const items = [
+    "ANTIDETECT BROWSER",
+    "ĐA TÀI KHOẢN AN TOÀN",
+    "MỖI HỒ SƠ MỘT VÂN TAY",
+    "PROXY RIÊNG TỪNG NICK",
+    "CHỐNG TRÙNG FINGERPRINT",
+    domain.toUpperCase(),
+  ];
+  const seq = items
+    .map((t) => `<span class="ticker-item">${escapeHtml(t)}</span><span class="ticker-sep">◆</span>`)
+    .join("");
+  return `<div class="ticker"><div class="ticker-track">${seq}${seq}</div></div>`;
+}
+
 // Default TikTok config — EMPTY by design. An empty handle suppresses both the
 // footer "♪ @handle" pill AND the outro follow card, so brand videos ship
 // clean (no leftover demo channel). To show a real channel, set TIKTOK_HANDLE
@@ -129,7 +172,7 @@ export function composeHtml(args: ComposeArgs): string {
     const dur = audio.durationSec + gapSec + (isOutro ? outroHoldSec : 0);
     const start = cursor;
     cursor += dur;
-    return { scene, start, duration: dur };
+    return { scene, start, duration: dur, voiceDur: audio.durationSec };
   });
   const totalDuration = cursor;
 
@@ -139,9 +182,9 @@ export function composeHtml(args: ComposeArgs): string {
   // HyperFrames lints `video_nested_in_timed_element` and the worker times
   // out at frame-capture stage because the framework refuses to play the
   // video and HTMLVideoElement never fires `loadedmetadata`.
-  const renderedScenes = timing.map(({ scene, start, duration }) => {
+  const renderedScenes = timing.map(({ scene, start, duration, voiceDur }) => {
     const broll = sceneBroll[scene.id] ?? null;
-    return renderScene(scene, start, duration, bgImageRelPath, tiktok, tiktokAvatar, broll);
+    return renderScene(scene, start, duration, voiceDur, bgImageRelPath, tiktok, tiktokAvatar, broll);
   });
   const brollHtml = renderedScenes.map((r) => r.brollHtml).filter(Boolean).join("\n");
   const sceneHtml = renderedScenes.map((r) => r.sceneHtml).join("\n");
@@ -226,7 +269,7 @@ function renderShell(metadata: Script["metadata"], tiktok: TiktokConfig): string
     : "";
   return `
 <!-- Shell: persistent brand elements (no data-start → always visible) -->
-<div class="shell-bg"></div>
+<div class="shell-bg">${FLOAT_ICONS_HTML}</div>
 
 <div class="brand-shell-header">
   <div class="brand-icon"><img class="brand-logo" src="${logoSrc}" alt="${channel}" /></div>
@@ -237,9 +280,7 @@ function renderShell(metadata: Script["metadata"], tiktok: TiktokConfig): string
 </div>
 ${handleHtml}
 
-<div class="brand-shell-keyword">
-  <span>${escapeHtml(domain)}</span>
-</div>
+${renderTicker(domain)}
 
 ${GRAIN_OVERLAY_HTML}`.trim();
 }
@@ -249,6 +290,7 @@ function renderScene(
   scene: Script["scenes"][number],
   start: number,
   duration: number,
+  voiceDur: number,
   bgImageRelPath: string | null,
   tiktok: TiktokConfig,
   tiktokAvatarRelPath: string,
@@ -310,7 +352,7 @@ function renderScene(
     : null;
   return {
     brollHtml,
-    sceneHtml: buildScene(scene, start, duration, layoutName, inner),
+    sceneHtml: buildScene(scene, start, duration, voiceDur, layoutName, inner),
   };
 }
 
@@ -493,15 +535,66 @@ function buildScene(
   scene: Script["scenes"][number],
   start: number,
   duration: number,
+  voiceDur: number,
   layoutName: string,
   innerHtml: string,
 ): string {
+  const caption = renderCaption(scene.voiceText);
   return `
 <div class="scene clip" id="scene-${scene.id}"
-     data-start="${start.toFixed(2)}" data-duration="${duration.toFixed(2)}" data-active="0"
+     data-start="${start.toFixed(2)}" data-duration="${duration.toFixed(2)}"
+     data-voice-dur="${voiceDur.toFixed(2)}" data-active="0"
      data-layout="${layoutName}">
   ${innerHtml}
+  ${caption}
 </div>`.trim();
+}
+
+/**
+ * Split a voice line into short caption phrases (≤ ~28 chars each) so each
+ * reads as a single mobile-friendly line. Breaks greedily on word boundaries
+ * and forces a break after sentence-ending punctuation for natural phrasing.
+ */
+function splitCaption(text: string, maxChars = 34): string[] {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (!clean) return [];
+  const words = clean.split(" ");
+  const lines: string[] = [];
+  let cur = "";
+  for (const w of words) {
+    const candidate = cur ? `${cur} ${w}` : w;
+    if (candidate.length > maxChars && cur) {
+      lines.push(cur);
+      cur = w;
+    } else {
+      cur = candidate;
+    }
+    // Natural break after a sentence end (keeps phrases from running on).
+    if (/[.!?]$/.test(w) && cur.length >= 8) {
+      lines.push(cur);
+      cur = "";
+    }
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+
+/**
+ * Animated subtitle block — one phrase visible at a time, popped in/out by
+ * animations.js across the scene's voice duration (karaoke-style motion like
+ * the reference TikTok edits). Strips trailing punctuation from the displayed
+ * text but keeps it for phrasing.
+ */
+function renderCaption(voiceText: string): string {
+  const lines = splitCaption(voiceText);
+  if (!lines.length) return "";
+  const spans = lines
+    .map(
+      (l, i) =>
+        `<span class="cap-line" data-i="${i}"><span class="cap-pill">${escapeHtml(l)}</span></span>`,
+    )
+    .join("");
+  return `<div class="caption" data-lines="${lines.length}">${spans}</div>`;
 }
 
 function escapeHtml(s: string): string {
