@@ -40,11 +40,16 @@ describe("composeHtml", () => {
     expect(html).toContain('--scale:1');
 
     // ── Persistent brand shell ────────────────────────────────
+    // Clean by default: no tiktok config passed → empty handle → the footer
+    // "♪ @handle" pill is suppressed, and the brand logo + default tagline show.
     expect(html).toContain('class="brand-shell-header"');
-    expect(html).toContain('class="brand-shell-handle"');
+    expect(html).not.toContain('class="brand-shell-handle"');
     expect(html).toContain('class="brand-shell-keyword"');
     expect(html).toContain('id="grain-overlay"');
     expect(html).toContain('class="brand-name"');
+    expect(html).toContain('class="brand-logo"');
+    expect(html).toContain("data:image/png;base64,");
+    expect(html).toContain("TRÌNH DUYỆT ANTIDETECT");
     expect(html).toContain("Công nghệ 24h");
 
     // ── Hook scene ─────────────────────────────────────────────

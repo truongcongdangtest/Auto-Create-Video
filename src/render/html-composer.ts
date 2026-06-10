@@ -11,17 +11,35 @@ const BLOCKS_DIR = join(__dirname, "blocks");
 // Grain overlay HTML inline (from installed component)
 const GRAIN_OVERLAY_HTML = `<div id="grain-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100;"><div class="grain-texture"></div></div>`;
 
-// Default TikTok config (used if not passed)
+// Brand logo (Cloak Login spy mark) inlined as a base64 data URI so the
+// persistent shell renders without any pipeline asset-copy step. Read once,
+// lazily, and cached for the process lifetime.
+let _brandLogoDataUri: string | null = null;
+function brandLogoDataUri(): string {
+  if (_brandLogoDataUri === null) {
+    const buf = readFileSync(join(TPL_DIR, "brand-logo.png"));
+    _brandLogoDataUri = `data:image/png;base64,${buf.toString("base64")}`;
+  }
+  return _brandLogoDataUri;
+}
+
+// Default brand tagline under the channel name (overridable via metadata.tagline).
+const DEFAULT_TAGLINE = "TRÌNH DUYỆT ANTIDETECT";
+
+// Default TikTok config — EMPTY by design. An empty handle suppresses both the
+// footer "♪ @handle" pill AND the outro follow card, so brand videos ship
+// clean (no leftover demo channel). To show a real channel, set TIKTOK_HANDLE
+// / TIKTOK_DISPLAY_NAME / TIKTOK_FOLLOWERS in env or pass a tiktok config.
 const DEFAULT_TIKTOK: TiktokConfig = {
-  displayName: "Công nghệ 24h",
-  handle: "@congnghe24h",
-  followers: "1.2M followers",
+  displayName: "",
+  handle: "",
+  followers: "",
 };
 
 // ── Style whitelists + ratio resolution ────────────────────────────────────
 export const VALID_THEMES = [
   "tech-blue", "growth-green", "finance-gold",
-  "creator-purple", "news-mono", "playful-orange",
+  "creator-purple", "news-mono", "playful-orange", "cloak-orange",
 ] as const;
 export type ThemeKey = (typeof VALID_THEMES)[number];
 
@@ -192,6 +210,8 @@ function renderHostOverlay(character: CharacterId, customAsset?: string): string
 function renderShell(metadata: Script["metadata"], tiktok: TiktokConfig): string {
   const channel = escapeHtml(metadata.channel);
   const domain = escapeHtml(metadata.source.domain);
+  const tagline = escapeHtml((metadata.tagline ?? DEFAULT_TAGLINE).trim() || DEFAULT_TAGLINE);
+  const logoSrc = brandLogoDataUri();
   const rawHandle = (tiktok.handle ?? "").trim();
   // Empty handle ("" or unset) suppresses the brand-shell-handle pill so
   // VietViral builds (which don't carry the ACV tester's @haiquep handle)
@@ -209,10 +229,10 @@ function renderShell(metadata: Script["metadata"], tiktok: TiktokConfig): string
 <div class="shell-bg"></div>
 
 <div class="brand-shell-header">
-  <div class="brand-icon">&gt;_</div>
+  <div class="brand-icon"><img class="brand-logo" src="${logoSrc}" alt="${channel}" /></div>
   <div class="brand-text">
     <div class="brand-name">${channel}</div>
-    <div class="brand-tag">TIN CÔNG NGHỆ</div>
+    <div class="brand-tag">${tagline}</div>
   </div>
 </div>
 ${handleHtml}
@@ -430,7 +450,10 @@ function renderOutroInner(
   tiktok: TiktokConfig,
   avatarRelPath: string,
 ): string {
-  const ttCard = renderTiktokCard(tiktok, avatarRelPath);
+  // Only render the follow card when a real channel handle is configured.
+  // Empty handle (the default) → no card, so brand videos ship without the
+  // leftover demo channel ("@congnghe24h / Following / 1.2M followers").
+  const ttCard = (tiktok.handle ?? "").trim() ? renderTiktokCard(tiktok, avatarRelPath) : "";
   return `
 <div class="layout-outro">
   <div class="out-cta-top">${escapeHtml(td.ctaTop)}</div>

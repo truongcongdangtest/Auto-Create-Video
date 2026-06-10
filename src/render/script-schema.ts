@@ -109,6 +109,7 @@ const ThemeKey = z.enum([
   "creator-purple",
   "news-mono",
   "playful-orange",
+  "cloak-orange",
 ]);
 
 const Aspect = z.enum(["9:16", "16:9", "1:1"]);
@@ -137,6 +138,11 @@ export const ScriptSchema = z.object({
       image: z.string().url().nullable(),
     }),
     channel: z.string().min(1),
+    /**
+     * Small uppercase tagline shown under the channel name in the persistent
+     * top-left brand shell. Falls back to a brand default when omitted.
+     */
+    tagline: z.string().max(40).optional(),
   }),
   voice: z.object({
     provider: z.literal("lucylab"),

@@ -7,11 +7,12 @@
       "domain": "cloakbrowse.com",
       "image": null
     },
-    "channel": "Cloak Login"
+    "channel": "Cloak Login",
+    "tagline": "TRÌNH DUYỆT ANTIDETECT"
   },
   "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
-  "style": { "themeKey": "tech-blue", "aspect": "9:16", "character": "none" },
-  "recommended_theme": "tech-blue",
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
   "scenes": [
     {
       "id": "hook",

@@ -93,9 +93,11 @@ export function loadConfig(): Config {
     elevenlabsModelId: process.env.ELEVENLABS_MODEL_ID ?? "eleven_multilingual_v2",
     elevenlabsEndpoint: process.env.ELEVENLABS_ENDPOINT ?? "https://api.elevenlabs.io/v1",
     tiktok: {
-      displayName: process.env.TIKTOK_DISPLAY_NAME ?? "Công nghệ 24h",
-      handle: process.env.TIKTOK_HANDLE ?? "@congnghe24h",
-      followers: process.env.TIKTOK_FOLLOWERS ?? "1.2M followers",
+      // Empty by default → no footer handle pill, no outro follow card. Set
+      // these env vars only when you have a real channel to promote.
+      displayName: process.env.TIKTOK_DISPLAY_NAME ?? "",
+      handle: process.env.TIKTOK_HANDLE ?? "",
+      followers: process.env.TIKTOK_FOLLOWERS ?? "",
       avatarUrl: process.env.TIKTOK_AVATAR_URL || undefined,
     },
     ttsConcurrency: intDefault("TTS_CONCURRENCY", 1),
