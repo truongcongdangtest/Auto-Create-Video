@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Antidetect Browser vs VPN vs Incognito",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog/antidetect-browser-vs-vpn-vs-incognito",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "tech-blue", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "tech-blue",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Dùng VPN để nuôi nhiều tài khoản? Đây là lý do bạn vẫn bị khóa như thường.",
+      "templateData": {
+        "template": "hook",
+        "headline": "VPN KHÔNG cứu được nick",
+        "subhead": "Sự thật ít ai nói",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "stat",
+      "type": "body",
+      "voiceText": "Chỉ riêng dấu vân tay trình duyệt đã có hơn năm mươi thông số để nhận ra bạn.",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "50+",
+        "label": "thông số nhận diện bạn",
+        "context": "VPN không giấu được"
+      }
+    },
+    {
+      "id": "compare",
+      "type": "body",
+      "voiceText": "VPN chỉ đổi địa chỉ IP. Nhưng website vẫn thấy cùng một cấu hình máy, font và card đồ hoạ. Nó vẫn biết đó là bạn.",
+      "templateData": {
+        "template": "comparison",
+        "left": { "label": "VPN", "value": "Chỉ đổi IP", "color": "cyan" },
+        "right": { "label": "Antidetect", "value": "Đổi vân tay", "color": "purple", "winner": true }
+      }
+    },
+    {
+      "id": "leaks",
+      "type": "body",
+      "voiceText": "Trình duyệt để lộ độ phân giải, card đồ hoạ, múi giờ, ngôn ngữ và cả Canvas. Ẩn danh hay VPN đều không giấu được mấy thứ này.",
+      "templateData": {
+        "template": "feature-list",
+        "title": "Trình duyệt lộ những gì?",
+        "bullets": [
+          "Độ phân giải & GPU",
+          "Múi giờ, ngôn ngữ",
+          "Canvas, WebGL",
+          "Font đã cài"
+        ]
+      }
+    },
+    {
+      "id": "rule",
+      "type": "body",
+      "voiceText": "Muốn mỗi tài khoản trông như một người khác, bạn cần trình duyệt antidetect. Mỗi hồ sơ một vân tay riêng, một proxy riêng.",
+      "templateData": {
+        "template": "callout",
+        "statement": "Mỗi hồ sơ: một vân tay riêng, một proxy riêng",
+        "tag": "Quy tắc vàng"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Đọc hướng dẫn đầy đủ tại Cloak Login. Theo dõi để không mất nick oan.",
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Đọc full tại",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

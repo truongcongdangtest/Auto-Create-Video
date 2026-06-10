@@ -1,0 +1,53 @@
+name: Render video (cloud)
+
+# Render a TikTok video on GitHub's servers instead of your PC.
+# Trigger: Actions tab → "Render video (cloud)" → Run workflow → enter job_dir.
+# Result: download the "video-<run>" artifact (video.mp4 + voice.mp3 + script.txt).
+
+on:
+  workflow_dispatch:
+    inputs:
+      job_dir:
+        description: "Folder holding script.json (e.g. jobs/antidetect-vs-vpn)"
+        required: true
+        default: "jobs/antidetect-vs-vpn"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium (for hyperframes)
+        run: npx playwright install --with-deps chromium
+
+      - name: Render pipeline
+        env:
+          TTS_PROVIDER: lucylab
+          VIETNAMESE_API_KEY: ${{ secrets.VIETNAMESE_API_KEY }}
+          VIETNAMESE_VOICEID: ${{ secrets.VIETNAMESE_VOICEID }}
+          VIETVIRAL_RENDER_QUALITY: standard
+          VIETVIRAL_RENDER_FPS: "30"
+        run: npm run pipeline -- "${{ github.event.inputs.job_dir }}/script.json"
+
+      - name: Upload video artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: video-${{ github.run_id }}
+          if-no-files-found: error
+          path: |
+            ${{ github.event.inputs.job_dir }}/video.mp4
+            ${{ github.event.inputs.job_dir }}/voice.mp3
+            ${{ github.event.inputs.job_dir }}/script.txt
