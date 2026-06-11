@@ -1,0 +1,137 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Proxy Là Gì? Hiểu Trong 60 Giây Cho Người Làm MMO",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "TRÌNH DUYỆT ANTIDETECT"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Proxy là gì mà ai làm MMO cũng nhắc tới? Sáu mươi giây, bạn sẽ hiểu ngay.",
+      "illustration": "search",
+      "templateData": {
+        "template": "hook",
+        "headline": "PROXY LÀ GÌ?",
+        "subhead": "Hiểu trong 60 giây",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "define",
+      "type": "body",
+      "voiceText": "Proxy là một máy chủ trung gian. Mọi truy cập của bạn đi vòng qua nó trước khi tới website.",
+      "illustration": "network-link",
+      "templateData": {
+        "template": "callout",
+        "statement": "Proxy là máy chủ trung gian đứng giữa bạn và website",
+        "tag": "Định nghĩa"
+      }
+    },
+    {
+      "id": "what-web-sees",
+      "type": "body",
+      "voiceText": "Nhờ vậy, website chỉ nhìn thấy IP và vị trí của proxy, thay cho IP thật của bạn.",
+      "illustration": "proxy-globe",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "IP của proxy",
+        "label": "Website chỉ thấy cái này",
+        "context": "IP thật của bạn được giấu đi"
+      }
+    },
+    {
+      "id": "types",
+      "type": "body",
+      "voiceText": "Có ba loại chính: Datacenter, Residential, và Mobile bốn G. Mỗi loại một kiểu IP khác nhau.",
+      "templateData": {
+        "template": "feature-list",
+        "title": "3 loại proxy thường gặp",
+        "bullets": [
+          { "text": "Datacenter – rẻ, nhanh, dễ bị chặn", "icon": "server" },
+          { "text": "Residential – IP nhà dân, tự nhiên", "icon": "home" },
+          { "text": "Mobile 4G – dùng chung nên khó chặn", "icon": "phone" }
+        ]
+      }
+    },
+    {
+      "id": "compare",
+      "type": "body",
+      "voiceText": "Càng tự nhiên thì càng đắt. Datacenter rẻ nhưng dễ lộ; còn Residential và Mobile bốn G đắt hơn nhưng khó bị chặn.",
+      "illustration": "balance",
+      "templateData": {
+        "template": "comparison",
+        "left": { "label": "Datacenter", "value": "Rẻ, dễ lộ", "color": "cyan" },
+        "right": { "label": "Residential / 4G", "value": "Đắt, khó chặn", "color": "purple", "winner": true }
+      }
+    },
+    {
+      "id": "use-case",
+      "type": "body",
+      "voiceText": "Đây là lý do dân nuôi nick cần proxy: mỗi tài khoản một IP riêng, để các nick không bị liên kết với nhau.",
+      "illustration": "account-grid",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1 nick = 1 IP",
+        "label": "Tránh bị liên kết",
+        "context": "Nhiều tài khoản, mỗi cái 1 proxy"
+      }
+    },
+    {
+      "id": "combo",
+      "type": "body",
+      "voiceText": "Nhưng đổi IP thôi chưa đủ. Trình duyệt còn để lại dấu vân tay riêng. Đổi cả nó thì mỗi hồ sơ mới thật sự tách biệt.",
+      "illustration": "fingerprint",
+      "templateData": {
+        "template": "callout",
+        "statement": "Proxy đổi IP, antidetect đổi vân tay = tách biệt thật sự",
+        "tag": "Kết hợp"
+      }
+    },
+    {
+      "id": "tips",
+      "type": "body",
+      "voiceText": "Mẹo chọn proxy: tài khoản quan trọng nên dùng Residential, và mỗi hồ sơ nên có một IP riêng.",
+      "templateData": {
+        "template": "feature-list",
+        "title": "Chọn proxy sao cho chuẩn",
+        "bullets": [
+          { "text": "Tài khoản quan trọng: dùng Residential", "icon": "shield" },
+          { "text": "Mỗi hồ sơ một IP riêng", "icon": "globe" },
+          { "text": "Tránh IP free, đã bị xài chung", "icon": "ban" }
+        ]
+      }
+    },
+    {
+      "id": "caution",
+      "type": "body",
+      "voiceText": "Nhớ kỹ: proxy giúp ẩn IP và giảm rủi ro, chứ không có gì đảm bảo không bao giờ bị khóa.",
+      "illustration": "warning",
+      "templateData": {
+        "template": "callout",
+        "statement": "Proxy giúp ẩn IP, nhưng không gì là không thể bị khóa",
+        "tag": "Lưu ý"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Hiểu proxy rồi thì quản lý nhiều tài khoản dễ hơn nhiều. Đọc hướng dẫn đầy đủ tại Cloak Login, ở cloakbrowse.com.",
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Đọc đầy đủ tại",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
