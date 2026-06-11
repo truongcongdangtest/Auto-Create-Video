@@ -31,10 +31,20 @@ const StatHeroData = z.object({
   context: z.string().max(50).optional(),
 });
 
+/** A feature bullet: either a plain string, or text + a small icon key
+ *  (into composer BULLET_ICONS, e.g. "link", "box", "email", "globe"). */
+const FeatureBullet = z.union([
+  z.string().min(1).max(50),
+  z.object({
+    text: z.string().min(1).max(50),
+    icon: z.string().optional(),
+  }),
+]);
+
 const FeatureListData = z.object({
   template: z.literal("feature-list"),
   title: z.string().min(1).max(40),
-  bullets: z.array(z.string().min(1).max(50)).min(1).max(4),
+  bullets: z.array(FeatureBullet).min(1).max(4),
   icon: z.string().optional(),
 });
 

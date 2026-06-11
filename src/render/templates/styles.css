@@ -518,6 +518,21 @@ body[data-aspect="16:9"] .scene.has-illu .layout-comparison { padding-top: calc(
   box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.5);
 }
 
+/* Per-bullet icon chip — a small glyph that matches the bullet's words, so each
+   item reads as "icon + concept". Accent-tinted rounded square. */
+.feat-ico {
+  width: calc(76px * var(--scale)); height: calc(76px * var(--scale)); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.10);
+  border: 1px solid rgba(var(--accent-rgb), 0.28);
+  border-radius: calc(18px * var(--scale));
+  box-shadow: 0 4px 18px rgba(var(--accent-rgb), 0.18);
+}
+.feat-ico svg {
+  width: calc(46px * var(--scale)); height: calc(46px * var(--scale)); display: block;
+}
+
 .feat-text {
   font-family: 'Inter', sans-serif;
   font-size: calc(50px * var(--scale)); font-weight: 500;

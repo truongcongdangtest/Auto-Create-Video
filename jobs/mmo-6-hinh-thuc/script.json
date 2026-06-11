@@ -30,7 +30,7 @@
       "id": "stat",
       "type": "body",
       "voiceText": "Thương mại điện tử Việt Nam đạt khoảng ba mươi hai tỷ đô năm 2025. Dòng tiền vẫn chảy rất mạnh.",
-      "illustration": "growth-chart",
+      "illustration": "shopping-cart",
       "templateData": {
         "template": "stat-hero",
         "value": "32 tỷ $",
@@ -42,15 +42,14 @@
       "id": "forms",
       "type": "body",
       "voiceText": "Bốn mô hình còn sống khoẻ: tiếp thị liên kết, dropshipping, làm nội dung YouTube, và nuôi bán tài khoản.",
-      "illustration": "account-grid",
       "templateData": {
         "template": "feature-list",
         "title": "Mô hình còn sống 2026",
         "bullets": [
-          "Affiliate – vốn gần 0",
-          "Dropshipping – 800-3000$/tháng",
-          "YouTube – nên làm content tiếng Anh",
-          "Nuôi & bán nick – rủi ro khóa thật"
+          { "text": "Affiliate – vốn gần 0", "icon": "link" },
+          { "text": "Dropshipping – 800-3000$/tháng", "icon": "box" },
+          { "text": "YouTube – nên làm content tiếng Anh", "icon": "play" },
+          { "text": "Nuôi & bán nick – rủi ro khóa thật", "icon": "user" }
         ]
       }
     },
@@ -69,7 +68,7 @@
       "id": "truth",
       "type": "body",
       "voiceText": "Nhớ kỹ một điều: mô hình nào cũng có thể bị khóa nick. Nuôi tài khoản cho đúng cách mới sống lâu.",
-      "illustration": "warning",
+      "illustration": "ban-account",
       "templateData": {
         "template": "callout",
         "statement": "Mô hình nào cũng có thể bị khóa nick — nuôi tài khoản đúng cách mới sống lâu",

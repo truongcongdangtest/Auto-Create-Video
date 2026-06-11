@@ -61,7 +61,7 @@ const FLOAT_ICONS_HTML =
 // filled body shape (fill-opacity, for "mass"), crisp orange outlines, white
 // accent details (data points, ticks, scan lines, $), and small 4-point
 // sparkles — so the graphic reads rich and full, not a thin wireframe.
-const ILLUSTRATIONS: Record<string, string> = {
+export const ILLUSTRATIONS: Record<string, string> = {
   // Rising bar chart + white trend line, data dots, up-arrow, sparkle — growth / revenue / "more".
   "growth-chart": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="2" stroke-opacity="0.16"><path d="M44 66h134M44 104h134M44 142h134"/></g><path d="M44 24v156h150" stroke-opacity="0.9"/><rect x="60" y="128" width="22" height="50" rx="3" fill="currentColor" fill-opacity="0.16"/><rect x="98" y="94" width="22" height="84" rx="3" fill="currentColor" fill-opacity="0.27"/><rect x="136" y="56" width="22" height="122" rx="3" fill="currentColor" fill-opacity="0.42"/><path d="M54 122l38-28 30 16 46-52" stroke="#fff" stroke-opacity="0.92" stroke-width="3.5"/><g fill="#fff" stroke="none"><circle cx="54" cy="122" r="4.5"/><circle cx="92" cy="94" r="4.5"/><circle cx="122" cy="110" r="4.5"/><circle cx="168" cy="58" r="4.5"/></g><path d="M152 56l16-2-2 16" stroke="#fff" stroke-width="3.5"/><path d="M176 24l2.4 7 7 2.4-7 2.4-2.4 7-2.4-7-7-2.4 7-2.4z" fill="#fff" fill-opacity="0.85" stroke="none"/></svg>`,
   // Two devices linked to ONE shared hub w/ pulse ring — "same IP / linked accounts" (risk).
@@ -86,6 +86,61 @@ const ILLUSTRATIONS: Record<string, string> = {
   "fingerprint": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><g stroke-opacity="0.5"><path d="M42 26H26v16M158 26h16v16M42 174H26v-16M158 174h16v-16"/></g><path d="M100 98a6 6 0 00-6 6c0 16 2 30 7 44"/><path d="M100 74a30 30 0 00-30 30c0 18 3 32 8 46"/><path d="M46 106a56 56 0 0192-42"/><path d="M156 104c0 8-1 18-3 26"/><path d="M128 104a28 28 0 00-46-21"/><path d="M128 106c0 22-4 40-11 56"/><path d="M52 120h96" stroke="#fff" stroke-opacity="0.85" stroke-width="3.5"/></svg>`,
   // Filled padlock w/ shackle, white keyhole, sparkle — security.
   "lock": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M64 92V66a36 36 0 0172 0v26" stroke-width="5"/><rect x="40" y="92" width="120" height="84" rx="16" fill="currentColor" fill-opacity="0.28"/><rect x="40" y="92" width="120" height="84" rx="16"/><path d="M40 110a120 30 0 01120 0" stroke="#fff" stroke-opacity="0.1" stroke-width="6"/><circle cx="100" cy="126" r="12" fill="#fff" fill-opacity="0.92" stroke="none"/><path d="M100 126v22" stroke="#fff" stroke-width="5"/><path d="M170 56l2.4 7 7 2.4-7 2.4-2.4 7-2.4-7-7-2.4 7-2.4z" fill="#fff" fill-opacity="0.65" stroke="none"/></svg>`,
+  // Shopping cart w/ items + up-arrow — e-commerce / online retail growth (TMĐT).
+  "shopping-cart": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M50 66H176L160 118H66Z" fill="currentColor" fill-opacity="0.2"/><path d="M50 66H176L160 118H66Z"/><path d="M24 48H44L68 118"/><circle cx="78" cy="140" r="11" fill="currentColor" fill-opacity="0.3"/><circle cx="78" cy="140" r="11"/><circle cx="150" cy="140" r="11" fill="currentColor" fill-opacity="0.3"/><circle cx="150" cy="140" r="11"/><path d="M150 54l13-13 13 13M163 41v34" stroke="#fff" stroke-opacity="0.85" stroke-width="3.5"/><path d="M88 84h54M94 100h42" stroke="#fff" stroke-opacity="0.4" stroke-width="3"/></svg>`,
+  // User silhouette w/ a "no entry" badge — banned / suspended account (khóa nick).
+  "ban-account": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="92" cy="84" r="28" fill="currentColor" fill-opacity="0.22"/><circle cx="92" cy="84" r="28"/><path d="M40 168c0-32 24-50 52-50s52 18 52 50" fill="currentColor" fill-opacity="0.16"/><path d="M40 168c0-32 24-50 52-50s52 18 52 50"/><circle cx="150" cy="52" r="28" fill="#0a0a0c" stroke="none"/><circle cx="150" cy="52" r="25" stroke="#fff" stroke-width="5"/><path d="M132 34l36 36" stroke="#fff" stroke-width="5"/></svg>`,
+  // Bold © badge struck by impact bursts — copyright strike / claim (gậy bản
+  // quyền). NOTE: no slash through the © — a slashed © means "no copyright"
+  // (copyleft), the opposite meaning. Bursts convey the "hit/strike".
+  "copyright-strike": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="104" r="52" fill="currentColor" fill-opacity="0.22"/><circle cx="100" cy="104" r="52"/><path d="M121 88a27 27 0 100 33" stroke="#fff" stroke-width="7"/><g stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M100 40V20M150 58l14-14M50 58L36 44M164 104h20M36 104H16M150 150l14 14M50 150l-14 14"/></g><path d="M158 40l2.6 7.6 7.6 2.6-7.6 2.6L158 68l-2.6-7.6L147.8 56l7.6-2.6z" fill="#fff" fill-opacity="0.7" stroke="none"/></svg>`,
+  // Clapperboard w/ play — video production / content (cắt cảnh, voiceover, làm nội dung).
+  "film-cut": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="78" width="140" height="84" rx="9" fill="currentColor" fill-opacity="0.22"/><rect x="30" y="78" width="140" height="84" rx="9"/><path d="M32 78l7-26h132l-7 26z" fill="currentColor" fill-opacity="0.36"/><path d="M32 78l7-26h132l-7 26z"/><g stroke="#fff" stroke-opacity="0.6" stroke-width="5"><path d="M62 52l-7 26M96 52l-7 26M130 52l-7 26M164 52l-7 26"/></g><path d="M88 104l32 18-32 18z" fill="#fff" fill-opacity="0.88" stroke="none"/></svg>`,
+  // Monitor/screen w/ play button + stand — single video / content.
+  "video-play": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="26" y="42" width="148" height="102" rx="14" fill="currentColor" fill-opacity="0.22"/><rect x="26" y="42" width="148" height="102" rx="14"/><path d="M84 72l38 21-38 21z" fill="#fff" fill-opacity="0.9" stroke="none"/><path d="M72 164h56M100 144v20" stroke-opacity="0.6"/></svg>`,
+  // Three stacked play screens — multiple channels / accounts.
+  "channels-multi": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="56" y="28" width="114" height="68" rx="12" fill="currentColor" fill-opacity="0.1" stroke-opacity="0.42"/><rect x="40" y="50" width="120" height="72" rx="12" fill="currentColor" fill-opacity="0.14" stroke-opacity="0.6"/><rect x="24" y="74" width="128" height="82" rx="14" fill="currentColor" fill-opacity="0.28"/><rect x="24" y="74" width="128" height="82" rx="14"/><path d="M74 100l34 18-34 18z" fill="#fff" fill-opacity="0.9" stroke="none"/></svg>`,
+  // Envelope — email / messages.
+  "email-big": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="26" y="50" width="148" height="104" rx="14" fill="currentColor" fill-opacity="0.2"/><rect x="26" y="50" width="148" height="104" rx="14"/><path d="M32 62l68 48 68-48" stroke="#fff" stroke-opacity="0.85" stroke-width="3.5"/><path d="M32 144l46-40M168 144l-46-40" stroke-opacity="0.4"/></svg>`,
+  // Globe w/ meridians + two connected server nodes — proxy / IP / routing / geo.
+  "proxy-globe": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="100" r="66" fill="currentColor" fill-opacity="0.16"/><circle cx="100" cy="100" r="66"/><path d="M34 100h132" stroke-opacity="0.65"/><path d="M100 34c28 22 28 110 0 132M100 34c-28 22-28 110 0 132" stroke-opacity="0.65"/><ellipse cx="100" cy="100" rx="32" ry="66" stroke-opacity="0.45"/><path d="M64 78l72 44" stroke="#fff" stroke-opacity="0.55" stroke-width="3"/><g fill="#fff" stroke="none"><circle cx="64" cy="78" r="6"/><circle cx="136" cy="122" r="6"/></g></svg>`,
+  // Rocket w/ fins + flame — launch / scale / fast growth.
+  "rocket": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M100 22c27 19 39 48 39 80l-17 18H78l-17-18c0-32 12-61 39-80z" fill="currentColor" fill-opacity="0.22"/><path d="M100 22c27 19 39 48 39 80l-17 18H78l-17-18c0-32 12-61 39-80z"/><circle cx="100" cy="84" r="15" fill="#fff" fill-opacity="0.9" stroke="none"/><path d="M78 122l-22 18 7-32M122 122l22 18-7-32" fill="currentColor" fill-opacity="0.28"/><path d="M78 122l-22 18 7-32M122 122l22 18-7-32"/><path d="M86 148c0 13 6 24 14 32 8-8 14-19 14-32" stroke="#fff" stroke-opacity="0.7"/></svg>`,
+  // Bullseye + incoming arrow — goal / conversion / targeting.
+  "target": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="94" cy="106" r="62" fill="currentColor" fill-opacity="0.14"/><circle cx="94" cy="106" r="62"/><circle cx="94" cy="106" r="39" stroke-opacity="0.8"/><circle cx="94" cy="106" r="17" fill="currentColor" fill-opacity="0.4"/><circle cx="94" cy="106" r="17"/><circle cx="94" cy="106" r="5" fill="#fff" stroke="none"/><path d="M94 106l62-62M150 28h18v18" stroke="#fff" stroke-opacity="0.85" stroke-width="3.5"/></svg>`,
+  // Clock — time / slow / schedule.
+  "clock": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="106" r="64" fill="currentColor" fill-opacity="0.18"/><circle cx="100" cy="106" r="64"/><path d="M100 64v42l28 18" stroke="#fff" stroke-width="5"/><g stroke-opacity="0.55"><path d="M100 50v8M156 106h-8M100 162v-8M44 106h8"/></g><path d="M82 26h36"/></svg>`,
+  // Megaphone w/ sound waves — marketing / ads / announce (quảng cáo).
+  "megaphone": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M38 84v34l26 6v24h18v-20l68 22V56l-68 22H64z" fill="currentColor" fill-opacity="0.22"/><path d="M38 84v34l26 6v24h18v-20l68 22V56l-68 22H64z"/><path d="M150 78v44" stroke-opacity="0.5"/><g stroke="#fff" stroke-opacity="0.7"><path d="M166 70l16-8M172 100h18M166 130l16 8"/></g></svg>`,
+  // Wallet w/ card + coin — income / earnings / money.
+  "wallet": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="56" width="140" height="98" rx="16" fill="currentColor" fill-opacity="0.22"/><rect x="30" y="56" width="140" height="98" rx="16"/><path d="M30 84h122a8 8 0 018 8v22a8 8 0 01-8 8H30" stroke-opacity="0.45"/><circle cx="148" cy="110" r="9" fill="#fff" fill-opacity="0.9" stroke="none"/><path d="M48 56l68-22 18 22" stroke-opacity="0.5"/></svg>`,
+  // Document w/ lines + corner fold — report / guide / AdSense / contract.
+  "document-big": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M52 24h64l34 34v118H52z" fill="currentColor" fill-opacity="0.2"/><path d="M52 24h64l34 34v118H52z"/><path d="M116 24v34h34" stroke-opacity="0.6"/><path d="M70 98h60M70 120h60M70 142h38" stroke="#fff" stroke-opacity="0.5" stroke-width="3.5"/><path d="M70 74h26" stroke-opacity="0.6"/></svg>`,
+  // Two interlocked chain links — affiliate / partnership / referral link.
+  "affiliate-link": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M86 114l28-28" stroke="#fff" stroke-width="4.5"/><path d="M98 70l12-12a32 32 0 0145 45l-20 20a32 32 0 01-45 0" fill="currentColor" fill-opacity="0.16"/><path d="M98 70l12-12a32 32 0 0145 45l-20 20a32 32 0 01-45 0"/><path d="M102 130l-12 12a32 32 0 01-45-45l20-20a32 32 0 0145 0" fill="currentColor" fill-opacity="0.16"/><path d="M102 130l-12 12a32 32 0 01-45-45l20-20a32 32 0 0145 0"/></svg>`,
+  // 3D box w/ motion lines — shipping / dropshipping / fulfillment.
+  "dropship-box": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M96 34l58 31v62l-58 31-58-31V65z" fill="currentColor" fill-opacity="0.2"/><path d="M96 34l58 31v62l-58 31-58-31V65z"/><path d="M38 65l58 31 58-31M96 96v62" stroke-opacity="0.7"/><path d="M68 49l58 31" stroke-opacity="0.4"/><g stroke="#fff" stroke-opacity="0.5"><path d="M158 120h22M164 138h16M160 156h20"/></g></svg>`,
+  // Two meshing gears — setup / automation / system (cấu hình).
+  "gears": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="80" cy="82" r="26" fill="currentColor" fill-opacity="0.22"/><circle cx="80" cy="82" r="26"/><circle cx="80" cy="82" r="9" fill="#fff" fill-opacity="0.85" stroke="none"/><g stroke-width="6"><path d="M80 48v-10M80 126v-10M118 82h10M32 82h10M105 57l7-7M48 114l7-7M105 107l7 7M48 50l7 7"/></g><circle cx="140" cy="136" r="20" fill="currentColor" fill-opacity="0.28"/><circle cx="140" cy="136" r="20"/><circle cx="140" cy="136" r="7" fill="#fff" fill-opacity="0.8" stroke="none"/><g stroke-width="5"><path d="M140 108v-8M140 172v-8M170 136h8M102 136h8M160 116l6-6M114 156l6 6M160 156l6 6M114 116l6-6"/></g></svg>`,
+  // Magnifier — research / search / inspection / detection.
+  "search": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="88" cy="86" r="48" fill="currentColor" fill-opacity="0.18"/><circle cx="88" cy="86" r="48"/><path d="M122 120l46 46" stroke-width="9"/><path d="M66 86a22 22 0 0122-22" stroke="#fff" stroke-opacity="0.6" stroke-width="3.5"/></svg>`,
+};
+
+// Small bold glyphs used as per-bullet markers in feature lists (24×24 viewBox,
+// legible at chip size). Single-tone (currentColor) so they stay crisp small.
+const BULLET_ICONS: Record<string, string> = {
+  link: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M11 6l1.2-1.2a4 4 0 015.7 5.7L16 13"/><path d="M13 18l-1.2 1.2a4 4 0 01-5.7-5.7L8 11"/></svg>`,
+  box: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg>`,
+  play: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/></svg>`,
+  user: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.6 3.2-5.6 7-5.6s7 2 7 5.6"/></svg>`,
+  ban: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>`,
+  email: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>`,
+  globe: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/></svg>`,
+  fingerprint: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 11.5a1.8 1.8 0 00-1.8 1.8c0 2.4.4 4 1.2 5.7"/><path d="M12 7.5a5.5 5.5 0 00-5.5 5.5c0 2.6.5 4.4 1.4 6.4"/><path d="M5.5 9a8 8 0 0113 4"/><path d="M18.5 13.5c0 1.6-.2 3.2-.8 4.7"/></svg>`,
+  doc: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6V3z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 16.5h6"/></svg>`,
+  coin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.6 9.4h3.4a1.9 1.9 0 010 3.8H10a1.9 1.9 0 000 3.8h3.4"/></svg>`,
+  shield: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.5v5.5c0 4.5-3 7-7 8-4-1-7-3.5-7-8V5.5L12 3z"/><path d="M9 12l2 2 4-4"/></svg>`,
+  cart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.2 11h10l2-8H7"/><circle cx="9" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg>`,
 };
 
 function renderIllustration(key: string | undefined): string {
@@ -482,12 +537,19 @@ function renderStatHeroInner(td: Extract<TemplateDataType, { template: "stat-her
 
 // ── FEATURE LIST SCENE ─────────────────────────────────────────────────────
 function renderFeatureListInner(td: Extract<TemplateDataType, { template: "feature-list" }>): string {
-  const bullets = td.bullets.map((b, i) =>
-    `<div class="feat-bullet feat-bullet-${i}" data-idx="${i}">
-      <div class="feat-dot"></div>
-      <div class="feat-text">${escapeHtml(b)}</div>
-    </div>`
-  ).join("\n    ");
+  const bullets = td.bullets.map((b, i) => {
+    // Bullets are either a plain string or { text, icon } — normalize.
+    const text = typeof b === "string" ? b : b.text;
+    const iconKey = typeof b === "string" ? undefined : b.icon;
+    const glyph = iconKey ? BULLET_ICONS[iconKey] : undefined;
+    const marker = glyph
+      ? `<div class="feat-ico">${glyph}</div>`
+      : `<div class="feat-dot"></div>`;
+    return `<div class="feat-bullet feat-bullet-${i}" data-idx="${i}">
+      ${marker}
+      <div class="feat-text">${escapeHtml(text)}</div>
+    </div>`;
+  }).join("\n    ");
 
   return `
 <div class="layout-feature-list">
