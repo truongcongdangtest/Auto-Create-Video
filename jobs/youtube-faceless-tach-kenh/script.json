@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "YouTube Faceless Nhiều Kênh: Tránh Gậy Bản Quyền 2026",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog/youtube-faceless-nhieu-kenh-khong-bi-gay-2026",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "TRÌNH DUYỆT ANTIDETECT"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Một cái gậy bản quyền sai có thể thổi bay cả mười kênh YouTube faceless của bạn.",
+      "templateData": {
+        "template": "hook",
+        "headline": "1 GẬY = BAY 10 KÊNH",
+        "subhead": "Lỗi faceless hay dính",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "stat",
+      "type": "body",
+      "voiceText": "Kênh faceless nhận nhiều yêu cầu bản quyền hơn kênh thường, tới sáu đến tám lần.",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "6-8×",
+        "label": "Claim nhiều hơn kênh thường",
+        "context": "Vì nội dung dễ trùng nguồn"
+      }
+    },
+    {
+      "id": "compare",
+      "type": "body",
+      "voiceText": "Hai kênh chung một địa chỉ IP là YouTube ghép chúng lại với nhau. Mỗi kênh một proxy riêng mới an toàn.",
+      "templateData": {
+        "template": "comparison",
+        "left": { "label": "2 kênh chung IP", "value": "Bị liên kết", "color": "cyan" },
+        "right": { "label": "Mỗi kênh 1 proxy", "value": "Tách biệt", "color": "purple", "winner": true }
+      }
+    },
+    {
+      "id": "isolate",
+      "type": "body",
+      "voiceText": "Muốn tách kênh: email riêng mỗi niche, proxy riêng từng kênh, vân tay trình duyệt riêng, và AdSense riêng.",
+      "templateData": {
+        "template": "feature-list",
+        "title": "Tách kênh, tránh liên kết",
+        "bullets": [
+          "Email riêng mỗi niche",
+          "Mỗi kênh 1 proxy residential",
+          "Fingerprint riêng từng profile",
+          "AdSense & thanh toán riêng"
+        ]
+      }
+    },
+    {
+      "id": "formula",
+      "type": "body",
+      "voiceText": "Nội dung khó bị gậy là có voiceover bình luận, cắt cảnh ba đến năm giây, và lấy nguồn từ Pexels.",
+      "templateData": {
+        "template": "callout",
+        "statement": "Voiceover + cắt 3-5 giây + nguồn Pexels = nội dung khó bị gậy",
+        "tag": "Công thức"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Đọc hướng dẫn đầy đủ tại Cloak Login. Theo dõi để build kênh an toàn hơn.",
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Đọc full tại",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

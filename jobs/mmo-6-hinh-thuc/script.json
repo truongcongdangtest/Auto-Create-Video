@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Kiếm Tiền Online 2025-2026: 6 Hình Thức MMO Thực Sự Ra Tiền",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog/kiem-tien-online-mmo-2025-2026",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "TRÌNH DUYỆT ANTIDETECT"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Chán mấy bài mười bảy cách kiếm tiền không cần vốn? Đây là sáu cách thật sự ra tiền.",
+      "templateData": {
+        "template": "hook",
+        "headline": "6 CÁCH MMO RA TIỀN THẬT",
+        "subhead": "Bỏ qua kiểu lùa gà",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "stat",
+      "type": "body",
+      "voiceText": "Thương mại điện tử Việt Nam đạt khoảng ba mươi hai tỷ đô năm 2025. Dòng tiền vẫn chảy rất mạnh.",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "32 tỷ $",
+        "label": "TMĐT Việt Nam 2025",
+        "context": "Cơ hội MMO vẫn còn"
+      }
+    },
+    {
+      "id": "forms",
+      "type": "body",
+      "voiceText": "Bốn mô hình còn sống khoẻ: tiếp thị liên kết, dropshipping, làm nội dung YouTube, và nuôi bán tài khoản.",
+      "templateData": {
+        "template": "feature-list",
+        "title": "Mô hình còn sống 2026",
+        "bullets": [
+          "Affiliate – vốn gần 0",
+          "Dropshipping – 800-3000$/tháng",
+          "YouTube – nên làm content tiếng Anh",
+          "Nuôi & bán nick – rủi ro khóa thật"
+        ]
+      }
+    },
+    {
+      "id": "compare",
+      "type": "body",
+      "voiceText": "Affiliate vốn thấp nhưng lên chậm. Dropshipping lãi rõ hơn nhưng cần tiền chạy quảng cáo.",
+      "templateData": {
+        "template": "comparison",
+        "left": { "label": "Affiliate", "value": "Vốn thấp", "color": "cyan" },
+        "right": { "label": "Dropshipping", "value": "Lãi rõ hơn", "color": "purple" }
+      }
+    },
+    {
+      "id": "truth",
+      "type": "body",
+      "voiceText": "Nhớ kỹ một điều: mô hình nào cũng có thể bị khóa nick. Nuôi tài khoản cho đúng cách mới sống lâu.",
+      "templateData": {
+        "template": "callout",
+        "statement": "Mô hình nào cũng có thể bị khóa nick — nuôi tài khoản đúng cách mới sống lâu",
+        "tag": "Sự thật"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Đọc hướng dẫn đầy đủ tại Cloak Login. Theo dõi để làm MMO tỉnh táo hơn.",
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Đọc full tại",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
