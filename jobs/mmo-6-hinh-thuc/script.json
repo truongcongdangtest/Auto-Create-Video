@@ -58,6 +58,7 @@
       "id": "compare",
       "type": "body",
       "voiceText": "Affiliate vốn thấp nhưng lên chậm. Dropshipping lãi rõ hơn nhưng cần tiền chạy quảng cáo.",
+      "illustration": "balance",
       "templateData": {
         "template": "comparison",
         "left": { "label": "Affiliate", "value": "Vốn thấp", "color": "cyan" },

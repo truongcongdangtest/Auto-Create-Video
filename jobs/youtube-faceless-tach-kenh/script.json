@@ -42,6 +42,7 @@
       "id": "compare",
       "type": "body",
       "voiceText": "Hai kênh chung một địa chỉ IP là YouTube ghép chúng lại với nhau. Mỗi kênh một proxy riêng mới an toàn.",
+      "illustration": "balance",
       "templateData": {
         "template": "comparison",
         "left": { "label": "2 kênh chung IP", "value": "Bị liên kết", "color": "cyan" },

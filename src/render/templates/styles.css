@@ -244,17 +244,17 @@ html, body {
   position: absolute;
   top: calc(290px * var(--scale)); left: 50%;
   transform: translateX(-50%);
-  width: calc(360px * var(--scale)); height: calc(360px * var(--scale));
+  width: calc(404px * var(--scale)); height: calc(404px * var(--scale));
   z-index: 4;
   color: var(--accent);
   opacity: 0;
-  filter: drop-shadow(0 8px 36px rgba(var(--accent-rgb), 0.35));
+  filter: drop-shadow(0 10px 44px rgba(var(--accent-rgb), 0.45));
 }
 .scene-illu svg { width: 100%; height: 100%; display: block; }
 .scene-illu::before {
-  content: ""; position: absolute; inset: -14%;
+  content: ""; position: absolute; inset: -16%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.14), transparent 66%);
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.18), transparent 68%);
   z-index: -1;
 }
 body[data-aspect="16:9"] .scene-illu { top: calc(150px * var(--scale)); width: calc(260px * var(--scale)); height: calc(260px * var(--scale)); }
@@ -264,9 +264,17 @@ body[data-aspect="16:9"] .scene-illu { top: calc(150px * var(--scale)); width: c
    (stat-hero, callout) keep their centered position; they already clear it. */
 .scene.has-illu .layout-feature-list {
   justify-content: flex-start;
-  padding-top: calc(700px * var(--scale));
+  padding-top: calc(740px * var(--scale));
 }
 body[data-aspect="16:9"] .scene.has-illu .layout-feature-list { padding-top: calc(440px * var(--scale)); }
+
+/* Comparison cards are tall (two cards + VS). When an illustration sits above,
+   drop the whole stack below the graphic zone so nothing overlaps. */
+.scene.has-illu .layout-comparison {
+  justify-content: flex-start;
+  padding-top: calc(720px * var(--scale));
+}
+body[data-aspect="16:9"] .scene.has-illu .layout-comparison { padding-top: calc(360px * var(--scale)); }
 
 .cap-pill {
   display: inline-block;
