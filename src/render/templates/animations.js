@@ -46,6 +46,12 @@ window.__timelines["news-video"] = tl;
       animateOutro(scene, tl, start, dur);
     }
 
+    // Large per-scene illustration (upper zone) — pop in just before the text.
+    const illu = scene.querySelector(".scene-illu");
+    if (illu) {
+      tl.fromTo(illu, { opacity: 0, scale: 0.7, y: 24 }, { opacity: 0.96, scale: 1, y: 0, duration: 0.45 }, start + 0.08);
+    }
+
     // Animated subtitle (karaoke-style) — runs on every scene, synced to its
     // voice duration so phrases pop in/out roughly in time with the narration.
     const voiceDur = parseFloat(scene.dataset.voiceDur || "0");

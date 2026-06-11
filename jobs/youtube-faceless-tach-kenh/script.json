@@ -18,6 +18,7 @@
       "id": "hook",
       "type": "hook",
       "voiceText": "Một cái gậy bản quyền sai có thể thổi bay cả mười kênh YouTube faceless của bạn.",
+      "illustration": "warning",
       "templateData": {
         "template": "hook",
         "headline": "1 GẬY = BAY 10 KÊNH",
@@ -29,6 +30,7 @@
       "id": "stat",
       "type": "body",
       "voiceText": "Kênh faceless nhận nhiều yêu cầu bản quyền hơn kênh thường, tới sáu đến tám lần.",
+      "illustration": "growth-chart",
       "templateData": {
         "template": "stat-hero",
         "value": "6-8×",
@@ -50,6 +52,7 @@
       "id": "isolate",
       "type": "body",
       "voiceText": "Muốn tách kênh: email riêng mỗi niche, proxy riêng từng kênh, vân tay trình duyệt riêng, và AdSense riêng.",
+      "illustration": "network-split",
       "templateData": {
         "template": "feature-list",
         "title": "Tách kênh, tránh liên kết",
@@ -65,6 +68,7 @@
       "id": "formula",
       "type": "body",
       "voiceText": "Nội dung khó bị gậy là có voiceover bình luận, cắt cảnh ba đến năm giây, và lấy nguồn từ Pexels.",
+      "illustration": "shield-check",
       "templateData": {
         "template": "callout",
         "statement": "Voiceover + cắt 3-5 giây + nguồn Pexels = nội dung khó bị gậy",

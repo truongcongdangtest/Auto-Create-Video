@@ -52,6 +52,44 @@ const FLOAT_ICONS_HTML =
   FLOAT_ICON_SVGS.map((svg, i) => `<span class="fic fic-${i}">${svg}</span>`).join("") +
   `</div>`;
 
+// ── Large per-scene SVG illustrations ───────────────────────────────────────
+// Line-art (stroke=currentColor → tints to theme accent). Picked per scene via
+// the optional `illustration` field; rendered prominently in the scene's upper
+// zone. Unknown/missing keys render nothing. 200×200 viewBox.
+const ILLUSTRATIONS: Record<string, string> = {
+  // Rising bar chart + trend arrow — growth / revenue / "more".
+  "growth-chart": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M34 28v144h140"/><rect x="58" y="120" width="24" height="52"/><rect x="98" y="88" width="24" height="84"/><rect x="138" y="52" width="24" height="120"/><path d="M50 96l38-30 34 18 42-52" stroke-opacity="0.5"/><path d="M150 32h20v20" stroke-opacity="0.5"/></svg>`,
+  // Two devices linked to ONE shared node — "same IP / linked accounts" (risk).
+  "network-link": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="30" width="46" height="34" rx="4"/><rect x="130" y="30" width="46" height="34" rx="4"/><circle cx="100" cy="150" r="22"/><path d="M47 64l40 70M153 64l-40 70"/><path d="M88 150h24M100 138v24" stroke-opacity="0.55"/></svg>`,
+  // Two devices each to its OWN node — "1 proxy per account / isolated" (safe).
+  "network-split": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="28" width="44" height="32" rx="4"/><rect x="136" y="28" width="44" height="32" rx="4"/><circle cx="42" cy="150" r="20"/><circle cx="158" cy="150" r="20"/><path d="M42 60v70M158 60v70"/><path d="M86 100v40M114 100v40" stroke-opacity="0.4" stroke-dasharray="6 10"/></svg>`,
+  // 2×2 grid of profile cards — multi-account.
+  "account-grid": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><g><rect x="26" y="26" width="64" height="64" rx="8"/><circle cx="58" cy="50" r="10"/><path d="M42 78c0-10 7-16 16-16s16 6 16 16"/></g><g stroke-opacity="0.85"><rect x="110" y="26" width="64" height="64" rx="8"/><circle cx="142" cy="50" r="10"/><path d="M126 78c0-10 7-16 16-16s16 6 16 16"/></g><g stroke-opacity="0.7"><rect x="26" y="110" width="64" height="64" rx="8"/><circle cx="58" cy="134" r="10"/><path d="M42 162c0-10 7-16 16-16s16 6 16 16"/></g><g stroke-opacity="0.55"><rect x="110" y="110" width="64" height="64" rx="8"/><circle cx="142" cy="134" r="10"/><path d="M126 162c0-10 7-16 16-16s16 6 16 16"/></g></svg>`,
+  // Warning triangle — risk / ban.
+  "warning": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M100 28L182 168H18z"/><path d="M100 84v44"/><circle cx="100" cy="148" r="2.5" fill="currentColor"/></svg>`,
+  // Shield with check — protected / safe practice.
+  "shield-check": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M100 22l66 24v50c0 42-28 66-66 80-38-14-66-38-66-80V46z"/><path d="M72 100l20 20 36-40"/></svg>`,
+  // Stack of coins — money / income.
+  "coins": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="100" cy="58" rx="50" ry="20"/><path d="M50 58v34c0 11 22 20 50 20s50-9 50-20V58" stroke-opacity="0.85"/><path d="M50 92v34c0 11 22 20 50 20s50-9 50-20V92" stroke-opacity="0.7"/><path d="M100 44v28M92 52h12a6 6 0 010 12h-8a6 6 0 000 12h12" stroke-opacity="0.55"/></svg>`,
+  // Stacked browser windows — profiles / channels.
+  "browser-stack": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="44" y="44" width="120" height="86" rx="8" stroke-opacity="0.5"/><rect x="30" y="64" width="120" height="86" rx="8"/><path d="M30 88h120"/><circle cx="48" cy="76" r="3" fill="currentColor"/><circle cx="62" cy="76" r="3" fill="currentColor"/></svg>`,
+  // Funnel — affiliate / conversion.
+  "funnel": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M28 36h144L116 110v48l-32 18v-66z"/><path d="M150 150h30M150 168h22" stroke-opacity="0.5"/></svg>`,
+  // Balance scale — comparison / choice.
+  "balance": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M100 30v126M70 176h60"/><path d="M40 56h120"/><path d="M40 56l-22 44a22 22 0 0044 0zM160 56l-22 44a22 22 0 0044 0z"/><circle cx="100" cy="40" r="8"/></svg>`,
+  // Fingerprint — detection / fingerprint.
+  "fingerprint": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M100 96a8 8 0 00-8 8c0 14 2 28 6 40"/><path d="M100 70a34 34 0 00-34 34c0 16 2 30 7 44"/><path d="M40 104a60 60 0 0199-46"/><path d="M160 104c0 8-1 18-3 26"/><path d="M126 104a26 26 0 00-44-19"/><path d="M126 104c0 20-4 36-11 52"/></svg>`,
+  // Padlock — security.
+  "lock": `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="44" y="92" width="112" height="80" rx="12"/><path d="M68 92V68a32 32 0 0164 0v24"/><path d="M100 122v22"/></svg>`,
+};
+
+function renderIllustration(key: string | undefined): string {
+  if (!key) return "";
+  const svg = ILLUSTRATIONS[key];
+  if (!svg) return "";
+  return `<div class="scene-illu">${svg}</div>`;
+}
+
 
 // Default TikTok config — EMPTY by design. An empty handle suppresses both the
 // footer "♪ @handle" pill AND the outro follow card, so brand videos ship
@@ -331,9 +369,12 @@ function renderScene(
   const brollHtml = brollRelPath
     ? brollClipForStage(scene.id, brollRelPath, start, duration)
     : null;
+  // Large per-scene illustration (upper zone). Absolute-positioned, so its
+  // place in the markup doesn't affect the centered layout content.
+  const illuHtml = renderIllustration(scene.illustration);
   return {
     brollHtml,
-    sceneHtml: buildScene(scene, start, duration, voiceDur, layoutName, inner),
+    sceneHtml: buildScene(scene, start, duration, voiceDur, layoutName, illuHtml + inner),
   };
 }
 
@@ -521,8 +562,11 @@ function buildScene(
   innerHtml: string,
 ): string {
   const caption = renderCaption(scene.voiceText);
+  // `has-illu` lets the CSS push tall layouts (feature-list) below the upper
+  // illustration zone so the card never overlaps the graphic.
+  const illuClass = scene.illustration && ILLUSTRATIONS[scene.illustration] ? " has-illu" : "";
   return `
-<div class="scene clip" id="scene-${scene.id}"
+<div class="scene clip${illuClass}" id="scene-${scene.id}"
      data-start="${start.toFixed(2)}" data-duration="${duration.toFixed(2)}"
      data-voice-dur="${voiceDur.toFixed(2)}" data-active="0"
      data-layout="${layoutName}">

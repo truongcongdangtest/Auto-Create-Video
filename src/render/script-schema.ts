@@ -91,6 +91,13 @@ const Scene = z.object({
   /** Optional sound effect override (else pipeline picks per template) */
   sfx: SfxSpec.optional(),
   /**
+   * Optional key into the bundled SVG illustration library (composer
+   * ILLUSTRATIONS). Renders a large vector graphic in the upper zone of the
+   * scene. Unknown/missing keys render nothing. Examples: "growth-chart",
+   * "network-split", "warning", "coins", "shield-check", "account-grid".
+   */
+  illustration: z.string().optional(),
+  /**
    * Optional ENGLISH visual keywords for Pexels b-roll search. When present,
    * skips the Gemini VN→EN translation step. Max 5 short words.
    * Example: ["city skyline", "sunset"]

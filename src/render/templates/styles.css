@@ -237,6 +237,37 @@ html, body {
   position: absolute; left: 0; right: 0; bottom: 0;
   text-align: center; opacity: 0;
 }
+/* ── PER-SCENE ILLUSTRATION (large vector graphic, upper zone) ──────
+   Absolute-positioned in the scene's upper third so it never collides with
+   the vertically-centered text/cards below. Tints to the theme accent. */
+.scene-illu {
+  position: absolute;
+  top: calc(290px * var(--scale)); left: 50%;
+  transform: translateX(-50%);
+  width: calc(360px * var(--scale)); height: calc(360px * var(--scale));
+  z-index: 4;
+  color: var(--accent);
+  opacity: 0;
+  filter: drop-shadow(0 8px 36px rgba(var(--accent-rgb), 0.35));
+}
+.scene-illu svg { width: 100%; height: 100%; display: block; }
+.scene-illu::before {
+  content: ""; position: absolute; inset: -14%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.14), transparent 66%);
+  z-index: -1;
+}
+body[data-aspect="16:9"] .scene-illu { top: calc(150px * var(--scale)); width: calc(260px * var(--scale)); height: calc(260px * var(--scale)); }
+
+/* Tall cards (feature-list) would reach up into the illustration zone when
+   centered — drop them below it so the graphic stays clear. Short layouts
+   (stat-hero, callout) keep their centered position; they already clear it. */
+.scene.has-illu .layout-feature-list {
+  justify-content: flex-start;
+  padding-top: calc(700px * var(--scale));
+}
+body[data-aspect="16:9"] .scene.has-illu .layout-feature-list { padding-top: calc(440px * var(--scale)); }
+
 .cap-pill {
   display: inline-block;
   font-family: 'Inter', sans-serif; font-weight: 800;
