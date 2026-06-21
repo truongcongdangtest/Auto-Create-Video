@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Dấu vân tay trình duyệt: vì sao xóa cookie vẫn bị nhận ra",
+    "source": {
+      "url": "https://en.wikipedia.org/wiki/Device_fingerprint",
+      "domain": "en.wikipedia.org",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "ẨN DANH & BẢO MẬT"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Bạn xóa cookie, bật ẩn danh, dùng cả VPN. Vậy mà website vẫn nhận ra đúng bạn. Vì sao lại thế?",
+      "templateData": {
+        "template": "hook",
+        "headline": "Website vẫn nhận ra bạn",
+        "subhead": "Dù đã ẩn danh và VPN",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "stat",
+      "type": "body",
+      "voiceText": "Bí mật nằm ở dấu vân tay trình duyệt. Chỉ riêng trình duyệt đã để lộ hơn ba mươi thông số để nhận ra bạn, mà chẳng cần đến cookie.",
+      "templateData": {
+        "template": "stat-hero",
+        "value": "30+",
+        "label": "thông số nhận diện thiết bị",
+        "context": "Không cần cookie hay địa chỉ IP"
+      }
+    },
+    {
+      "id": "signals",
+      "type": "body",
+      "voiceText": "Nó đọc loại trình duyệt, độ phân giải màn hình, múi giờ, font chữ đã cài, cùng với Canvas và WebGL của card đồ hoạ.",
+      "templateData": {
+        "template": "feature-list",
+        "title": "Trình duyệt lộ những gì?",
+        "bullets": [
+          "Loại trình duyệt, độ phân giải",
+          "Múi giờ, ngôn ngữ",
+          "Canvas, WebGL — card đồ hoạ",
+          "Font chữ đã cài"
+        ]
+      }
+    },
+    {
+      "id": "warning",
+      "type": "body",
+      "voiceText": "Đáng lo là xóa cookie, bật ẩn danh hay đổi VPN đều không giấu được. Vì vân tay nằm ở tầng trình duyệt, chứ không phải ở địa chỉ IP.",
+      "templateData": {
+        "template": "callout",
+        "statement": "Cookie, ẩn danh, VPN đều không giấu được vân tay",
+        "tag": "Sự thật"
+      }
+    },
+    {
+      "id": "solution",
+      "type": "body",
+      "voiceText": "Cách chặn là dùng trình duyệt chống vân tay. Mỗi hồ sơ mang một vân tay riêng biệt, nên mỗi tài khoản trông như một chiếc máy khác nhau.",
+      "templateData": {
+        "template": "comparison",
+        "left": { "label": "Trình duyệt thường", "value": "Một vân tay", "color": "cyan" },
+        "right": { "label": "Chống vân tay", "value": "Vân tay riêng", "color": "purple", "winner": true }
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Tìm hiểu cách ẩn vân tay tại Cloak Login. Theo dõi để bảo vệ danh tính số của bạn.",
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Tìm hiểu tại",
+        "channelName": "Cloak Login",
+        "source": "en.wikipedia.org"
+      }
+    }
+  ]
+}
