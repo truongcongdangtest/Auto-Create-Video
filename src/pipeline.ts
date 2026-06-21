@@ -58,7 +58,10 @@ export async function runPipeline(scriptPath: string): Promise<void> {
   const raw = JSON.parse(await readFile(scriptPath, "utf8"));
   // Substitute env placeholder before validation (works for both providers)
   if (raw.voice?.voiceId === "${VIETNAMESE_VOICEID}" || raw.voice?.voiceId === "${VOICE_ID}") {
-    raw.voice.voiceId = cfg.ttsProvider === "lucylab" ? cfg.lucylabVoiceId! : cfg.elevenlabsVoiceId!;
+    raw.voice.voiceId =
+      cfg.ttsProvider === "lucylab" ? cfg.lucylabVoiceId!
+        : cfg.ttsProvider === "elevenlabs" ? cfg.elevenlabsVoiceId!
+          : cfg.edgeVoice;
   }
   const script: Script = ScriptSchema.parse(raw);
 

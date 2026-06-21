@@ -16,6 +16,7 @@ export interface TtsClient {
 import type { Config } from "../config.js";
 import { LucylabClient } from "./lucylab-client.js";
 import { ElevenLabsClient } from "./elevenlabs-client.js";
+import { EdgeTtsClient } from "./edge-tts-client.js";
 
 export function createTtsClient(cfg: Config): TtsClient {
   switch (cfg.ttsProvider) {
@@ -34,6 +35,11 @@ export function createTtsClient(cfg: Config): TtsClient {
         voiceId: cfg.elevenlabsVoiceId!,
         modelId: cfg.elevenlabsModelId,
         endpoint: cfg.elevenlabsEndpoint,
+      });
+    case "edge":
+      return new EdgeTtsClient({
+        voice: cfg.edgeVoice,
+        speed: cfg.voiceSpeed,
       });
     default: {
       const _never: never = cfg.ttsProvider;

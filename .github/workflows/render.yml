@@ -11,6 +11,10 @@ on:
         description: "Folder holding script.json (e.g. jobs/antidetect-vs-vpn)"
         required: true
         default: "jobs/antidetect-vs-vpn"
+      tts:
+        description: "Giọng đọc: edge (free) | lucylab | elevenlabs"
+        required: false
+        default: "edge"
 
 jobs:
   render:
@@ -36,9 +40,13 @@ jobs:
       - name: Install Chromium (for hyperframes)
         run: npx playwright install --with-deps chromium
 
+      - name: Install edge-tts (free voice)
+        run: python3 -m pip install --quiet edge-tts
+
       - name: Render pipeline
         env:
-          TTS_PROVIDER: lucylab
+          TTS_PROVIDER: ${{ github.event.inputs.tts }}
+          EDGE_VOICE: vi-VN-NamMinhNeural
           VIETNAMESE_API_KEY: ${{ secrets.VIETNAMESE_API_KEY }}
           VIETNAMESE_VOICEID: ${{ secrets.VIETNAMESE_VOICEID }}
           VIETVIRAL_RENDER_QUALITY: high

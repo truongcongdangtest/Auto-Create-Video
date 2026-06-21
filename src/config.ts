@@ -1,6 +1,6 @@
 import "dotenv/config";
 
-export type TtsProvider = "lucylab" | "elevenlabs";
+export type TtsProvider = "lucylab" | "elevenlabs" | "edge";
 
 export interface TiktokConfig {
   displayName: string;
@@ -25,6 +25,10 @@ export interface Config {
   elevenlabsVoiceId?: string;
   elevenlabsModelId: string;
   elevenlabsEndpoint: string;
+
+  // Edge-TTS (free, no API key) — Microsoft online neural voices via the
+  // `edge-tts` CLI. Unlimited; the render workflow runs `pip install edge-tts`.
+  edgeVoice: string;
 
   // TikTok follow card (outro)
   tiktok: TiktokConfig;
@@ -69,8 +73,8 @@ function floatDefault(name: string, def: number): number {
 
 export function loadConfig(): Config {
   const provider = (process.env.TTS_PROVIDER ?? "lucylab") as TtsProvider;
-  if (provider !== "lucylab" && provider !== "elevenlabs") {
-    throw new Error(`TTS_PROVIDER must be "lucylab" or "elevenlabs", got "${provider}"`);
+  if (provider !== "lucylab" && provider !== "elevenlabs" && provider !== "edge") {
+    throw new Error(`TTS_PROVIDER must be "lucylab", "elevenlabs" or "edge", got "${provider}"`);
   }
 
   // Validate provider-specific required vars
@@ -87,7 +91,7 @@ export function loadConfig(): Config {
         `Copy .env.example to .env.local and fill in your LucyLab voice ID.`
       );
     }
-  } else {
+  } else if (provider === "elevenlabs") {
     if (!process.env.ELEVENLABS_API_KEY || process.env.ELEVENLABS_API_KEY.trim() === "") {
       throw new Error(
         `Missing ELEVENLABS_API_KEY (required when TTS_PROVIDER=elevenlabs). ` +
@@ -113,6 +117,7 @@ export function loadConfig(): Config {
     elevenlabsVoiceId: process.env.ELEVENLABS_VOICE_ID,
     elevenlabsModelId: process.env.ELEVENLABS_MODEL_ID ?? "eleven_multilingual_v2",
     elevenlabsEndpoint: process.env.ELEVENLABS_ENDPOINT ?? "https://api.elevenlabs.io/v1",
+    edgeVoice: process.env.EDGE_VOICE ?? "vi-VN-NamMinhNeural",
     tiktok: {
       // Empty by default → no footer handle pill, no outro follow card. Set
       // these env vars only when you have a real channel to promote.

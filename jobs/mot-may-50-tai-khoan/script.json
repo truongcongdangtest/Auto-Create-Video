@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Một máy, năm mươi tài khoản, không lo bị khóa",
+    "source": {
+      "url": "https://cloakbrowse.com",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "ẨN DANH & BẢO MẬT"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Một chiếc máy tính chạy được năm mươi tài khoản mà không cái nào dính nhau, bạn tin không?",
+      "keywords": ["năm mươi tài khoản", "không cái nào dính nhau"],
+      "templateData": {
+        "template": "hook",
+        "headline": "1 máy, 50 tài khoản",
+        "subhead": "Không cái nào dính nhau",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "secret",
+      "type": "body",
+      "voiceText": "Bí mật nằm ở vân tay trình duyệt. Mỗi hồ sơ mang một danh tính máy riêng, nên các nền tảng nhìn vào tưởng đó là năm mươi người dùng hoàn toàn khác nhau.",
+      "keywords": ["vân tay trình duyệt", "danh tính máy riêng"],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "50",
+        "label": "danh tính máy riêng biệt",
+        "context": "Nền tảng tưởng 50 người khác nhau"
+      }
+    },
+    {
+      "id": "how",
+      "type": "body",
+      "voiceText": "Cách làm rất gọn. Mỗi hồ sơ một danh tính, một proxy, một bộ dữ liệu. Bạn chỉ cần bấm tạo rồi đăng nhập như bình thường.",
+      "keywords": ["một danh tính", "một proxy", "một bộ dữ liệu"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Cách làm rất gọn",
+        "bullets": [
+          "Một danh tính riêng",
+          "Một proxy riêng",
+          "Một bộ dữ liệu riêng",
+          "Bấm tạo, đăng nhập là xong"
+        ]
+      }
+    },
+    {
+      "id": "compare",
+      "type": "body",
+      "voiceText": "Cách cũ mở nhiều tài khoản trên cùng một trình duyệt, vân tay trùng nhau nên bị liên kết và khóa hàng loạt. Cách này tách bạch từng hồ sơ, an toàn hơn hẳn.",
+      "keywords": ["vân tay trùng nhau", "khóa hàng loạt", "tách bạch"],
+      "templateData": {
+        "template": "comparison",
+        "left": { "label": "Cách cũ", "value": "Vân tay trùng", "color": "cyan" },
+        "right": { "label": "Cách an toàn", "value": "Tách từng hồ sơ", "color": "purple", "winner": true }
+      }
+    },
+    {
+      "id": "benefit",
+      "type": "body",
+      "voiceText": "Nhờ vậy bạn tự tin nuôi hàng chục tài khoản song song, mở rộng quy mô làm việc mà không còn nơm nớp lo bay nick.",
+      "keywords": ["hàng chục tài khoản", "không còn nơm nớp", "bay nick"],
+      "templateData": {
+        "template": "callout",
+        "statement": "Nuôi hàng chục tài khoản song song, không còn lo bay nick",
+        "tag": "Tự tin"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login giúp bạn làm chủ mọi tài khoản trên một máy. Tải về và bắt đầu ngay hôm nay.",
+      "keywords": ["làm chủ", "một máy", "bắt đầu ngay"],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Tải về & bắt đầu",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
