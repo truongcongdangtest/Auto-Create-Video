@@ -140,27 +140,17 @@ window.__timelines["news-video"] = tl;
       if (mask) {
         tl.fromTo(mask, { x: "-120%" }, { x: "120%", duration: 1.0 }, start + 0.7);
       }
-      // Count-up: roll a pure-integer value from 0 → target while it punches in.
-      // Driven by onUpdate on a proxy object. If the renderer captures live DOM
-      // this animates; if not, the authored final number stays put (we never
-      // pre-zero the text), so it degrades to a correct static number.
-      const num = value.querySelector(".stat-num");
-      const raw = num ? (num.textContent || "").trim() : "";
-      const m = /^(\d{1,9})$/.exec(raw);
-      if (num && m) {
-        const target = parseInt(m[1], 10);
-        const proxy = { v: 0 };
-        tl.to(
-          proxy,
-          {
-            v: target,
-            duration: 0.6,
-            onUpdate: () => { num.textContent = String(Math.round(proxy.v)); },
-            onComplete: () => { num.textContent = String(target); },
-          },
-          start + 0.15,
-        );
-      }
+      // Count-up: roll each digit reel from 0 up to its final digit. Pure CSS
+      // transforms (translateY by % of the reel's own height) so HyperFrames
+      // captures it — DOM text mutations are NOT captured. `data-d` is the final
+      // digit; the reel lists cells 0..d, so landing on the last cell == digit d.
+      const rolls = value.querySelectorAll(".snum-roll");
+      rolls.forEach((roll, idx) => {
+        const d = parseInt(roll.dataset.d || "0", 10);
+        if (!(d > 0)) return; // single-cell reel (digit 0): nothing to roll
+        const yEnd = -(d / (d + 1)) * 100; // move up d cells of (d+1) total
+        tl.fromTo(roll, { y: "0%" }, { y: yEnd + "%", duration: 0.6 }, start + 0.2 + idx * 0.06);
+      });
     }
 
     const label = scene.querySelector(".stat-label");

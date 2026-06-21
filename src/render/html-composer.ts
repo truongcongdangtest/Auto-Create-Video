@@ -536,10 +536,32 @@ function renderStatHeroInner(td: Extract<TemplateDataType, { template: "stat-her
   const context = td.context ? `<div class="stat-context">${escapeHtml(td.context)}</div>` : "";
   return `
 <div class="layout-stat-hero">
-  <div class="stat-value shimmer-sweep-target"><span class="stat-num">${escapeHtml(td.value)}</span></div>
+  <div class="stat-value shimmer-sweep-target">${renderStatNumber(td.value)}</div>
   <div class="stat-label">${escapeHtml(td.label)}</div>
   ${context}
 </div>`.trim();
+}
+
+/**
+ * Build the stat number markup. A pure-integer value becomes a transform-based
+ * digit reel: each digit is a vertical strip 0..d clipped to a one-glyph window,
+ * which animations.js translates up to land on `d` — counting up. We use a
+ * transform (not a textContent mutation) because HyperFrames captures CSS
+ * transforms but NOT live DOM text changes (the shimmer sweep's `x:"120%"`
+ * tween proves percentage translates render). Non-integers stay plain text.
+ */
+function renderStatNumber(value: string): string {
+  const v = value.trim();
+  if (!/^\d{1,9}$/.test(v)) {
+    return `<span class="stat-num">${escapeHtml(value)}</span>`;
+  }
+  const cols = v.split("").map((ch) => {
+    const d = parseInt(ch, 10);
+    let cells = "";
+    for (let k = 0; k <= d; k++) cells += `<span class="snum-cell">${k}</span>`;
+    return `<span class="snum-col"><span class="snum-roll" data-d="${d}">${cells}</span></span>`;
+  });
+  return `<span class="stat-num stat-num-reel">${cols.join("")}</span>`;
 }
 
 // ── FEATURE LIST SCENE ─────────────────────────────────────────────────────

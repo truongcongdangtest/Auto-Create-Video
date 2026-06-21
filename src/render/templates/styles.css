@@ -463,6 +463,20 @@ body[data-aspect="16:9"] .scene.has-illu .layout-comparison { padding-top: calc(
   opacity: 0;
 }
 
+/* Digit-reel count-up — each digit is a vertical strip 0..d clipped to a
+   one-glyph window; animations.js translates the strip up to land on d.
+   Transform-only so HyperFrames captures the motion. */
+.stat-num-reel { display: inline-flex; }
+/* 1.25em window (not 1em): the Anton glyph slightly exceeds its em box and gets
+   clipped at exactly 1em. Taller window/cell heights stay in sync, and the roll
+   distance is a % of the reel's own height, so the count-up math is unaffected. */
+.snum-col { display: inline-block; overflow: hidden; height: 1.25em; line-height: 1.25em; }
+.snum-roll { display: flex; flex-direction: column; will-change: transform; }
+.snum-cell {
+  height: 1.25em; line-height: 1.25em;
+  display: flex; align-items: center; justify-content: center;
+}
+
 .stat-label {
   font-family: 'Inter', sans-serif;
   font-size: calc(64px * var(--scale)); font-weight: 700;
