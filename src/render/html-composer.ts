@@ -536,7 +536,7 @@ function renderStatHeroInner(td: Extract<TemplateDataType, { template: "stat-her
   const context = td.context ? `<div class="stat-context">${escapeHtml(td.context)}</div>` : "";
   return `
 <div class="layout-stat-hero">
-  <div class="stat-value shimmer-sweep-target">${escapeHtml(td.value)}</div>
+  <div class="stat-value shimmer-sweep-target"><span class="stat-num">${escapeHtml(td.value)}</span></div>
   <div class="stat-label">${escapeHtml(td.label)}</div>
   ${context}
 </div>`.trim();
@@ -639,8 +639,13 @@ function buildScene(
   // `has-illu` lets the CSS push tall layouts (feature-list) below the upper
   // illustration zone so the card never overlaps the graphic.
   const illuClass = scene.illustration && ILLUSTRATIONS[scene.illustration] ? " has-illu" : "";
+  // `--scene-dur` powers the Ken Burns CSS (`.bg.kb-* { animation: … var(--scene-dur) }`).
+  // It was never set anywhere, so image/b-roll backgrounds sat frozen. Setting it on
+  // the `.scene` wrapper lets every descendant `.bg` inherit it (custom props inherit),
+  // so the slow zoom/pan runs across the whole scene whenever a background image exists.
   return `
 <div class="scene clip${illuClass}" id="scene-${scene.id}"
+     style="--scene-dur:${duration.toFixed(2)}s"
      data-start="${start.toFixed(2)}" data-duration="${duration.toFixed(2)}"
      data-voice-dur="${voiceDur.toFixed(2)}" data-active="0"
      data-layout="${layoutName}">

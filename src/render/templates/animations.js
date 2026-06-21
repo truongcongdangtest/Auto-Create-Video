@@ -91,8 +91,10 @@ window.__timelines["news-video"] = tl;
   function animateHook(scene, tl, start) {
     const headline = scene.querySelector(".hook-headline");
     if (headline) {
-      // Scale pop in
-      tl.fromTo(headline, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6 }, start + 0.15);
+      // Scale pop in with a subtle overshoot (two plain-ease tweens = a "back.out"
+      // bounce while staying within the supported prop set / no custom easings).
+      tl.fromTo(headline, { scale: 0.5, opacity: 0 }, { scale: 1.06, opacity: 1, duration: 0.5 }, start + 0.15);
+      tl.to(headline, { scale: 1, duration: 0.2 }, start + 0.65);
       // Shimmer sweep after entrance
       const mask = headline.querySelector(".shimmer-mask");
       if (mask) {
@@ -115,7 +117,9 @@ window.__timelines["news-video"] = tl;
 
     const vs = scene.querySelector(".cmp-vs");
     if (vs) {
-      tl.fromTo(vs, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35 }, start + 0.45);
+      // Clash in with an overshoot bounce.
+      tl.fromTo(vs, { scale: 0.5, opacity: 0 }, { scale: 1.18, opacity: 1, duration: 0.3 }, start + 0.45);
+      tl.to(vs, { scale: 1, duration: 0.18 }, start + 0.75);
     }
 
     const rightCard = scene.querySelector(".cmp-right");
@@ -128,11 +132,34 @@ window.__timelines["news-video"] = tl;
   function animateStatHero(scene, tl, start) {
     const value = scene.querySelector(".stat-value");
     if (value) {
-      tl.fromTo(value, { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6 }, start + 0.15);
+      // Punch in: slam big then settle (overshoot bounce, pure scale).
+      tl.fromTo(value, { scale: 0.35, opacity: 0 }, { scale: 1.12, opacity: 1, duration: 0.45 }, start + 0.15);
+      tl.to(value, { scale: 1, duration: 0.22 }, start + 0.6);
       // Shimmer sweep on the stat value
       const mask = value.querySelector(".shimmer-mask");
       if (mask) {
         tl.fromTo(mask, { x: "-120%" }, { x: "120%", duration: 1.0 }, start + 0.7);
+      }
+      // Count-up: roll a pure-integer value from 0 → target while it punches in.
+      // Driven by onUpdate on a proxy object. If the renderer captures live DOM
+      // this animates; if not, the authored final number stays put (we never
+      // pre-zero the text), so it degrades to a correct static number.
+      const num = value.querySelector(".stat-num");
+      const raw = num ? (num.textContent || "").trim() : "";
+      const m = /^(\d{1,9})$/.exec(raw);
+      if (num && m) {
+        const target = parseInt(m[1], 10);
+        const proxy = { v: 0 };
+        tl.to(
+          proxy,
+          {
+            v: target,
+            duration: 0.6,
+            onUpdate: () => { num.textContent = String(Math.round(proxy.v)); },
+            onComplete: () => { num.textContent = String(target); },
+          },
+          start + 0.15,
+        );
       }
     }
 
@@ -151,7 +178,8 @@ window.__timelines["news-video"] = tl;
   function animateFeatureList(scene, tl, start) {
     const card = scene.querySelector(".feat-card");
     if (card) {
-      tl.fromTo(card, { y: 60, scale: 0.95, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.5 }, start + 0.1);
+      tl.fromTo(card, { y: 60, scale: 0.94, opacity: 0 }, { y: 0, scale: 1.02, opacity: 1, duration: 0.45 }, start + 0.1);
+      tl.to(card, { scale: 1, duration: 0.18 }, start + 0.55);
     }
 
     const rule = scene.querySelector(".feat-rule");
@@ -159,9 +187,13 @@ window.__timelines["news-video"] = tl;
       tl.fromTo(rule, { scaleX: 0, opacity: 1 }, { scaleX: 1, opacity: 1, duration: 0.4 }, start + 0.45);
     }
 
+    // Bullets snap in left-to-right with a tight stagger and a small overshoot
+    // (slide a touch past 0 then settle) so the list feels alive, not a static dump.
     const bullets = scene.querySelectorAll(".feat-bullet");
     bullets.forEach((b, i) => {
-      tl.fromTo(b, { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4 }, start + 0.6 + i * 0.15);
+      const bs = start + 0.6 + i * 0.13;
+      tl.fromTo(b, { x: -44, opacity: 0 }, { x: 4, opacity: 1, duration: 0.3 }, bs);
+      tl.to(b, { x: 0, duration: 0.14 }, bs + 0.3);
     });
   }
 
@@ -169,7 +201,8 @@ window.__timelines["news-video"] = tl;
   function animateCallout(scene, tl, start) {
     const card = scene.querySelector(".callout-card");
     if (card) {
-      tl.fromTo(card, { y: 50, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.55 }, start + 0.2);
+      tl.fromTo(card, { y: 50, scale: 0.92, opacity: 0 }, { y: 0, scale: 1.04, opacity: 1, duration: 0.5 }, start + 0.2);
+      tl.to(card, { scale: 1, duration: 0.2 }, start + 0.7);
     }
   }
 
@@ -182,7 +215,8 @@ window.__timelines["news-video"] = tl;
 
     const channel = scene.querySelector(".out-channel");
     if (channel) {
-      tl.fromTo(channel, { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55 }, start + 0.55);
+      tl.fromTo(channel, { scale: 0.6, opacity: 0 }, { scale: 1.08, opacity: 1, duration: 0.5 }, start + 0.55);
+      tl.to(channel, { scale: 1, duration: 0.2 }, start + 1.05);
     }
 
     const underline = scene.querySelector(".out-underline");
