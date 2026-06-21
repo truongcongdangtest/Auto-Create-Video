@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Ba lầm tưởng khiến tài khoản của bạn dễ bị khóa",
+    "source": {
+      "url": "https://cloakbrowse.com",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "ẨN DANH & BẢO MẬT"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Bạn xóa cookie, bật ẩn danh, cắm cả VPN. Vậy mà năm mươi tài khoản vẫn bay sạch trong một đêm. Ba thứ bạn tin nhất hóa ra là ba lầm tưởng.",
+      "keywords": ["năm mươi tài khoản", "bay sạch", "ba lầm tưởng"],
+      "templateData": {
+        "template": "hook",
+        "headline": "Ba lầm tưởng làm bay nick",
+        "subhead": "Cookie · Ẩn danh · VPN",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "myth1",
+      "type": "body",
+      "voiceText": "Lầm tưởng một, xóa cookie là sạch dấu vết. Sự thật, nền tảng nhận ra bạn qua vân tay trình duyệt, tức cấu hình máy, màn hình và phông chữ. Xóa cookie xong, vân tay vẫn y nguyên.",
+      "keywords": ["xóa cookie", "vân tay trình duyệt", "y nguyên"],
+      "templateData": {
+        "template": "comparison",
+        "left": { "label": "Xóa cookie", "value": "Vẫn lộ", "color": "cyan" },
+        "right": { "label": "Vân tay máy", "value": "Y nguyên", "color": "purple", "winner": true }
+      }
+    },
+    {
+      "id": "myth2",
+      "type": "body",
+      "voiceText": "Lầm tưởng hai, ẩn danh giúp bạn vô hình. Sự thật, ẩn danh chỉ giấu lịch sử với người ngồi cùng máy. Với nền tảng, bạn vẫn lộ ra y hệt một thiết bị duy nhất.",
+      "keywords": ["ẩn danh", "một thiết bị", "vẫn lộ"],
+      "templateData": {
+        "template": "callout",
+        "statement": "Ẩn danh chỉ giấu bạn với người cùng máy, không giấu được nền tảng",
+        "tag": "Lầm tưởng 2"
+      }
+    },
+    {
+      "id": "myth3",
+      "type": "body",
+      "voiceText": "Lầm tưởng ba, cắm VPN là đủ. Sự thật, VPN chỉ đổi một thứ duy nhất là địa chỉ mạng. Mọi tài khoản vẫn chung một vân tay, nền tảng lập tức xâu chuỗi tất cả về cùng một chủ.",
+      "keywords": ["cắm VPN", "địa chỉ mạng", "xâu chuỗi"],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Chỉ đổi IP",
+        "label": "VPN không giấu vân tay",
+        "context": "Bị xâu chuỗi về một chủ"
+      }
+    },
+    {
+      "id": "solution",
+      "type": "body",
+      "voiceText": "Muốn mỗi tài khoản trông như một người khác thật sự, bạn phải đổi cả vân tay lẫn đường mạng cho từng hồ sơ. Đó là việc của một trình duyệt chống phát hiện.",
+      "keywords": ["vân tay", "đường mạng", "từng hồ sơ"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Mỗi hồ sơ cần gì?",
+        "bullets": [
+          "Vân tay riêng từng hồ sơ",
+          "Proxy, đường mạng riêng",
+          "Dữ liệu tách biệt hoàn toàn",
+          "Không thể bị xâu chuỗi"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi hồ sơ một vân tay và một proxy riêng, không nền tảng nào nối chúng về một mối. Một máy, nuôi hàng chục tài khoản song song, không còn nơm nớp lo bay nick.",
+      "keywords": ["Cloak Login", "vân tay", "không còn nơm nớp"],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Làm chủ mọi tài khoản",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
