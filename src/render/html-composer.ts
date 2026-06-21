@@ -635,7 +635,7 @@ function buildScene(
   layoutName: string,
   innerHtml: string,
 ): string {
-  const caption = renderCaption(scene.voiceText);
+  const caption = renderCaption(scene.voiceText, scene.keywords);
   // `has-illu` lets the CSS push tall layouts (feature-list) below the upper
   // illustration zone so the card never overlaps the graphic.
   const illuClass = scene.illustration && ILLUSTRATIONS[scene.illustration] ? " has-illu" : "";
@@ -684,13 +684,27 @@ function splitCaption(text: string, maxChars = 34): string[] {
  * the reference TikTok edits). Strips trailing punctuation from the displayed
  * text but keeps it for phrasing.
  */
-function renderCaption(voiceText: string): string {
+/** Wrap any keyword occurrences (already-escaped HTML in, escaped out) in a
+ *  <span class="cap-kw"> so they render in the theme accent colour. */
+function highlightKeywords(escapedHtml: string, keywords?: string[]): string {
+  if (!keywords || !keywords.length) return escapedHtml;
+  let out = escapedHtml;
+  for (const kw of keywords) {
+    const k = escapeHtml(kw).trim();
+    if (!k) continue;
+    const re = new RegExp(k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+    out = out.replace(re, (m) => `<span class="cap-kw">${m}</span>`);
+  }
+  return out;
+}
+
+function renderCaption(voiceText: string, keywords?: string[]): string {
   const lines = splitCaption(voiceText);
   if (!lines.length) return "";
   const spans = lines
     .map(
       (l, i) =>
-        `<span class="cap-line" data-i="${i}"><span class="cap-pill">${escapeHtml(l)}</span></span>`,
+        `<span class="cap-line" data-i="${i}"><span class="cap-pill">${highlightKeywords(escapeHtml(l), keywords)}</span></span>`,
     )
     .join("");
   return `<div class="caption" data-lines="${lines.length}">${spans}</div>`;

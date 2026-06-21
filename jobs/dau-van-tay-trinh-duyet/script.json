@@ -18,6 +18,7 @@
       "id": "hook",
       "type": "hook",
       "voiceText": "Bạn xóa cookie, bật ẩn danh, dùng cả VPN. Vậy mà website vẫn nhận ra đúng bạn. Vì sao lại thế?",
+      "keywords": ["cookie", "VPN", "nhận ra"],
       "templateData": {
         "template": "hook",
         "headline": "Website vẫn nhận ra bạn",
@@ -29,6 +30,7 @@
       "id": "stat",
       "type": "body",
       "voiceText": "Bí mật nằm ở dấu vân tay trình duyệt. Chỉ riêng trình duyệt đã để lộ hơn ba mươi thông số để nhận ra bạn, mà chẳng cần đến cookie.",
+      "keywords": ["vân tay", "ba mươi thông số", "cookie"],
       "templateData": {
         "template": "stat-hero",
         "value": "30+",
@@ -40,6 +42,7 @@
       "id": "signals",
       "type": "body",
       "voiceText": "Nó đọc loại trình duyệt, độ phân giải màn hình, múi giờ, font chữ đã cài, cùng với Canvas và WebGL của card đồ hoạ.",
+      "keywords": ["Canvas", "WebGL", "font chữ", "múi giờ"],
       "templateData": {
         "template": "feature-list",
         "title": "Trình duyệt lộ những gì?",
@@ -55,6 +58,7 @@
       "id": "warning",
       "type": "body",
       "voiceText": "Đáng lo là xóa cookie, bật ẩn danh hay đổi VPN đều không giấu được. Vì vân tay nằm ở tầng trình duyệt, chứ không phải ở địa chỉ IP.",
+      "keywords": ["không giấu được", "vân tay", "IP"],
       "templateData": {
         "template": "callout",
         "statement": "Cookie, ẩn danh, VPN đều không giấu được vân tay",
@@ -65,6 +69,7 @@
       "id": "solution",
       "type": "body",
       "voiceText": "Cách chặn là dùng trình duyệt chống vân tay. Mỗi hồ sơ mang một vân tay riêng biệt, nên mỗi tài khoản trông như một chiếc máy khác nhau.",
+      "keywords": ["chống vân tay", "vân tay riêng biệt", "tài khoản"],
       "templateData": {
         "template": "comparison",
         "left": { "label": "Trình duyệt thường", "value": "Một vân tay", "color": "cyan" },
@@ -75,6 +80,7 @@
       "id": "outro",
       "type": "outro",
       "voiceText": "Tìm hiểu cách ẩn vân tay tại Cloak Login. Theo dõi để bảo vệ danh tính số của bạn.",
+      "keywords": ["ẩn vân tay", "Cloak Login", "danh tính số"],
       "templateData": {
         "template": "outro",
         "ctaTop": "Tìm hiểu tại",

@@ -28,9 +28,12 @@ window.__timelines["news-video"] = tl;
     const dur   = parseFloat(scene.dataset.duration);
     const layout = scene.dataset.layout;
 
-    // Scene visibility: fade in/out
-    tl.set(scene, { opacity: 1 }, start);
-    tl.set(scene, { opacity: 0 }, start + dur);
+    // Scene visibility: cross-fade in/out. Overlaps the neighbouring scenes
+    // for a soft dissolve instead of a hard cut (scenes are stacked & default
+    // opacity:0, so fading out the last 0.3s while the next fades in its first
+    // 0.32s reads as a cross-dissolve at the boundary).
+    tl.fromTo(scene, { opacity: 0 }, { opacity: 1, duration: 0.32 }, start);
+    tl.to(scene, { opacity: 0, duration: 0.3 }, start + dur - 0.3);
 
     if (layout === "hook") {
       animateHook(scene, tl, start);

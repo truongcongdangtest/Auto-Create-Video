@@ -15,7 +15,7 @@ on:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -41,8 +41,8 @@ jobs:
           TTS_PROVIDER: lucylab
           VIETNAMESE_API_KEY: ${{ secrets.VIETNAMESE_API_KEY }}
           VIETNAMESE_VOICEID: ${{ secrets.VIETNAMESE_VOICEID }}
-          VIETVIRAL_RENDER_QUALITY: standard
-          VIETVIRAL_RENDER_FPS: "30"
+          VIETVIRAL_RENDER_QUALITY: high
+          VIETVIRAL_RENDER_FPS: "60"
           # Slightly slower speech for a calmer, more natural storytelling pace.
           VOICE_SPEED: "0.95"
           # Background-music volume under the voice (playful-mystery bed).

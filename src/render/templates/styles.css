@@ -281,12 +281,19 @@ body[data-aspect="16:9"] .scene.has-illu .layout-comparison { padding-top: calc(
   font-family: 'Inter', sans-serif; font-weight: 800;
   font-size: calc(44px * var(--scale)); line-height: 1.25;
   color: #fff;
-  background: rgba(10, 10, 12, 0.62);
-  border: 1px solid rgba(var(--accent-rgb), 0.30);
+  background: rgba(10, 10, 12, 0.74);
+  border: 1.5px solid rgba(var(--accent-rgb), 0.5);
   border-radius: calc(16px * var(--scale));
   padding: calc(12px * var(--scale)) calc(30px * var(--scale));
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 14px rgba(0, 0, 0, 0.65);
+}
+/* Keyword highlight inside captions (Submagic/Donnie Chu style): accent colour
+   + heavier weight + glow. Static colour → renders correctly in every frame. */
+.cap-kw {
+  color: var(--accent);
+  font-weight: 900;
+  text-shadow: 0 0 18px rgba(var(--accent-rgb), 0.65), 0 2px 8px rgba(0, 0, 0, 0.85);
 }
 
 /* ── BACKGROUND PRIMITIVES ─────────────────────────────────── */

@@ -113,6 +113,11 @@ const Scene = z.object({
    * Example: ["city skyline", "sunset"]
    */
   brollKeywords: z.array(z.string().min(1).max(40)).max(5).optional(),
+  /**
+   * Từ/cụm-từ trong voiceText sẽ được TÔ MÀU ACCENT trong phụ đề (kiểu
+   * Submagic/Donnie Chu). Khớp không phân biệt hoa thường, ngay trên 1 dòng.
+   */
+  keywords: z.array(z.string().min(1).max(40)).max(8).optional(),
 });
 
 // ── Style block (optional) — controls visual theme, output dimensions,
