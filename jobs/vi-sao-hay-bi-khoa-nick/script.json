@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Vì sao bán hàng online hay bị khóa nick?",
+    "source": {
+      "url": "https://cloakbrowse.com",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "AN TOÀN TÀI KHOẢN"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Bạn mở nhiều tài khoản để bán hàng, nhưng cứ ít hôm lại bị khóa mất một cái. Vì sao lại thế?",
+      "keywords": ["bị khóa"],
+      "templateData": {
+        "template": "hook",
+        "headline": "Hay bị khóa nick?",
+        "subhead": "Lý do rất đơn giản",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "why",
+      "type": "body",
+      "voiceText": "Hãy tưởng tượng mỗi tài khoản là một người. Khi tất cả cùng dùng chung một máy, nền tảng nhìn vào thấy giống hệt nhau, liền nghi là giả mạo và khóa lại.",
+      "keywords": ["giống hệt nhau", "khóa lại"],
+      "templateData": {
+        "template": "callout",
+        "statement": "Chung một máy là chung một khuôn mặt",
+        "tag": "Vấn đề"
+      }
+    },
+    {
+      "id": "compare",
+      "type": "body",
+      "voiceText": "Cách cũ là mở tất cả trên cùng một chỗ, nên rất dễ bị nhận ra. Cách đúng là cho mỗi tài khoản một khuôn mặt riêng, tách biệt hẳn nhau.",
+      "keywords": ["một khuôn mặt riêng", "tách biệt"],
+      "templateData": {
+        "template": "comparison",
+        "left": { "label": "Cách cũ", "value": "1 mặt dùng chung", "color": "cyan" },
+        "right": { "label": "Cách đúng", "value": "Mỗi nick 1 mặt", "color": "purple", "winner": true }
+      }
+    },
+    {
+      "id": "how",
+      "type": "body",
+      "voiceText": "Cách làm rất nhẹ nhàng. Mỗi tài khoản có một khuôn mặt riêng, một địa chỉ mạng riêng. Bạn chỉ cần mở lên và đăng nhập như bình thường.",
+      "keywords": ["một khuôn mặt riêng", "một địa chỉ mạng riêng"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Đơn giản như này",
+        "bullets": [
+          "Mỗi nick một khuôn mặt riêng",
+          "Mỗi nick một địa chỉ mạng riêng",
+          "Mở lên, đăng nhập như thường",
+          "Không cái nào dính cái nào"
+        ]
+      }
+    },
+    {
+      "id": "steps",
+      "type": "body",
+      "voiceText": "Tất cả chỉ gói gọn trong ba bước. Tạo hồ sơ, mở lên, rồi đăng nhập. Đơn giản đến mức ai cũng làm được.",
+      "keywords": ["ba bước", "ai cũng làm được"],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "3",
+        "label": "bước là xong",
+        "context": "Tạo hồ sơ, mở lên, đăng nhập"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login giúp bạn giữ an toàn mọi tài khoản, không còn lo bị khóa. Tải về và dùng thử ngay hôm nay.",
+      "keywords": ["an toàn", "không còn lo bị khóa"],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Tải về & dùng thử",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
