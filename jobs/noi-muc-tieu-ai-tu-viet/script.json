@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "40 tài khoản, mỗi ngày đọc số dư tay? Giờ chỉ cần NÓI mục tiêu, AI tự viết kịch bản",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/automation",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "NÓI MỤC TIÊU, NÓ TỰ VIẾT"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "s1",
+      "type": "hook",
+      "voiceText": "Bốn mươi tài khoản, mỗi ngày bạn tự tay mở dashboard, đọc số dư, rồi chép vào bảng. Làm mãi cũng kiệt sức và dễ sai một con số.",
+      "keywords": ["Bốn mươi tài khoản", "kiệt sức", "dễ sai"],
+      "templateData": {
+        "template": "hook",
+        "headline": "40 tài khoản, làm tay mỗi ngày",
+        "subhead": "Kiệt sức và dễ sai số",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "s2",
+      "type": "body",
+      "voiceText": "Vấn đề không phải bạn lười, mà là việc lặp đi lặp lại. Cùng một thao tác, bạn phải bấm tay trên từng hồ sơ, hết cái này đến cái khác.",
+      "keywords": ["lặp đi lặp lại", "bấm tay", "từng hồ sơ"],
+      "templateData": {
+        "template": "callout",
+        "statement": "Cùng một việc, làm lại trên từng hồ sơ, mãi mãi không hết",
+        "tag": "Vấn đề"
+      }
+    },
+    {
+      "id": "s3",
+      "type": "body",
+      "voiceText": "Với Cloak Login, bạn chỉ cần nói mục tiêu bằng lời thường. Ví dụ, mở dashboard, đọc số dư, lưu vào bảng, lặp cho mọi hồ sơ. Thế là xong.",
+      "keywords": ["nói mục tiêu bằng lời thường", "lưu vào bảng", "lặp cho mọi hồ sơ"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Bạn gõ một câu, nó hiểu ngay",
+        "bullets": [
+          "Mở dashboard, đọc số dư",
+          "Lưu vào bảng",
+          "Lặp cho mọi hồ sơ",
+          "Tiếng Việt hay tiếng Anh đều được"
+        ]
+      }
+    },
+    {
+      "id": "s4",
+      "type": "body",
+      "voiceText": "Một AI biết quan sát, suy luận rồi hành động sẽ biến câu lệnh đó thành một kịch bản sửa được, lặp được. Bạn xem lại, chỉnh vài chỗ nếu cần, rồi cho chạy.",
+      "keywords": ["quan sát, suy luận rồi hành động", "kịch bản sửa được", "lặp được"],
+      "templateData": {
+        "template": "callout",
+        "statement": "AI khám phá một lần, dựng ra kịch bản sửa được và lặp được",
+        "tag": "Tự động hóa"
+      }
+    },
+    {
+      "id": "s5",
+      "type": "body",
+      "voiceText": "Một kịch bản chạy trên bốn mươi hồ sơ, với nhịp giống người chứ không giật cục. Và đây là điểm thật, ghi một Skill một lần, chạy lại gần như không tốn chi phí AI.",
+      "keywords": ["bốn mươi hồ sơ", "nhịp giống người", "ghi một Skill một lần"],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "× 40 hồ sơ",
+        "label": "Một câu nói, chạy hết cả đời hồ sơ",
+        "context": "Ghi Skill một lần, chạy lại gần như 0 chi phí AI"
+      }
+    },
+    {
+      "id": "s6",
+      "type": "body",
+      "voiceText": "Bạn dùng key AI của chính mình, miễn phí với Google Gemini hoặc cắm Claude vào. Key và hồ sơ nằm trên máy bạn, và nó điều khiển một trình duyệt thật như bình thường.",
+      "keywords": ["miễn phí với Google Gemini", "nằm trên máy bạn", "trình duyệt thật"],
+      "templateData": {
+        "template": "comparison",
+        "left": { "label": "Làm tay từng hồ sơ", "value": "Chậm, dễ sai", "color": "cyan" },
+        "right": { "label": "Nói mục tiêu, AI tự viết", "value": "× 40, key của bạn", "color": "purple", "winner": true }
+      }
+    },
+    {
+      "id": "s7",
+      "type": "outro",
+      "voiceText": "Thôi chép tay đi. Tải Cloak Login về, nói mục tiêu một lần và để AI lo phần lặp lại.",
+      "keywords": ["Thôi chép tay đi", "Tải Cloak Login"],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Tải ngay, nói là chạy",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
