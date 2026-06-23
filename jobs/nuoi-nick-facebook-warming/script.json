@@ -1,0 +1,118 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Lộ Trình Nuôi Nick Facebook 14 Ngày Trước Khi Chạy Ads",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog/nuoi-nick-facebook-warming-truoc-khi-chay-ads/",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "NUÔI NICK 14 NGÀY"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Tạo nick Facebook xong là chạy ads luôn? Vài tiếng sau dính checkpoint, mất nick như chơi. Checkpoint là khi Facebook bắt bạn xác minh danh tính đó.",
+      "keywords": ["chạy ads luôn", "dính checkpoint", "mất nick"],
+      "templateData": {
+        "template": "hook",
+        "headline": "TẠO NICK XONG CHẠY ADS",
+        "subhead": "Là mất nick như chơi",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "ngay-1-2",
+      "type": "body",
+      "voiceText": "Nick mới có uy tín bằng không. Muốn sống thì phải nuôi nick mười đến mười bốn ngày, đi qua bốn giai đoạn cho Facebook tin là người thật. Ngày một và hai là giai đoạn im lặng: điền đầy đủ hồ sơ, bật xác thực hai lớp, rồi để yên.",
+      "keywords": ["uy tín bằng không", "bốn giai đoạn", "giai đoạn im lặng"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Ngày 1-2: Im lặng, dựng nền",
+        "bullets": [
+          "Điền đầy đủ tên, ảnh, bio thật",
+          "Bật xác thực 2 lớp cho nick",
+          "Để nick ngủ im, không hoạt động",
+          "Không đăng, không comment, không kết bạn"
+        ]
+      }
+    },
+    {
+      "id": "ngay-3-5",
+      "type": "body",
+      "voiceText": "Ngày ba đến năm mới hoạt động nhẹ. Mỗi ngày đăng nhập hai đến ba phút, like năm đến tám bài, theo dõi hai đến ba trang lớn. Chỉ vậy thôi, đừng vội.",
+      "keywords": ["hoạt động nhẹ", "hai đến ba phút", "năm đến tám bài"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Ngày 3-5: Hoạt động nhẹ",
+        "bullets": [
+          "Đăng nhập 2-3 phút mỗi ngày",
+          "Like 5-8 bài viết tự nhiên",
+          "Theo dõi 2-3 trang lớn",
+          "Chưa đăng bài, chưa kết bạn"
+        ]
+      }
+    },
+    {
+      "id": "ngay-6-10",
+      "type": "body",
+      "voiceText": "Ngày sáu đến mười là warm-up chính, quan trọng nhất. Mỗi ngày vào mười đến hai mươi nhóm, comment tám đến mười lăm bài có ý nghĩa, gửi năm đến mười lời mời kết bạn. Đây mới là lúc nick bắt đầu có hành vi thật.",
+      "keywords": ["warm-up chính", "mười đến hai mươi nhóm", "năm đến mười lời mời"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Ngày 6-10: Warm-up chính",
+        "bullets": [
+          "Vào 10-20 nhóm đúng niche mỗi ngày",
+          "Comment 8-15 bài có ý nghĩa, không spam",
+          "Gửi 5-10 lời mời kết bạn, ưu tiên bạn chung",
+          "Like 15-25 reaction, đăng 0-1 bài cá nhân"
+        ]
+      }
+    },
+    {
+      "id": "quy-tac-vang",
+      "type": "body",
+      "voiceText": "Quy tắc vàng xuyên suốt: không quá một hành động mỗi phút. Vào một nhóm xong chờ hai đến năm phút mới vào nhóm tiếp theo. Làm ào ào là Facebook bắt được ngay cái tăng đột biến đó.",
+      "keywords": ["không quá một hành động", "hai đến năm phút", "tăng đột biến"],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1 / phút",
+        "label": "Quy tắc vàng khi nuôi nick",
+        "context": "Làm ào ào là dính tăng đột biến, mất nick"
+      }
+    },
+    {
+      "id": "ngay-11-14",
+      "type": "body",
+      "voiceText": "Ngày mười một đến mười bốn mới chạy ads thử nhỏ. Chọn mục tiêu tiếp cận, ngân sách một đến hai đô la mỗi ngày, chạy hai đến ba ngày xem nick có bị gắn cờ không. Nhớ kỹ: nuôi nick chỉ giảm rủi ro, không đảm bảo trăm phần trăm.",
+      "keywords": ["chạy ads thử nhỏ", "một đến hai đô la", "không đảm bảo trăm phần trăm"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Ngày 11-14: Chạy ads thử nhỏ",
+        "bullets": [
+          "Chọn mục tiêu tiếp cận (Reach)",
+          "Ngân sách 1-2 đô la mỗi ngày",
+          "Chạy 2-3 ngày, xem nick có bị gắn cờ",
+          "Warming chỉ giảm rủi ro, không 100%"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Nếu bạn nuôi nhiều nick thì mỗi nick cần một vân tay riêng và một proxy riêng, đó là lúc dùng Cloak Login. Lưu video lại làm theo từng ngày, và đọc bài hướng dẫn đầy đủ.",
+      "keywords": ["nhiều nick", "một vân tay riêng", "Cloak Login"],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Lưu lại, làm theo từng ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
