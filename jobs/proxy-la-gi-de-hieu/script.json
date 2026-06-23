@@ -1,0 +1,91 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Proxy là gì? Dễ hiểu như nhờ người đi mua hộ",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "PROXY LÀ NGƯỜI MUA HỘ"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Proxy là gì? Nghe kỹ thuật lắm, nhưng thật ra đơn giản như chuyện bạn nhờ người đi mua hộ thôi. Nghe một chút là hiểu ngay.",
+      "keywords": ["Proxy là gì", "nhờ người đi mua hộ"],
+      "templateData": {
+        "template": "hook",
+        "headline": "Proxy là gì?",
+        "subhead": "Đơn giản như nhờ người mua hộ",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "tinh-huong",
+      "type": "body",
+      "voiceText": "Hình dung bạn muốn mua món đồ ở một cửa hàng, nhưng bạn không tự đến. Bạn nhờ một người khác đi mua giúp mình.",
+      "keywords": ["nhờ một người", "đi mua giúp"],
+      "templateData": {
+        "template": "callout",
+        "statement": "Bạn nhờ một người đi mua giúp, không tự đến cửa hàng",
+        "tag": "Tình huống quen"
+      }
+    },
+    {
+      "id": "dinh-nghia",
+      "type": "body",
+      "voiceText": "Cửa hàng chỉ nhìn thấy người đi mua hộ, họ không hề biết bạn là ai hay bạn đang ở đâu. Người trung gian đó trên mạng chính là proxy.",
+      "keywords": ["người đi mua hộ", "chính là proxy"],
+      "templateData": {
+        "template": "callout",
+        "statement": "Người trung gian giữa bạn và website chính là proxy",
+        "tag": "À ha"
+      }
+    },
+    {
+      "id": "giau-ip",
+      "type": "body",
+      "voiceText": "Nhờ có proxy, website chỉ thấy địa chỉ của proxy, chứ không thấy địa chỉ nhà của bạn trên mạng. Địa chỉ đó người ta gọi là ai pi, và nó được giấu đi.",
+      "keywords": ["địa chỉ của proxy", "được giấu đi"],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Địa chỉ proxy",
+        "label": "Website chỉ thấy cái này",
+        "context": "Địa chỉ thật của bạn (IP) được giấu đi"
+      }
+    },
+    {
+      "id": "vi-sao",
+      "type": "body",
+      "voiceText": "Vì vậy người ta dùng proxy để riêng tư hơn. Và ai bán hàng nhiều tài khoản cũng dùng, để mỗi tài khoản một proxy riêng, không bị dính vào nhau.",
+      "keywords": ["riêng tư hơn", "không bị dính vào nhau"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Vì sao người ta dùng proxy",
+        "bullets": [
+          "Riêng tư hơn, giấu địa chỉ thật",
+          "Mỗi tài khoản một proxy riêng",
+          "Các tài khoản không dính vào nhau"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Tóm lại, proxy chính là người đi mua hộ cho bạn trên mạng. Muốn tìm hiểu thêm và dùng để quản lý nhiều tài khoản an toàn, ghé Cloak Login nhé.",
+      "keywords": ["người đi mua hộ", "Cloak Login"],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Tìm hiểu thêm tại",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
