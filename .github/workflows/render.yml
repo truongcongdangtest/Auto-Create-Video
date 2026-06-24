@@ -15,6 +15,10 @@ on:
         description: "Giọng đọc: edge (free) | lucylab | elevenlabs"
         required: false
         default: "edge"
+      broll:
+        description: "Hình nền minh hoạ (b-roll Pexels theo nội dung): 1 = bật, 0 = tắt"
+        required: false
+        default: "1"
 
 jobs:
   render:
@@ -49,6 +53,11 @@ jobs:
           EDGE_VOICE: vi-VN-NamMinhNeural
           VIETNAMESE_API_KEY: ${{ secrets.VIETNAMESE_API_KEY }}
           VIETNAMESE_VOICEID: ${{ secrets.VIETNAMESE_VOICEID }}
+          # B-roll minh hoạ: Pexels footage (miễn phí) + Gemini khớp nội dung từng cảnh.
+          # Tự bật khi PEXELS_API_KEY secret được set; thiếu key → tự bỏ qua, dựng nền gradient như cũ.
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          BROLL_ENABLED: ${{ github.event.inputs.broll }}
           VIETVIRAL_RENDER_QUALITY: high
           VIETVIRAL_RENDER_FPS: "60"
           # Slightly slower speech for a calmer, more natural storytelling pace.
