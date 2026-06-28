@@ -1,0 +1,81 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "MMO là gì? Người mới nên bắt đầu từ đâu",
+    "source": { "url": "https://cloakbrowse.com/vi/blog", "domain": "cloakbrowse.com", "image": null },
+    "channel": "Cloak Login",
+    "tagline": "KIẾM TIỀN ONLINE"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Kiếm tiền online, hay còn gọi là MMO, là thật hay chỉ là chiêu lùa gà? Câu trả lời là thật, nhưng không có chuyện giàu nhanh chỉ sau một đêm đâu.",
+      "keywords": ["kiếm tiền online", "MMO", "giàu nhanh"],
+      "templateData": { "template": "hook", "headline": "MMO: THẬT HAY LÙA GÀ?", "subhead": "Sự thật về kiếm tiền online", "kenBurns": "zoom-in" }
+    },
+    {
+      "id": "dinh-nghia",
+      "type": "body",
+      "voiceText": "MMO là viết tắt của kiếm tiền trên mạng. Có rất nhiều cách thật sự ra tiền, nhưng cách nào cũng cần thời gian, kỹ năng và công cụ đúng.",
+      "keywords": ["kiếm tiền trên mạng", "thời gian", "công cụ đúng"],
+      "templateData": { "template": "callout", "statement": "MMO là kiếm tiền qua mạng, có thật nhưng cần kỹ năng và công cụ", "tag": "Định nghĩa" }
+    },
+    {
+      "id": "cac-cach",
+      "type": "body",
+      "voiceText": "Vài cách phổ biến cho người mới: tiếp thị liên kết, bán hàng online, làm nội dung kiếm tiền, buôn tài khoản số, và săn airdrop tiền số.",
+      "keywords": ["tiếp thị liên kết", "bán hàng online", "săn airdrop"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Vài cách MMO phổ biến",
+        "bullets": [
+          "Tiếp thị liên kết (affiliate)",
+          "Bán hàng online, dropshipping",
+          "Làm nội dung: video, blog, kênh",
+          "Buôn tài khoản số, săn airdrop"
+        ]
+      }
+    },
+    {
+      "id": "diem-chung",
+      "type": "body",
+      "voiceText": "Và đây là điểm chung của hầu hết các cách kiếm ra tiền thật: muốn thu nhập lớn, bạn phải làm trên nhiều tài khoản cùng lúc, chứ một tài khoản thì không đủ.",
+      "keywords": ["thu nhập lớn", "nhiều tài khoản", "không đủ"],
+      "templateData": { "template": "stat-hero", "value": "Nhiều tài khoản", "label": "Điểm chung để kiếm thu nhập lớn", "context": "Một tài khoản hầu như không đủ để sống" }
+    },
+    {
+      "id": "canh-bao",
+      "type": "body",
+      "voiceText": "Nhưng tạo nhiều tài khoản trên cùng một máy là bị khoá hàng loạt, vì nền tảng nhận ra tất cả đều từ một người. Đây là lúc cần công cụ tách biệt.",
+      "keywords": ["cùng một máy", "khoá hàng loạt", "công cụ tách biệt"],
+      "templateData": { "template": "callout", "statement": "Nhiều tài khoản trên một máy là bị khoá, cần công cụ tách biệt", "tag": "Cẩn thận" }
+    },
+    {
+      "id": "bat-dau",
+      "type": "body",
+      "voiceText": "Lời khuyên cho người mới: chọn đúng một cách rồi học cho sâu, đừng ôm đồm. Kiên trì vài tháng, và chuẩn bị công cụ quản lý tài khoản ngay từ đầu.",
+      "keywords": ["chọn một cách", "học cho sâu", "kiên trì"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Người mới nên bắt đầu sao?",
+        "bullets": [
+          "Chọn 1 cách, học cho thật sâu",
+          "Đừng ôm đồm nhiều thứ một lúc",
+          "Kiên trì tối thiểu vài tháng",
+          "Chuẩn bị công cụ quản lý tài khoản"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Nếu bạn đi theo hướng nhiều tài khoản, Cloak Login giúp mỗi tài khoản một vân tay và một proxy riêng, an toàn ngay từ đầu. Lưu video lại nhé.",
+      "keywords": ["nhiều tài khoản", "Cloak Login"],
+      "templateData": { "template": "outro", "ctaTop": "Bắt đầu MMO an toàn", "channelName": "Cloak Login", "source": "cloakbrowse.com" }
+    }
+  ]
+}

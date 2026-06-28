@@ -1,0 +1,81 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Cày airdrop nhiều ví — vì sao bị quét sạch?",
+    "source": { "url": "https://cloakbrowse.com/vi/blog", "domain": "cloakbrowse.com", "image": null },
+    "channel": "Cloak Login",
+    "tagline": "AIRDROP & ĐA VÍ"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Bạn cày airdrop mấy chục cái ví, tới ngày nhận thưởng thì bị quét sạch, không được một đồng nào. Vì sao lại như vậy?",
+      "keywords": ["cày airdrop", "mấy chục ví", "quét sạch"],
+      "templateData": { "template": "hook", "headline": "CÀY 30 VÍ, MẤT SẠCH?", "subhead": "Vì sao airdrop bị quét", "kenBurns": "zoom-in" }
+    },
+    {
+      "id": "airdrop-la-gi",
+      "type": "body",
+      "voiceText": "Airdrop là khi một dự án tiền số phát thưởng miễn phí cho người dùng sớm. Nhiều người tạo hàng chục ví để nhận được nhiều suất hơn.",
+      "keywords": ["phát thưởng miễn phí", "người dùng sớm", "hàng chục ví"],
+      "templateData": { "template": "callout", "statement": "Airdrop là thưởng miễn phí cho người dùng sớm của dự án tiền số", "tag": "Airdrop là gì" }
+    },
+    {
+      "id": "sybil",
+      "type": "body",
+      "voiceText": "Nhưng dự án không hề ngốc. Họ dùng thuật toán chống Sybil để phát hiện nhiều ví thật ra là của cùng một người, rồi loại bỏ hết một lượt.",
+      "keywords": ["thuật toán chống Sybil", "cùng một người", "loại bỏ hết"],
+      "templateData": { "template": "stat-hero", "value": "Chống Sybil", "label": "Thuật toán phát hiện nhiều ví 1 người", "context": "Bị gắn cờ là loại sạch, không thưởng" }
+    },
+    {
+      "id": "bat-bang-gi",
+      "type": "body",
+      "voiceText": "Họ bắt bằng gì? Cùng một địa chỉ ai pi, cùng vân tay trình duyệt, các ví hay chuyển tiền cho nhau, và thao tác giống hệt nhau theo giờ.",
+      "keywords": ["cùng địa chỉ IP", "vân tay trình duyệt", "thao tác giống hệt"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Họ phát hiện ví ảo bằng gì?",
+        "bullets": [
+          "Cùng địa chỉ IP cho nhiều ví",
+          "Cùng vân tay trình duyệt, thiết bị",
+          "Các ví chuyển tiền cho nhau",
+          "Thao tác giống hệt nhau, cùng giờ"
+        ]
+      }
+    },
+    {
+      "id": "cach-an-toan",
+      "type": "body",
+      "voiceText": "Muốn sống sót, mỗi ví phải như một người thật khác nhau: một vân tay riêng, một ai pi riêng, và hành vi tự nhiên, không làm hàng loạt một lúc.",
+      "keywords": ["người thật khác nhau", "vân tay riêng", "hành vi tự nhiên"],
+      "templateData": { "template": "callout", "statement": "Mỗi ví một vân tay riêng, một IP riêng, hành vi tự nhiên", "tag": "Cách sống sót" }
+    },
+    {
+      "id": "checklist",
+      "type": "body",
+      "voiceText": "Tóm lại, để cày airdrop nhiều ví an toàn: tách vân tay từng ví, gán proxy riêng, không chuyển tiền lòng vòng, và rải thao tác ra nhiều ngày.",
+      "keywords": ["tách vân tay", "proxy riêng", "rải thao tác"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Cày airdrop nhiều ví an toàn",
+        "bullets": [
+          "Mỗi ví một vân tay trình duyệt riêng",
+          "Mỗi ví một proxy, một IP riêng",
+          "Không chuyển tiền giữa các ví",
+          "Rải thao tác ra nhiều ngày, tự nhiên"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login giúp bạn tách mỗi ví thành một danh tính riêng biệt, an toàn trước thuật toán chống Sybil. Lưu lại và tìm hiểu thêm nhé.",
+      "keywords": ["danh tính riêng biệt", "Cloak Login"],
+      "templateData": { "template": "outro", "ctaTop": "Tách ví an toàn", "channelName": "Cloak Login", "source": "cloakbrowse.com" }
+    }
+  ]
+}
