@@ -1,0 +1,108 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Vì sao nhiều nick trên 1 máy bị khoá cùng lúc?",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "VÂN TAY TRÌNH DUYỆT"
+  },
+  "voice": { "provider": "lucylab", "voiceId": "${VIETNAMESE_VOICEID}", "speed": 1.0 },
+  "style": { "themeKey": "cloak-orange", "aspect": "9:16", "character": "none" },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Bạn tạo năm cái nick trên cùng một máy, rồi một sáng đẹp trời cả năm cái bị khoá cùng lúc. Đổi mật khẩu, đổi ai pi rồi mà vẫn dính. Vì sao lại như vậy?",
+      "keywords": ["năm cái nick", "khoá cùng lúc", "vẫn dính"],
+      "templateData": {
+        "template": "hook",
+        "headline": "5 NICK KHOÁ CÙNG LÚC?",
+        "subhead": "Đổi IP rồi vẫn dính",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "thu-pham",
+      "type": "body",
+      "voiceText": "Lý do là ngoài địa chỉ ai pi, trình duyệt của bạn còn để lại một thứ gọi là vân tay. Chính nó tố cáo rằng tất cả các nick đều xuất phát từ một máy duy nhất.",
+      "keywords": ["địa chỉ IP", "vân tay", "một máy duy nhất"],
+      "templateData": {
+        "template": "callout",
+        "statement": "Trình duyệt để lại 'vân tay' tố cáo các nick cùng một máy",
+        "tag": "Thủ phạm"
+      }
+    },
+    {
+      "id": "van-tay-gom-gi",
+      "type": "body",
+      "voiceText": "Vân tay trình duyệt là tập hợp đặc điểm riêng của máy bạn: kích thước màn hình, danh sách phông chữ, loại card đồ hoạ, múi giờ và ngôn ngữ. Ghép lại, nó gần như là duy nhất.",
+      "keywords": ["đặc điểm riêng", "kích thước màn hình", "gần như duy nhất"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Vân tay trình duyệt gồm gì?",
+        "bullets": [
+          "Kích thước và độ phân giải màn hình",
+          "Danh sách phông chữ đã cài đặt",
+          "Loại card đồ hoạ, hệ điều hành",
+          "Múi giờ, ngôn ngữ, loại trình duyệt"
+        ]
+      }
+    },
+    {
+      "id": "doi-ip-van-dinh",
+      "type": "body",
+      "voiceText": "Vấn đề nằm ở chỗ: dù bạn đổi ai pi, cái vân tay đó vẫn y hệt nhau trên mọi nick. Nền tảng chỉ cần nhìn là biết ngay, tất cả là cùng một người.",
+      "keywords": ["đổi IP", "y hệt nhau", "cùng một người"],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Cùng 1 vân tay",
+        "label": "Đổi IP nhưng vân tay vẫn giống hệt",
+        "context": "Nền tảng biết ngay các nick là cùng một máy"
+      }
+    },
+    {
+      "id": "cach-an-toan",
+      "type": "body",
+      "voiceText": "Muốn nuôi nhiều nick an toàn, mỗi nick phải có một vân tay riêng và một proxy riêng, để trông như nhiều người dùng nhiều máy khác nhau thật sự.",
+      "keywords": ["vân tay riêng", "proxy riêng", "nhiều máy khác nhau"],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Cách nuôi nhiều nick an toàn",
+        "bullets": [
+          "Mỗi nick một vân tay trình duyệt riêng",
+          "Mỗi nick một proxy, một IP riêng",
+          "Tách biệt cookie, không dùng chung",
+          "Trông như nhiều người, nhiều máy thật"
+        ]
+      }
+    },
+    {
+      "id": "ca-hai",
+      "type": "body",
+      "voiceText": "Nhớ kỹ điều này: proxy chỉ che được địa chỉ ai pi, còn antidetect mới che được vân tay. Phải có đủ cả hai thì các nick mới thật sự tách rời nhau.",
+      "keywords": ["proxy che IP", "antidetect che vân tay", "đủ cả hai"],
+      "templateData": {
+        "template": "callout",
+        "statement": "Proxy che IP, antidetect che vân tay, phải có cả hai",
+        "tag": "Ghi nhớ"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login giúp bạn làm đúng điều đó: mỗi nick một vân tay và một proxy riêng, quản lý hàng loạt dễ dàng. Lưu video lại và ghé thử nhé.",
+      "keywords": ["mỗi nick một vân tay", "Cloak Login"],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Mỗi nick một vân tay riêng",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
