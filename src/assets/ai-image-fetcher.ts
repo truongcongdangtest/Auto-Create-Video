@@ -105,8 +105,13 @@ export async function fetchAiImage(
 
   const url = buildUrl(styled, width, height, seed);
 
-  // Two attempts — Pollinations occasionally 5xx/times out under load.
-  for (let attempt = 1; attempt <= 2; attempt++) {
+  // Pollinations' free/anonymous tier rate-limits hard (HTTP 429) when requests
+  // arrive close together. Callers MUST fetch sequentially; here we additionally
+  // back off on failure — longer cool-off for 429 (rate limit), shorter for
+  // transient 5xx/timeouts — so a full set of scenes completes despite the cap.
+  const MAX_ATTEMPTS = 5;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    let waitMs = 0;
     try {
       const resp = await axios.get<ArrayBuffer>(url, {
         responseType: "arraybuffer",
@@ -118,25 +123,34 @@ export async function fetchAiImage(
       const buf = Buffer.from(resp.data);
       if (!ct.startsWith("image/")) {
         log.warn(`[ai-image] attempt ${attempt}: non-image content-type "${ct}"`);
-        continue;
-      }
-      if (buf.byteLength < MIN_IMAGE_BYTES) {
+        waitMs = 4_000 * attempt;
+      } else if (buf.byteLength < MIN_IMAGE_BYTES) {
         log.warn(`[ai-image] attempt ${attempt}: image too small (${buf.byteLength}B)`);
-        continue;
+        waitMs = 4_000 * attempt;
+      } else {
+        // Save to cache (best-effort) + the output path.
+        try {
+          await writeFile(cachePath, buf);
+        } catch {
+          /* cache write optional */
+        }
+        await writeFile(outAbsPath, buf);
+        log.info(`[ai-image] generated ${buf.byteLength}B → ${outAbsPath}`);
+        return true;
       }
-      // Save to cache (best-effort) + the output path.
-      try {
-        await writeFile(cachePath, buf);
-      } catch {
-        /* cache write optional */
-      }
-      await writeFile(outAbsPath, buf);
-      log.info(`[ai-image] generated ${buf.byteLength}B → ${outAbsPath}`);
-      return true;
     } catch (e: any) {
       const status = e?.response?.status;
       log.warn(`[ai-image] attempt ${attempt} failed: ${status ? `http ${status}` : String(e?.message ?? e)}`);
+      // 429 = rate limited → wait much longer; other errors → modest backoff.
+      waitMs = status === 429 ? 10_000 * attempt : 3_000 * attempt;
+    }
+    if (attempt < MAX_ATTEMPTS && waitMs > 0) {
+      await sleep(waitMs);
     }
   }
   return false;
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
 }

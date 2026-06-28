@@ -186,7 +186,10 @@ export async function runPipeline(scriptPath: string): Promise<void> {
     const imgDir = join(outputDir, "images");
     await mkdir(imgDir, { recursive: true });
     const prompts = await extractImagePrompts(script, cfg.geminiApiKey);
-    const aiLimit = pLimit(3);
+    // SEQUENTIAL (concurrency 1): Pollinations' free tier rate-limits hard on
+    // concurrent requests; serial fetches + the fetcher's 429 backoff complete
+    // the full set reliably (each gen ~5-15s, so a 7-scene render adds ~1-2 min).
+    const aiLimit = pLimit(1);
     const aiFetches = script.scenes.map((scene, idx) =>
       aiLimit(async () => {
         // Skip outro: the TikTok follow card covers the frame; keep its gradient.
