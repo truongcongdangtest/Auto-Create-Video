@@ -53,6 +53,14 @@ export interface Config {
   pexelsApiKey?: string;
   geminiApiKey?: string;
   brollEnabled: boolean;
+
+  // AI still-image backgrounds (Pollinations, free, no key). When enabled, the
+  // pipeline generates ONE image per scene that matches the narration and
+  // renders it as a Ken-Burns still background. Still images decode once (not
+  // per-frame like <video>), so this renders LIGHT on the free 2-vCPU runner —
+  // unlike the Pexels VIDEO b-roll path. Mutually exclusive with b-roll: when
+  // aiImagesEnabled is on, the heavy video b-roll fetch is skipped.
+  aiImagesEnabled: boolean;
 }
 
 function intDefault(name: string, def: number): number {
@@ -137,8 +145,14 @@ export function loadConfig(): Config {
     pexelsApiKey: process.env.PEXELS_API_KEY?.trim() || undefined,
     geminiApiKey: process.env.GEMINI_API_KEY?.trim() || undefined,
     // BROLL_ENABLED defaults true when PEXELS_API_KEY is set; explicit "0"/"false" disables.
+    // When AI images are enabled, force b-roll OFF (the two are mutually exclusive —
+    // AI still images are the light, free-render path; video b-roll is the heavy one).
     brollEnabled:
+      !["1", "true", "yes", "on"].includes((process.env.AI_IMAGES ?? "").toLowerCase().trim()) &&
       (process.env.PEXELS_API_KEY?.trim() || "") !== "" &&
       !["0", "false", "no"].includes((process.env.BROLL_ENABLED ?? "").toLowerCase().trim()),
+    // AI_IMAGES=1/true/yes/on turns on Pollinations still-image backgrounds. No key needed.
+    aiImagesEnabled:
+      ["1", "true", "yes", "on"].includes((process.env.AI_IMAGES ?? "").toLowerCase().trim()),
   };
 }

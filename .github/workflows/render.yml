@@ -19,6 +19,10 @@ on:
         description: "Hình nền minh hoạ (b-roll Pexels theo nội dung): 1 = bật, 0 = tắt"
         required: false
         default: "1"
+      images:
+        description: "Ảnh AI khớp lời nói (Pollinations, miễn phí, render NHẸ): 1 = bật, 0 = tắt. Bật sẽ tự TẮT b-roll video."
+        required: false
+        default: "0"
 
 jobs:
   render:
@@ -58,6 +62,9 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           BROLL_ENABLED: ${{ github.event.inputs.broll }}
+          # Ảnh AI khớp lời nói (Pollinations, không cần key). Bật = tự tắt b-roll
+          # video (ảnh tĩnh render nhẹ, chạy được trên runner free 2-nhân).
+          AI_IMAGES: ${{ github.event.inputs.images }}
           VIETVIRAL_RENDER_QUALITY: high
           VIETVIRAL_RENDER_FPS: "60"
           # Slightly slower speech for a calmer, more natural storytelling pace.

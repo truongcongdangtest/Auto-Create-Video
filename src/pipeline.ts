@@ -10,6 +10,8 @@ import { getDurationSec, concatWithSilence, mixSfxOntoVoice, mixBgmOntoTrack, ty
 import { indexSfxLibrary, pickSfxForScene, defaultPlayback } from "./assets/sfx-selector.js";
 import { extractBrollKeywords } from "./assets/broll-keywords.js";
 import { fetchBroll } from "./assets/broll-fetcher.js";
+import { extractImagePrompts } from "./assets/image-prompts.js";
+import { fetchAiImage } from "./assets/ai-image-fetcher.js";
 import { existsSync } from "node:fs";
 import { composeHtml } from "./render/html-composer.js";
 import { renderWithHyperframes } from "./render/hyperframes-runner.js";
@@ -174,6 +176,39 @@ export async function runPipeline(scriptPath: string): Promise<void> {
     log.warn(`  b-roll skipped: PEXELS_API_KEY not set (or brollEnabled=false)`);
   }
 
+  // STEP 4.6 — AI still-image backgrounds (Pollinations, free). One image per
+  // scene that MATCHES the narration, rendered as a Ken-Burns still. Still
+  // images decode once (not per-frame like <video>), so this is the LIGHT,
+  // free-on-GitHub matched-visual path. Mutually exclusive with b-roll.
+  const sceneImageMap: Record<string, string | null> = {};
+  if (cfg.aiImagesEnabled) {
+    log.info(`  ai-image: generating per-scene Pollinations images (matched to narration)`);
+    const imgDir = join(outputDir, "images");
+    await mkdir(imgDir, { recursive: true });
+    const prompts = await extractImagePrompts(script, cfg.geminiApiKey);
+    const aiLimit = pLimit(3);
+    const aiFetches = script.scenes.map((scene, idx) =>
+      aiLimit(async () => {
+        // Skip outro: the TikTok follow card covers the frame; keep its gradient.
+        if (scene.type === "outro") {
+          sceneImageMap[scene.id] = null;
+          return;
+        }
+        const subject = prompts.get(scene.id);
+        if (!subject) {
+          sceneImageMap[scene.id] = null;
+          return;
+        }
+        const rel = `images/scene-${scene.id}.jpg`;
+        const ok = await fetchAiImage(subject, join(outputDir, rel), { seed: idx + 1 });
+        sceneImageMap[scene.id] = ok ? rel : null;
+      }),
+    );
+    await Promise.all(aiFetches);
+    const gotImg = Object.values(sceneImageMap).filter((v) => v !== null).length;
+    log.info(`  ai-image: ${gotImg}/${script.scenes.length} scenes covered`);
+  }
+
   // STEP 5
   log.step(5, TOTAL_STEPS, "Concat voice scenes + mix SFX + background music");
   const voiceRawMp3 = join(outputDir, "voice-raw.mp3");
@@ -335,6 +370,7 @@ export async function runPipeline(scriptPath: string): Promise<void> {
     tiktokAvatarRelPath: ttAvatarFile,
     outroHoldSec: OUTRO_HOLD_SEC,
     sceneBroll: sceneBrollMap,
+    sceneImage: sceneImageMap,
     themeKey,
     aspect,
     character,

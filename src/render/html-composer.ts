@@ -224,6 +224,14 @@ export interface ComposeArgs {
    * static-image/gradient bg with an autoplay-muted-loop <video> element.
    */
   sceneBroll?: Record<string, string | null>;
+  /**
+   * Optional per-scene AI still-image paths (relative to output dir, e.g.
+   * "images/scene-hook.jpg"). When present for a scene (and no b-roll), the
+   * image is rendered as a stage-level Ken-Burns still background behind the
+   * content — the LIGHT, free-render matched-visual path. Still images decode
+   * once, unlike <video> which re-decodes every frame.
+   */
+  sceneImage?: Record<string, string | null>;
   /** Visual theme key. Falls back to "news-mono". */
   themeKey?: string;
   /** Output aspect ratio. Falls back to "9:16" (1080×1920). */
@@ -244,6 +252,7 @@ export function composeHtml(args: ComposeArgs): string {
   const tiktokAvatar = args.tiktokAvatarRelPath ?? "tiktok-avatar.jpg";
   const outroHoldSec = args.outroHoldSec ?? 3;
   const sceneBroll = args.sceneBroll ?? {};
+  const sceneImage = args.sceneImage ?? {};
 
   // ── Resolve style ──────────────────────────────────────────────────────
   const themeKey = pickTheme(args.themeKey ?? script.style?.themeKey);
@@ -273,9 +282,16 @@ export function composeHtml(args: ComposeArgs): string {
   // video and HTMLVideoElement never fires `loadedmetadata`.
   const renderedScenes = timing.map(({ scene, start, duration, voiceDur }) => {
     const broll = sceneBroll[scene.id] ?? null;
-    return renderScene(scene, start, duration, voiceDur, bgImageRelPath, tiktok, tiktokAvatar, broll);
+    const image = sceneImage[scene.id] ?? null;
+    return renderScene(scene, start, duration, voiceDur, bgImageRelPath, tiktok, tiktokAvatar, broll, image);
   });
+  // Both b-roll <video> and AI still-image backgrounds are emitted at STAGE
+  // level (before {{SCENES}}) so they sit behind the scene content. They share
+  // the {{BROLLS}} slot — per scene only one is produced (image only when no
+  // b-roll), so they never collide.
   const brollHtml = renderedScenes.map((r) => r.brollHtml).filter(Boolean).join("\n");
+  const imageHtml = renderedScenes.map((r) => r.imageHtml).filter(Boolean).join("\n");
+  const stageBgHtml = [brollHtml, imageHtml].filter(Boolean).join("\n");
   const sceneHtml = renderedScenes.map((r) => r.sceneHtml).join("\n");
 
   // Persistent shell — uses tiktok handle in footer
@@ -291,7 +307,7 @@ export function composeHtml(args: ComposeArgs): string {
     .replace("{{TITLE}}", escapeHtml(script.metadata.title))
     .replace(/\{\{TOTAL_DURATION\}\}/g, totalDuration.toFixed(2))
     .replace("{{SHELL}}", shellHtml)
-    .replace("{{BROLLS}}", brollHtml)
+    .replace("{{BROLLS}}", stageBgHtml)
     .replace("{{SCENES}}", sceneHtml)
     .replace("{{HOST_OVERLAY}}", hostOverlayHtml)
     .replace(/\{\{THEME_KEY\}\}/g, themeKey)
@@ -381,20 +397,24 @@ function renderScene(
   tiktok: TiktokConfig,
   tiktokAvatarRelPath: string,
   brollRelPath: string | null,
-): { brollHtml: string | null; sceneHtml: string } {
+  imageRelPath: string | null,
+): { brollHtml: string | null; imageHtml: string | null; sceneHtml: string } {
   const td = scene.templateData;
+  // A stage-level background (b-roll video OR AI still image) sits behind the
+  // scene. When one exists, the hook must skip its own image/gradient bg layer
+  // so it doesn't stack on top and hide the stage background.
+  const hasStageBg = brollRelPath !== null || imageRelPath !== null;
 
   let inner: string;
   let layoutName: string;
 
   switch (td.template) {
     case "hook":
-      // When b-roll is present for hook, skip the image/gradient bg —
-      // the stage-level <video> + .bg-overlay (emitted separately, see
-      // brollHtml return) replaces it. The shimmer-sweep and headline
-      // still read because .bg-overlay applies the same dark gradient
-      // as the legacy `.overlay` element.
-      inner = renderHookInner(td, bgImageRelPath, brollRelPath !== null);
+      // When a stage bg is present for hook, skip the image/gradient bg —
+      // the stage-level <video>/<image> + .bg-overlay (emitted separately)
+      // replaces it. The shimmer-sweep and headline still read because
+      // .bg-overlay applies the same dark gradient as the legacy `.overlay`.
+      inner = renderHookInner(td, bgImageRelPath, hasStageBg);
       layoutName = "hook";
       break;
     case "comparison":
@@ -436,13 +456,43 @@ function renderScene(
   const brollHtml = brollRelPath
     ? brollClipForStage(scene.id, brollRelPath, start, duration)
     : null;
+  // AI still-image bg — only when there is no b-roll for this scene (b-roll
+  // takes precedence if both somehow exist). Stage-level, Ken-Burns animated.
+  const imageHtml = !brollRelPath && imageRelPath
+    ? imageBgForStage(scene.id, imageRelPath, start, duration)
+    : null;
   // Large per-scene illustration (upper zone). Absolute-positioned, so its
   // place in the markup doesn't affect the centered layout content.
   const illuHtml = renderIllustration(scene.illustration);
   return {
     brollHtml,
+    imageHtml,
     sceneHtml: buildScene(scene, start, duration, voiceDur, layoutName, illuHtml + inner),
   };
+}
+
+/**
+ * Emit a stage-level AI still-image background + matching dark overlay, timed
+ * to the scene window. Mirrors brollClipForStage but for a STILL image: the
+ * JPEG decodes once at page load and every captured frame is a cheap GPU
+ * composite (Ken Burns is just a CSS transform on the cached bitmap), so this
+ * renders far lighter than a <video> bg. `--scene-dur` is set inline so the
+ * Ken Burns animation spans the whole scene (the element is at stage level and
+ * cannot inherit the scene wrapper's `--scene-dur`).
+ */
+function imageBgForStage(
+  sceneId: string,
+  relPath: string,
+  startSec: number,
+  durationSec: number,
+): string {
+  const start = startSec.toFixed(2);
+  const dur = durationSec.toFixed(2);
+  const safeId = sceneId.replace(/[^A-Za-z0-9_-]/g, "");
+  return [
+    `<div class="bg bg-image kb-zoom-in clip" id="img-${safeId}" data-start="${start}" data-duration="${dur}" style="--scene-dur:${dur}s; background-image: url('${escapeAttr(relPath)}')"></div>`,
+    `<div class="bg-overlay clip" data-start="${start}" data-duration="${dur}"></div>`,
+  ].join("");
 }
 
 /**

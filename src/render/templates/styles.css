@@ -322,6 +322,14 @@ body[data-aspect="16:9"] .scene.has-illu .layout-comparison { padding-top: calc(
   transform: scale(1.04);
 }
 
+/* ── AI STILL-IMAGE BG ──────────────────────────────────── */
+.bg.bg-image {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transform-origin: center center;
+  z-index: 1;
+}
+
 .bg-overlay {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background:
