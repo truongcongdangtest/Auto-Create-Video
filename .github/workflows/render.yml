@@ -1,4 +1,5 @@
 name: Render video (cloud)
+run-name: "Render ${{ github.event.inputs.job_dir }}"
 
 # Render a TikTok video on GitHub's servers instead of your PC.
 # Trigger: Actions tab → "Render video (cloud)" → Run workflow → enter job_dir.
