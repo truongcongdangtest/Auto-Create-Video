@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Nghề buôn tài khoản số: thật sự là gì và rủi ro",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "BUÔN TÀI KHOẢN"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Một tài khoản Phây búc trắng giá vài nghìn, nhưng tài khoản nuôi lâu năm có thể bán cả triệu đồng. Vì sao một con số ai đi lại đáng giá đến vậy?",
+      "keywords": [
+        "nuôi lâu năm",
+        "cả triệu đồng",
+        "đáng giá"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "VÌ SAO TÀI KHOẢN CŨ ĐẮT?",
+        "subhead": "Buôn tài khoản số là gì",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "gia-tri",
+      "type": "body",
+      "voiceText": "Giá trị thật không nằm ở chỗ đăng nhập được, mà ở mức độ tin cậy. Tuổi đời, lịch sử hoạt động và uy tín giúp nền tảng ít soi xét hơn, nên người chạy quảng cáo sẵn sàng trả giá cao.",
+      "keywords": [
+        "mức độ tin cậy",
+        "Tuổi đời",
+        "trả giá cao"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Người ta mua niềm tin của nền tảng, không mua cái mật khẩu",
+        "tag": "GIÁ TRỊ THẬT"
+      }
+    },
+    {
+      "id": "thi-truong",
+      "type": "body",
+      "voiceText": "Đây là một thị trường ngầm rất lớn, từ tài khoản quảng cáo, ví crypto cho tới gian hàng đã có đánh giá. Nhưng phần lớn vùng xám này vi phạm điều khoản dịch vụ của chính các nền tảng đó.",
+      "keywords": [
+        "thị trường ngầm",
+        "vùng xám",
+        "vi phạm điều khoản"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Vùng xám",
+        "label": "Phần lớn giao dịch vi phạm điều khoản",
+        "context": "Nền tảng có quyền thu hồi bất cứ lúc nào"
+      }
+    },
+    {
+      "id": "rui-ro",
+      "type": "body",
+      "voiceText": "Rủi ro là có thật và rất nặng. Bạn có thể mất tiền vì lừa đảo, bị đòi lại tài khoản sau khi đã trả tiền, hoặc bị khoá trắng vì nền tảng phát hiện đổi chủ.",
+      "keywords": [
+        "lừa đảo",
+        "đòi lại tài khoản",
+        "khoá trắng"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Bốn rủi ro hay gặp nhất",
+        "bullets": [
+          "Lừa đảo: trả tiền xong mất luôn",
+          "Bị lấy lại tài khoản qua email gốc",
+          "Nền tảng thu hồi vì đổi chủ",
+          "Mất sạch vốn nằm trong tài khoản"
+        ]
+      }
+    },
+    {
+      "id": "goc-nhin",
+      "type": "body",
+      "voiceText": "Mình không cổ vũ chợ đen. Nhưng thực tế nhiều người vẫn vận hành nhiều tài khoản hợp pháp của riêng mình, và bài học quan trọng nhất là mỗi tài khoản cần một môi trường tách biệt.",
+      "keywords": [
+        "không cổ vũ chợ đen",
+        "hợp pháp của riêng mình",
+        "môi trường tách biệt"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Một dấu vân tay trình duyệt dùng chung là cả dàn cùng ngã",
+        "tag": "BÀI HỌC"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi tài khoản một dấu vân tay và một ai pi riêng, để vận hành an toàn và tách biệt hơn. Lưu video lại để khỏi quên nhé.",
+      "keywords": [
+        "dấu vân tay",
+        "ai pi riêng",
+        "tách biệt"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Vận hành tài khoản an toàn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

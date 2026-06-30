@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Freelance & dịch vụ số: kiếm tiền online bền hơn",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "KIẾM TIỀN BỀN"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Làm dịch vụ số kiếm tiền đều hơn nhiều người tưởng. Nhưng có một sai lầm khiến cả tệp khách hàng của bạn bốc hơi trong một đêm.",
+      "keywords": [
+        "dịch vụ số",
+        "tệp khách hàng",
+        "một đêm"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "NGHỀ DỊCH VỤ SỐ BỀN HƠN BẠN NGHĨ",
+        "subhead": "Nhưng có một sai lầm chí mạng",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "vi-sao-ben",
+      "type": "body",
+      "voiceText": "Khác với săn đơn hên xui, dịch vụ số bán kỹ năng có thật nên thu nhập lặp lại đều. Khách thuê một lần ưng ý thường quay lại thuê tiếp tháng sau.",
+      "keywords": [
+        "kỹ năng có thật",
+        "thu nhập lặp lại",
+        "quay lại"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Bán kỹ năng có thật thì khách quay lại đều, thu nhập ổn định hơn săn đơn hên xui",
+        "tag": "BỀN VỮNG"
+      }
+    },
+    {
+      "id": "cac-mang",
+      "type": "body",
+      "voiceText": "Bốn mảng dễ vào nhất hiện nay là viết nội dung, thiết kế đồ hoạ, chạy quảng cáo thuê và quản trị gian hàng. Mỗi mảng chỉ cần một kỹ năng lõi là đã có khách trả tiền.",
+      "keywords": [
+        "viết nội dung",
+        "chạy quảng cáo thuê",
+        "quản trị gian hàng"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "BỐN MẢNG DỊCH VỤ DỄ KIẾM KHÁCH",
+        "bullets": [
+          "Viết nội dung, biên tập câu chữ",
+          "Thiết kế đồ hoạ, ảnh, banner",
+          "Chạy quảng cáo thuê cho shop",
+          "Quản trị gian hàng, đăng sản phẩm"
+        ]
+      }
+    },
+    {
+      "id": "rui-ro-lan-tai-khoan",
+      "type": "body",
+      "voiceText": "Vấn đề lớn nhất là khi bạn ôm tài khoản của nhiều khách trên cùng một trình duyệt. Nền tảng thấy nhiều tài khoản chung một ai pi và một dấu vân tay máy, nó nghi gian lận và khoá hàng loạt.",
+      "keywords": [
+        "nhiều khách",
+        "một ai pi",
+        "khoá hàng loạt"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1 máy, nhiều khách",
+        "label": "Dùng chung trình duyệt là rủi ro lớn",
+        "context": "Nền tảng gộp nhóm theo IP và vân tay, khoá cả loạt"
+      }
+    },
+    {
+      "id": "cach-tach",
+      "type": "body",
+      "voiceText": "Cách an toàn là mỗi khách hàng một môi trường tách biệt, riêng cu ki, riêng dấu vân tay, riêng đường mạng. Khi đó tài khoản khách này có vấn đề cũng không kéo theo khách khác, và bạn không bao giờ đăng nhập nhầm.",
+      "keywords": [
+        "mỗi khách hàng một môi trường",
+        "riêng dấu vân tay",
+        "đăng nhập nhầm"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "TÁCH MÔI TRƯỜNG CHO TỪNG KHÁCH",
+        "bullets": [
+          "Mỗi khách một hồ sơ riêng biệt",
+          "Riêng cookie và đăng nhập, không lẫn",
+          "Riêng dấu vân tay và đường mạng",
+          "Một khách bị soi không kéo cả nhóm"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi khách hàng một trình duyệt riêng với vân tay và proxy độc lập, để bạn nhận nhiều dự án mà không lo khoá hay lẫn tài khoản. Lưu video lại để làm dịch vụ bền hơn nhé.",
+      "keywords": [
+        "mỗi khách hàng một trình duyệt",
+        "không lo khoá",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Quản nhiều khách an toàn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

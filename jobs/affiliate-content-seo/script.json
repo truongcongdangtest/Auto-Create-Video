@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Affiliate qua content SEO: kiếm tiền không cần chạy ads",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "AFFILIATE SEO"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Có người làm affiliate mà không tốn một đồng tiền quảng cáo nào. Bí mật nằm ở một bài review xếp hạng top Google.",
+      "keywords": [
+        "không tốn",
+        "tiền quảng cáo",
+        "top Google"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "AFFILIATE KHÔNG CHẠY ADS",
+        "subhead": "Kiếm tiền từ top Google",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "mo-hinh",
+      "type": "body",
+      "voiceText": "Mô hình rất đơn giản. Bạn viết bài review hoặc so sánh sản phẩm, để bài lên top tìm kiếm, rồi gắn link affiliate vào trong đó.",
+      "keywords": [
+        "viết bài review",
+        "so sánh",
+        "link affiliate"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Mô hình review SEO",
+        "bullets": [
+          "Viết bài review hoặc so sánh sản phẩm",
+          "Tối ưu để bài lên top tìm kiếm",
+          "Gắn link affiliate vào bài viết",
+          "Người đọc tự nhiên bấm và mua"
+        ]
+      }
+    },
+    {
+      "id": "ben-hon",
+      "type": "body",
+      "voiceText": "Vì sao cách này bền hơn chạy quảng cáo? Vì khi bài đã lên top, lượt truy cập về đều mỗi ngày mà bạn không phải trả thêm tiền. Còn chạy quảng cáo, ngừng nạp tiền là tắt khách ngay lập tức.",
+      "keywords": [
+        "bền hơn",
+        "không phải trả thêm",
+        "tắt khách ngay"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Bài lên top kéo khách đều mỗi ngày mà không tốn thêm chi phí",
+        "tag": "TRAFFIC BỀN"
+      }
+    },
+    {
+      "id": "von",
+      "type": "body",
+      "voiceText": "Người làm thật thường không dừng ở một trang. Họ vận hành nhiều site cùng lúc cho nhiều ngách, và mỗi site cần nhiều tài khoản công cụ như Google Search Console, google a na li tích hay phần mềm nghiên cứu từ khoá.",
+      "keywords": [
+        "nhiều site",
+        "nhiều ngách",
+        "nhiều tài khoản"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Nhiều site",
+        "label": "Mỗi ngách một trang chạy song song",
+        "context": "Mỗi site cần nhiều tài khoản công cụ riêng"
+      }
+    },
+    {
+      "id": "rui-ro",
+      "type": "body",
+      "voiceText": "Rủi ro là khi bạn đăng nhập chục tài khoản trên cùng một trình duyệt, cùng một ai pi. Các công cụ dễ nhận ra đó là một người, và một tài khoản dính phạt có thể kéo cả cụm bị soi theo.",
+      "keywords": [
+        "cùng một",
+        "ai pi",
+        "kéo cả cụm"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Cùng một ai pi và một trình duyệt khiến cả cụm tài khoản bị soi chung",
+        "tag": "RỦI RO"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi tài khoản một trình duyệt và một ai pi riêng, cô lập từng tài sản nên một site dính sự cố không kéo theo cả hệ thống. Lưu video lại để quản nhiều site an toàn nhé.",
+      "keywords": [
+        "mỗi tài khoản",
+        "cô lập",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Quản nhiều site an toàn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

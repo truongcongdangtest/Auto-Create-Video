@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Trình duyệt antidetect là gì và khi nào bạn cần",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "ANTIDETECT 101"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Bạn đăng nhập mười tài khoản trên một máy, rồi cả mười cùng bị khoá một lượt. Lý do nằm ở thứ gọi là trình duyệt antidetect.",
+      "keywords": [
+        "mười tài khoản",
+        "cùng bị khoá",
+        "antidetect"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "VÌ SAO 10 NICK CÙNG BAY?",
+        "subhead": "Hiểu về antidetect",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "vantay",
+      "type": "body",
+      "voiceText": "Mỗi trình duyệt để lộ một bộ vân tay: phiên bản hệ điều hành, màn hình, phông chữ, canvas, web giê eo. Các nền tảng ghép vân tay này với ai pi của bạn để biết nhiều nick là cùng một người.",
+      "keywords": [
+        "vân tay",
+        "canvas",
+        "cùng một người"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Vân tay trình duyệt gồm gì",
+        "bullets": [
+          "Hệ điều hành, độ phân giải màn hình",
+          "Phông chữ, múi giờ, ngôn ngữ",
+          "Canvas, web giê eo, âm thanh",
+          "Địa chỉ ai pi và nhà mạng"
+        ]
+      }
+    },
+    {
+      "id": "khac-an-danh",
+      "type": "body",
+      "voiceText": "Nhiều người tưởng chế độ ẩn danh là đủ. Nhưng ẩn danh chỉ xoá cookie và lịch sử, còn vân tay và ai pi vẫn y nguyên. Nền tảng vẫn nhận ra đó là cùng một thiết bị.",
+      "keywords": [
+        "chế độ ẩn danh",
+        "vẫn y nguyên",
+        "cùng một thiết bị"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Ẩn danh chỉ xoá cookie, vân tay và ai pi vẫn lộ nguyên",
+        "tag": "HIỂU LẦM"
+      }
+    },
+    {
+      "id": "antidetect-lam-gi",
+      "type": "body",
+      "voiceText": "Trình duyệt antidetect tạo nhiều hồ sơ riêng, mỗi hồ sơ một bộ vân tay khác và một proxy riêng. Nhờ vậy mỗi tài khoản trông như một thiết bị, một con người khác hẳn.",
+      "keywords": [
+        "nhiều hồ sơ riêng",
+        "proxy riêng",
+        "một thiết bị"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1 hồ sơ, 1 danh tính",
+        "label": "Mỗi nick một vân tay và proxy riêng",
+        "context": "Các nền tảng khó ghép chung một chủ"
+      }
+    },
+    {
+      "id": "khi-nao-can",
+      "type": "body",
+      "voiceText": "Bạn cần antidetect khi quản lý nhiều tài khoản cùng lúc: chạy quảng cáo nhiều ních, nuôi tài khoản, làm áp phi li ết hay quản lý nhiều ví. Nếu chỉ một tài khoản cá nhân thì không cần.",
+      "keywords": [
+        "nhiều tài khoản",
+        "nuôi tài khoản",
+        "không cần"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Khi nào bạn thật sự cần",
+        "bullets": [
+          "Chạy quảng cáo trên nhiều tài khoản",
+          "Nuôi và quản lý nhiều ních mạng xã hội",
+          "Làm áp phi li ết, dropship, quản lý ví",
+          "Một nick cá nhân thì không cần"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login là trình duyệt antidetect đúng nghĩa: mỗi hồ sơ một vân tay và một proxy riêng, tách bạch an toàn. Lưu video lại để dùng khi cần nhé.",
+      "keywords": [
+        "Cloak Login",
+        "vân tay",
+        "proxy riêng"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Tách bạch từng tài khoản",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

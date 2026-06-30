@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Print-on-demand áo thun: kiếm tiền không cần kho",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "POD KHONG KHO"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Bán áo thun mà không cần ôm một cái kho nào. Print on demand cho phép bạn thiết kế xong là đăng bán, có đơn mới in.",
+      "keywords": [
+        "không cần",
+        "ôm một cái kho",
+        "có đơn mới in"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "BÁN ÁO KHÔNG CẦN KHO",
+        "subhead": "Có đơn mới in, mới giao",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "cach-hoat-dong",
+      "type": "body",
+      "voiceText": "Cách chạy rất gọn: bạn vẽ thiết kế, đăng lên sàn như Merch, Etsy hay Redbubble. Khi khách đặt, sàn lo in và giao tận nơi, còn bạn nhận phần lời.",
+      "keywords": [
+        "vẽ thiết kế",
+        "khách đặt",
+        "nhận phần lời"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "POD chạy theo 4 bước",
+        "bullets": [
+          "Vẽ thiết kế áo, ví dụ chữ hoặc hình",
+          "Đăng lên Merch, Etsy hoặc Redbubble",
+          "Khách đặt thì sàn tự in và giao",
+          "Bạn không giữ hàng, chỉ nhận lời"
+        ]
+      }
+    },
+    {
+      "id": "von-thap",
+      "type": "body",
+      "voiceText": "Vì không in trước nên vốn gần như bằng không, rủi ro tồn kho cũng không có. Bù lại lời mỗi áo khá mỏng, thường chỉ vài đô, nên phải bán số lượng.",
+      "keywords": [
+        "vốn gần như bằng không",
+        "lời mỗi áo khá mỏng",
+        "bán số lượng"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Vài đô mỗi áo",
+        "label": "Lời ròng thường thấy của một mẫu POD",
+        "context": "Lời mỏng nên phải ra nhiều mẫu, nhiều đơn"
+      }
+    },
+    {
+      "id": "nhieu-gian-hang",
+      "type": "body",
+      "voiceText": "Lời mỏng nên dân chuyên không bán một gian hàng. Họ mở nhiều tài khoản, mỗi sàn vài gian, để phủ nhiều ngách và tăng số mẫu đăng mỗi ngày.",
+      "keywords": [
+        "nhiều tài khoản",
+        "phủ nhiều ngách",
+        "tăng số mẫu"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Một gian hàng quá ít. Seller mở nhiều tài khoản để phủ ngách và đăng nhiều mẫu.",
+        "tag": "NHIỀU GIAN"
+      }
+    },
+    {
+      "id": "link-ban",
+      "type": "body",
+      "voiceText": "Nhưng các sàn rất ghét một người ôm nhiều tài khoản. Chúng nhìn ai pi, cookie và dấu vân tay trình duyệt, thấy trùng là gộp lại rồi khoá cả cụm cùng lúc.",
+      "keywords": [
+        "ôm nhiều tài khoản",
+        "dấu vân tay trình duyệt",
+        "khoá cả cụm"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Vì sao bị khoá cả cụm tài khoản",
+        "bullets": [
+          "Trùng ai pi giữa các gian hàng",
+          "Dùng chung cookie và phiên đăng nhập",
+          "Trùng dấu vân tay trình duyệt",
+          "Sàn gộp lại rồi ban liên đới một lượt"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi gian hàng một dấu vân tay và proxy riêng, tách bạch như nhiều máy khác nhau. Nhờ vậy chạy nhiều tài khoản bán áo an toàn hơn. Lưu video lại nhé.",
+      "keywords": [
+        "dấu vân tay và proxy riêng",
+        "an toàn hơn",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Chạy nhiều gian hàng an toàn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

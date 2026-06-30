@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Dropshipping 2026: hiểu đúng trước khi đốt tiền",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "DROPSHIP 2026"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Nhiều người nghĩ dropshipping chỉ là đăng hàng rồi ngồi đợi tiền về. Nhưng tiền thật chảy qua ba cửa, và hiểu sai một cửa là cháy ví ngay tháng đầu.",
+      "keywords": [
+        "ba cửa",
+        "cháy ví",
+        "tháng đầu"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "DROPSHIP: TIỀN CHẢY QUA ĐÂU?",
+        "subhead": "Hiểu đúng trước khi đốt tiền",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "luong-tien",
+      "type": "body",
+      "voiceText": "Một đơn hàng đi qua ba mắt xích: cổng thanh toán nhận tiền khách, nhà cung cấp ship hàng, và quảng cáo kéo người mua vào. Lãi của bạn là phần còn lại sau khi trừ cả ba.",
+      "keywords": [
+        "cổng thanh toán",
+        "nhà cung cấp",
+        "quảng cáo"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Ba mắt xích của một đơn",
+        "bullets": [
+          "Cổng thanh toán: nhận tiền khách",
+          "Nhà cung cấp: nhập và ship hàng",
+          "Quảng cáo: kéo người mua vào store",
+          "Lãi = doanh thu trừ cả ba khoản"
+        ]
+      }
+    },
+    {
+      "id": "chi-phi-ads",
+      "type": "body",
+      "voiceText": "Phần đắt nhất thường là quảng cáo. Chi phí mỗi lần mua, gọi là si pi ây, có thể nuốt hơn ba mươi phần trăm giá bán. Test sản phẩm mà không tính kỹ con số này là cách đốt tiền nhanh nhất.",
+      "keywords": [
+        "quảng cáo",
+        "ba mươi phần trăm",
+        "đốt tiền"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": ">30%",
+        "label": "giá bán có thể đi vào quảng cáo",
+        "context": "Không tính kỹ si pi ây là cháy ngân sách"
+      }
+    },
+    {
+      "id": "nhieu-store",
+      "type": "body",
+      "voiceText": "Vì sao dân pro chạy nhiều store và nhiều tài khoản quảng cáo, thanh toán? Vì để chia rủi ro: một sản phẩm chết hay một cổng thanh toán bị giữ tiền cũng không kéo sập toàn bộ dòng tiền của bạn.",
+      "keywords": [
+        "nhiều store",
+        "chia rủi ro",
+        "giữ tiền"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Nhiều store là để chia rủi ro, không phải để gian lận",
+        "tag": "Tách dòng tiền"
+      }
+    },
+    {
+      "id": "rui-ro-lien-ket",
+      "type": "body",
+      "voiceText": "Nhưng đây là cái bẫy: quản lý nhiều shop trên cùng một máy, các nền tảng dễ liên kết tài khoản qua cùng ai pi, cùng cu ki và cùng dấu vân tay trình duyệt. Một tài khoản dính cờ là cả cụm bị khoá theo.",
+      "keywords": [
+        "liên kết tài khoản",
+        "dấu vân tay",
+        "khoá theo"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Vì sao tài khoản bị liên kết",
+        "bullets": [
+          "Cùng một địa chỉ ai pi cho mọi shop",
+          "Cùng cu ki và bộ nhớ trình duyệt",
+          "Cùng dấu vân tay máy và trình duyệt",
+          "Một cờ vi phạm kéo cả cụm bị khoá"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi store một dấu vân tay riêng và một proxy riêng, để các shop không bị liên kết với nhau. Quản lý nhiều tài khoản an toàn hơn, lưu video lại nhé.",
+      "keywords": [
+        "dấu vân tay riêng",
+        "proxy riêng",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Tách store an toàn hơn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

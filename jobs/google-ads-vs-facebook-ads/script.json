@@ -1,0 +1,125 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Google Ads hay Facebook Ads: chọn cái nào để bắt đầu",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "GG ADS VS FB ADS"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Mới chạy quảng cáo nên đổ tiền vào Gu gồ Át hay Phây Búc Át trước? Chọn sai nền tảng là đốt sạch ngân sách thử nghiệm trong vài ngày.",
+      "keywords": [
+        "Gu gồ Át",
+        "Phây Búc Át",
+        "Chọn sai"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "GOOGLE HAY FACEBOOK ADS?",
+        "subhead": "Chọn sai là đốt tiền",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "y-dinh-vs-kham-pha",
+      "type": "body",
+      "voiceText": "Khác biệt cốt lõi là ý định. Gu gồ bắt người đang tự gõ tìm thứ họ cần, nên họ sẵn sàng mua hơn. Phây Búc thì ngắt mạch người đang lướt giải trí, bạn phải tạo nhu cầu chứ họ chưa đi tìm.",
+      "keywords": [
+        "ý định",
+        "đang tự gõ tìm",
+        "ngắt mạch người đang lướt"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Google bắt nhu cầu có sẵn, Facebook tạo ra nhu cầu mới",
+        "tag": "CỐT LÕI"
+      }
+    },
+    {
+      "id": "chi-phi",
+      "type": "body",
+      "voiceText": "Về chi phí, Phây Búc thường rẻ hơn ở khâu tiếp cận và hợp test nhanh sản phẩm mới. Gu gồ đắt hơn mỗi cú nhấp nhưng người mua nóng hơn, nên tỉ lệ chuyển đổi thường cao hơn.",
+      "keywords": [
+        "Phây Búc thường rẻ hơn",
+        "Gu gồ đắt hơn",
+        "tỉ lệ chuyển đổi"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Rẻ vs Nóng",
+        "label": "Facebook rẻ, Google chuyển đổi cao",
+        "context": "Click Google đắt hơn nhưng người mua sẵn sàng hơn"
+      }
+    },
+    {
+      "id": "san-pham-hop",
+      "type": "body",
+      "voiceText": "Sản phẩm cũng quyết định nền tảng. Hàng người ta chủ động tìm như sửa máy, dịch vụ, đồ chuyên dụng thì hợp Gu gồ. Hàng cảm xúc, thời trang, gia dụng đẹp mắt thì Phây Búc lên hình ăn tiền hơn.",
+      "keywords": [
+        "chủ động tìm",
+        "hợp Gu gồ",
+        "Phây Búc lên hình"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Sản phẩm nào hợp nền tảng nào",
+        "bullets": [
+          "Google: dịch vụ, sửa chữa, đồ chuyên dụng",
+          "Google: ai cũng tự tìm trước khi mua",
+          "Facebook: hàng cảm xúc, thời trang, gia dụng",
+          "Facebook: bắt mắt, mua theo cảm hứng"
+        ]
+      }
+    },
+    {
+      "id": "duyet-va-ban",
+      "type": "body",
+      "voiceText": "Cả hai đều duyệt gắt và hay khoá tài khoản, nhất là khi bạn chạy nhiều ních cùng lúc. Một tài khoản dính lỗi mà chia sẻ chung dấu vân tay trình duyệt và ai pi, cả dàn dễ bị liên đới khoá theo.",
+      "keywords": [
+        "duyệt gắt",
+        "nhiều ních",
+        "dấu vân tay trình duyệt",
+        "liên đới khoá"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Một tài khoản dính lỗi có thể kéo cả dàn cùng khoá",
+        "tag": "RỦI RO THẬT"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cờ Lóc Lốc gin cho mỗi tài khoản một dấu vân tay và ai pi riêng, tách bạch để chạy nhiều ních an toàn trên cả hai nền tảng. Lưu video lại để chọn đúng nhé.",
+      "keywords": [
+        "mỗi tài khoản",
+        "ai pi riêng",
+        "chạy nhiều ních an toàn"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Chạy đa tài khoản an toàn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

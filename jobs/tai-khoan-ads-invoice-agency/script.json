@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Tài khoản Ads invoice/agency là gì và vì sao dân chạy thích",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "ADS AGENCY"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Cùng chạy quảng cáo, sao có người tiêu cả tỷ một ngày không khoá, có người tự tạo tài khoản lại bay sau hai hôm? Bí mật nằm ở loại tài khoản họ dùng.",
+      "keywords": [
+        "tiêu cả tỷ",
+        "tự tạo",
+        "loại tài khoản"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "TÀI KHOẢN ADS NÀO MỚI XỊN?",
+        "subhead": "Invoice và agency là gì",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "tu-tao",
+      "type": "body",
+      "voiceText": "Tài khoản tự tạo là loại bạn tự đăng ký bằng thẻ của mình, trả tiền trước cho từng đồng. Nó dễ làm nhưng hạn mức thấp, độ tin cậy yếu và rất dễ bị khoá khi mới chạy.",
+      "keywords": [
+        "tự tạo",
+        "trả tiền trước",
+        "dễ bị khoá"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Tài khoản tự tạo (prepaid)",
+        "bullets": [
+          "Tự đăng ký, nạp tiền trước mỗi đồng",
+          "Hạn mức thấp, hay bị giới hạn ngày",
+          "Độ tin cậy yếu, dễ bay khi mới chạy",
+          "Hợp để test, không hợp scale lớn"
+        ]
+      }
+    },
+    {
+      "id": "invoice",
+      "type": "body",
+      "voiceText": "Tài khoản invoice là tài khoản trả sau. Bạn cứ chạy quảng cáo trước, cuối kỳ mới thanh toán theo hoá đơn. Nền tảng chỉ cấp invoice cho tài khoản đã có lịch sử chi tiêu tốt nên độ tin cậy cao hơn hẳn.",
+      "keywords": [
+        "trả sau",
+        "chạy quảng cáo trước",
+        "độ tin cậy cao"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Invoice = chạy trước, cuối kỳ trả theo hoá đơn. Trust cao vì nền tảng tin bạn.",
+        "tag": "TRẢ SAU"
+      }
+    },
+    {
+      "id": "agency",
+      "type": "body",
+      "voiceText": "Tài khoản agency hay em xi xi là tài khoản nằm dưới một đại lý lớn đã được nền tảng cấp quyền. Vì agency bảo lãnh nên các tài khoản này có hạn mức cao, kháng tốt hơn và ít bị soi vô lý.",
+      "keywords": [
+        "agency",
+        "đại lý",
+        "hạn mức cao"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Hạn mức cao",
+        "label": "Tài khoản agency được đại lý bảo lãnh",
+        "context": "Kháng tốt hơn, ít bị giới hạn vô lý"
+      }
+    },
+    {
+      "id": "rui-ro",
+      "type": "body",
+      "voiceText": "Nhưng đừng nghĩ agency là bất tử. Bạn thường thuê lại nên phải trả phí phần trăm, phụ thuộc vào bên cấp, và nếu một tài khoản dính phốt thì cả cụm có thể bị soi chung. Quản nhiều tài khoản mà để chung dấu vân tay trình duyệt là tự gom rủi ro về một mối.",
+      "keywords": [
+        "trả phí phần trăm",
+        "cả cụm",
+        "chung dấu vân tay"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Mặt trái của agency",
+        "bullets": [
+          "Thuê lại, mất phí phần trăm chi tiêu",
+          "Phụ thuộc bên cấp, có thể bị thu hồi",
+          "Một tài khoản dính phốt, cả cụm bị soi",
+          "Trùng vân tay và ai pi là tự gom rủi ro"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Vì vậy mỗi tài khoản agency cần một hồ sơ sạch riêng. Cloak Login cho mỗi tài khoản một dấu vân tay và một ai pi riêng, tách biệt hoàn toàn để cụm này dính không kéo theo cụm kia. Lưu video lại nhé.",
+      "keywords": [
+        "hồ sơ sạch riêng",
+        "Cloak Login",
+        "tách biệt hoàn toàn"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Mỗi tài khoản một hồ sơ sạch",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Proxy dân cư vs datacenter: chọn loại nào cho MMO",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "PROXY ĐÚNG CÁCH"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Nick vừa nuôi mấy hôm đã dính khoá, nhiều khi không phải do thao tác mà do ai pi proxy bị nền tảng đánh dấu là rủi ro. Chọn sai loại proxy là tự đốt tiền.",
+      "keywords": [
+        "dính khoá",
+        "ai pi proxy",
+        "đốt tiền"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "PROXY SAI = NICK CHẾT SỚM",
+        "subhead": "Dân cư hay datacenter?",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "khac-nhau",
+      "type": "body",
+      "voiceText": "Proxy dân cư là ai pi của nhà mạng cấp cho hộ gia đình thật, nên nền tảng tin tưởng cao. Proxy datacenter sinh ra từ máy chủ trung tâm dữ liệu, rẻ và nhanh nhưng dải ai pi dễ bị nhận diện là máy.",
+      "keywords": [
+        "nhà mạng cấp",
+        "máy chủ",
+        "dễ bị nhận diện"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Hai loại proxy khác nhau ở đâu",
+        "bullets": [
+          "Dân cư: ai pi nhà mạng thật, trust cao",
+          "Datacenter: ai pi máy chủ, rẻ và nhanh",
+          "Dân cư đắt, tốc độ thường chậm hơn",
+          "Datacenter dễ bị nền tảng gắn cờ"
+        ]
+      }
+    },
+    {
+      "id": "gia",
+      "type": "body",
+      "voiceText": "Khác biệt lớn nhất nằm ở giá và độ tin cậy. Proxy datacenter có thể chỉ vài nghìn một ai pi, còn dân cư thường tính theo dung lượng, đắt gấp nhiều lần nhưng đổi lại tỉ lệ sống của nick cao hơn hẳn.",
+      "keywords": [
+        "giá",
+        "độ tin cậy",
+        "tỉ lệ sống"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Đắt gấp nhiều lần",
+        "label": "Proxy dân cư so với datacenter",
+        "context": "Bù lại nick sống lâu, ít dính cờ rủi ro"
+      }
+    },
+    {
+      "id": "khi-nao-dung",
+      "type": "body",
+      "voiceText": "Vậy khi nào dùng loại nào. Nuôi nick mạng xã hội, chạy quảng cáo hay tài khoản ví tiền số nhạy cảm thì ưu tiên dân cư cho an toàn. Việc nhẹ như cào dữ liệu, kiểm tra giá hay tác vụ ít rủi ro thì datacenter là đủ và tiết kiệm.",
+      "keywords": [
+        "nuôi nick",
+        "ưu tiên dân cư",
+        "datacenter là đủ"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Tài khoản nhạy cảm dùng dân cư, việc nhẹ dùng datacenter để tiết kiệm",
+        "tag": "Chọn đúng"
+      }
+    },
+    {
+      "id": "quy-tac",
+      "type": "body",
+      "voiceText": "Một quy tắc sống còn là mỗi profile một ai pi riêng, đừng để nhiều nick dùng chung một proxy. Và nên chọn ai pi cùng quốc gia với danh tính của tài khoản để khớp múi giờ với ngôn ngữ.",
+      "keywords": [
+        "mỗi profile một ai pi",
+        "dùng chung",
+        "cùng quốc gia"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Gán proxy đúng cách",
+        "bullets": [
+          "Mỗi profile một ai pi riêng biệt",
+          "Không cho nhiều nick chung một proxy",
+          "Chọn ai pi cùng quốc gia với nick",
+          "Ưu tiên proxy xoay chậm, không nhảy liên tục"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Trong Cloak Login, bạn gán riêng từng proxy cho từng profile chỉ vài giây, lại có sẵn fingerprint riêng nên mỗi nick là một danh tính độc lập. Lưu video lại để chọn proxy cho chuẩn nhé.",
+      "keywords": [
+        "gán riêng từng proxy",
+        "danh tính độc lập",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Gán proxy chuẩn cho từng nick",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

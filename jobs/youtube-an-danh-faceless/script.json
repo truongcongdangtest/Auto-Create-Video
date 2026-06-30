@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Kiếm tiền YouTube ẩn danh (faceless) là gì",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "FACELESS YOUTUBE"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Có những kênh YouTube triệu sub mà bạn chưa từng thấy mặt chủ kênh một lần nào. Đó là kênh ẩn danh, hay còn gọi là faceless.",
+      "keywords": [
+        "triệu sub",
+        "chưa từng thấy mặt",
+        "faceless"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "KÊNH KHÔNG LỘ MẶT LÀ GÌ?",
+        "subhead": "Bí mật của kênh faceless",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "dinh-nghia",
+      "type": "body",
+      "voiceText": "Faceless nghĩa là kênh không quay mặt người. Bạn chỉ cần giọng thuyết minh cộng với tư liệu, hình ảnh hoặc đồ hoạ chạy theo lời nói là đủ làm một video hoàn chỉnh.",
+      "keywords": [
+        "không quay mặt",
+        "giọng thuyết minh",
+        "tư liệu"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Không cần lộ mặt: chỉ giọng đọc cộng tư liệu là ra một video",
+        "tag": "FACELESS"
+      }
+    },
+    {
+      "id": "kiem-tien",
+      "type": "body",
+      "voiceText": "Kênh faceless kiếm tiền y hệt kênh thường. Bật quảng cáo YouTube khi đủ điều kiện, gắn link tiếp thị liên kết, và nhận tiền từ nhãn hàng đặt video.",
+      "keywords": [
+        "quảng cáo YouTube",
+        "tiếp thị liên kết",
+        "nhãn hàng"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Kênh faceless kiếm tiền từ đâu",
+        "bullets": [
+          "Quảng cáo YouTube khi bật kiếm tiền",
+          "Tiếp thị liên kết gắn trong mô tả",
+          "Nhãn hàng đặt video quảng bá",
+          "Bán sản phẩm số của riêng mình"
+        ]
+      }
+    },
+    {
+      "id": "dieu-kien",
+      "type": "body",
+      "voiceText": "Để bật quảng cáo, kênh cần đạt một nghìn người đăng ký, cộng với bốn nghìn giờ xem trong một năm hoặc mười triệu lượt xem Shorts trong chín mươi ngày.",
+      "keywords": [
+        "một nghìn người đăng ký",
+        "bốn nghìn giờ xem",
+        "mười triệu lượt xem"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1.000 sub",
+        "label": "Mốc tối thiểu để bật kiếm tiền",
+        "context": "Kèm 4.000 giờ xem hoặc 10 triệu view Shorts"
+      }
+    },
+    {
+      "id": "da-kenh",
+      "type": "body",
+      "voiceText": "Vì không lộ mặt, một người có thể vận hành nhiều kênh cùng lúc theo từng chủ đề. Nhưng đăng nhập nhiều tài khoản trên cùng một trình duyệt rất dễ bị YouTube liên kết và khoá cả cụm.",
+      "keywords": [
+        "nhiều kênh cùng lúc",
+        "nhiều tài khoản",
+        "khoá cả cụm"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Nhiều kênh trên một trình duyệt dễ bị liên kết và khoá cả cụm",
+        "tag": "RỦI RO"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi kênh một danh tính trình duyệt và một ai pi riêng, tách biệt và an toàn hơn khi nuôi nhiều kênh faceless. Lưu video lại nhé.",
+      "keywords": [
+        "danh tính trình duyệt",
+        "ai pi riêng",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Nuôi nhiều kênh an toàn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

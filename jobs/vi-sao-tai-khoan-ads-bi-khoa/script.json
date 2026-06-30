@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Vì sao tài khoản Google Ads bị khoá và cách phòng",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "GIU TAI KHOAN ADS"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Tài khoản quảng cáo vừa nạp tiền chạy được hai hôm thì nhận thông báo bị tạm ngưng. Google không khoá ngẫu nhiên, mà vì những tín hiệu rất cụ thể.",
+      "keywords": [
+        "tạm ngưng",
+        "tín hiệu",
+        "cụ thể"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "VI SAO ADS BI KHOA?",
+        "subhead": "4 ly do that su",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "thanh-toan",
+      "type": "body",
+      "voiceText": "Lý do đầu tiên là thanh toán bất thường. Thẻ lạ, thẻ ảo hoặc thẻ đã từng dính nợ ở tài khoản khác đều bị Google đánh dấu rủi ro gần như ngay lập tức.",
+      "keywords": [
+        "thanh toán bất thường",
+        "thẻ ảo",
+        "rủi ro"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Thẻ ảo, thẻ lạ hoặc thẻ từng dính nợ bị gắn cờ rủi ro ngay",
+        "tag": "THANH TOAN"
+      }
+    },
+    {
+      "id": "moi-truong",
+      "type": "body",
+      "voiceText": "Lý do thứ hai nguy hiểm nhất là dùng chung môi trường. Nhiều tài khoản cùng một ai pi, cùng một máy, cùng một trình duyệt khiến Google liên kết chúng thành một mạng lưới.",
+      "keywords": [
+        "dùng chung môi trường",
+        "một mạng lưới",
+        "liên kết"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1 máy = 1 mạng lưới",
+        "label": "Tài khoản chung IP và máy bị liên kết",
+        "context": "Một tài khoản dính, cả cụm bị khoá theo"
+      }
+    },
+    {
+      "id": "landing",
+      "type": "body",
+      "voiceText": "Lý do thứ ba là trang đích vi phạm. Landing che giấu nội dung, cài chuyển hướng hoặc bán sản phẩm cấm sẽ bị quét và khoá rất nhanh, kể cả khi quảng cáo trông sạch.",
+      "keywords": [
+        "trang đích vi phạm",
+        "chuyển hướng",
+        "khoá rất nhanh"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Landing che nội dung hoặc cài chuyển hướng bị quét và khoá nhanh",
+        "tag": "LANDING PAGE"
+      }
+    },
+    {
+      "id": "cach-phong",
+      "type": "body",
+      "voiceText": "Cách phòng cốt lõi là tách biệt môi trường cho mỗi tài khoản. Mỗi tài khoản một dấu vân tay trình duyệt riêng, một proxy riêng, và đăng nhập từ một địa điểm ổn định.",
+      "keywords": [
+        "tách biệt môi trường",
+        "vân tay trình duyệt riêng",
+        "proxy riêng"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Cách phòng khoá tài khoản ads",
+        "bullets": [
+          "Mỗi tài khoản một vân tay trình duyệt riêng",
+          "Mỗi tài khoản một proxy riêng, IP sạch",
+          "Thanh toán nhất quán, tránh thẻ ảo",
+          "Landing minh bạch, không chuyển hướng lén"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login giúp mỗi tài khoản quảng cáo có một danh tính và proxy riêng, tách biệt hoàn toàn để giảm rủi ro bị liên kết và khoá. Lưu video lại để dùng nhé.",
+      "keywords": [
+        "danh tính và proxy riêng",
+        "tách biệt hoàn toàn",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Chạy ads an toàn hơn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

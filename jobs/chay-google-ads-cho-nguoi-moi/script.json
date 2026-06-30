@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Chạy Google Ads cho người mới: hiểu đúng trong 90 giây",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "GOOGLE ADS 90S"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Bạn muốn chạy quảng cáo Google nhưng nghe tới Search, Pi Mác, đấu giá là thấy rối? Chín mươi giây này mình gỡ cho bạn từng mạch một.",
+      "keywords": [
+        "chạy quảng cáo Google",
+        "đấu giá",
+        "gỡ cho bạn"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "GOOGLE ADS CHO NGƯỜI MỚI",
+        "subhead": "Hiểu đúng trong 90 giây",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "loai-chien-dich",
+      "type": "body",
+      "voiceText": "Mới bắt đầu, bạn chỉ cần nhớ hai loại. Search là quảng cáo hiện khi ai đó tự gõ tìm thứ họ cần, ý định mua rất rõ. Pi Mác thì Google tự rải quảng cáo của bạn khắp tìm kiếm, Gì meo, Mép và Du Túp.",
+      "keywords": [
+        "Search",
+        "ý định mua rất rõ",
+        "Google tự rải"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Hai loại nên biết đầu tiên",
+        "bullets": [
+          "Search: hiện khi người ta tự đi tìm",
+          "Ý định mua rõ, dễ ra đơn",
+          "Pi Mác: Google rải khắp các nền tảng",
+          "Hợp khi bạn chưa rành nhắm chọn"
+        ]
+      }
+    },
+    {
+      "id": "tu-khoa",
+      "type": "body",
+      "voiceText": "Với Search, từ khoá là tiền. Hãy nhắm từ khoá có ý định mua như mua, giá, ở đâu, đừng đốt tiền vào từ chung chung. Và nhớ chặn từ khoá phủ định để không hiện với người chỉ tìm cho vui.",
+      "keywords": [
+        "từ khoá là tiền",
+        "ý định mua",
+        "từ khoá phủ định"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Từ khoá đúng quan trọng hơn ngân sách lớn — nhắm ý định mua, chặn từ rác",
+        "tag": "TỪ KHOÁ"
+      }
+    },
+    {
+      "id": "ngan-sach-dau-gia",
+      "type": "body",
+      "voiceText": "Đấu giá không phải ai trả cao nhất là thắng. Google chấm theo Át Rank, tức là giá thầu nhân với điểm chất lượng. Người mới nên đặt ngân sách nhỏ, ví dụ một trăm tới hai trăm nghìn một ngày, chạy vài hôm rồi đọc số mà chỉnh.",
+      "keywords": [
+        "Át Rank",
+        "điểm chất lượng",
+        "ngân sách nhỏ"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Giá × chất lượng",
+        "label": "Cách Google xếp hạng quảng cáo",
+        "context": "Quảng cáo tốt vẫn thắng dù trả ít hơn"
+      }
+    },
+    {
+      "id": "tai-khoan-sach",
+      "type": "body",
+      "voiceText": "Nhưng kỹ thuật giỏi mấy cũng vô nghĩa nếu tài khoản bị khoá ngày đầu. Google soi dấu vân tay trình duyệt và ai pi của bạn. Đăng nhập nhiều tài khoản trên cùng một máy, cùng một ai pi, là tín hiệu rủi ro khiến cả nhóm bị gắn cờ.",
+      "keywords": [
+        "tài khoản bị khoá",
+        "dấu vân tay trình duyệt",
+        "bị gắn cờ"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Vì sao bị flag ngay ngày đầu",
+        "bullets": [
+          "Nhiều tài khoản chung một trình duyệt",
+          "Chung một ai pi, cùng dấu vân tay",
+          "Google nối các tài khoản thành một nhóm",
+          "Một cái dính, cả nhóm bị soi"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi tài khoản quảng cáo một dấu vân tay và một ai pi riêng, tách biệt như từng máy khác nhau, để bạn chạy sạch từ ngày đầu. Lưu video lại nhé.",
+      "keywords": [
+        "dấu vân tay",
+        "ai pi riêng",
+        "chạy sạch"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Chạy ads sạch từ ngày đầu",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

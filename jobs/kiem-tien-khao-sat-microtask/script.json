@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Kiếm tiền từ khảo sát & microtask: thật hay phí thời gian",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "SURVEY & MICROTASK"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Khảo sát và microtask hứa kiếm tiền mỗi ngày, nhưng thật hay phí thời gian? Mình bóc tách thu nhập thực để bạn không vỡ mộng.",
+      "keywords": [
+        "khảo sát",
+        "microtask",
+        "phí thời gian"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "KHẢO SÁT KIẾM TIỀN: THẬT?",
+        "subhead": "Bóc tách thu nhập thực",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "thu-nhap-that",
+      "type": "body",
+      "voiceText": "Sự thật là đơn giá rất thấp: một khảo sát thường trả vài nghìn đến vài chục nghìn, microtask còn rẻ hơn. Tính theo giờ, đa số chỉ được một đến ba đô, dưới mức lương tối thiểu nhiều nước.",
+      "keywords": [
+        "đơn giá rất thấp",
+        "một đến ba đô",
+        "lương tối thiểu"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1 - 3 đô / giờ",
+        "label": "Thu nhập thực tế đa số người làm",
+        "context": "Đơn giá thấp, dễ bị từ chối giữa chừng"
+      }
+    },
+    {
+      "id": "vi-sao-thap",
+      "type": "body",
+      "voiceText": "Vì sao thấp? Nền tảng trả theo vùng và hồ sơ nhân khẩu. Người ở Mỹ hay châu Âu được mời nhiều khảo sát giá cao, còn cùng một câu hỏi ở Việt Nam đơn giá có thể chỉ bằng một phần năm.",
+      "keywords": [
+        "trả theo vùng",
+        "khảo sát giá cao",
+        "một phần năm"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Cùng một khảo sát, vùng giàu được trả gấp nhiều lần vùng nghèo.",
+        "tag": "Giá theo vùng"
+      }
+    },
+    {
+      "id": "cach-tang",
+      "type": "body",
+      "voiceText": "Vì thế nhiều người làm nghiêm túc dùng nhiều tài khoản và nhiều vùng để nhận đơn giá cao và đủ khảo sát mỗi ngày. Nhưng nền tảng soi rất kỹ và sẽ chặn nếu phát hiện.",
+      "keywords": [
+        "nhiều tài khoản",
+        "nhiều vùng",
+        "đơn giá cao"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Vì sao người làm dùng đa tài khoản",
+        "bullets": [
+          "Nhận đơn giá cao của vùng giàu hơn",
+          "Đủ số khảo sát mỗi ngày để có thu nhập",
+          "Tránh hết khảo sát khi một hồ sơ cạn",
+          "Thử nhiều nền tảng cùng lúc cho tối ưu"
+        ]
+      }
+    },
+    {
+      "id": "bi-chan",
+      "type": "body",
+      "voiceText": "Vấn đề là nền tảng nhìn ai pi, dấu vân tay trình duyệt và hồ sơ trùng nhau. Chỉ cần hai tài khoản dùng chung một máy hay một ai pi, cả nhóm dễ bị khoá và mất sạch tiền chưa rút.",
+      "keywords": [
+        "dấu vân tay",
+        "một ai pi",
+        "bị khoá"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Hai tài khoản chung một máy, một ai pi là cả nhóm dễ bị khoá.",
+        "tag": "Rủi ro thật"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Muốn làm bền thì mỗi tài khoản phải một danh tính riêng. Cloak Login cho mỗi hồ sơ một dấu vân tay và một proxy độc lập, giúp bạn quản lý nhiều vùng an toàn. Lưu video lại nhé.",
+      "keywords": [
+        "danh tính riêng",
+        "proxy độc lập",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Quản nhiều tài khoản an toàn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

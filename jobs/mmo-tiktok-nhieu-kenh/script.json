@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Làm MMO trên TikTok với nhiều kênh",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "NHIỀU KÊNH AN TOÀN"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Đặt hết cửa vào một kênh TikTok là sai lầm lớn nhất của dân MMO. Kênh chết một cái là mất sạch, không cách nào cứu.",
+      "keywords": [
+        "một kênh",
+        "mất sạch",
+        "sai lầm lớn nhất"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "ĐỪNG ĐỂ 1 KÊNH NUÔI BẠN",
+        "subhead": "Kênh chết là mất sạch",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "vi-sao-nhieu-kenh",
+      "type": "body",
+      "voiceText": "Làm nhiều kênh giúp bạn test được nhiều ngách cùng lúc, kênh nào lên thì đẩy mạnh. Quan trọng hơn, nếu một kênh dính báo cáo hay bay, bạn vẫn còn các kênh khác chạy đều.",
+      "keywords": [
+        "nhiều ngách",
+        "một kênh dính",
+        "còn các kênh khác"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Vì sao nên làm nhiều kênh",
+        "bullets": [
+          "Test nhiều ngách cùng lúc",
+          "Kênh lên thì đẩy mạnh ngân sách",
+          "Một kênh bay vẫn còn kênh khác",
+          "Không phụ thuộc một nguồn thu"
+        ]
+      }
+    },
+    {
+      "id": "tiktok-phat-hien",
+      "type": "body",
+      "voiceText": "Nhưng nuôi mười kênh trên cùng một điện thoại là cách nhanh nhất để bay cả cụm. TikTok đọc ai pi, ai đi thiết bị, và dấu vân tay trình duyệt để gom các kênh chung một máy vào một nhóm.",
+      "keywords": [
+        "cùng một điện thoại",
+        "dấu vân tay",
+        "một nhóm"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Nhiều kênh chung một thiết bị, TikTok gom hết vào một nhóm để soi",
+        "tag": "RỦI RO THẬT"
+      }
+    },
+    {
+      "id": "hieu-ung-domino",
+      "type": "body",
+      "voiceText": "Khi đã bị gom nhóm, chỉ cần một kênh vi phạm là cả cụm bị soi và rớt theo. Đây là hiệu ứng đô mi nô khiến dân làm nhiều kênh mất trắng chỉ sau một đêm.",
+      "keywords": [
+        "một kênh vi phạm",
+        "cả cụm",
+        "đô mi nô"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1 kênh dính",
+        "label": "là cả cụm có thể bị soi và rớt theo",
+        "context": "Hiệu ứng đô mi nô của tài khoản chung máy"
+      }
+    },
+    {
+      "id": "giai-phap-cloak",
+      "type": "body",
+      "voiceText": "Cách an toàn là mỗi kênh sống trên một hồ sơ riêng biệt. Cloak Login tạo cho mỗi kênh một dấu vân tay và một ai pi riêng, nên dưới mắt TikTok chúng là những người dùng hoàn toàn khác nhau.",
+      "keywords": [
+        "một hồ sơ riêng biệt",
+        "dấu vân tay",
+        "người dùng hoàn toàn khác nhau"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Mỗi kênh một profile riêng với Cloak",
+        "bullets": [
+          "Dấu vân tay trình duyệt riêng từng kênh",
+          "Gán ai pi và proxy riêng mỗi hồ sơ",
+          "TikTok không gom được vào một nhóm",
+          "Một kênh dính không kéo theo kênh khác"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Muốn làm nhiều kênh TikTok mà không sợ bay cả cụm, hãy nuôi mỗi kênh trên một hồ sơ Cloak Login riêng. Lưu video lại để làm cho chuẩn nhé.",
+      "keywords": [
+        "nhiều kênh",
+        "một hồ sơ Cloak Login",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Nuôi nhiều kênh an toàn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

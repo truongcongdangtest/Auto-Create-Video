@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Retroactive & testnet crypto: kiếm tiền từ thử nghiệm sớm",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "RETRO & TESTNET"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Có người chỉ thử mạng thử nghiệm vài tháng, rồi nhận thưởng hồi tố cả ngàn đô. Nhưng phần lớn lại trắng tay vì làm sai cách. Khác biệt nằm ở đâu?",
+      "keywords": [
+        "thử nghiệm",
+        "thưởng hồi tố",
+        "sai cách"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "TESTNET RA TIỀN THẬT?",
+        "subhead": "Thưởng hồi tố cho người sớm",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "khai-niem",
+      "type": "body",
+      "voiceText": "Hồi tố nghĩa là dự án thưởng cho những ai đã dùng sản phẩm từ sớm, trước khi có thông báo. Họ làm vậy để cảm ơn người dùng thật và tránh bị lợi dụng. Test net là bản chạy thử miễn phí, nơi bạn để lại dấu vết tương tác.",
+      "keywords": [
+        "dùng sản phẩm từ sớm",
+        "người dùng thật",
+        "chạy thử miễn phí"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Hồi tố thưởng người dùng SỚM và THẬT, không thưởng kẻ spam",
+        "tag": "RETROACTIVE"
+      }
+    },
+    {
+      "id": "lam-dung-cach",
+      "type": "body",
+      "voiceText": "Làm test net đúng cách là tương tác như người dùng thật, đều đặn qua nhiều tuần. Hãy báo lỗi, dùng nhiều tính năng, giao dịch với số tiền khác nhau. Đừng bấm một nút năm trăm lần trong một ngày rồi biến mất.",
+      "keywords": [
+        "tương tác như người dùng thật",
+        "báo lỗi",
+        "Đừng bấm"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Làm testnet đúng cách",
+        "bullets": [
+          "Tương tác đều đặn nhiều tuần, không dồn một ngày",
+          "Dùng nhiều tính năng, không lặp một thao tác",
+          "Báo lỗi, góp ý cho đội dự án",
+          "Giao dịch số tiền và thời điểm ngẫu nhiên"
+        ]
+      }
+    },
+    {
+      "id": "vi-rieng",
+      "type": "body",
+      "voiceText": "Nếu chạy nhiều ví, mỗi ví phải là một danh tính tách biệt. Cùng một ai pi, cùng một dấu vân tay trình duyệt là dự án gộp hết thành một người. Khi đó toàn bộ ví của bạn bị loại cùng lúc.",
+      "keywords": [
+        "danh tính tách biệt",
+        "dấu vân tay trình duyệt",
+        "loại cùng lúc"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1 ví = 1 danh tính",
+        "label": "Mỗi ví cần ai pi và vân tay riêng",
+        "context": "Trùng dấu vết là cả cụm bị loại một lượt"
+      }
+    },
+    {
+      "id": "rui-ro",
+      "type": "body",
+      "voiceText": "Hãy thành thật, không phải test net nào cũng có thưởng, nhiều dự án chẳng phát đồng nào. Đừng nạp tiền thật vào ví chính, và cẩn thận với kết nối ví lạ. Coi đây là việc dài hạn, không phải làm giàu nhanh.",
+      "keywords": [
+        "không phải test net nào cũng có thưởng",
+        "ví chính",
+        "làm giàu nhanh"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Không phải testnet nào cũng trả thưởng. Tách ví, đừng nạp tiền lớn",
+        "tag": "RỦI RO"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi ví một trình duyệt với vân tay và ai pi riêng, để các ví của bạn không bị gộp làm một. Nhờ vậy phần thưởng hồi tố nếu có sẽ thuộc về người thật. Lưu video lại để dùng khi cần nhé.",
+      "keywords": [
+        "vân tay và ai pi riêng",
+        "không bị gộp",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Tách ví an toàn hơn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

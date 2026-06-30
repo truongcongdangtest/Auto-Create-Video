@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Vì sao dân chạy ads cần nhiều tài khoản quảng cáo",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "CHẠY ADS AN TOÀN"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Dân chạy quảng cáo nghiêm túc không bao giờ chỉ có một tài khoản. Họ thủ sẵn cả chục cái, và đây là lý do thật sự.",
+      "keywords": [
+        "một tài khoản",
+        "cả chục cái",
+        "lý do thật sự"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "VÌ SAO CẦN NHIỀU TÀI KHOẢN ADS?",
+        "subhead": "Lý do thật của dân chạy ads",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "backup",
+      "type": "body",
+      "voiceText": "Lý do đầu tiên là dự phòng khi bị khoá. Tài khoản quảng cáo có thể bay bất cứ lúc nào vì một lỗi nhỏ, nếu chỉ có một cái thì coi như đứng hình cả chiến dịch.",
+      "keywords": [
+        "dự phòng",
+        "bị khoá",
+        "đứng hình"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Tài khoản quảng cáo có thể bay bất cứ lúc nào, dự phòng là bắt buộc",
+        "tag": "DỰ PHÒNG"
+      }
+    },
+    {
+      "id": "test-offer",
+      "type": "body",
+      "voiceText": "Lý do thứ hai là thử nhiều sản phẩm và nhiều ngách song song. Mỗi tài khoản chạy một sản phẩm riêng, bạn so sánh hiệu quả nhanh hơn mà không sợ làm rối dữ liệu lẫn nhau.",
+      "keywords": [
+        "nhiều sản phẩm",
+        "song song",
+        "làm rối dữ liệu"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Một tài khoản, một mục đích",
+        "bullets": [
+          "Mỗi sản phẩm một tài khoản riêng",
+          "Thử nhiều ngách cùng lúc",
+          "Dữ liệu sạch, dễ so sánh",
+          "Chia tài khoản theo từng khách hàng"
+        ]
+      }
+    },
+    {
+      "id": "scale",
+      "type": "body",
+      "voiceText": "Lý do thứ ba là mở rộng ngân sách. Một tài khoản mới thường bị giới hạn chi tiêu, nên dân chạy mạnh chia tiền ra nhiều tài khoản để đẩy được nhiều ngân sách hơn mỗi ngày.",
+      "keywords": [
+        "mở rộng ngân sách",
+        "giới hạn chi tiêu",
+        "nhiều tài khoản"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Nhiều tài khoản",
+        "label": "để vượt giới hạn chi tiêu mỗi ngày",
+        "context": "Tài khoản mới luôn bị bóp ngân sách lúc đầu"
+      }
+    },
+    {
+      "id": "chet-chum",
+      "type": "body",
+      "voiceText": "Nhưng đây là cái bẫy chết người. Chạy hết tất cả tài khoản trên cùng một máy, cùng một ai pi, thì nền tảng sẽ thấy chúng cùng một dấu vân tay. Một cái bị khoá là cả đàn bị khoá theo, gọi là chết chùm.",
+      "keywords": [
+        "một máy",
+        "dấu vân tay",
+        "chết chùm"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Chung một máy, một IP, một vân tay: một cái bay là cả đàn bay theo",
+        "tag": "CHẾT CHÙM"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login giúp mỗi tài khoản có một trình duyệt và một ai pi riêng, cô lập hoàn toàn nên không còn chết chùm. Lưu video lại để chạy quảng cáo nhiều tài khoản an toàn nhé.",
+      "keywords": [
+        "mỗi tài khoản",
+        "cô lập hoàn toàn",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Cô lập từng tài khoản",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Tiếp thị liên kết bắt đầu thế nào cho đúng",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "AFFILIATE 101"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Tiếp thị liên kết nghe thì dễ: gắn link, có người mua, bạn nhận hoa hồng. Nhưng vì sao đa số người mới bỏ cuộc chỉ sau vài tuần?",
+      "keywords": [
+        "gắn link",
+        "nhận hoa hồng",
+        "bỏ cuộc"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "AFFILIATE BẮT ĐẦU SAO CHO ĐÚNG?",
+        "subhead": "Vì sao người mới bỏ cuộc",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "mo-hinh",
+      "type": "body",
+      "voiceText": "Bản chất rất đơn giản: bạn quảng bá sản phẩm của người khác, ai mua qua link của bạn thì bạn ăn hoa hồng. Tỷ lệ thường từ năm đến ba mươi phần trăm, riêng phần mềm hay tài chính có thể cao hơn nhiều.",
+      "keywords": [
+        "ăn hoa hồng",
+        "năm đến ba mươi phần trăm",
+        "cao hơn nhiều"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "5% – 30%",
+        "label": "Hoa hồng phổ biến mỗi đơn",
+        "context": "Phần mềm, tài chính thường cao hơn"
+      }
+    },
+    {
+      "id": "chon-offer",
+      "type": "body",
+      "voiceText": "Bước quan trọng nhất là chọn mạng tiếp thị và sản phẩm cho đúng. Đừng chạy theo hoa hồng cao mà bỏ qua những yếu tố sống còn sau đây.",
+      "keywords": [
+        "chọn mạng tiếp thị",
+        "hoa hồng cao",
+        "sống còn"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Chọn mạng và sản phẩm thế nào",
+        "bullets": [
+          "Sản phẩm bạn hiểu và tin được",
+          "Mạng uy tín, trả tiền đúng hẹn",
+          "Hoa hồng lặp lại tốt hơn một lần",
+          "Hợp với tệp khách bạn có sẵn"
+        ]
+      }
+    },
+    {
+      "id": "traffic",
+      "type": "body",
+      "voiceText": "Có hai con đường kéo người xem. Miễn phí như ét i ô, nội dung, cộng đồng thì chậm nhưng bền và gần như không tốn tiền. Trả phí như chạy quảng cáo thì nhanh ra đơn nhưng phải có vốn và kiểm soát được a ri.",
+      "keywords": [
+        "hai con đường",
+        "chậm nhưng bền",
+        "nhanh ra đơn"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Miễn phí thì chậm mà bền, trả phí thì nhanh nhưng đốt tiền nếu chưa tính a ri",
+        "tag": "Hút traffic"
+      }
+    },
+    {
+      "id": "nhieu-tai-khoan",
+      "type": "body",
+      "voiceText": "Khi bắt đầu nghiêm túc, một người thường quản lý nhiều tài khoản cùng lúc để thử nhiều sản phẩm song song. Nhưng nếu các tài khoản này dùng chung một trình duyệt, một ai pi, thì một cái bị khoá có thể kéo cả dàn bị khoá theo.",
+      "keywords": [
+        "nhiều tài khoản",
+        "song song",
+        "kéo cả dàn bị khoá"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Chung một ai pi và một trình duyệt: một tài khoản dính, cả dàn bị quét",
+        "tag": "Rủi ro ban"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi tài khoản một trình duyệt với danh tính và ai pi riêng, tách hẳn môi trường để tránh bị ban hàng loạt. Bắt đầu cho gọn ngay từ đầu, lưu video lại nhé.",
+      "keywords": [
+        "danh tính và ai pi riêng",
+        "tách hẳn môi trường",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Tách môi trường, tránh ban",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

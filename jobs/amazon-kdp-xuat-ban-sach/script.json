@@ -1,0 +1,125 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Amazon KDP: kiếm tiền từ xuất bản sách",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "KIẾM TIỀN KDP"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Bạn có thể bán sách trên Amazon mà không cần in một cuốn nào trong kho. Mô hình tên là Kê đi pi, viết tắt của Kindle Direct Publishing.",
+      "keywords": [
+        "bán sách trên Amazon",
+        "không cần in",
+        "Kê đi pi"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "BÁN SÁCH KHÔNG CẦN IN KHO?",
+        "subhead": "Amazon KDP là gì",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "pod",
+      "type": "body",
+      "voiceText": "Bạn tải bản thiết kế lên, Amazon mới in khi có người mua, gọi là prin on đi-man. Bạn không ôm hàng tồn, không vốn nhập kho, lời tính trên mỗi cuốn bán ra.",
+      "keywords": [
+        "khi có người mua",
+        "không ôm hàng tồn",
+        "lời tính trên mỗi cuốn"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "In khi có đơn",
+        "label": "Print-on-demand, không tồn kho",
+        "context": "Không vốn nhập hàng, lời tính mỗi cuốn"
+      }
+    },
+    {
+      "id": "lowcontent",
+      "type": "body",
+      "voiceText": "Ngách dễ vào nhất là lâu con-ten, tức sách ít chữ như sổ tay, sổ kẻ dòng, lịch hay sách tô màu. Bạn không cần viết, chỉ cần thiết kế trang bên trong và bìa đẹp.",
+      "keywords": [
+        "lâu con-ten",
+        "sách ít chữ",
+        "không cần viết"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Ngách low-content dễ bắt đầu",
+        "bullets": [
+          "Sổ tay, sổ kẻ dòng, nhật ký",
+          "Lịch, planner, sách tô màu",
+          "Không cần viết, chỉ thiết kế trang",
+          "Bìa và niche quyết định lượt bán"
+        ]
+      }
+    },
+    {
+      "id": "royalty",
+      "type": "body",
+      "voiceText": "Tiền lời thật sự nằm ở số lượng đầu sách và sự đều đặn. Sách giấy thường lời khoảng ba mươi tới sáu mươi phần trăm sau chi phí in, còn i-búc có thể tới bảy mươi phần trăm.",
+      "keywords": [
+        "số lượng đầu sách",
+        "ba mươi tới sáu mươi",
+        "bảy mươi phần trăm"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Tới 70%",
+        "label": "Mức royalty của ebook trên KDP",
+        "context": "Sách giấy khoảng 30 tới 60% sau phí in"
+      }
+    },
+    {
+      "id": "multiaccount",
+      "type": "body",
+      "voiceText": "Người xuất bản nghiêm túc thường chạy nhiều tài khoản hoặc nhiều thị trường để tách ngách và mở rộng thu nhập. Nhưng Amazon nhìn ai pi, cúc ki và vân tay trình duyệt; nhiều tài khoản dùng chung một máy rất dễ bị gắn liên kết và khoá hàng loạt.",
+      "keywords": [
+        "nhiều tài khoản",
+        "ai pi, cúc ki",
+        "khoá hàng loạt"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Nhiều tài khoản KDP chung một máy dễ bị Amazon gắn liên kết và khoá cả cụm",
+        "tag": "RỦI RO"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi tài khoản một vân tay trình duyệt và prô-xi riêng, tách bạch như từng máy khác nhau. Quản lý nhiều tài khoản Kê đi pi an toàn hơn. Lưu video lại nhé.",
+      "keywords": [
+        "vân tay trình duyệt",
+        "prô-xi riêng",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Quản lý nhiều KDP an toàn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

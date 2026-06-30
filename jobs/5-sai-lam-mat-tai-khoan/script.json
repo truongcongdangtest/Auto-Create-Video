@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "5 sai lầm khiến dân MMO mất sạch tài khoản",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "GIỮ NICK AN TOÀN"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Nuôi cả tháng được mấy chục nick, một buổi sáng bay sạch không còn cái nào. Đa số không phải xui, mà do năm sai lầm cơ bản này.",
+      "keywords": [
+        "bay sạch",
+        "năm sai lầm",
+        "cơ bản"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "5 SAI LẦM MẤT SẠCH NICK",
+        "subhead": "Dân MMO hay dính nhất",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "chung-ip-may",
+      "type": "body",
+      "voiceText": "Sai lầm số một là nhiều nick chung một ai pi và một máy. Nền tảng thấy hai mươi tài khoản cùng một dấu vân tay là gom thành một cụm, khoá luôn cả dây.",
+      "keywords": [
+        "chung một ai pi",
+        "một dấu vân tay",
+        "khoá luôn cả dây"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Chung IP và máy = nền tảng gom cả cụm nick rồi khoá một lượt",
+        "tag": "Sai lầm 1"
+      }
+    },
+    {
+      "id": "cookie-au",
+      "type": "body",
+      "voiceText": "Sai lầm số hai là chép cu ki ẩu, thiếu phần ép ti pi ô li hoặc đăng nhập sai múi giờ với ai pi. Phiên trông gượng ép, nền tảng bắt xác minh lại rồi văng nick ngay.",
+      "keywords": [
+        "chép cu ki ẩu",
+        "sai múi giờ",
+        "bắt xác minh"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Phiên giả lộ",
+        "label": "Cookie chép thiếu + sai IP, múi giờ",
+        "context": "Nền tảng bắt xác minh lại là mất nick"
+      }
+    },
+    {
+      "id": "lan-lon-nick",
+      "type": "body",
+      "voiceText": "Sai lầm số ba là đăng nhập lẫn lộn nhiều nick trên cùng một trình duyệt. Cu ki và bộ nhớ dính chéo nhau, nền tảng liên kết các tài khoản, một nick dính là cả nhóm chết theo.",
+      "keywords": [
+        "lẫn lộn nhiều nick",
+        "dính chéo",
+        "cả nhóm chết theo"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Một trình duyệt nhiều nick: cookie dính chéo, nền tảng liên kết hết",
+        "tag": "Sai lầm 3"
+      }
+    },
+    {
+      "id": "khong-backup-proxy",
+      "type": "body",
+      "voiceText": "Sai lầm số bốn là không sao lưu hồ sơ, hỏng máy hay lỗi phần mềm là trắng tay không khôi phục được. Sai lầm số năm là dùng prô xi bẩn, ai pi đã bị hàng trăm người spam nên vừa đăng nhập đã bị gắn cờ.",
+      "keywords": [
+        "không sao lưu",
+        "trắng tay",
+        "prô xi bẩn"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Hai sai lầm còn lại",
+        "bullets": [
+          "Không backup hồ sơ, hỏng máy là mất trắng",
+          "Proxy bẩn, IP đã bị spam hàng trăm lần",
+          "Vừa đăng nhập đã bị gắn cờ nghi ngờ",
+          "Khôi phục gần như không thể"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi nick một dấu vân tay và một prô xi riêng, lại sao lưu được trọn hồ sơ nên tránh được cả năm sai lầm trên. Lưu video lại để khỏi mất nick nhé.",
+      "keywords": [
+        "một dấu vân tay",
+        "trọn hồ sơ",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Giữ nick an toàn hơn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

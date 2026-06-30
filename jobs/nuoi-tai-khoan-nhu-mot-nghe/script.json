@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Nuôi tài khoản như một nghề: vì sao tài khoản già sạch có giá",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "NUÔI TÀI KHOẢN"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Một tài khoản Facebook mới tạo gần như vô giá trị, nhưng một tài khoản nuôi sáu tháng có thể bán vài trăm nghìn. Vì sao tuổi đời lại đáng tiền đến vậy?",
+      "keywords": [
+        "mới tạo",
+        "nuôi sáu tháng",
+        "tuổi đời"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "TÀI KHOẢN GIÀ ĐÁNG GIÁ?",
+        "subhead": "Vì sao tuổi đời có giá",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "vi-sao-co-gia",
+      "type": "body",
+      "voiceText": "Nền tảng coi tài khoản già là dấu hiệu của người thật, vì nó đã có lịch sử đăng nhập, bạn bè và hành vi tự nhiên. Tài khoản mới luôn bị soi kỹ hơn, dễ dính giới hạn và xác minh ngay từ thao tác đầu tiên.",
+      "keywords": [
+        "dấu hiệu của người thật",
+        "lịch sử đăng nhập",
+        "soi kỹ hơn"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Tài khoản già mang dấu vết người thật, nên được tin tưởng hơn tài khoản mới",
+        "tag": "ĐỘ TIN CẬY"
+      }
+    },
+    {
+      "id": "quy-trinh-deu-tay",
+      "type": "body",
+      "voiceText": "Nuôi tài khoản là làm đều tay mỗi ngày một chút, không bùng nổ. Hãy đăng nhập thưa, lướt và tương tác như người dùng bình thường, rồi mới tăng dần hoạt động sau vài tuần.",
+      "keywords": [
+        "đều tay",
+        "tương tác",
+        "tăng dần"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Quy trình nuôi đều tay",
+        "bullets": [
+          "Tuần đầu chỉ đăng nhập, lướt nhẹ, không bán hàng",
+          "Kết bạn và tương tác chậm, giống người thật",
+          "Tăng dần hoạt động sau hai đến ba tuần",
+          "Mỗi tài khoản giữ một thói quen riêng, ổn định"
+        ]
+      }
+    },
+    {
+      "id": "van-tay-proxy",
+      "type": "body",
+      "voiceText": "Lỗi chết người là nuôi nhiều tài khoản trên cùng một trình duyệt và một ai pi. Nền tảng nhìn vân tay thiết bị giống nhau và địa chỉ ai pi trùng, rồi gộp cả nhóm lại; một tài khoản dính là kéo theo cả dàn.",
+      "keywords": [
+        "cùng một trình duyệt",
+        "vân tay thiết bị",
+        "kéo theo cả dàn"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Cùng vân tay, cùng ai pi: một tài khoản dính khoá là cả nhóm bị soi",
+        "tag": "LIÊN ĐỚI"
+      }
+    },
+    {
+      "id": "proxy-on-dinh",
+      "type": "body",
+      "voiceText": "Tài khoản nuôi lâu dài cần một ai pi ổn định, tốt nhất là cùng một vùng địa lý suốt nhiều tháng. Ai pi nhảy lung tung mỗi ngày là tín hiệu bất thường khiến nền tảng nghi ngờ và yêu cầu xác minh.",
+      "keywords": [
+        "ai pi ổn định",
+        "cùng một vùng",
+        "tín hiệu bất thường"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1 nick = 1 ai pi",
+        "label": "Mỗi tài khoản một ai pi riêng, ổn định",
+        "context": "Ai pi nhảy mỗi ngày là dấu hiệu đáng ngờ"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login cho mỗi tài khoản một vân tay trình duyệt riêng và gắn một proxy cố định, giúp bạn nuôi cả dàn tài khoản tách biệt và bền lâu. Lưu video lại để nuôi đúng cách nhé.",
+      "keywords": [
+        "vân tay trình duyệt riêng",
+        "proxy cố định",
+        "Cloak Login"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Nuôi tài khoản bền lâu",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
