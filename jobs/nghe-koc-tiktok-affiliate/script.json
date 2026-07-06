@@ -1,0 +1,138 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Nghề KOC: gắn giỏ hàng TikTok kiếm hoa hồng không cần nổi tiếng",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "NGHỀ KOC TIKTOK"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-koc",
+      "type": "hook",
+      "voiceText": "Bạn không cần một triệu người theo dõi để kiếm tiền trên Tích Tóp. Kênh chỉ năm đến mười nghìn người theo dõi vẫn nhận hoa hồng đều nhờ gắn giỏ hàng vào video. Nghề này gọi là kây ô xi, và đây là cách bắt đầu.",
+      "keywords": [
+        "một triệu người theo dõi",
+        "hoa hồng",
+        "gắn giỏ hàng"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "KHÔNG CẦN NỔI TIẾNG VẪN CÓ HOA HỒNG",
+        "subhead": "Nghề KOC gắn giỏ hàng TikTok",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "dieu-kien",
+      "type": "body",
+      "voiceText": "Điều kiện thật ra rất thấp: bạn đủ mười tám tuổi, tài khoản để công khai và có một nghìn người theo dõi là bật được giỏ hàng tiếp thị liên kết. Nghĩa là một kênh nhỏ chăm đăng vài tháng đã đủ điều kiện làm nghề này.",
+      "keywords": [
+        "một nghìn người theo dõi",
+        "giỏ hàng",
+        "kênh nhỏ"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Đủ 18 tuổi + 1.000 follow + tài khoản công khai = bật được giỏ hàng",
+        "tag": "ĐIỀU KIỆN"
+      }
+    },
+    {
+      "id": "hoa-hong",
+      "type": "body",
+      "voiceText": "Mỗi đơn hàng chốt qua giỏ của bạn, nhãn hàng trả hoa hồng thường từ năm đến hai mươi phần trăm. Ví dụ đơn hai trăm nghìn, hoa hồng mười phần trăm, bạn bỏ túi hai mươi nghìn mà không cần ôm hàng hay bỏ vốn.",
+      "keywords": [
+        "năm đến hai mươi phần trăm",
+        "hoa hồng",
+        "không cần ôm hàng"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "5–20% mỗi đơn",
+        "label": "Hoa hồng nhãn hàng trả cho mỗi đơn chốt",
+        "context": "Không cần ôm hàng, không cần bỏ vốn nhập"
+      }
+    },
+    {
+      "id": "hang-mau",
+      "type": "body",
+      "voiceText": "Bạn cũng không cần bỏ tiền mua sản phẩm để quay. Trong sàn sản phẩm dành cho nhà sáng tạo, nhiều nhãn hàng cho đăng ký nhận hàng mẫu miễn phí, đổi lại bạn cam kết ra video đúng hẹn.",
+      "keywords": [
+        "hàng mẫu miễn phí",
+        "nhà sáng tạo"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Xin hàng mẫu miễn phí từ nhãn hàng — đổi lại cam kết ra video review đúng hẹn",
+        "tag": "HÀNG MẪU"
+      }
+    },
+    {
+      "id": "cong-thuc",
+      "type": "body",
+      "voiceText": "Công thức video ba mươi giây rất đơn giản. Mở đầu bằng một vấn đề ai cũng gặp, quay cảnh bạn dùng thử thật, cho xem kết quả rõ ràng, rồi chỉ tay xuống giỏ hàng ở góc màn hình.",
+      "keywords": [
+        "ba mươi giây",
+        "dùng thử thật",
+        "giỏ hàng"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Công thức review 30 giây",
+        "bullets": [
+          "Mở đầu: một vấn đề ai cũng gặp",
+          "Quay cảnh dùng thử thật, không diễn lố",
+          "Cho xem kết quả rõ ràng trước, sau",
+          "Chốt: chỉ tay xuống giỏ hàng góc màn hình"
+        ]
+      }
+    },
+    {
+      "id": "su-that",
+      "type": "body",
+      "voiceText": "Nói thật nhé: phần lớn video sẽ chìm nghỉm, đó là chuyện bình thường của nghề này. Chỉ cần một video chạm đúng sản phẩm và lên xu hướng là đơn có thể về dồn dập. Vì vậy hãy đăng đều mỗi ngày một đến hai video, thay vì trông chờ may mắn.",
+      "keywords": [
+        "chìm nghỉm",
+        "lên xu hướng",
+        "đăng đều"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1–2 video/ngày",
+        "label": "Nhịp đăng để có cơ hội lên xu hướng",
+        "context": "Phần lớn video sẽ chìm, một video trúng bù lại"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login, kênh kiến thức kiếm tiền online. Hãy lưu video lại và quay video đầu tiên của bạn ngay hôm nay nhé.",
+      "keywords": [
+        "kiếm tiền online",
+        "lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

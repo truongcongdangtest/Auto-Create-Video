@@ -1,0 +1,143 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Trợ lý ảo: làm việc cho sếp Tây, nhận lương đô tại nhà",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "TRỢ LÝ ẢO LƯƠNG ĐÔ"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-nghe-bo-quen",
+      "type": "hook",
+      "voiceText": "Có một nghề mà người Philippines đang làm chật cả thị trường, còn người Việt thì gần như chưa nhảy vào. Đó là trợ lý ảo, làm việc từ xa cho sếp Tây và nhận lương bằng đô la ngay tại nhà.",
+      "keywords": [
+        "trợ lý ảo",
+        "sếp Tây",
+        "lương bằng đô la"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "NGHỀ LƯƠNG ĐÔ NGƯỜI VIỆT BỎ QUÊN",
+        "subhead": "Trợ lý ảo cho sếp Tây",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "viec-that-moi-ngay",
+      "type": "body",
+      "voiceText": "Công việc của trợ lý ảo rất thật và rất cụ thể. Bạn trả lời email, sắp lịch họp, nhập liệu, đăng bài lên mạng xã hội và chăm sóc inbox khách hàng cho các chủ doanh nghiệp nhỏ ở Mỹ, Úc hay châu Âu.",
+      "keywords": [
+        "trả lời email",
+        "sắp lịch họp",
+        "chăm sóc inbox"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "VIỆC THẬT MỖI NGÀY",
+        "bullets": [
+          "Trả lời email, sắp xếp lịch họp",
+          "Nhập liệu, làm báo cáo đơn giản",
+          "Đăng bài mạng xã hội theo lịch",
+          "Chăm sóc inbox khách hàng"
+        ]
+      }
+    },
+    {
+      "id": "luong-nguoi-moi",
+      "type": "body",
+      "voiceText": "Người mới thường nhận từ bốn đến tám đô la một giờ, làm đủ giờ hành chính có thể hơn hai chục triệu mỗi tháng. Trợ lý ảo Philippines mới vào nghề chỉ nhận khoảng ba đến bốn đô rưỡi, nên mức này hoàn toàn có thật chứ không phải vẽ ra.",
+      "keywords": [
+        "bốn đến tám đô la",
+        "một giờ",
+        "có thật"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "4-8 đô/giờ",
+        "label": "Mức lương cho người mới bắt đầu",
+        "context": "Làm đủ giờ có thể hơn 20 triệu/tháng"
+      }
+    },
+    {
+      "id": "tim-viec-o-dau",
+      "type": "body",
+      "voiceText": "Việc tìm ở đâu? Hai nơi lớn nhất là Upwork và OnlineJobs chấm pê hát, trang tuyển trợ lý ảo lớn nhất thế giới mà người Philippines đang thống trị. Hãy tạo hồ sơ tiếng Anh chỉn chu và bắt đầu bằng các job nhỏ để lấy đánh giá.",
+      "keywords": [
+        "Upwork",
+        "OnlineJobs",
+        "job nhỏ"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "TÌM VIỆC Ở ĐÂU?",
+        "bullets": [
+          "Upwork — chợ freelance lớn nhất",
+          "OnlineJobs.ph — chuyên tuyển trợ lý ảo",
+          "Hồ sơ tiếng Anh chỉn chu, ảnh rõ ràng",
+          "Nhận job nhỏ trước để lấy đánh giá"
+        ]
+      }
+    },
+    {
+      "id": "rao-can-tieng-anh",
+      "type": "body",
+      "voiceText": "Rào cản duy nhất là tiếng Anh viết, vì gần như mọi trao đổi đều qua email và chat. Không cần nói giọng hay, chỉ cần viết rõ ràng, đúng ý; luyện mỗi ngày cộng thêm công cụ ây ai hỗ trợ là đủ để bắt đầu.",
+      "keywords": [
+        "tiếng Anh viết",
+        "viết rõ ràng"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Rào cản duy nhất: tiếng Anh VIẾT — không cần nói hay, chỉ cần viết rõ ràng",
+        "tag": "RÀO CẢN"
+      }
+    },
+    {
+      "id": "giu-tai-khoan-khach",
+      "type": "body",
+      "voiceText": "Có một điều ít ai nói: trợ lý ảo thường phải giữ tài khoản email, mạng xã hội và đủ loại công cụ của nhiều khách cùng lúc. Lỡ đăng nhập lẫn lộn hay bay mất tài khoản của khách là mất luôn uy tín và hợp đồng.",
+      "keywords": [
+        "giữ tài khoản",
+        "nhiều khách",
+        "mất luôn uy tín"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Giữ tài khoản của nhiều khách cùng lúc — lẫn lộn là mất uy tín, mất hợp đồng",
+        "tag": "RỦI RO THẬT"
+      }
+    },
+    {
+      "id": "outro-cloak",
+      "type": "outro",
+      "voiceText": "Đó là lý do trợ lý ảo chuyên nghiệp dùng Cloak Login, mỗi khách một hồ sơ trình duyệt riêng, đăng nhập không bao giờ lẫn lộn. Lưu video lại và bắt đầu luyện tiếng Anh viết ngay hôm nay nhé.",
+      "keywords": [
+        "Cloak Login",
+        "hồ sơ trình duyệt riêng",
+        "Lưu video lại"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Mỗi khách một hồ sơ riêng",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

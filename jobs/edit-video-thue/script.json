@@ -1,0 +1,135 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Edit video thuê: nghề đang khát người vì ai cũng làm content",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "NGHỀ EDIT VIDEO"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-khat-editor",
+      "type": "hook",
+      "voiceText": "Mỗi TikToker và YouTuber nghiêm túc đều cần một người dựng video, nhưng số editor giỏi lại không đủ. Nghề edit video thuê đang khát người hơn bao giờ hết.",
+      "keywords": [
+        "cần một người dựng video",
+        "khát người"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "NGƯỜI NGƯỜI LÀM CONTENT, THIẾU EDITOR",
+        "subhead": "Nghề edit đang khát người",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "gia-viet-nam",
+      "type": "body",
+      "voiceText": "Ở Việt Nam, giá dựng thuê một video ngắn dao động từ hai trăm nghìn đến một triệu đồng tùy độ phức tạp. Trên vLance hay các nhóm Facebook, đơn edit video được đăng mỗi ngày.",
+      "keywords": [
+        "hai trăm nghìn đến một triệu",
+        "vLance"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200k – 1 triệu",
+        "label": "Giá một video ngắn tại Việt Nam",
+        "context": "Đơn đăng mỗi ngày trên vLance, nhóm Facebook"
+      }
+    },
+    {
+      "id": "khach-quoc-te",
+      "type": "body",
+      "voiceText": "Chịu khó tiếng Anh thì khách quốc tế trên Upwork hay Fiverr trả năm mươi đến ba trăm đô cho một video YouTube dài. Cùng một kỹ năng, thu nhập gấp nhiều lần.",
+      "keywords": [
+        "khách quốc tế",
+        "năm mươi đến ba trăm đô"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Khách quốc tế trả 50–300 đô cho một video YouTube dài",
+        "tag": "UPWORK, FIVERR"
+      }
+    },
+    {
+      "id": "lo-trinh-hoc",
+      "type": "body",
+      "voiceText": "Lộ trình học rất rõ ràng. Bắt đầu với CapCut miễn phí để dựng video ngắn, sau đó nâng lên Premiere hoặc DaVinci Resolve để nhận đơn dài với giá cao hơn.",
+      "keywords": [
+        "CapCut miễn phí",
+        "Premiere",
+        "DaVinci Resolve"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "LỘ TRÌNH HỌC EDIT",
+        "bullets": [
+          "CapCut: miễn phí, đủ cho video ngắn",
+          "Premiere Pro: chuẩn ngành, đơn giá cao",
+          "DaVinci Resolve: bản free vẫn rất mạnh",
+          "Học qua YouTube: vài tháng là nhận đơn nhỏ"
+        ]
+      }
+    },
+    {
+      "id": "spec-work",
+      "type": "body",
+      "voiceText": "Cách tìm khách hay nhất: chọn một creator bạn thích, edit lại video của họ cho hay hơn rồi gửi tặng miễn phí kèm lời chào. Dân trong nghề gọi là spec work, tỉ lệ được trả lời rất cao.",
+      "keywords": [
+        "edit lại video",
+        "gửi tặng miễn phí",
+        "spec work"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Edit lại video của creator rồi gửi tặng — cách chào hàng hiệu quả nhất",
+        "tag": "SPEC WORK"
+      }
+    },
+    {
+      "id": "portfolio-3-video",
+      "type": "body",
+      "voiceText": "Đừng lo chuyện bằng cấp hay xi vi. Ba video demo tốt trong portfolio thuyết phục hơn ba trang xi vi. Khách chỉ cần xem sản phẩm là quyết định thuê hay không.",
+      "keywords": [
+        "Ba video demo",
+        "portfolio"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "3 video demo",
+        "label": "Đáng giá hơn CV ba trang",
+        "context": "Khách xem sản phẩm rồi mới quyết định thuê"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Nghề này cần vài tháng luyện tay nghề thật sự, nhưng nhu cầu chỉ tăng chứ không giảm. Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại để bắt đầu nhé.",
+      "keywords": [
+        "kiếm tiền online",
+        "Lưu video lại"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

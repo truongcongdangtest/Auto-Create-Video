@@ -1,0 +1,142 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Nghề livestream bán hàng: từ live thuê đến chốt trăm đơn",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "NGHỀ LIVE THUÊ"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-live-thue",
+      "type": "hook",
+      "voiceText": "Không cần vốn nhập hàng, bạn vẫn kiếm được tiền nhờ livestream. Có một nghề gọi là live thuê, shop trả bạn từ một trăm đến ba trăm nghìn mỗi giờ chỉ để đứng nói chuyện và giới thiệu sản phẩm.",
+      "keywords": [
+        "vốn nhập hàng",
+        "live thuê",
+        "ba trăm nghìn mỗi giờ"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "LIVE THUÊ: KHÔNG CẦN VỐN NHẬP HÀNG",
+        "subhead": "Nghề trả tiền theo giờ",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "thu-nhap-live-thue",
+      "type": "body",
+      "voiceText": "Với nghề live thuê, shop lo hàng, lo đơn, lo quảng cáo, bạn chỉ cần lên hình và nói tốt. Mức phổ biến cho người mới là một trăm đến ba trăm nghìn một giờ, host cứng còn được cộng thêm hoa hồng theo số đơn chốt được.",
+      "keywords": [
+        "live thuê",
+        "hoa hồng",
+        "đơn chốt"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "100-300k/giờ",
+        "label": "Thu nhập host live thuê cho shop",
+        "context": "Host giỏi còn nhận thêm hoa hồng theo đơn chốt"
+      }
+    },
+    {
+      "id": "hai-con-duong",
+      "type": "body",
+      "voiceText": "Có hai con đường vào nghề. Một là live thuê cho shop, không cần vốn, nhận lương theo giờ, hai là tự nhập hàng tự live, vất vả hơn nhưng lãi bao nhiêu hưởng trọn bấy nhiêu. Người mới nên bắt đầu bằng live thuê để học cách chốt đơn trước.",
+      "keywords": [
+        "hai con đường",
+        "live thuê cho shop",
+        "tự nhập hàng"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "HAI CON ĐƯỜNG VÀO NGHỀ",
+        "bullets": [
+          "Live thuê: không vốn, nhận lương theo giờ",
+          "Tự live bán: cần vốn hàng, lãi hưởng trọn",
+          "Người mới: bắt đầu live thuê để học nghề"
+        ]
+      }
+    },
+    {
+      "id": "kich-ban-phien-live",
+      "type": "body",
+      "voiceText": "Một phiên live ra đơn luôn có kịch bản ba phần. Mở đầu phải có điểm nhấn, nêu ngay ưu đãi hấp dẫn để giữ người xem ở lại. Giữa phiên tung ưu đãi giữ chân và trò chơi tặng quà, cuối phiên chốt bằng giá sốc, giới hạn số lượng để người xem bấm mua ngay.",
+      "keywords": [
+        "kịch bản ba phần",
+        "ưu đãi giữ chân",
+        "giá sốc"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "KỊCH BẢN MỘT PHIÊN LIVE",
+        "bullets": [
+          "Mở đầu: điểm nhấn giữ người xem 30 giây đầu",
+          "Giữa phiên: deal giữ chân, trò chơi tặng quà",
+          "Cuối phiên: chốt giá sốc, giới hạn số lượng"
+        ]
+      }
+    },
+    {
+      "id": "khung-gio-vang",
+      "type": "body",
+      "voiceText": "Giờ lên live cũng quyết định số đơn. Khung giờ vàng là mười hai giờ đến một giờ trưa và tám giờ đến mười giờ tối, lúc mọi người nghỉ trưa hoặc rảnh rỗi lướt điện thoại. Live sai giờ thì nói hay mấy cũng vắng người xem.",
+      "keywords": [
+        "khung giờ vàng",
+        "nghỉ trưa",
+        "vắng người xem"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "12h-13h & 20h-22h",
+        "label": "Khung giờ vàng để lên live",
+        "context": "Trưa nghỉ và tối rảnh, lượng người xem cao nhất"
+      }
+    },
+    {
+      "id": "sai-lam-nguoi-moi",
+      "type": "body",
+      "voiceText": "Sai lầm lớn nhất của người mới là lên live không có kịch bản, nói lan man khiến người xem rời đi chỉ sau vài chục giây. Hãy viết kịch bản sẵn, tập nói trước gương, và xem lại từng phiên live của mình để sửa dần từng lỗi nhỏ.",
+      "keywords": [
+        "không có kịch bản",
+        "nói lan man",
+        "tập nói trước gương"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Sai lầm số một của người mới: lên live không kịch bản, nói lan man",
+        "tag": "SAI LẦM"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại để xem khi cần nhé.",
+      "keywords": [
+        "kiếm tiền online",
+        "lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

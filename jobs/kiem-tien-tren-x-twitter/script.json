@@ -1,0 +1,140 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Kiếm tiền trên X (Twitter): viết thread tiếng Anh nhận đô",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "KIẾM ĐÔ TRÊN X"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Nền tảng ích, tức Tuít tơ cũ, đang trả tiền trực tiếp cho người viết nội dung. Người Việt viết thread tiếng Anh vẫn nhận được đô la thật. Nhưng điều kiện không dễ như mấy video giật tít đâu.",
+      "keywords": [
+        "trả tiền trực tiếp",
+        "thread tiếng Anh",
+        "đô la thật"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "VIẾT THREAD TIẾNG ANH, NHẬN ĐÔ",
+        "subhead": "X trả tiền cho người viết",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "dieu-kien",
+      "type": "body",
+      "voiceText": "Điều kiện thật: bạn cần gói Prê mi um khoảng tám đô mỗi tháng, năm trăm người theo dõi, và năm triệu lượt hiển thị trong ba tháng gần nhất. Nghe cao, nhưng một thread lên xu hướng có thể kéo về cả triệu lượt xem chỉ trong vài ngày.",
+      "keywords": [
+        "năm triệu lượt hiển thị",
+        "ba tháng",
+        "năm trăm người theo dõi"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "5 triệu",
+        "label": "Lượt hiển thị trong 3 tháng",
+        "context": "Kèm Premium 8 đô/tháng + 500 followers"
+      }
+    },
+    {
+      "id": "muc-chia",
+      "type": "body",
+      "voiceText": "Theo chia sẻ của nhiều người viết, mức chia rơi vào khoảng tám đến mười hai đô cho mỗi một triệu lượt hiển thị từ người dùng trả phí. Tài khoản ngách chăm chỉ kiếm vài trăm đô mỗi tháng là con số có thật, không phải nghìn đô như lời đồn.",
+      "keywords": [
+        "tám đến mười hai đô",
+        "một triệu lượt hiển thị",
+        "vài trăm đô"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "8–12 đô",
+        "label": "Cho mỗi 1 triệu lượt hiển thị",
+        "context": "Chỉ tính tương tác từ người dùng trả phí"
+      }
+    },
+    {
+      "id": "cong-thuc-thread",
+      "type": "body",
+      "voiceText": "Công thức lên nhanh nhất là chọn một ngách trả cao như tài chính, ây ai, hoặc kỹ năng làm nội dung. Câu mở đầu phải gây tò mò hoặc hứa lợi ích rõ ràng, thân thread từ năm đến bảy bài ngắn. Và mỗi ngày dành ba mươi phút trả lời dưới các tài khoản lớn cùng ngách để hút người theo dõi.",
+      "keywords": [
+        "tài chính, ây ai",
+        "năm đến bảy bài ngắn",
+        "tài khoản lớn cùng ngách"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "CÔNG THỨC THREAD NGÁCH",
+        "bullets": [
+          "Chọn ngách: tài chính, AI, làm nội dung",
+          "Câu mở đầu gây tò mò, hứa lợi ích rõ",
+          "Thân thread 5–7 tweet ngắn, dễ đọc",
+          "Reply tài khoản lớn 30 phút mỗi ngày"
+        ]
+      }
+    },
+    {
+      "id": "rao-can-stripe",
+      "type": "body",
+      "voiceText": "Rào cản lớn nhất phải nói thật: ích trả tiền qua Sờ trai, mà Sờ trai chưa hỗ trợ trực tiếp Việt Nam. Cách xử lý hợp lệ là mở công ty nhỏ ở nước được hỗ trợ như Mỹ hoặc Xinh ga po, hoặc nhờ người thân đang sống ở đó đứng tên và khai thuế đầy đủ.",
+      "keywords": [
+        "Sờ trai",
+        "chưa hỗ trợ trực tiếp Việt Nam",
+        "khai thuế đầy đủ"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Stripe chưa hỗ trợ VN — cần pháp nhân ở nước được hỗ trợ",
+        "tag": "RÀO CẢN THẬT"
+      }
+    },
+    {
+      "id": "da-tai-khoan",
+      "type": "body",
+      "voiceText": "Người làm nghiêm túc hiếm khi chỉ chạy một tài khoản. Họ thường nuôi hai đến ba tài khoản, mỗi cái bám một ngách riêng, để thuật toán hiểu rõ nội dung và không bỏ hết trứng vào một giỏ. Vấn đề là đăng nhập nhiều tài khoản trên cùng một máy rất dễ bị gắn cờ liên đới.",
+      "keywords": [
+        "hai đến ba tài khoản",
+        "một ngách riêng",
+        "gắn cờ liên đới"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Mỗi ngách một tài khoản — nhưng chung 1 máy dễ bị gắn cờ liên đới",
+        "tag": "ĐA TÀI KHOẢN"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Đó là lý do dân chạy nhiều tài khoản dùng Cloak Login, trình duyệt tách mỗi tài khoản thành một hồ sơ riêng biệt với dấu vân tay riêng, an toàn hơn hẳn. Lưu video lại và theo dõi kênh để học thêm cách kiếm tiền online nhé.",
+      "keywords": [
+        "Cloak Login",
+        "hồ sơ riêng biệt",
+        "kiếm tiền online"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Nhiều tài khoản an toàn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

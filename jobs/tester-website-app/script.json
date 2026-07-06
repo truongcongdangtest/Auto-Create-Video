@@ -1,0 +1,141 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Kiếm 10 đô trong 20 phút: nghề test website và app",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "TEST WEB KIẾM ĐÔ"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Bạn có tin là nhiều công ty sẵn sàng trả tiền chỉ để xem bạn bấm thử trang web của họ rồi nói cảm nghĩ không? Nghề này gọi là test website và áp, kiếm khoảng mười đô cho hai mươi phút làm việc.",
+      "keywords": [
+        "trả tiền",
+        "bấm thử trang web",
+        "nói cảm nghĩ"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "ĐƯỢC TRẢ TIỀN ĐỂ BẤM THỬ WEB",
+        "subhead": "10 đô cho 20 phút test",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "muoi-do-20-phut",
+      "type": "body",
+      "voiceText": "Trên nền tảng User Testing, một bài test kéo dài khoảng hai mươi phút được trả mười đô, thanh toán qua Pay Pal. Việc của bạn là vừa dùng thử trang web, vừa ghi màn hình và nói to suy nghĩ của mình.",
+      "keywords": [
+        "hai mươi phút",
+        "mười đô",
+        "ghi màn hình"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "10 đô / bài test",
+        "label": "Một bài test khoảng 20 phút",
+        "context": "Ghi màn hình + giọng nói, trả qua PayPal"
+      }
+    },
+    {
+      "id": "ba-nen-tang",
+      "type": "body",
+      "voiceText": "Ba nền tảng uy tín để bắt đầu là User Testing, User Lytics và iu Test. User Lytics trả từ năm đến chín mươi đô mỗi bài, phổ biến nhất là năm đến mười đô. Còn iu Test thì thiên về các dự án kiểm thử dài hơi hơn.",
+      "keywords": [
+        "Ba nền tảng uy tín",
+        "năm đến chín mươi đô",
+        "iu Test"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "3 nền tảng uy tín để bắt đầu",
+        "bullets": [
+          "UserTesting: 10 đô/bài test 20 phút",
+          "Userlytics: 5–90 đô/bài, thường 5–10 đô",
+          "uTest: dự án kiểm thử dài hơi hơn"
+        ]
+      }
+    },
+    {
+      "id": "su-that-sang-loc",
+      "type": "body",
+      "voiceText": "Nói thật với bạn, trước mỗi bài test đều có vài câu hỏi sàng lọc, và không phải lúc nào bạn cũng được chọn. Có khi trả lời cả chục bài sàng lọc mới trúng một bài test được trả tiền.",
+      "keywords": [
+        "câu hỏi sàng lọc",
+        "không phải lúc nào"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Trước mỗi bài test có câu hỏi sàng lọc — không phải lúc nào bạn cũng được chọn",
+        "tag": "SỰ THẬT"
+      }
+    },
+    {
+      "id": "can-chuan-bi",
+      "type": "body",
+      "voiceText": "Để nhận việc, bạn cần tiếng Anh nói ở mức cơ bản, đủ để diễn đạt cảm nghĩ khi dùng thử. Ngoài ra cần micro thu âm rõ, phòng yên tĩnh và một tài khoản Pay Pal để nhận tiền.",
+      "keywords": [
+        "tiếng Anh nói",
+        "micro thu âm rõ",
+        "phòng yên tĩnh"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Bạn cần chuẩn bị gì?",
+        "bullets": [
+          "Tiếng Anh nói cơ bản, đủ diễn đạt cảm nghĩ",
+          "Micro thu âm rõ, phòng yên tĩnh",
+          "Thiết bị quay được màn hình",
+          "Tài khoản PayPal để nhận tiền"
+        ]
+      }
+    },
+    {
+      "id": "thu-nhap-thuc-te",
+      "type": "body",
+      "voiceText": "Vì test không về đều đặn, đây chỉ nên là thu nhập phụ, khoảng vài chục đến một trăm đô mỗi tháng nếu bạn chăm chỉ. Đừng bỏ việc chính để theo nghề này, nhưng tranh thủ buổi tối thì rất đáng.",
+      "keywords": [
+        "thu nhập phụ",
+        "một trăm đô mỗi tháng"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "30–100 đô/tháng",
+        "label": "Thu nhập phụ nếu chăm chỉ làm buổi tối",
+        "context": "Test không về đều — đừng coi là nghề chính"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại và theo dõi kênh để không bỏ lỡ những cách kiếm tiền thực tế tiếp theo nhé.",
+      "keywords": [
+        "kiếm tiền online",
+        "Lưu video lại"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

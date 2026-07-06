@@ -1,0 +1,136 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Nghề viết content thuê: bắt đầu từ 0, không cần bằng cấp",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "VIẾT CONTENT TỪ 0"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Viết content thuê là nghề online dễ vào nhất: không cần bằng cấp, không cần vốn. Nhưng phần lớn người mới bỏ cuộc chỉ sau vài tháng, thường vì một sai lầm: báo giá sai.",
+      "keywords": [
+        "không cần bằng cấp",
+        "phần lớn người mới",
+        "báo giá sai"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "VIẾT CONTENT THUÊ TỪ SỐ 0",
+        "subhead": "Không cần bằng cấp",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "gia-thi-truong",
+      "type": "body",
+      "voiceText": "Giá thị trường cho người mới ở Việt Nam là năm mươi đến một trăm năm mươi nghìn đồng cho một bài một nghìn từ. Báo thấp hơn thì bạn kiệt sức, báo cao hơn khi chưa có gì chứng minh thì khách bỏ đi.",
+      "keywords": [
+        "một trăm năm mươi nghìn",
+        "bài một nghìn từ"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "50-150K/BÀI",
+        "label": "Giá bài 1000 từ cho người mới",
+        "context": "Báo sai giá là lý do nhiều người bỏ cuộc"
+      }
+    },
+    {
+      "id": "tim-khach",
+      "type": "body",
+      "voiceText": "Khách đầu tiên không ở đâu xa. Vào các group Facebook tuyển content, đọc kỹ yêu cầu, rồi gửi kèm hai bài viết mẫu bạn tự viết trước. Có bài mẫu, tỉ lệ được nhận cao hơn hẳn người chỉ nhắn em nhận ạ.",
+      "keywords": [
+        "group Facebook tuyển content",
+        "bài viết mẫu"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "TÌM KHÁCH ĐẦU TIÊN Ở ĐÂU?",
+        "bullets": [
+          "Group Facebook tuyển content writer",
+          "Chuẩn bị sẵn 2-3 bài mẫu tự viết",
+          "Đọc kỹ yêu cầu trước khi báo giá",
+          "Đừng chỉ nhắn: em nhận ạ"
+        ]
+      }
+    },
+    {
+      "id": "goi-thang",
+      "type": "body",
+      "voiceText": "Đừng mãi nhận bài lẻ. Sau khoảng mười bài đều tay với một khách, hãy đề nghị gói tháng: ví dụ hai mươi bài mỗi tháng với giá cố định. Thu nhập ổn định hơn và bạn không phải đi tìm khách mỗi tuần.",
+      "keywords": [
+        "bài lẻ",
+        "gói tháng",
+        "Thu nhập ổn định"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Bài lẻ để bắt đầu. Gói tháng mới là thu nhập thật.",
+        "tag": "GÓI THÁNG"
+      }
+    },
+    {
+      "id": "thu-nhap-that",
+      "type": "body",
+      "voiceText": "Về con số thật: người mới thường kiếm ba đến mười triệu mỗi tháng. Làm đều hai đến năm năm, mức này có thể lên mười lăm đến năm mươi triệu. Không nhanh, nhưng là con đường tăng trưởng rõ ràng.",
+      "keywords": [
+        "ba đến mười triệu",
+        "năm mươi triệu"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "3-10 TRIỆU",
+        "label": "Thu nhập tháng của người mới",
+        "context": "2-5 năm kinh nghiệm: 15-50 triệu/tháng"
+      }
+    },
+    {
+      "id": "ai-khong-giet-nghe",
+      "type": "body",
+      "voiceText": "Còn ây ai thì sao? Ây ai không giết nghề viết. Người thắng là người dùng ây ai làm bản nháp, rồi tự biên tập, thêm trải nghiệm thật và số liệu thật. Khách trả tiền cho góc nhìn, không trả cho con chữ.",
+      "keywords": [
+        "ây ai làm bản nháp",
+        "tự biên tập",
+        "góc nhìn"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "AI làm nháp, bạn biên tập — thắng người viết tay thuần",
+        "tag": "AI + NGƯỜI"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Nghề này không cần bằng cấp, chỉ cần kỷ luật viết mỗi ngày. Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại để bắt đầu ngay tuần này nhé.",
+      "keywords": [
+        "kiếm tiền online",
+        "Lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

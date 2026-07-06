@@ -1,0 +1,139 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Sự thật Play-to-Earn: từ 75 triệu/tháng đến trắng tay",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "SỰ THẬT P2E"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-75-trieu",
+      "type": "hook",
+      "voiceText": "Từng có người Việt kiếm tới bảy mươi lăm triệu mỗi tháng chỉ nhờ chơi game A-xi In-fi-ni-ti. Vậy mà chưa đầy một năm sau, token của game sập gần chín mươi chín phần trăm. Chuyện gì đã xảy ra?",
+      "keywords": [
+        "bảy mươi lăm triệu",
+        "chơi game",
+        "token của game sập"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "KIẾM 75 TRIỆU/THÁNG NHỜ CHƠI GAME?",
+        "subhead": "Sự thật Play-to-Earn",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "dinh-cao-2021",
+      "type": "body",
+      "voiceText": "Thời đỉnh cao giữa năm hai nghìn không trăm hai mươi mốt, một token ét eo pi trong game có giá khoảng không phẩy ba sáu đô la, tức khoảng tám nghìn đồng. Người chơi chuyên cày vài trăm token mỗi ngày, thu nhập vài chục triệu một tháng là chuyện báo chí đăng đầy.",
+      "keywords": [
+        "đỉnh cao",
+        "khoảng tám nghìn đồng",
+        "vài chục triệu"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "0,36 đô la",
+        "label": "Giá đỉnh 1 token SLP giữa 2021",
+        "context": "Thu nhập vài chục triệu/tháng là có thật"
+      }
+    },
+    {
+      "id": "cu-sap-99",
+      "type": "body",
+      "voiceText": "Rồi sang năm hai nghìn không trăm hai mươi hai, token này rơi tự do, mất gần chín mươi chín phần trăm giá trị, có lúc chỉ còn chưa tới một trăm đồng. Ai vào sau, bỏ cả nghìn đô la mua đội thú để chơi, gần như trắng tay.",
+      "keywords": [
+        "rơi tự do",
+        "chín mươi chín phần trăm",
+        "trắng tay"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Token sập 99%, người vào sau bỏ cả nghìn đô mua đội thú rồi trắng tay",
+        "tag": "SỤP ĐỔ"
+      }
+    },
+    {
+      "id": "lam-phat-token",
+      "type": "body",
+      "voiceText": "Vì sao sập? Vì lạm phát token. Có thời điểm game in ra lượng token nhiều gấp bốn lần lượng bị đốt đi mỗi ngày. Giống một quốc gia in tiền nhanh hơn tốc độ người dân tiêu, tiền tất nhiên phải mất giá.",
+      "keywords": [
+        "lạm phát token",
+        "gấp bốn lần",
+        "in tiền nhanh hơn"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Gấp 4 lần",
+        "label": "Token in ra nhiều hơn lượng đốt đi",
+        "context": "In tiền nhanh hơn tiêu thì mất giá"
+      }
+    },
+    {
+      "id": "p2e-2026",
+      "type": "body",
+      "voiceText": "Đến năm hai nghìn không trăm hai mươi sáu, chơi game kiếm tiền vẫn còn, nhưng phần thưởng đã nhỏ hơn rất nhiều. Game sống bền là game vui trước, thưởng sau. Dự án nào hứa thu nhập thay lương, hãy nghi ngờ ngay.",
+      "keywords": [
+        "phần thưởng đã nhỏ hơn",
+        "vui trước, thưởng sau",
+        "nghi ngờ ngay"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "P2E 2026: thưởng nhỏ, chơi vì vui là chính, đừng mơ thay lương",
+        "tag": "P2E 2026"
+      }
+    },
+    {
+      "id": "quy-tac-song-con",
+      "type": "body",
+      "voiceText": "Nếu vẫn muốn thử, hãy nhớ quy tắc sống còn. Chỉ bỏ số vốn mà mất cũng không đau, và rút vốn gốc về ngay khi vừa hòa vốn. Đặc biệt, game nào bắt nạp tiền trước mới cho kiếm, đó là cờ đỏ, vì lãi của bạn có thể đến từ tiền người vào sau.",
+      "keywords": [
+        "quy tắc sống còn",
+        "rút vốn gốc",
+        "cờ đỏ"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "QUY TẮC SỐNG CÒN VỚI P2E",
+        "bullets": [
+          "Chỉ bỏ số vốn mất cũng không đau",
+          "Rút vốn gốc ngay khi vừa hòa vốn",
+          "Bắt nạp trước mới cho kiếm = cờ đỏ",
+          "Lãi quá đẹp? Hỏi: tiền đến từ đâu?"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Chơi game ra tiền dạy ta một điều: cái gì nghe quá dễ đều có giá của nó. Cloak Login, kênh kiến thức kiếm tiền trên mạng. Lưu video lại để cảnh giác giúp cả bạn bè nhé.",
+      "keywords": [
+        "kiếm tiền trên mạng",
+        "Lưu video lại"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Cảnh giác là kỹ năng MMO số 1",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

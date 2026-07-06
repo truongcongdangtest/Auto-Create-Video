@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Bán ảnh stock: chụp 1 lần, tiền về nhiều năm",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "BÁN ẢNH STOCK"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-anh-viet-nam",
+      "type": "hook",
+      "voiceText": "Một tấm ảnh chụp chợ quê hay quán cà phê ở Việt Nam có thể được tải hàng trăm lượt trên Shutterstock và Adobe Stock. Chụp một lần, tiền bản quyền cứ thế về trong nhiều năm sau đó.",
+      "keywords": [
+        "tấm ảnh",
+        "hàng trăm lượt",
+        "tiền bản quyền"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "CHỤP 1 LẦN, TIỀN VỀ NHIỀU NĂM",
+        "subhead": "Bán ảnh stock từ Việt Nam",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "royalty-thuc-te",
+      "type": "body",
+      "voiceText": "Nói thật về con số: mỗi lượt tải bạn nhận từ một phần mười đến ba đô la, tùy gói mà khách mua. Nghe nhỏ, nhưng một ảnh tốt sẽ bán đi bán lại suốt nhiều năm mà bạn không tốn thêm chút công sức nào.",
+      "keywords": [
+        "mỗi lượt tải",
+        "ba đô la",
+        "bán đi bán lại"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "0,1–3 đô/lượt",
+        "label": "Tiền bản quyền mỗi lượt tải",
+        "context": "Ảnh tốt bán lại suốt nhiều năm"
+      }
+    },
+    {
+      "id": "kho-500-1000-anh",
+      "type": "body",
+      "voiceText": "Sự thật ít ai nói với bạn: vài chục ảnh gần như không tạo ra thu nhập. Bạn cần kho năm trăm đến một nghìn ảnh chất lượng thì dòng tiền mới bắt đầu đều đặn hằng tháng. Đây là cuộc chơi tích lũy, không phải giàu nhanh.",
+      "keywords": [
+        "vài chục ảnh",
+        "một nghìn ảnh",
+        "dòng tiền"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Cần kho 500–1000 ảnh chất lượng thì dòng tiền mới đều đặn hằng tháng",
+        "tag": "SỰ THẬT"
+      }
+    },
+    {
+      "id": "ngach-local-vietnam",
+      "type": "body",
+      "voiceText": "Lợi thế lớn nhất của bạn là ngách ảnh Việt Nam đời thường đang thiếu trên kho quốc tế. Chợ nổi buổi sáng, quán cà phê vỉa hè, áo dài, xe máy giờ tan tầm hay món ăn đường phố đều là thứ khách nước ngoài đang rất cần.",
+      "keywords": [
+        "ngách ảnh Việt Nam",
+        "đang thiếu",
+        "quán cà phê vỉa hè"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Ngách 'local Vietnam' đang thiếu",
+        "bullets": [
+          "Chợ nổi, chợ quê buổi sáng",
+          "Cà phê vỉa hè, áo dài đời thường",
+          "Xe máy giờ tan tầm, phố cổ",
+          "Món ăn đường phố Việt Nam"
+        ]
+      }
+    },
+    {
+      "id": "anh-ai-adobe-stock",
+      "type": "body",
+      "voiceText": "Không có máy ảnh xịn? Ảnh tạo bằng ây ai vẫn bán được trên Adobe Stock, miễn là bạn tick khai báo tạo bằng ây ai khi đăng. Tuyệt đối không dùng tên nghệ sĩ hay người thật trong tiêu đề, vi phạm là bị khóa tài khoản.",
+      "keywords": [
+        "tạo bằng ây ai",
+        "Adobe Stock",
+        "khai báo"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Adobe Stock nhận ảnh AI nếu khai báo đúng — giấu là bị khóa tài khoản",
+        "tag": "ẢNH AI"
+      }
+    },
+    {
+      "id": "cach-bat-dau",
+      "type": "body",
+      "voiceText": "Để bắt đầu, bạn đăng ký tài khoản contributor miễn phí, rồi đặt tiêu đề và từ khóa bằng tiếng Anh thật kỹ. Đủ hai mươi lăm đô là rút được tiền qua PayPal hoặc Payoneer. Cứ đăng đều mỗi tuần, sau sáu tháng đến một năm bạn sẽ thấy khác biệt rõ.",
+      "keywords": [
+        "contributor miễn phí",
+        "hai mươi lăm đô",
+        "đăng đều mỗi tuần"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Bắt đầu như thế nào?",
+        "bullets": [
+          "Đăng ký contributor miễn phí",
+          "Tiêu đề + từ khóa tiếng Anh chuẩn",
+          "Rút tiền từ 25 đô qua PayPal/Payoneer",
+          "Đăng đều mỗi tuần, kiên trì 6–12 tháng"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Bán ảnh stock không giàu nhanh, nhưng là thu nhập thụ động thật sự nếu bạn kiên trì xây kho ảnh. Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại để xem khi cần nhé.",
+      "keywords": [
+        "thu nhập thụ động",
+        "kiếm tiền online",
+        "lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

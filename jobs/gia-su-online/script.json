@@ -1,0 +1,140 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Gia sư online: dạy học qua Zoom kiếm 8-15 đô mỗi giờ",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "GIA SƯ ONLINE"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-hoc-tieng-viet",
+      "type": "hook",
+      "voiceText": "Người nước ngoài sẵn sàng trả tám đến mười lăm đô la mỗi giờ chỉ để học tiếng Việt qua Zoom. Nhưng rất ít người Việt biết và tận dụng cơ hội này.",
+      "keywords": [
+        "tám đến mười lăm đô la",
+        "học tiếng Việt",
+        "qua Zoom"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "HỌ TRẢ 8-15 ĐÔ HỌC TIẾNG VIỆT",
+        "subhead": "Gia sư online qua Zoom",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "gia-tren-preply",
+      "type": "body",
+      "voiceText": "Trên Preply, gia sư tiếng Việt lấy trung bình khoảng mười ba đô la một giờ, người mới cũng bắt đầu từ năm đến tám đô. Học viên là người Mỹ, Hàn, Nhật muốn học tiếng Việt để làm việc hoặc kết hôn.",
+      "keywords": [
+        "Preply",
+        "mười ba đô la một giờ",
+        "người mới"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "~13 đô/giờ",
+        "label": "Mức trung bình gia sư tiếng Việt Preply",
+        "context": "Người mới bắt đầu từ 5-8 đô mỗi giờ"
+      }
+    },
+    {
+      "id": "hai-huong-di",
+      "type": "body",
+      "voiceText": "Bạn có hai hướng để chọn. Một là dạy kèm học sinh Việt Nam qua Zoom, thu một trăm đến hai trăm nghìn mỗi buổi. Hai là dạy tiếng Việt hoặc tiếng Anh cho khách quốc tế trên Preply và italki, thu bằng đô la.",
+      "keywords": [
+        "hai hướng",
+        "một trăm đến hai trăm nghìn",
+        "khách quốc tế"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Dạy kèm học sinh Việt 100-200k/buổi, hoặc dạy khách quốc tế thu đô la",
+        "tag": "2 HƯỚNG ĐI"
+      }
+    },
+    {
+      "id": "tao-ho-so",
+      "type": "body",
+      "voiceText": "Để bắt đầu, hãy tạo hồ sơ thật chỉn chu. Ảnh đại diện rõ mặt, phần mô tả nêu rõ bạn dạy ai và dạy cái gì, đặt giá thấp lúc đầu để gom đánh giá năm sao, rồi tăng dần khi có học viên đều.",
+      "keywords": [
+        "tạo hồ sơ",
+        "đặt giá thấp",
+        "đánh giá năm sao"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "HỒ SƠ GIA SƯ CHUẨN",
+        "bullets": [
+          "Ảnh đại diện rõ mặt, thân thiện",
+          "Mô tả rõ: dạy ai, dạy cái gì",
+          "Đặt giá thấp lúc đầu để gom đánh giá",
+          "Tăng giá dần khi lịch kín"
+        ]
+      }
+    },
+    {
+      "id": "video-gioi-thieu",
+      "type": "body",
+      "voiceText": "Vũ khí quan trọng nhất là video giới thiệu dài một đến hai phút. Hãy quay ở nơi đủ sáng, nói rõ ràng và thêm phụ đề tiếng Anh. Đây là thứ đầu tiên học viên xem trước khi quyết định bấm đặt lịch với bạn.",
+      "keywords": [
+        "video giới thiệu",
+        "một đến hai phút",
+        "phụ đề tiếng Anh"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1-2 phút",
+        "label": "Độ dài video giới thiệu lý tưởng",
+        "context": "Quay nơi đủ sáng, nói rõ, có phụ đề tiếng Anh"
+      }
+    },
+    {
+      "id": "noi-that-chi-phi",
+      "type": "body",
+      "voiceText": "Nói thật, đây không phải tiền dễ. Preply thu hoa hồng ba mươi ba phần trăm với người mới, giảm dần còn mười tám phần trăm khi bạn dạy nhiều, và buổi học thử đầu tiên bạn không được trả tiền. Bạn cần kiên trì vài tháng mới có lịch đều.",
+      "keywords": [
+        "hoa hồng",
+        "học thử",
+        "kiên trì"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Preply thu phí 33% với người mới, giảm còn 18% khi dạy nhiều giờ",
+        "tag": "NÓI THẬT"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Nghề gia sư online cần vốn bằng không, chỉ cần kiến thức và một chiếc webcam. Cloak Login, kênh kiến thức kiếm tiền online, lưu video lại để bắt đầu nhé.",
+      "keywords": [
+        "gia sư online",
+        "kiếm tiền online",
+        "lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Dịch thuật online chưa chết: nghề MTPE ít ai biết",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "DỊCH THUẬT THỜI AI"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-mtpe",
+      "type": "hook",
+      "voiceText": "Ây ai dịch được chín mươi phần trăm rồi, vậy nghề dịch thuật online chết chưa? Chưa. Chính mười phần trăm còn lại đang tạo ra một nghề mới mà ít người Việt biết tên: em ti pi i, tức là sửa bản dịch máy.",
+      "keywords": [
+        "chín mươi phần trăm",
+        "nghề mới",
+        "sửa bản dịch máy"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "AI DỊCH 90% — 10% CÒN LẠI LÀ TIỀN",
+        "subhead": "Nghề MTPE ít ai biết",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "mtpe-la-gi",
+      "type": "body",
+      "voiceText": "Em ti pi i nghĩa là biên tập lại bản dịch do máy tạo ra. Máy dịch rất nhanh nhưng hay sai thuật ngữ, sai văn phong, và khách hàng sẵn sàng trả tiền cho người sửa được đúng những lỗi đó.",
+      "keywords": [
+        "biên tập lại bản dịch",
+        "sai thuật ngữ",
+        "trả tiền"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "MTPE = máy dịch trước, bạn sửa sau. Khách trả tiền cho phần sửa.",
+        "tag": "NGHỀ MỚI"
+      }
+    },
+    {
+      "id": "gia-thi-truong",
+      "type": "body",
+      "voiceText": "Tại Việt Nam, dịch tài liệu chuyên ngành thường ở mức sáu mươi đến một trăm hai mươi nghìn đồng mỗi trang. Trên nền tảng quốc tế, em ti pi i thường được trả từ hai đến tám xu đô la mỗi từ, thấp hơn dịch tay nhưng bạn làm nhanh gấp nhiều lần.",
+      "keywords": [
+        "nghìn đồng mỗi trang",
+        "hai đến tám xu",
+        "nhanh gấp nhiều lần"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "60–120k/trang",
+        "label": "Giá dịch tài liệu chuyên ngành tại VN",
+        "context": "MTPE quốc tế: 0.02–0.08 đô mỗi từ"
+      }
+    },
+    {
+      "id": "nhan-viec-o-dau",
+      "type": "body",
+      "voiceText": "Việc ở đâu? Pờ rô dét là chợ dịch thuật lớn nhất thế giới, Ắp guộc có khách quốc tế đăng dự án dịch mỗi ngày, còn các group dịch thuật Việt trên Phây búc cũng thường xuyên tuyển người. Hãy làm vài dự án nhỏ lấy đánh giá tốt trước khi đòi giá cao.",
+      "keywords": [
+        "chợ dịch thuật lớn nhất",
+        "khách quốc tế",
+        "group dịch thuật Việt"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "NHẬN VIỆC Ở ĐÂU?",
+        "bullets": [
+          "ProZ — chợ dịch thuật lớn nhất thế giới",
+          "Upwork — khách quốc tế đăng dự án dịch",
+          "Group dịch thuật Việt trên Facebook",
+          "Làm dự án nhỏ trước để lấy đánh giá"
+        ]
+      }
+    },
+    {
+      "id": "ngach-may-chua-thay",
+      "type": "body",
+      "voiceText": "Muốn giá cao, hãy chọn ngách máy chưa thay được: pháp lý và y khoa vì sai một chữ là đền hợp đồng, lô ca lai game và phụ đề vì cần hiểu văn hoá và chơi chữ. Đây chính là chỗ mười phần trăm còn lại đáng giá nhất.",
+      "keywords": [
+        "pháp lý và y khoa",
+        "phụ đề",
+        "mười phần trăm"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "4 NGÁCH MÁY CHƯA THAY ĐƯỢC",
+        "bullets": [
+          "Pháp lý — sai một chữ là đền hợp đồng",
+          "Y khoa — thuật ngữ phải chính xác tuyệt đối",
+          "Localize game — chơi chữ, văn hoá",
+          "Phụ đề phim — giới hạn ký tự, ngữ cảnh"
+        ]
+      }
+    },
+    {
+      "id": "ky-nang-ban-duoc",
+      "type": "body",
+      "voiceText": "Kỹ năng bán được bây giờ không phải là dịch hay nhất, mà là biên tập bản dịch ây ai nhanh gấp ba dịch tay. Luyện bằng cách cho máy dịch một trang, tự sửa, rồi so với bản dịch chuyên nghiệp. Nghề này cần vốn từ và kỷ luật, không phải việc nhẹ lương cao.",
+      "keywords": [
+        "biên tập bản dịch ây ai",
+        "nhanh gấp ba",
+        "vốn từ và kỷ luật"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Kỹ năng đáng tiền: biên tập bản dịch AI nhanh gấp 3 lần dịch tay",
+        "tag": "KỸ NĂNG 2026"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Ây ai không giết nghề dịch, nó chỉ đổi tên công việc. Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại để xem khi cần nhé.",
+      "keywords": [
+        "đổi tên công việc",
+        "kiếm tiền online",
+        "lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Quản lý fanpage thuê: 4 khách hàng = 1 lương văn phòng",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "NGHỀ TRÔNG FANPAGE"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-quan-an-spa",
+      "type": "hook",
+      "voiceText": "Quán ăn, tiệm spa, phòng khám quanh nhà bạn đều cần người trông fanpage, nhưng họ không biết thuê ai. Đó chính là cơ hội kiếm tiền mà rất ít người để ý.",
+      "keywords": [
+        "trông fanpage",
+        "không biết thuê ai",
+        "cơ hội kiếm tiền"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "QUÁN ĂN GẦN NHÀ CẦN NGƯỜI TRÔNG FANPAGE",
+        "subhead": "Nhưng không biết thuê ai",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "gia-thi-truong",
+      "type": "body",
+      "voiceText": "Các công ty dịch vụ đang thu từ hai đến năm triệu đồng mỗi tháng cho một fanpage được chăm sóc trọn gói. Bạn làm cá nhân, lấy ba đến bốn triệu là mức mà khách nhỏ rất dễ gật đầu.",
+      "keywords": [
+        "hai đến năm triệu",
+        "chăm sóc trọn gói"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "2-5 triệu/tháng",
+        "label": "Giá chăm sóc một fanpage trọn gói",
+        "context": "Cá nhân lấy 3-4 triệu, khách nhỏ dễ gật đầu"
+      }
+    },
+    {
+      "id": "goi-dich-vu",
+      "type": "body",
+      "voiceText": "Một gói cơ bản chỉ gồm ba việc: lên lịch đăng bài đều đặn, trả lời tin nhắn và bình luận trong ngày, cuối tháng gửi báo cáo ngắn gọn. Không cần biết chạy quảng cáo, bạn vẫn bán được gói này.",
+      "keywords": [
+        "lên lịch đăng bài",
+        "trả lời tin nhắn",
+        "báo cáo"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "GÓI CƠ BẢN GỒM NHỮNG GÌ?",
+        "bullets": [
+          "Lên lịch đăng bài đều đặn",
+          "Trả lời tin nhắn, bình luận trong ngày",
+          "Báo cáo ngắn gọn cuối tháng"
+        ]
+      }
+    },
+    {
+      "id": "khach-dau-tien",
+      "type": "body",
+      "voiceText": "Muốn có khách đầu tiên, đừng đi chào bán. Hãy chọn một quán quen, làm sẵn bản đánh giá fanpage miễn phí, chỉ ra ba lỗi họ đang mắc và cách sửa. Khi họ thấy bạn hiểu vấn đề của họ, hợp đồng đến rất tự nhiên.",
+      "keywords": [
+        "khách đầu tiên",
+        "đánh giá fanpage miễn phí",
+        "ba lỗi"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Chào khách bằng bản đánh giá fanpage miễn phí: chỉ ra 3 lỗi và cách sửa",
+        "tag": "MẸO CHỐT KHÁCH"
+      }
+    },
+    {
+      "id": "bon-khach-mot-luong",
+      "type": "body",
+      "voiceText": "Bốn khách hàng, mỗi khách ba đến bốn triệu, là bạn có mười hai đến mười sáu triệu mỗi tháng, ngang một lương văn phòng. Mỗi fanpage chỉ tốn khoảng một giờ mỗi ngày nếu bạn làm việc có quy trình.",
+      "keywords": [
+        "Bốn khách hàng",
+        "mười hai đến mười sáu triệu",
+        "lương văn phòng"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "4 khách = 12-16tr",
+        "label": "Ngang một lương văn phòng mỗi tháng",
+        "context": "Mỗi fanpage tốn khoảng 1 giờ mỗi ngày"
+      }
+    },
+    {
+      "id": "rui-ro-that",
+      "type": "body",
+      "voiceText": "Nhưng nói thật, nghề này không nhàn: tin nhắn phải trả nhanh, bài phải đăng đều, trễ báo cáo là khách nghỉ hợp đồng. Và khi quản lý nhiều khách, bạn phải đăng nhập hàng chục tài khoản Facebook trên cùng một máy, rất dễ dính khóa tài khoản hàng loạt.",
+      "keywords": [
+        "không nhàn",
+        "hàng chục tài khoản",
+        "khóa tài khoản"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Đăng nhập chục tài khoản khách trên 1 máy là rủi ro khóa hàng loạt",
+        "tag": "RỦI RO THẬT"
+      }
+    },
+    {
+      "id": "outro-cloak",
+      "type": "outro",
+      "voiceText": "Đó là lý do dân quản lý fanpage chuyên nghiệp dùng Cloak Login: mỗi khách một hồ sơ trình duyệt riêng, tách biệt hoàn toàn nên an toàn hơn hẳn. Lưu video lại và bắt đầu từ bản đánh giá miễn phí đầu tiên của bạn nhé.",
+      "keywords": [
+        "Cloak Login",
+        "hồ sơ trình duyệt riêng",
+        "Lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Mỗi khách một hồ sơ riêng",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Bán template: làm 1 lần, bán mãi mãi",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "LÀM 1 LẦN BÁN MÃI"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-template",
+      "type": "hook",
+      "voiceText": "Có một loại sản phẩm không cần kho, không cần ship, bán một trăm bản hay mười nghìn bản thì chi phí vẫn gần như bằng không. Đó là template, sản phẩm số bạn chỉ cần làm một lần rồi bán mãi mãi.",
+      "keywords": [
+        "không cần kho",
+        "làm một lần",
+        "bán mãi mãi"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "LÀM 1 LẦN, BÁN MÃI MÃI",
+        "subhead": "Kiếm tiền với template",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "vi-sao-loi",
+      "type": "body",
+      "voiceText": "Vì là file số, mỗi đơn bán ra gần như là lợi nhuận ròng, biên lợi nhuận tiến sát một trăm phần trăm. Việc của bạn chỉ là tạo ra một file đủ tốt để người khác sẵn sàng trả tiền.",
+      "keywords": [
+        "lợi nhuận ròng",
+        "một trăm phần trăm"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Không tồn kho, không ship — biên lợi nhuận gần 100%",
+        "tag": "VÌ SAO HOT"
+      }
+    },
+    {
+      "id": "bon-loai-de-lam",
+      "type": "body",
+      "voiceText": "Bốn loại dễ bắt đầu nhất: template Canva cho bài đăng và slide, template Notion để quản lý công việc, mẫu xi vi xin việc chuyên nghiệp, và preset Lightroom hay lút chỉnh màu cho người quay chụp.",
+      "keywords": [
+        "template Canva",
+        "template Notion",
+        "xi vi xin việc"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "4 loại template dễ bắt đầu",
+        "bullets": [
+          "Template Canva: bài đăng, slide",
+          "Template Notion: quản lý công việc",
+          "Mẫu CV xin việc chuyên nghiệp",
+          "Preset Lightroom / LUT chỉnh màu"
+        ]
+      }
+    },
+    {
+      "id": "gia-va-kenh-ban",
+      "type": "body",
+      "voiceText": "Mức giá phổ biến là từ năm đến hai mươi chín đô một bộ. Bạn có thể bán qua Gumroad với phí mười phần trăm mỗi đơn, qua Payhip gói miễn phí thu năm phần trăm, hoặc bán trực tiếp trên fanpage của mình.",
+      "keywords": [
+        "năm đến hai mươi chín đô",
+        "Gumroad",
+        "Payhip"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "5–29 đô/bộ",
+        "label": "Mức giá phổ biến của template",
+        "context": "Gumroad phí 10%, Payhip gói free phí 5% mỗi đơn"
+      }
+    },
+    {
+      "id": "bi-quyet-noi-dau",
+      "type": "body",
+      "voiceText": "Bí quyết quan trọng nhất: đừng làm template đẹp chung chung. Hãy giải quyết một nỗi đau cụ thể, ví dụ bộ Canva cho spa đăng bài mỗi ngày, hay Notion cho freelancer theo dõi hợp đồng và tiền về.",
+      "keywords": [
+        "nỗi đau cụ thể",
+        "đẹp chung chung"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Giải quyết 1 nỗi đau cụ thể — đừng làm template 'đẹp chung chung'",
+        "tag": "BÍ QUYẾT"
+      }
+    },
+    {
+      "id": "lo-trinh-thuc-te",
+      "type": "body",
+      "voiceText": "Nói thật: vài đơn đầu tiên sẽ đến chậm. Hãy làm ba đến năm mẫu cho cùng một ngách, đăng một bản miễn phí để kéo người xem gian hàng, và liên tục cải thiện theo phản hồi của người mua.",
+      "keywords": [
+        "vài đơn đầu tiên",
+        "bản miễn phí",
+        "phản hồi"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Lộ trình thực tế",
+        "bullets": [
+          "Làm 3–5 mẫu cho cùng 1 ngách",
+          "Tặng 1 bản free để kéo khách vào gian hàng",
+          "Cải thiện mẫu theo phản hồi người mua"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại và bắt tay làm mẫu template đầu tiên của bạn ngay tuần này nhé.",
+      "keywords": [
+        "kiếm tiền online",
+        "Lưu video lại"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

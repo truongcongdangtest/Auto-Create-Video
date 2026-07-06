@@ -1,0 +1,142 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "App hoàn tiền: tiết kiệm thật hay bẫy chi tiêu?",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "TIẾT KIỆM HAY BẪY?"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Mua gì cũng được hoàn tiền, nghe cứ như tiền miễn phí rơi vào ví đúng không? Nhưng khoan, hãy làm một phép toán nhỏ trước khi bạn coi đây là cách kiếm tiền.",
+      "keywords": [
+        "hoàn tiền",
+        "tiền miễn phí",
+        "phép toán nhỏ"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "HOÀN TIỀN: TIỀN FREE HAY BẪY?",
+        "subhead": "Làm toán trước khi tin",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "muc-hoan-that",
+      "type": "body",
+      "voiceText": "Sự thật là mức hoàn phổ biến ở Việt Nam chỉ từ một đến sáu phần trăm giá trị đơn hàng. ShopBack hoàn theo từng gian hàng, còn ví điện tử và thẻ ngân hàng cũng chỉ quanh mức vài phần trăm cho mỗi đơn.",
+      "keywords": [
+        "một đến sáu phần trăm",
+        "ShopBack",
+        "ví điện tử"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1–6%",
+        "label": "Mức hoàn phổ biến tại Việt Nam",
+        "context": "ShopBack, ví điện tử, thẻ ngân hàng"
+      }
+    },
+    {
+      "id": "tran-hoan-tien",
+      "type": "body",
+      "voiceText": "Chưa hết, gần như chương trình nào cũng có trần hoàn tiền. Có thẻ ngân hàng quảng cáo hoàn mười phần trăm khi mua sắm trực tuyến, nhưng trần chỉ vài trăm nghìn mỗi kỳ. Vượt trần, bạn không được hoàn thêm đồng nào.",
+      "keywords": [
+        "trần hoàn tiền",
+        "mười phần trăm",
+        "vài trăm nghìn"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "LUÔN CÓ TRẦN HOÀN TIỀN",
+        "bullets": [
+          "Hoàn 10% nhưng trần vài trăm nghìn/kỳ",
+          "Trần tính theo kỳ sao kê hoặc tháng",
+          "App hoàn tiền: đủ ngưỡng mới được rút",
+          "Vượt trần: hoàn 0 đồng"
+        ]
+      }
+    },
+    {
+      "id": "bay-tam-ly",
+      "type": "body",
+      "voiceText": "Bẫy lớn nhất nằm ở tâm lý. Bạn mua thêm một món năm trăm nghìn vốn không định mua, chỉ để nhận hoàn hai mươi lăm nghìn. Nghe là được hoàn, nhưng thật ra bạn vừa mất bốn trăm bảy mươi lăm nghìn.",
+      "keywords": [
+        "tâm lý",
+        "mua thêm",
+        "hai mươi lăm nghìn"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Chi 500 nghìn không định mua để nhận hoàn 25 nghìn = MẤT 475 nghìn",
+        "tag": "BẪY TÂM LÝ"
+      }
+    },
+    {
+      "id": "dung-dung-cach",
+      "type": "body",
+      "voiceText": "Vậy dùng sao cho đúng? Chỉ bật hoàn tiền cho những thứ bạn vốn đã định mua, so giá ở vài nơi trước khi chốt, và coi tiền hoàn là phần thưởng thêm chứ không phải mục tiêu mua sắm.",
+      "keywords": [
+        "vốn đã định mua",
+        "so giá",
+        "phần thưởng thêm"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "DÙNG ĐÚNG CÁCH",
+        "bullets": [
+          "Chỉ mua thứ vốn đã định mua",
+          "So giá vài nơi trước khi chốt",
+          "Tiền hoàn = thưởng thêm, không phải mục tiêu"
+        ]
+      }
+    },
+    {
+      "id": "ket-luan",
+      "type": "body",
+      "voiceText": "Nói thẳng nhé, ứng dụng hoàn tiền là công cụ tiết kiệm chứ không phải cách kiếm tiền. Dùng đều đặn, mỗi tháng bạn tiết kiệm vài chục đến vài trăm nghìn là con số thực tế. Còn ai hứa thu nhập khủng từ hoàn tiền thì hãy cẩn thận.",
+      "keywords": [
+        "công cụ tiết kiệm",
+        "cách kiếm tiền",
+        "thực tế"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Hoàn tiền = công cụ TIẾT KIỆM, không phải cách KIẾM tiền",
+        "tag": "KẾT LUẬN"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login, kênh kiến thức kiếm tiền trên mạng. Nếu thấy hữu ích, lưu video lại để xem khi cần nhé.",
+      "keywords": [
+        "kiếm tiền trên mạng",
+        "lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
