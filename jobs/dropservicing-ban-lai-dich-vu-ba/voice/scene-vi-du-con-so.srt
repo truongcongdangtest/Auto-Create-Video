@@ -1,0 +1,7 @@
+1
+00:00:00,000 --> 00:00:06,251
+ví dụ, một logo khách trả một trăm đô, bạn thuê designer trên fiverr làm với giá ba mươi đô.
+
+2
+00:00:06,351 --> 00:00:13,902
+nhưng nhớ trừ phí sàn, fiverr thu khoảng hai mươi phần trăm phía người bán, nên phải tính giá thật kỹ trước khi chốt với khách.

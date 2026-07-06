@@ -1,0 +1,139 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Email marketing: kênh 'cổ' nhưng ROI cao nhất internet",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "EMAIL = TÀI SẢN"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-khong-ai-bop",
+      "type": "hook",
+      "voiceText": "Thuật toán có thể bóp lượt tiếp cận video của bạn bất cứ lúc nào, nhưng không ai bóp được danh sách email của bạn. Đây là kênh cũ kỹ nhưng lại có lợi nhuận cao nhất internet.",
+      "keywords": [
+        "bóp lượt tiếp cận",
+        "danh sách email",
+        "lợi nhuận cao nhất"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "KHÔNG AI BÓP ĐƯỢC EMAIL CỦA BẠN",
+        "subhead": "Kênh cũ, ROI cao nhất",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "so-lieu-roi",
+      "type": "body",
+      "voiceText": "Theo thống kê kinh điển của Litmus, trung bình một đô la chi cho email marketing mang về khoảng ba mươi sáu đô la. Riêng ngành bán lẻ và thương mại điện tử còn lên tới bốn mươi lăm đô la.",
+      "keywords": [
+        "một đô la",
+        "ba mươi sáu đô la",
+        "email marketing"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "1$ → ~36$",
+        "label": "Lợi nhuận trung bình từ email",
+        "context": "Số liệu Litmus, bán lẻ lên tới 45$"
+      }
+    },
+    {
+      "id": "lead-magnet",
+      "type": "body",
+      "voiceText": "Cách xây danh sách nhanh nhất là lead magnet: một tài liệu miễn phí đủ hấp dẫn để người ta sẵn sàng đổi email lấy nó. Ví dụ file mẫu, checklist, hay khoá học mini đánh đúng nỗi đau của khách.",
+      "keywords": [
+        "lead magnet",
+        "tài liệu miễn phí",
+        "đổi email"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Lead magnet: tặng tài liệu miễn phí, đổi lấy email của khách",
+        "tag": "XÂY DANH SÁCH"
+      }
+    },
+    {
+      "id": "cong-thuc-ba-buoc",
+      "type": "body",
+      "voiceText": "Công thức kiếm tiền gồm ba bước rất đơn giản. Một, phát lead magnet để gom email; hai, gửi email giá trị đều đặn mỗi tuần để xây niềm tin; ba, thỉnh thoảng giới thiệu khoá học hoặc sản phẩm tiếp thị liên kết phù hợp.",
+      "keywords": [
+        "ba bước",
+        "email giá trị",
+        "khoá học"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "CÔNG THỨC 3 BƯỚC",
+        "bullets": [
+          "1. Lead magnet miễn phí để gom email",
+          "2. Email giá trị đều đặn mỗi tuần",
+          "3. Bán khoá học / affiliate phù hợp"
+        ]
+      }
+    },
+    {
+      "id": "tool-mien-phi",
+      "type": "body",
+      "voiceText": "Bắt đầu không tốn một đồng nào. Brevo cho gửi ba trăm email mỗi ngày miễn phí với số người đăng ký không giới hạn, còn MailerLite miễn phí cho một nghìn người đăng ký đầu tiên.",
+      "keywords": [
+        "Brevo",
+        "ba trăm email",
+        "MailerLite"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "0 đồng",
+        "label": "Chi phí bắt đầu với Brevo, MailerLite",
+        "context": "Brevo: 300 email/ngày, không giới hạn sub"
+      }
+    },
+    {
+      "id": "sai-lam-ban-hang",
+      "type": "body",
+      "voiceText": "Sai lầm lớn nhất là gửi email chỉ toàn bán hàng, người ta sẽ huỷ đăng ký ngay. Hãy giữ tỷ lệ khoảng tám phần giá trị, hai phần bán hàng, danh sách của bạn mới sống lâu.",
+      "keywords": [
+        "chỉ toàn bán hàng",
+        "huỷ đăng ký",
+        "tám phần giá trị"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "80% email là giá trị, chỉ 20% bán hàng — sub mới ở lại lâu dài",
+        "tag": "SAI LẦM"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Email là tài sản bạn thật sự sở hữu, không thuật toán nào lấy đi được. Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại để bắt đầu xây danh sách của bạn nhé.",
+      "keywords": [
+        "kiếm tiền online",
+        "Lưu video",
+        "xây danh sách"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

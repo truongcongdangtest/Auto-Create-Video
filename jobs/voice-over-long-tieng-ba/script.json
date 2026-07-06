@@ -1,0 +1,139 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Kiếm tiền bằng giọng nói: nghề voice-over thời AI",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "VOICE-OVER THỜI AI"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-ai-ep-gia",
+      "type": "hook",
+      "voiceText": "Giọng đọc ây ai giờ chỉ tốn vài chục nghìn một video, vậy ai còn sống được bằng nghề đọc thuyết minh? Sự thật là vẫn có, nhưng chỉ ở những ngách mà máy chưa làm nổi.",
+      "keywords": [
+        "giọng đọc ây ai",
+        "sống được",
+        "ngách"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "AI ĐANG ÉP GIÁ NGHỀ GIỌNG NÓI",
+        "subhead": "Ai còn kiếm được tiền?",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "thi-truong-co-lai",
+      "type": "body",
+      "voiceText": "Nói thẳng, thị trường đang co lại. Sách nói, đọc báo, podcast gần như đã bị giọng máy thay thế vì rẻ hơn hàng chục lần. Đọc sách nói thuê giờ có nơi chỉ còn năm đến bảy nghìn đồng một phút.",
+      "keywords": [
+        "đang co lại",
+        "giọng máy thay thế",
+        "năm đến bảy nghìn"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Sách nói, đọc báo, podcast đã bị giọng máy thay gần hết",
+        "tag": "SỰ THẬT"
+      }
+    },
+    {
+      "id": "gia-doc-quang-cao",
+      "type": "body",
+      "voiceText": "Nhưng đọc quảng cáo thì khác, vì cần cảm xúc thật. Giá thị trường hiện khoảng hai trăm đến bốn trăm nghìn đồng một phút thành phẩm, giọng có nghề còn cao hơn nhiều.",
+      "keywords": [
+        "đọc quảng cáo",
+        "cảm xúc thật",
+        "bốn trăm nghìn"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "200-400k/phút",
+        "label": "Giá đọc quảng cáo, video doanh nghiệp",
+        "context": "Giọng có nghề vẫn nhận vài triệu một job ngắn"
+      }
+    },
+    {
+      "id": "ngach-ai-chua-thay",
+      "type": "body",
+      "voiceText": "Ba ngách máy chưa thay được: giọng đọc giàu cảm xúc cho quảng cáo, giọng vùng miền chuẩn cho quảng cáo địa phương, và lồng tiếng diễn theo nhân vật. Khách sẵn sàng trả thêm cho sự tự nhiên đó.",
+      "keywords": [
+        "giàu cảm xúc",
+        "giọng vùng miền",
+        "quảng cáo địa phương"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "NGÁCH AI CHƯA THAY ĐƯỢC",
+        "bullets": [
+          "Đọc quảng cáo cần cảm xúc thật",
+          "Giọng vùng miền cho quảng cáo địa phương",
+          "Lồng tiếng diễn theo nhân vật"
+        ]
+      }
+    },
+    {
+      "id": "setup-hai-trieu",
+      "type": "body",
+      "voiceText": "Đồ nghề khởi điểm không tới hai triệu đồng: một chiếc micro cắm máy tính khoảng một triệu rưỡi, cộng chăn dày quây quanh để tiêu âm. Thu trong tủ quần áo cũng cho chất lượng bất ngờ.",
+      "keywords": [
+        "hai triệu đồng",
+        "chăn dày",
+        "tiêu âm"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Dưới 2 triệu",
+        "label": "Chi phí đồ nghề khởi điểm",
+        "context": "Micro cắm máy tính cộng chăn tiêu âm là đủ"
+      }
+    },
+    {
+      "id": "cach-bat-dau",
+      "type": "body",
+      "voiceText": "Cách vào nghề: thu một bản đề mô một phút thật kỹ, rồi chào giá trong các nhóm tuyển giọng đọc và sàn việc tự do. Người mới thường bị ép giá thấp, nên hãy coi sáu tháng đầu là thời gian luyện nghề chứ chưa phải kiếm sống.",
+      "keywords": [
+        "bản đề mô một phút",
+        "tuyển giọng đọc",
+        "ép giá"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Thu demo 1 phút, chào giá ở nhóm tuyển giọng và sàn việc tự do",
+        "tag": "BẮT ĐẦU"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Nghề này không dễ, nhưng vẫn có cửa cho giọng thật sự có màu. Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại để xem khi cần nhé.",
+      "keywords": [
+        "giọng thật sự có màu",
+        "kiếm tiền online",
+        "lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

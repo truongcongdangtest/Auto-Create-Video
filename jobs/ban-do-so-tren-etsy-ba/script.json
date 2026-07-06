@@ -1,0 +1,139 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Etsy: chợ đồ số quốc tế mà người Việt đang bỏ quên",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "BÁN ĐỒ SỐ TRÊN ETSY"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-etsy",
+      "type": "hook",
+      "voiceText": "Khách Tây sẵn sàng trả năm đến mười lăm đô la cho một file thiệp cưới hay planner, mà chi phí làm ra gần như bằng không. Đó là thị trường đồ số trên Etsy, khu chợ quốc tế mà người Việt đang bỏ quên.",
+      "keywords": [
+        "mười lăm đô la",
+        "gần như bằng không",
+        "bỏ quên"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "FILE 0 ĐỒNG, KHÁCH TÂY TRẢ 15 ĐÔ",
+        "subhead": "Bán đồ số trên Etsy",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "phi-listing",
+      "type": "body",
+      "voiceText": "Phí đăng một sản phẩm trên Etsy chỉ hai mươi xu, tức chưa tới sáu nghìn đồng, và listing có hiệu lực tới bốn tháng. Khi bán được, Etsy thu thêm khoảng sáu phẩy năm phần trăm mỗi đơn, phần còn lại là của bạn.",
+      "keywords": [
+        "hai mươi xu",
+        "bốn tháng",
+        "sáu phẩy năm phần trăm"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "0,2 đô",
+        "label": "Phí đăng một sản phẩm trên Etsy",
+        "context": "Hiệu lực 4 tháng, bán được thu thêm 6,5%"
+      }
+    },
+    {
+      "id": "ngach-an-khach",
+      "type": "body",
+      "voiceText": "Ngách ăn khách nhất là đồ cưới, như thiệp mời và bảng tên bàn tiệc dạng file in. Ngoài ra còn planner cho ai pét, sticker trang trí sổ tay, và file ét vê giê cho dân chơi máy cắt. Bạn thiết kế một lần rồi bán đi bán lại không giới hạn.",
+      "keywords": [
+        "thiệp mời",
+        "sticker",
+        "bán đi bán lại"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Ngách đồ số đang hút khách Tây",
+        "bullets": [
+          "Thiệp cưới, bảng tên bàn tiệc dạng file in",
+          "Planner cho iPad và bản in kế hoạch",
+          "Sticker trang trí sổ tay, journal",
+          "File SVG cho cộng đồng máy cắt Cricut"
+        ]
+      }
+    },
+    {
+      "id": "nhan-tien-payoneer",
+      "type": "body",
+      "voiceText": "Người Việt được bán trên Etsy hoàn toàn hợp lệ và nhận tiền qua Payoneer. Mỗi tuần Etsy chuyển tiền một lần, bạn rút về tài khoản ngân hàng Việt Nam trong vài ngày làm việc.",
+      "keywords": [
+        "Payoneer",
+        "Mỗi tuần",
+        "ngân hàng Việt Nam"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Người Việt bán hợp lệ, nhận tiền qua Payoneer, Etsy chuyển về mỗi tuần một lần",
+        "tag": "THANH TOÁN"
+      }
+    },
+    {
+      "id": "su-that-cong-suc",
+      "type": "body",
+      "voiceText": "Nhưng đây không phải trò làm giàu nhanh. Người bán có kinh nghiệm thường cần năm mươi đến một trăm listing, cộng vài tháng kiên trì làm seo từ khoá, thì đơn mới bắt đầu về đều.",
+      "keywords": [
+        "làm giàu nhanh",
+        "một trăm listing",
+        "seo từ khoá"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "50-100 listing",
+        "label": "Mốc để đơn bắt đầu về đều đặn",
+        "context": "Không giàu nhanh, cần vài tháng làm SEO từ khoá"
+      }
+    },
+    {
+      "id": "rui-ro-suspend",
+      "type": "body",
+      "voiceText": "Sự thật ít ai nói: Etsy khoá shop khá gắt, nhất là với tài khoản mới từ Việt Nam. Vì vậy seller lâu năm luôn tách mỗi shop ra một hồ sơ trình duyệt riêng, không để dính ai pi hay dấu vết chung giữa các shop.",
+      "keywords": [
+        "khoá shop",
+        "hồ sơ trình duyệt riêng"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Etsy khoá shop rất gắt, seller kinh nghiệm tách mỗi shop một hồ sơ trình duyệt",
+        "tag": "RỦI RO"
+      }
+    },
+    {
+      "id": "outro-cloak",
+      "type": "outro",
+      "voiceText": "Nếu bạn định làm nhiều shop nghiêm túc, Cloak Login giúp mỗi shop chạy trong một hồ sơ trình duyệt độc lập, an toàn hơn hẳn. Lưu video lại và bắt đầu với file đầu tiên của bạn nhé.",
+      "keywords": [
+        "Cloak Login",
+        "hồ sơ trình duyệt độc lập",
+        "Lưu video lại"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Quản lý nhiều shop an toàn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

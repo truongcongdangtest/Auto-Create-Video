@@ -1,0 +1,140 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Mở shop TikTok Shop: hướng dẫn thật, số liệu thật",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "TIKTOK SHOP 2026"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-de-len-don",
+      "type": "hook",
+      "voiceText": "TikTok Shop đang là sàn dễ lên đơn nhất cho người mới, nhưng cũng là sàn dễ ăn vi phạm nhất. Video này chỉ bạn cách mở shop đúng chuẩn, với số liệu phí mới nhất năm nay.",
+      "keywords": [
+        "dễ lên đơn nhất",
+        "dễ ăn vi phạm",
+        "mở shop"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "SÀN DỄ LÊN ĐƠN, DỄ ĂN PHẠT NHẤT",
+        "subhead": "Mở TikTok Shop 2026",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "dieu-kien-mo-shop",
+      "type": "body",
+      "voiceText": "Để mở shop, cá nhân trên mười tám tuổi chỉ cần căn cước công dân, số điện thoại và tài khoản ngân hàng chính chủ. Từ năm nay, sàn tự khấu trừ thuế hộ bạn, và doanh thu trên năm trăm triệu một năm mới phải nộp thuế.",
+      "keywords": [
+        "căn cước công dân",
+        "khấu trừ thuế",
+        "năm trăm triệu"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Chỉ cần CCCD + tài khoản ngân hàng. Sàn tự khấu trừ thuế hộ bạn.",
+        "tag": "ĐIỀU KIỆN"
+      }
+    },
+    {
+      "id": "phi-san-that",
+      "type": "body",
+      "voiceText": "Phí sàn giờ không còn rẻ: phí giao dịch sáu phần trăm, cộng phí hoa hồng tính theo ngành hàng, cộng ba nghìn đồng cho mỗi đơn giao thành công. Tổng phí có thể ăn mất mười đến gần hai mươi phần trăm giá bán, nên bạn phải tính giá thật kỹ ngay từ đầu.",
+      "keywords": [
+        "sáu phần trăm",
+        "phí hoa hồng",
+        "ba nghìn đồng"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "6% + hoa hồng",
+        "label": "Phí giao dịch + hoa hồng theo ngành",
+        "context": "Cộng 3.000đ mỗi đơn — tính giá thật kỹ"
+      }
+    },
+    {
+      "id": "chon-hang-win",
+      "type": "body",
+      "voiceText": "Chọn hàng theo ba tiêu chí: sản phẩm phải quay video được, nhìn là hiểu ngay công dụng. Giá bán dưới ba trăm nghìn để khách chốt nhanh, và biên lợi nhuận từ năm mươi phần trăm trở lên để gánh phí sàn cộng tiền quảng cáo. Ưu tiên hàng nhẹ, khó vỡ, dễ đóng gói.",
+      "keywords": [
+        "quay video được",
+        "dưới ba trăm nghìn",
+        "năm mươi phần trăm"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "CÔNG THỨC CHỌN HÀNG WIN",
+        "bullets": [
+          "Quay video demo được, nhìn là hiểu",
+          "Giá bán dưới 300k, khách chốt nhanh",
+          "Biên lợi nhuận 50%+ gánh phí và ads",
+          "Hàng nhẹ, khó vỡ, dễ đóng gói"
+        ]
+      }
+    },
+    {
+      "id": "dung-om-hang",
+      "type": "body",
+      "voiceText": "Sai lầm lớn nhất của người mới là nhập cả kho hàng khi chưa có đơn nào. Hãy thử bằng dropship nội địa trước: có khách đặt thì mới lấy hàng từ nhà cung cấp gửi đi. Khi một sản phẩm ra đơn đều mỗi ngày, lúc đó nhập hàng cũng chưa muộn.",
+      "keywords": [
+        "nhập cả kho hàng",
+        "dropship nội địa",
+        "ra đơn đều"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Đừng ôm hàng sớm. Thử dropship nội địa, ra đơn đều rồi mới nhập kho.",
+        "tag": "SAI LẦM #1"
+      }
+    },
+    {
+      "id": "tach-rui-ro",
+      "type": "body",
+      "voiceText": "TikTok Shop phạt điểm vi phạm rất gắt, đủ điểm là khoá shop và mất luôn dòng tiền. Vì vậy các nhà bán lớn thường vận hành nhiều shop song song để tách rủi ro: một shop gặp chuyện, các shop còn lại vẫn chạy bình thường.",
+      "keywords": [
+        "điểm vi phạm",
+        "khoá shop",
+        "nhiều shop"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Tách rủi ro",
+        "label": "Seller lớn chạy nhiều shop song song",
+        "context": "Một shop bị khoá, hệ thống vẫn sống"
+      }
+    },
+    {
+      "id": "outro-cloak",
+      "type": "outro",
+      "voiceText": "Nhưng nhiều shop trên cùng một máy rất dễ bị sàn liên kết và quét cả cụm. Cloak Login giúp mỗi shop chạy trong một hồ sơ trình duyệt riêng biệt, an toàn hơn hẳn. Lưu video lại và theo dõi kênh để học tiếp nhé.",
+      "keywords": [
+        "Cloak Login",
+        "hồ sơ trình duyệt riêng",
+        "Lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Mỗi shop một hồ sơ riêng",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

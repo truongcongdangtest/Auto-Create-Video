@@ -1,0 +1,7 @@
+1
+00:00:00,000 --> 00:00:08,009
+một phiên live ra đơn luôn có kịch bản ba phần, mở đầu phải có điểm nhấn, nêu ngay ưu đãi hấp dẫn để giữ người xem ở lại.
+
+2
+00:00:08,109 --> 00:00:16,482
+giữa phiên tung ưu đãi giữ chân và trò chơi tặng quà, cuối phiên chốt bằng giá sốc, giới hạn số lượng để người xem bấm mua ngay.

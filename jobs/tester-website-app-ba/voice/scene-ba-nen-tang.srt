@@ -1,0 +1,7 @@
+1
+00:00:00,000 --> 00:00:10,703
+ba nền tảng uy tín để bắt đầu là user testing, user lytics và iu test, user lytics trả từ năm đến chín mươi đô mỗi bài, phổ biến nhất là năm đến mười đô.
+
+2
+00:00:10,803 --> 00:00:14,516
+còn iu test thì thiên về các dự án kiểm thử dài hơi hơn.

@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Bán khoá học online: biến thứ bạn giỏi thành tiền",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "BÁN KHOÁ HỌC ONLINE"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-gioi-hon-80",
+      "type": "hook",
+      "voiceText": "Bạn không cần là chuyên gia đầu ngành. Chỉ cần giỏi hơn tám mươi phần trăm người khác ở một kỹ năng, là bạn đã đủ trình để dạy và thu tiền từ nó rồi.",
+      "keywords": [
+        "giỏi hơn tám mươi phần trăm",
+        "một kỹ năng",
+        "thu tiền"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "GIỎI HƠN 80% NGƯỜI KHÁC = DẠY ĐƯỢC",
+        "subhead": "Biến kỹ năng thành tiền",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "chon-nganh-hep",
+      "type": "body",
+      "voiceText": "Bước đầu tiên là chọn chủ đề đủ hẹp. Đừng dạy Excel chung chung, hãy dạy Excel cho kế toán kho. Ngách càng hẹp thì càng dễ bán, vì người xem thấy đúng thứ họ cần.",
+      "keywords": [
+        "chủ đề đủ hẹp",
+        "Excel cho kế toán kho",
+        "càng dễ bán"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Đừng dạy Excel chung chung — hãy dạy Excel cho kế toán kho",
+        "tag": "CHỌN NGÁCH"
+      }
+    },
+    {
+      "id": "do-nghe-can-co",
+      "type": "body",
+      "voiceText": "Đồ nghề không tốn kém đâu. Một chiếc điện thoại để quay hình, phần mềm âu bi ét miễn phí để quay màn hình máy tính, thêm chiếc mic cài áo vài trăm nghìn là đủ. Chia khoá học thành mười đến hai mươi video, mỗi video năm đến mười phút thôi.",
+      "keywords": [
+        "điện thoại",
+        "quay màn hình",
+        "mỗi video năm đến mười phút"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Đồ nghề cần có",
+        "bullets": [
+          "Điện thoại quay hình + mic cài áo",
+          "OBS miễn phí quay màn hình máy tính",
+          "10–20 video, mỗi video 5–10 phút",
+          "Slide đơn giản, nói chậm và rõ"
+        ]
+      }
+    },
+    {
+      "id": "gia-thuc-te",
+      "type": "body",
+      "voiceText": "Về giá, mức thực tế cho khoá đầu tiên là khoảng ba trăm đến sáu trăm nghìn đồng. Đặt quá rẻ thì bị coi thường, đặt quá đắt thì khó bán khi bạn chưa có tên tuổi.",
+      "keywords": [
+        "ba trăm đến sáu trăm nghìn",
+        "khoá đầu tiên",
+        "chưa có tên tuổi"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "300–600k/khoá",
+        "label": "Mức giá thực tế cho khoá đầu tiên",
+        "context": "Chưa có tên tuổi, đừng đặt giá quá cao"
+      }
+    },
+    {
+      "id": "ban-o-dau",
+      "type": "body",
+      "voiceText": "Đưa khoá học lên Unica thì có sẵn học viên, nhưng bạn chỉ nhận về khoảng bốn mươi phần trăm giá bán. Gumroad thu phí mười phần trăm, hợp với dạy khách quốc tế. Còn tự bán qua Zalo và Facebook thì giữ gần trọn tiền, đổi lại phải tự đi tìm khách.",
+      "keywords": [
+        "Unica",
+        "Gumroad",
+        "Zalo và Facebook"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Bán khoá học ở đâu?",
+        "bullets": [
+          "Unica: sẵn học viên, bạn nhận ~40%",
+          "Gumroad: phí 10%, bán khách quốc tế",
+          "Tự bán Zalo–Facebook: giữ gần trọn"
+        ]
+      }
+    },
+    {
+      "id": "con-so-song-duoc",
+      "type": "body",
+      "voiceText": "Con số cần nhớ: khoảng ba mươi đến năm mươi học viên mỗi tháng là bạn sống được với nghề này. Và hãy chuẩn bị tinh thần, khoá đầu tiên thường mất một đến hai tháng mới làm xong, không có chuyện giàu nhanh.",
+      "keywords": [
+        "ba mươi đến năm mươi học viên",
+        "một đến hai tháng",
+        "không có chuyện giàu nhanh"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "30–50 học viên",
+        "label": "Mỗi tháng để sống được với nghề",
+        "context": "Khoá đầu tiên mất 1–2 tháng để hoàn thành"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Kiến thức bạn đang có chính là tài sản, đừng để nó nằm im. Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại để xem khi bắt tay vào làm nhé.",
+      "keywords": [
+        "kiến thức",
+        "kiếm tiền online",
+        "Lưu video lại"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

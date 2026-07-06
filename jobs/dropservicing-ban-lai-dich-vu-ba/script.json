@@ -1,0 +1,139 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Dropservicing: nhận dự án giá cao, thuê người làm giá thấp",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "BÁN LẠI DỊCH VỤ"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-khong-can-biet-lam",
+      "type": "hook",
+      "voiceText": "Có một nghề online mà bạn không cần biết thiết kế, không cần biết dựng video, vẫn nhận dự án đều đều. Bí mật là bạn chỉ cần biết bán, và biết kiểm tra chất lượng.",
+      "keywords": [
+        "nghề online",
+        "không cần biết",
+        "kiểm tra chất lượng"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "KHÔNG BIẾT LÀM, VẪN NHẬN DỰ ÁN",
+        "subhead": "Dropservicing là gì?",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "mo-hinh-dropservicing",
+      "type": "body",
+      "voiceText": "Mô hình này gọi là dropservicing, tức là bán lại dịch vụ. Bạn nhận job thiết kế, dựng video hay seo từ khách với một mức giá, rồi thuê freelancer làm với giá chỉ bằng một phần ba. Phần chênh lệch chính là lợi nhuận của bạn.",
+      "keywords": [
+        "dropservicing",
+        "bán lại dịch vụ",
+        "một phần ba"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Nhận job giá cao, thuê freelancer làm 1/3 giá, ăn chênh lệch",
+        "tag": "MÔ HÌNH"
+      }
+    },
+    {
+      "id": "vi-du-con-so",
+      "type": "body",
+      "voiceText": "Ví dụ, một logo khách trả một trăm đô, bạn thuê designer trên Fiverr làm với giá ba mươi đô. Nhưng nhớ trừ phí sàn, Fiverr thu khoảng hai mươi phần trăm phía người bán, nên phải tính giá thật kỹ trước khi chốt với khách.",
+      "keywords": [
+        "một trăm đô",
+        "ba mươi đô",
+        "phí sàn"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "$100 → $30",
+        "label": "Khách trả 100 đô, thuê làm 30 đô",
+        "context": "Fiverr thu ~20% phí người bán trên mỗi đơn"
+      }
+    },
+    {
+      "id": "ky-nang-that",
+      "type": "body",
+      "voiceText": "Kỹ năng thật của nghề này không phải là tự tay làm dịch vụ, mà là sales và quản lý. Bạn phải tìm được khách, báo giá đúng, quản lý deadline chặt cả hai đầu, và kiểm tra chất lượng trước khi giao cho khách.",
+      "keywords": [
+        "sales",
+        "quản lý deadline",
+        "kiểm tra chất lượng"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "KỸ NĂNG THẬT CỦA NGHỀ NÀY",
+        "bullets": [
+          "Sales: tìm khách và chốt giá tốt",
+          "Báo giá đủ dư để trừ phí sàn",
+          "Quản lý deadline chặt cả hai đầu",
+          "Kiểm tra chất lượng trước khi giao"
+        ]
+      }
+    },
+    {
+      "id": "rui-ro-trung-thuc",
+      "type": "body",
+      "voiceText": "Nói thật về rủi ro: freelancer có thể bùng kèo sát deadline, và chất lượng thường không đều giữa các đơn. Vì vậy luôn cần ít nhất hai người dự phòng cho mỗi loại dịch vụ, và đừng nhận job lớn khi chưa test thợ bằng đơn nhỏ.",
+      "keywords": [
+        "bùng kèo",
+        "không đều",
+        "dự phòng"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Freelancer bùng kèo, chất lượng không đều — cần 2 người dự phòng",
+        "tag": "RỦI RO THẬT"
+      }
+    },
+    {
+      "id": "bat-dau-the-nao",
+      "type": "body",
+      "voiceText": "Bắt đầu thế nào? Tìm khách trong các nhóm Facebook của doanh nghiệp nhỏ, hoặc chào giá trên Upwork rồi thuê lại thợ Việt với giá mềm hơn, biên lợi nhuận phổ biến từ hai mươi lăm đến năm mươi phần trăm mỗi đơn.",
+      "keywords": [
+        "nhóm Facebook",
+        "Upwork",
+        "biên lợi nhuận"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "25–50%",
+        "label": "Biên lợi nhuận phổ biến mỗi đơn",
+        "context": "Khách từ nhóm FB, Upwork; thợ Việt giá mềm"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login, kênh kiến thức kiếm tiền online. Hãy lưu video này lại, và theo dõi kênh để không bỏ lỡ những nghề online thực tế tiếp theo nhé.",
+      "keywords": [
+        "kiếm tiền online",
+        "lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

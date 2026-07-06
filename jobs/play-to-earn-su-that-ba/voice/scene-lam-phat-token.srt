@@ -1,0 +1,3 @@
+1
+00:00:00,000 --> 00:00:14,998
+vì sao sập, vì lạm phát token, có thời điểm game in ra lượng token nhiều gấp bốn lần lượng bị đốt đi mỗi ngày, giống một quốc gia in tiền nhanh hơn tốc độ người dân tiêu, tiền tất nhiên phải mất giá.

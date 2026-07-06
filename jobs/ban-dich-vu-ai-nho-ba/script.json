@@ -1,0 +1,141 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Bán dịch vụ AI cho chủ shop: nghề mới, khách đầy đường",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "NGHỀ DỊCH VỤ AI"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "voiceText": "Hàng triệu chủ shop ở Việt Nam biết ây ai đang bùng nổ, nhưng không biết dùng thế nào. Khoảng trống đó chính là cơ hội kiếm tiền của bạn.",
+      "keywords": [
+        "chủ shop",
+        "không biết dùng",
+        "cơ hội kiếm tiền"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "BÁN DỊCH VỤ AI CHO CHỦ SHOP",
+        "subhead": "Nghề mới, khách đầy đường",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "nghe-moi",
+      "type": "body",
+      "voiceText": "Bạn không cần lập trình. Bạn chỉ cần học dùng thành thạo vài công cụ ây ai, rồi bán kết quả cho những chủ shop bận rộn không có thời gian tự mò.",
+      "keywords": [
+        "không cần lập trình",
+        "học dùng thành thạo",
+        "bán kết quả"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Không cần lập trình — học dùng công cụ AI thành thạo rồi bán kết quả",
+        "tag": "NGHỀ MỚI"
+      }
+    },
+    {
+      "id": "ba-dich-vu",
+      "type": "body",
+      "voiceText": "Có ba dịch vụ dễ bán nhất cho chủ shop. Đó là tạo ảnh sản phẩm bằng ây ai thay cho chụp studio, cài chatbot trả lời tin nhắn fanpage, và viết mô tả sản phẩm hàng loạt cho cả trăm mặt hàng.",
+      "keywords": [
+        "ảnh sản phẩm",
+        "chatbot",
+        "mô tả sản phẩm"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "3 DỊCH VỤ DỄ BÁN NHẤT",
+        "bullets": [
+          "Ảnh sản phẩm AI — thay chụp studio đắt đỏ",
+          "Chatbot trả inbox fanpage 24/7",
+          "Viết mô tả sản phẩm hàng loạt"
+        ]
+      }
+    },
+    {
+      "id": "gia-thi-truong",
+      "type": "body",
+      "voiceText": "Giá thị trường rất thật: ảnh sản phẩm ây ai đang được bán khoảng năm mươi đến một trăm nghìn một ảnh, chatbot fanpage từ hai trăm đến năm trăm nghìn mỗi tháng. Gói trọn bộ cho một shop có thể lên vài triệu.",
+      "keywords": [
+        "một trăm nghìn một ảnh",
+        "năm trăm nghìn mỗi tháng",
+        "vài triệu"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "50-100k/ảnh",
+        "label": "Giá ảnh sản phẩm AI trên thị trường",
+        "context": "Chatbot 200-500k/tháng, gói trọn bộ vài triệu"
+      }
+    },
+    {
+      "id": "chot-khach-dau",
+      "type": "body",
+      "voiceText": "Để chốt khách đầu tiên, hãy demo trước thu tiền sau: chọn một shop quen, làm miễn phí ba tấm ảnh hoặc cài thử chatbot một tuần. Khách thấy kết quả thật thì rất dễ trả tiền cho gói lớn hơn.",
+      "keywords": [
+        "demo trước thu tiền sau",
+        "làm miễn phí",
+        "kết quả thật"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "CÁCH CHỐT KHÁCH ĐẦU TIÊN",
+        "bullets": [
+          "Chọn shop quen biết để mở lời",
+          "Demo miễn phí: 3 ảnh hoặc 1 tuần chatbot",
+          "Thấy kết quả thật, bán gói tháng"
+        ]
+      }
+    },
+    {
+      "id": "dao-duc-nghe",
+      "type": "body",
+      "voiceText": "Đạo đức nghề: nói rõ với khách rằng ảnh và nội dung do ây ai tạo, và luôn kiểm tra kỹ trước khi giao. Làm ăn minh bạch thì khách mới giới thiệu thêm khách.",
+      "keywords": [
+        "nói rõ với khách",
+        "kiểm tra kỹ",
+        "minh bạch"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Nói rõ với khách: đây là AI. Minh bạch mới giữ được khách lâu dài",
+        "tag": "ĐẠO ĐỨC NGHỀ"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại và bắt đầu từ shop gần nhà bạn nhé.",
+      "keywords": [
+        "kiếm tiền online",
+        "Lưu video lại"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

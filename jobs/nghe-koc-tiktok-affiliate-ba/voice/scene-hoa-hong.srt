@@ -1,0 +1,7 @@
+1
+00:00:00,000 --> 00:00:05,829
+mỗi đơn hàng chốt qua giỏ của bạn, nhãn hàng trả hoa hồng thường từ năm đến hai mươi phần trăm.
+
+2
+00:00:05,929 --> 00:00:13,000
+ví dụ đơn hai trăm nghìn, hoa hồng mười phần trăm, bạn bỏ túi hai mươi nghìn mà không cần ôm hàng hay bỏ vốn.

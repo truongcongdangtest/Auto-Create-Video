@@ -1,0 +1,3 @@
+1
+00:00:00,000 --> 00:00:12,823
+có ba dịch vụ dễ bán nhất cho chủ shop, đó là tạo ảnh sản phẩm bằng ây ai thay cho chụp studio, cài chatbot trả lời tin nhắn fanpage, và viết mô tả sản phẩm hàng loạt cho cả trăm mặt hàng.

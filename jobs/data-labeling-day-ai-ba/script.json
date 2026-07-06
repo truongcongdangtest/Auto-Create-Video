@@ -1,0 +1,142 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Nghề 'dạy AI': gán nhãn dữ liệu nhận lương giờ bằng đô",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "DẠY AI NHẬN ĐÔ"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-day-ai",
+      "type": "hook",
+      "voiceText": "Ây ai thông minh là nhờ hàng triệu người ngồi chấm bài cho nó mỗi ngày. Và họ được trả từ năm đến hai mươi lăm đô một giờ. Nghề này gọi là gán nhãn dữ liệu, và bạn hoàn toàn làm được tại nhà.",
+      "keywords": [
+        "chấm bài",
+        "hai mươi lăm đô",
+        "gán nhãn dữ liệu"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "NGHỀ 'DẠY AI' NHẬN LƯƠNG ĐÔ",
+        "subhead": "Gán nhãn dữ liệu tại nhà",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "muc-thu-nhap",
+      "type": "body",
+      "voiceText": "Mức phổ biến cho người mới là từ năm đến mười lăm đô một giờ. Nếu bạn giỏi tiếng Anh hoặc có chuyên môn như lập trình, y khoa, mức trả có thể lên hai mươi lăm đô hoặc cao hơn nữa.",
+      "keywords": [
+        "mười lăm đô một giờ",
+        "chuyên môn",
+        "hai mươi lăm đô"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "5–25 đô/giờ",
+        "label": "Mức trả phổ biến của nghề dạy AI",
+        "context": "Chuyên môn sâu có thể nhận cao hơn nữa"
+      }
+    },
+    {
+      "id": "nen-tang-that",
+      "type": "body",
+      "voiceText": "Các nền tảng thật để bắt đầu gồm Outlier, Appen và Alignerr. Outlier trả theo nhiệm vụ, quy đổi khoảng mười lăm đến ba mươi đô một giờ với người làm ổn định. Alignerr trả cao cho chuyên môn sâu, còn Appen dễ vào hơn nhưng mức trả thấp hơn.",
+      "keywords": [
+        "Outlier",
+        "Appen",
+        "Alignerr"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "3 nền tảng uy tín",
+        "bullets": [
+          "Outlier — chấm câu trả lời AI, trả theo task",
+          "Alignerr — trả cao cho chuyên môn sâu",
+          "Appen — dễ vào, mức trả thấp hơn"
+        ]
+      }
+    },
+    {
+      "id": "test-dau-vao",
+      "type": "body",
+      "voiceText": "Lưu ý là các nền tảng tuyển theo đợt và có bài test đầu vào khá khó, tỉ lệ đậu không cao. Hãy đọc kỹ hướng dẫn và làm test thật cẩn thận, vì thường bạn chỉ có một cơ hội.",
+      "keywords": [
+        "tuyển theo đợt",
+        "test đầu vào",
+        "một cơ hội"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Tuyển theo đợt, test đầu vào khó — thường chỉ có một cơ hội làm bài",
+        "tag": "ĐẦU VÀO"
+      }
+    },
+    {
+      "id": "loai-viec",
+      "type": "body",
+      "voiceText": "Khi đã đậu, công việc rất đa dạng: đánh giá câu trả lời của ây ai, gán nhãn hình ảnh, viết mẫu văn bản, hoặc thu âm giọng nói tiếng Việt. Bạn chỉ cần máy tính, mạng ổn định và sự tỉ mỉ.",
+      "keywords": [
+        "đánh giá câu trả lời",
+        "gán nhãn hình ảnh",
+        "viết mẫu văn bản"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "Bạn sẽ làm gì?",
+        "bullets": [
+          "Chấm điểm câu trả lời của AI",
+          "Gán nhãn hình ảnh, video",
+          "Viết mẫu văn bản theo yêu cầu",
+          "Thu âm giọng nói tiếng Việt"
+        ]
+      }
+    },
+    {
+      "id": "noi-that-rui-ro",
+      "type": "body",
+      "voiceText": "Nói thật: việc không đều, dự án có thể dừng đột ngột và thu nhập sẽ trồi sụt. Đặc biệt phải tuân thủ quy định một người một tài khoản, khai đúng thông tin thật, gian lận sẽ bị khoá vĩnh viễn và mất luôn tiền công.",
+      "keywords": [
+        "việc không đều",
+        "dừng đột ngột",
+        "một người một tài khoản"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Việc không đều, dự án dừng đột ngột — và bắt buộc 1 người 1 tài khoản",
+        "tag": "NÓI THẬT"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Đây là nghề thật, tiền thật, nhưng đòi hỏi sự nghiêm túc và kiên nhẫn. Cloak Login, kênh kiến thức kiếm tiền online. Hãy lưu video lại để xem khi cần nhé.",
+      "keywords": [
+        "kiếm tiền online",
+        "lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

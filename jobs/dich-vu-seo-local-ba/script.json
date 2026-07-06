@@ -1,0 +1,142 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Bán dịch vụ SEO cho quán xá, phòng khám: ít ai cạnh tranh",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "NGÁCH SEO LOCAL"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-google-maps",
+      "type": "hook",
+      "voiceText": "Thử gõ nha khoa gần đây trên điện thoại xem. Doanh nghiệp nào hiện lên đầu Google Maps là hốt gần hết khách, và họ sẵn sàng trả tiền hàng tháng cho vị trí đó. Đây là dịch vụ bạn có thể bán mà ít ai cạnh tranh.",
+      "keywords": [
+        "nha khoa gần đây",
+        "lên đầu Google Maps",
+        "ít ai cạnh tranh"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "LÊN ĐẦU GOOGLE MAPS LÀ HỐT KHÁCH",
+        "subhead": "Bán dịch vụ SEO local",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "seo-local-khac-seo-web",
+      "type": "body",
+      "voiceText": "Seo local khác hẳn seo web. Bạn không cần viết hàng trăm bài chuẩn seo, chỉ cần tối ưu hồ sơ Google Business Profile của quán xá, phòng khám, spa quanh khu bạn sống. Đa số chủ quán không hề biết thứ này tồn tại.",
+      "keywords": [
+        "Seo local",
+        "Google Business Profile",
+        "chủ quán không hề biết"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "SEO local khác SEO web: tối ưu hồ sơ Google, không cần viết trăm bài",
+        "tag": "CƠ HỘI NGÁCH"
+      }
+    },
+    {
+      "id": "cong-viec-cu-the",
+      "type": "body",
+      "voiceText": "Công việc xoay quanh bốn thứ. Bạn điền đầy đủ hồ sơ, chọn đúng danh mục ngành, và xin khách để lại đánh giá năm sao đều đặn. Sau đó đăng ảnh thật với bài viết mỗi tuần, giữ tên, địa chỉ, số điện thoại đồng nhất trên mọi trang.",
+      "keywords": [
+        "đánh giá năm sao",
+        "đăng ảnh thật",
+        "đồng nhất"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "4 VIỆC PHẢI LÀM MỖI THÁNG",
+        "bullets": [
+          "Điền đủ hồ sơ, chọn đúng danh mục ngành",
+          "Xin review 5 sao đều đặn từ khách thật",
+          "Đăng ảnh thật + bài viết mỗi tuần",
+          "Tên, địa chỉ, SĐT đồng nhất mọi nơi"
+        ]
+      }
+    },
+    {
+      "id": "gia-goi-dich-vu",
+      "type": "body",
+      "voiceText": "Tại Việt Nam, gói seo local thường được chào từ năm đến mười lăm triệu đồng mỗi tháng, tuỳ độ cạnh tranh của ngành. Chỉ cần ba đến bốn khách duy trì là bạn có thu nhập ổn định mỗi tháng.",
+      "keywords": [
+        "năm đến mười lăm triệu",
+        "ba đến bốn khách",
+        "thu nhập ổn định"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "5-15 triệu/tháng",
+        "label": "Giá gói SEO local phổ biến tại VN",
+        "context": "3-4 khách duy trì = thu nhập ổn định"
+      }
+    },
+    {
+      "id": "noi-that-thoi-gian",
+      "type": "body",
+      "voiceText": "Nói thật: kết quả seo local cần ba đến sáu tháng mới rõ rệt. Đừng bao giờ hứa top một sau một tuần, ai hứa vậy là lừa khách. Hãy bán bằng cam kết đúng: báo cáo số cuộc gọi và số lượt chỉ đường tăng lên từng tháng.",
+      "keywords": [
+        "ba đến sáu tháng",
+        "hứa top một",
+        "cam kết đúng"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Kết quả cần 3-6 tháng. Đừng hứa 'top 1 sau 1 tuần' — đó là lừa khách",
+        "tag": "NÓI THẬT"
+      }
+    },
+    {
+      "id": "chot-khach-dau-tien",
+      "type": "body",
+      "voiceText": "Kiếm khách đầu tiên không khó: chọn một ngành như nha khoa hoặc quán cà phê, kiểm tra miễn phí hồ sơ Google của họ, chỉ ra lỗi cụ thể rồi chào gói tháng đầu giá mềm. Một khách hài lòng sẽ giới thiệu cả khu phố cho bạn.",
+      "keywords": [
+        "khách đầu tiên",
+        "kiểm tra miễn phí",
+        "giới thiệu cả khu phố"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "CÁCH CHỐT KHÁCH ĐẦU TIÊN",
+        "bullets": [
+          "Chọn 1 ngành: nha khoa, cà phê, spa",
+          "Audit miễn phí, chỉ ra lỗi cụ thể",
+          "Chào gói tháng đầu giá mềm + báo cáo rõ"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Nghề này cần chăm chỉ chứ không cần vốn, và khách địa phương thì luôn ở quanh bạn. Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại để xem khi cần nhé.",
+      "keywords": [
+        "kiếm tiền online",
+        "Lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

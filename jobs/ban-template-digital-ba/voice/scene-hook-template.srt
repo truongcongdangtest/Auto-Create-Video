@@ -1,0 +1,3 @@
+1
+00:00:00,000 --> 00:00:13,055
+có một loại sản phẩm không cần kho, không cần ship, bán một trăm bản hay mười nghìn bản thì chi phí vẫn gần như bằng không, đó là template, sản phẩm số bạn chỉ cần làm một lần rồi bán mãi mãi.

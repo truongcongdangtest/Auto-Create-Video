@@ -1,0 +1,138 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Chế độ chuyên nghiệp Facebook: thưởng Reels có thật không?",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "THƯỞNG REELS 2026"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-nghin-do",
+      "type": "hook",
+      "voiceText": "Lướt mạng thấy người ta khoe nhận cả nghìn đô la tiền thưởng Reels từ Facebook. Sự thật ở Việt Nam có ngon ăn như vậy không? Xem hết video để khỏi ảo tưởng rồi bỏ việc nhé.",
+      "keywords": [
+        "nghìn đô la",
+        "tiền thưởng Reels",
+        "Sự thật"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "NGHÌN ĐÔ TỪ REELS: THẬT KHÔNG?",
+        "subhead": "Thưởng Reels tại Việt Nam",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "bat-che-do",
+      "type": "body",
+      "voiceText": "Chế độ chuyên nghiệp cho phép kiếm tiền ngay trên trang cá nhân, không cần lập fanpage. Vào cài đặt trang cá nhân, chọn bật chế độ chuyên nghiệp là xong, hoàn toàn miễn phí.",
+      "keywords": [
+        "chế độ chuyên nghiệp",
+        "trang cá nhân",
+        "miễn phí"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Bật chế độ chuyên nghiệp: kiếm tiền ngay trên trang cá nhân, không cần fanpage",
+        "tag": "BƯỚC ĐẦU"
+      }
+    },
+    {
+      "id": "ba-nguon-tien",
+      "type": "body",
+      "voiceText": "Sau khi bật, bạn có ba nguồn tiền chính. Một là thưởng nội dung do Facebook chủ động mời. Hai là Stars người xem tặng, và ba là quảng cáo chèn trong video.",
+      "keywords": [
+        "ba nguồn tiền",
+        "thưởng nội dung",
+        "quảng cáo"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "3 NGUỒN TIỀN TỪ REELS",
+        "bullets": [
+          "Thưởng nội dung: Facebook mời mới có",
+          "Stars: người xem tặng, 1 Star ~ 0,01 đô",
+          "Quảng cáo trong video: cần đủ điều kiện"
+        ]
+      }
+    },
+    {
+      "id": "dieu-kien",
+      "type": "body",
+      "voiceText": "Muốn có quảng cáo trong video, bạn cần năm nghìn người theo dõi và sáu mươi nghìn phút xem trong sáu mươi ngày. Còn Stars dễ hơn nhiều, chỉ cần khoảng năm trăm người theo dõi là đủ điều kiện xét.",
+      "keywords": [
+        "năm nghìn người theo dõi",
+        "sáu mươi nghìn phút xem"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "5.000 follower",
+        "label": "và 60.000 phút xem trong 60 ngày",
+        "context": "Stars chỉ cần khoảng 500 người theo dõi"
+      }
+    },
+    {
+      "id": "su-that",
+      "type": "body",
+      "voiceText": "Nói thật: thưởng Reels tại Việt Nam khá thấp và thất thường, có tháng vài chục đô, có tháng không có gì. Đừng coi đây là thu nhập chính, hãy xem là khoản cộng thêm khi kênh đã có lượt xem đều.",
+      "keywords": [
+        "thất thường",
+        "thu nhập chính",
+        "cộng thêm"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Thưởng tại Việt Nam thấp và thất thường — chỉ là khoản cộng thêm khi đã có view",
+        "tag": "SỰ THẬT"
+      }
+    },
+    {
+      "id": "nuoi-nhieu-page",
+      "type": "body",
+      "voiceText": "Vì vậy dân làm nghề thường nuôi nhiều page Reels cùng lúc để cộng dồn thu nhập. Nhưng chạy nhiều tài khoản trên cùng một máy rất dễ bị Facebook quét và khóa hàng loạt.",
+      "keywords": [
+        "nuôi nhiều page",
+        "nhiều tài khoản",
+        "khóa hàng loạt"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "Nhiều page",
+        "label": "Cộng dồn thu nhập từ nhiều kênh Reels",
+        "context": "Rủi ro: quét trùng thiết bị, khóa hàng loạt"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Nếu định nuôi nhiều tài khoản, hãy tìm hiểu Cloak Login, trình duyệt giúp mỗi hồ sơ chạy như một máy riêng. Cloak Login, kênh kiến thức kiếm tiền online, lưu video lại nhé.",
+      "keywords": [
+        "Cloak Login",
+        "nuôi nhiều tài khoản",
+        "lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Nuôi nhiều page an toàn hơn",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}

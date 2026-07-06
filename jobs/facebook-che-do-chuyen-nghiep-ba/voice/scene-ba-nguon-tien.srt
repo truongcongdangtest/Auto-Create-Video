@@ -1,0 +1,3 @@
+1
+00:00:00,000 --> 00:00:10,589
+sau khi bật, bạn có ba nguồn tiền chính, một là thưởng nội dung do facebook chủ động mời, hai là stars người xem tặng, và ba là quảng cáo chèn trong video.

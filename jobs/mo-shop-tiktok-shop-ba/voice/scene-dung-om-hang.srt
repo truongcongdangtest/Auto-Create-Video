@@ -1,0 +1,7 @@
+1
+00:00:00,000 --> 00:00:10,527
+sai lầm lớn nhất của người mới là nhập cả kho hàng khi chưa có đơn nào, hãy thử bằng dropship nội địa trước, có khách đặt thì mới lấy hàng từ nhà cung cấp gửi đi.
+
+2
+00:00:10,627 --> 00:00:15,233
+khi một sản phẩm ra đơn đều mỗi ngày, lúc đó nhập hàng cũng chưa muộn.

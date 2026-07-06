@@ -1,0 +1,7 @@
+1
+00:00:00,000 --> 00:00:12,581
+người làm nghiêm túc hiếm khi chỉ chạy một tài khoản, họ thường nuôi hai đến ba tài khoản, mỗi cái bám một ngách riêng, để thuật toán hiểu rõ nội dung và không bỏ hết trứng vào một giỏ.
+
+2
+00:00:12,681 --> 00:00:18,066
+vấn đề là đăng nhập nhiều tài khoản trên cùng một máy rất dễ bị gắn cờ liên đới.

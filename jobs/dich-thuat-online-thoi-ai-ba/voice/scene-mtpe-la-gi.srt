@@ -1,0 +1,3 @@
+1
+00:00:00,000 --> 00:00:12,338
+em ti pi i nghĩa là biên tập lại bản dịch do máy tạo ra, máy dịch rất nhanh nhưng hay sai thuật ngữ, sai văn phong, và khách hàng sẵn sàng trả tiền cho người sửa được đúng những lỗi đó.

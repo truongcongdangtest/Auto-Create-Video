@@ -1,0 +1,142 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Blog + AdSense 2026: còn kiếm được tiền không?",
+    "source": {
+      "url": "https://cloakbrowse.com/vi/blog",
+      "domain": "cloakbrowse.com",
+      "image": null
+    },
+    "channel": "Cloak Login",
+    "tagline": "BLOG & ADSENSE 2026"
+  },
+  "voice": {
+    "provider": "lucylab",
+    "voiceId": "${VIETNAMESE_VOICEID}",
+    "speed": 1
+  },
+  "style": {
+    "themeKey": "cloak-orange",
+    "aspect": "9:16",
+    "character": "none"
+  },
+  "recommended_theme": "cloak-orange",
+  "scenes": [
+    {
+      "id": "hook-blog-chet-chua",
+      "type": "hook",
+      "voiceText": "Viết blog năm hai nghìn không trăm hai mươi sáu còn kiếm được tiền không? Câu trả lời thẳng là còn, nhưng không phải theo cách bạn vẫn nghĩ. Xem hết video để biết số liệu thật, không tô hồng.",
+      "keywords": [
+        "còn kiếm được tiền",
+        "trả lời thẳng",
+        "số liệu thật"
+      ],
+      "templateData": {
+        "template": "hook",
+        "headline": "BLOG 2026: CHẾT HAY CHƯA?",
+        "subhead": "Trả lời thẳng bằng số liệu",
+        "kenBurns": "zoom-in"
+      }
+    },
+    {
+      "id": "rpm-tieng-viet",
+      "type": "body",
+      "voiceText": "Một nghìn lượt xem trên blog tiếng Việt chỉ mang về khoảng không phẩy năm đến ba đô la tiền quảng cáo. Trong khi blog tiếng Anh với cùng lượt xem có thể nhận mười đến ba mươi đô la, gấp cả chục lần. Lý do là nhà quảng cáo trả giá cao hơn nhiều cho độc giả ở Mỹ và châu Âu.",
+      "keywords": [
+        "blog tiếng Việt",
+        "ba đô la",
+        "gấp cả chục lần"
+      ],
+      "templateData": {
+        "template": "stat-hero",
+        "value": "0,5–3$ / 1.000 view",
+        "label": "Doanh thu quảng cáo blog tiếng Việt",
+        "context": "Blog tiếng Anh: 10–30$ cho cùng lượt xem"
+      }
+    },
+    {
+      "id": "cong-suc-that",
+      "type": "body",
+      "voiceText": "Đừng tin ai hứa viết blog vài tuần là có tiền. Thực tế bạn cần ba mươi đến năm mươi bài viết chất lượng, rồi chờ sáu đến mười hai tháng để Google xếp hạng và lượng truy cập tăng dần. Làm seo là cuộc chơi đường dài, bỏ giữa chừng là mất trắng công sức.",
+      "keywords": [
+        "năm mươi bài viết",
+        "mười hai tháng",
+        "cuộc chơi đường dài"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "Cần 30–50 bài chuẩn SEO và 6–12 tháng mới có traffic đều",
+        "tag": "SỰ THẬT PHŨ"
+      }
+    },
+    {
+      "id": "ngach-con-song",
+      "type": "body",
+      "voiceText": "Vậy ngách nào còn sống? Đó là hướng dẫn cụ thể từng bước, và review sản phẩm, dịch vụ tại địa phương, những thứ ây ai không thể tự bịa ra. Bài càng dựa trên trải nghiệm thật của chính bạn, Google càng ưu tiên xếp hạng.",
+      "keywords": [
+        "ngách nào còn sống",
+        "hướng dẫn cụ thể",
+        "trải nghiệm thật"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "NGÁCH NÀO CÒN SỐNG NĂM 2026?",
+        "bullets": [
+          "Hướng dẫn cụ thể: sửa lỗi, mẹo, cách làm",
+          "Review sản phẩm, dịch vụ tại địa phương",
+          "Trải nghiệm thật mà AI không viết thay được"
+        ]
+      }
+    },
+    {
+      "id": "tang-thu-nhap",
+      "type": "body",
+      "voiceText": "Điều quan trọng nhất: Át Sen chỉ là tầng thu nhập đầu tiên, và phải đủ một trăm đô la mới được thanh toán. Blog thật sự ăn tiền ở tầng thứ hai: bán dịch vụ, khoá học, hoặc sản phẩm của chính bạn cho lượng độc giả đã tin tưởng mình.",
+      "keywords": [
+        "tầng thu nhập đầu tiên",
+        "một trăm đô la",
+        "bán dịch vụ"
+      ],
+      "templateData": {
+        "template": "callout",
+        "statement": "AdSense chỉ là tầng 1 — tiền thật nằm ở dịch vụ và sản phẩm",
+        "tag": "TƯ DUY ĐÚNG"
+      }
+    },
+    {
+      "id": "ba-tang-kiem-tien",
+      "type": "body",
+      "voiceText": "Hãy xây blog theo ba tầng. Tầng một là quảng cáo, tầng hai là tiếp thị liên kết, nhận hoa hồng khi giới thiệu sản phẩm, tầng ba là dịch vụ và sản phẩm riêng của bạn. Cùng một lượng độc giả, tầng hai và tầng ba có thể kiếm gấp nhiều lần tiền quảng cáo.",
+      "keywords": [
+        "ba tầng",
+        "hoa hồng",
+        "gấp nhiều lần"
+      ],
+      "templateData": {
+        "template": "feature-list",
+        "title": "3 TẦNG KIẾM TIỀN CỦA MỘT BLOG",
+        "bullets": [
+          "Tầng 1: AdSense — chỉ là thu nhập khởi đầu",
+          "Tầng 2: affiliate — hoa hồng giới thiệu",
+          "Tầng 3: dịch vụ, khoá học, sản phẩm riêng"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "voiceText": "Tóm lại, blog chưa chết, chỉ có cách làm cũ là chết. Cloak Login, kênh kiến thức kiếm tiền online. Lưu video lại để xem khi bạn bắt đầu viết blog nhé.",
+      "keywords": [
+        "blog chưa chết",
+        "kiếm tiền online",
+        "Lưu video"
+      ],
+      "templateData": {
+        "template": "outro",
+        "ctaTop": "Kiến thức MMO mỗi ngày",
+        "channelName": "Cloak Login",
+        "source": "cloakbrowse.com"
+      }
+    }
+  ]
+}
